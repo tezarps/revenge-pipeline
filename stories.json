@@ -1,0 +1,19 @@
+{
+  "stories": [
+    {
+      "id": 1,
+      "premise": "My parents emptied my $60,000 college fund to buy my golden-child brother a truck and told me to figure it out. Ten years later they showed up at my office begging me to save their house from foreclosure — I had security walk them out.",
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "premise": "My sister told my parents I stole my grandmother's jewelry, and they cut me off at 22. Seven years later the jewelry turned up in my sister's divorce inventory — and now the whole family wants me to co-sign a loan for her.",
+      "status": "pending"
+    },
+    {
+      "id": 3,
+      "premise": "I ran my dad's roofing company for 12 years while my brother partied. At the retirement dinner, dad handed my brother the company in front of 40 guests. I quit that night, joined our biggest client, and watched the firm collapse in 18 months.",
+      "status": "pending"
+    }
+  ]
+}
