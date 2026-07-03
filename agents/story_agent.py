@@ -29,6 +29,7 @@ Style rules: plain spoken American English, short sentences, first person past t
 TITLE_RULES = """Title formula (from the proven pattern): [specific betrayal by family] + [abandonment], then a second clause with the turn, cut with an em-dash or "So I...". 70-95 characters. Examples of the shape:
 - "My Family Believed My Sister's Lie, Disowned Me, And Let Me Rot. Now They Want My Help"
 - "My Parents Gave My Sister $450K At Dinner. I Got A Gift Card. So I Called The Bank Mid-Bite"
+The comeback clause must be PASSIVE and non-violent (refused, walked away, watched them lose it, said nothing) — never destructive imagery like burn/destroy/ruin someone physically, even metaphorically. Advertiser-safe.
 """
 
 
