@@ -109,6 +109,9 @@ def upload_video(video_path, thumb_path, metadata):
             "privacyStatus": "private",
             "publishAt": publish_at,
             "selfDeclaredMadeForKids": False,
+            # "Altered content" disclosure — AI narration + AI imagery.
+            # Set per-video via API so there's nothing to toggle in Studio.
+            "containsSyntheticMedia": True,
         },
     }
     media = MediaFileUpload(str(video_path), chunksize=8 * 1024 * 1024, resumable=True)
