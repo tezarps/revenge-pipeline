@@ -40,6 +40,15 @@ def create_video(audio_path, story_id, title_text=""):
     if not bgs:
         print("    No images in assets/bg/ — using generated gradient background")
         bgs = _fallback_bg(title_text)
+    else:
+        # Per-video shuffle + subset (seeded by story id) so no two videos share
+        # the same visual sequence — repetition-across-uploads mitigation for
+        # YouTube's inauthentic-content policy.
+        import random
+        rng = random.Random(story_id)
+        rng.shuffle(bgs)
+        if len(bgs) > 10:
+            bgs = bgs[:rng.randint(10, len(bgs))]
 
     # Build a looped slideshow long enough to cover the narration.
     n_segments = int(dur // SEGMENT_SEC) + 1
