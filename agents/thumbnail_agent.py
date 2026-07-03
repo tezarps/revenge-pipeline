@@ -43,20 +43,26 @@ def _wrap(draw, text, font, max_w):
 
 
 def _avatar(d, cx, cy, r):
-    """Orange circle mascot with x-eyes and a frown — evokes the niche's
-    house style without copying the Reddit snoo outright."""
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(255, 69, 0))
+    """Snoo-style mascot: white head on orange circle, x-eyes, frown —
+    matches the niche house style (see revenge-story-lab/thumbs/)."""
+    ORANGE = (255, 69, 0)
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=ORANGE)
+    # ears
+    for ex in (cx - r * 0.52, cx + r * 0.52):
+        d.ellipse([ex - r * 0.18, cy - r * 0.62, ex + r * 0.18, cy - r * 0.28], fill="white")
+    # head (wide white ellipse)
+    d.ellipse([cx - r * 0.62, cy - r * 0.5, cx + r * 0.62, cy + r * 0.55], fill="white")
     # antenna
-    d.line([cx, cy - r + 18, cx + r * 0.45, cy - r - 14], fill="white", width=10)
-    d.ellipse([cx + r * 0.45 - 12, cy - r - 26, cx + r * 0.45 + 12, cy - r - 2], fill="white")
-    # x eyes
-    for ex in (cx - r * 0.38, cx + r * 0.38):
-        s = r * 0.16
+    d.line([cx, cy - r * 0.48, cx + r * 0.28, cy - r * 0.82], fill="white", width=int(r * 0.11))
+    d.ellipse([cx + r * 0.28 - r * 0.12, cy - r * 0.95, cx + r * 0.28 + r * 0.12, cy - r * 0.71], fill="white")
+    # x eyes (orange on white)
+    for ex in (cx - r * 0.28, cx + r * 0.28):
+        s = r * 0.11
         ey = cy - r * 0.05
-        d.line([ex - s, ey - s, ex + s, ey + s], fill="white", width=9)
-        d.line([ex - s, ey + s, ex + s, ey - s], fill="white", width=9)
+        d.line([ex - s, ey - s, ex + s, ey + s], fill=ORANGE, width=int(r * 0.08))
+        d.line([ex - s, ey + s, ex + s, ey - s], fill=ORANGE, width=int(r * 0.08))
     # frown
-    d.arc([cx - r * 0.4, cy + r * 0.25, cx + r * 0.4, cy + r * 0.85], start=200, end=340, fill="white", width=9)
+    d.arc([cx - r * 0.3, cy + r * 0.12, cx + r * 0.3, cy + r * 0.48], start=200, end=340, fill=ORANGE, width=int(r * 0.08))
 
 
 def _verified(d, x, y, r=22):
@@ -65,17 +71,40 @@ def _verified(d, x, y, r=22):
     d.line([x - r * 0.1, y + r * 0.35, x + r * 0.5, y - r * 0.35], fill="white", width=7)
 
 
-def _badges(d, x, y):
-    """Award-badge row — simple gold/silver medallions instead of emoji
-    (color-emoji fonts are unreliable across mac/linux runners)."""
+EMOJI_ROW = "🛡️🏆💀😂😮👏💀⭐⭐"
+
+
+def _emoji_row(img, x, y, size=44):
+    """Real color-emoji award row (like the original thumbnails). Bitmap emoji
+    fonts only render at their native strike size, so render there and resize.
+    Falls back to drawn medallions if no emoji font is available."""
+    for font_path, strike in (
+        ("/System/Library/Fonts/Apple Color Emoji.ttc", 160),
+        ("/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf", 109),
+    ):
+        try:
+            f = ImageFont.truetype(font_path, strike)
+            tmp = Image.new("RGBA", (strike * (len(EMOJI_ROW) + 2), int(strike * 1.4)), (0, 0, 0, 0))
+            ImageDraw.Draw(tmp).text((0, 0), EMOJI_ROW, font=f, embedded_color=True)
+            box = tmp.getbbox()
+            if not box:
+                continue
+            tmp = tmp.crop(box)
+            scale = size / tmp.height
+            tmp = tmp.resize((int(tmp.width * scale), size), Image.LANCZOS)
+            img.paste(tmp, (x, y), tmp)
+            return
+        except OSError:
+            continue
+    # fallback: drawn medallions
+    d = ImageDraw.Draw(img)
     colors = [(46, 204, 113), (241, 196, 15), (149, 165, 166), (243, 156, 18),
               (236, 240, 241), (241, 196, 15), (149, 165, 166), (243, 156, 18), (241, 196, 15)]
-    r = 20
+    r = size // 2
     for i, c in enumerate(colors):
         cx = x + i * (r * 2 + 14) + r
-        d.ellipse([cx - r, y - r, cx + r, y + r], fill=c, outline=(120, 120, 120), width=2)
-        # star-ish dot core
-        d.ellipse([cx - 7, y - 7, cx + 7, y + 7], fill=(255, 255, 255))
+        d.ellipse([cx - r, y, cx + r, y + 2 * r], fill=c, outline=(120, 120, 120), width=2)
+        d.ellipse([cx - 7, y + r - 7, cx + 7, y + r + 7], fill=(255, 255, 255))
 
 
 def generate_thumbnail(title_text, story_id):
@@ -89,7 +118,7 @@ def generate_thumbnail(title_text, story_id):
     name_font = _font(52)
     d.text((265, 88), CHANNEL_NAME, font=name_font, fill=(10, 10, 10))
     _verified(d, 265 + d.textlength(CHANNEL_NAME, font=name_font) + 42, 116)
-    _badges(d, 268, 196)
+    _emoji_row(img, 268, 172, size=48)
 
     # title block — the whole card is the title, like the original
     size = 88
