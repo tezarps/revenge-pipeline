@@ -67,7 +67,8 @@ def run(dry_run=False):
         else:
             metadata = story_agent.generate_metadata(story, script)
             meta_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2))
-        thumb_path = generate_thumbnail(metadata["thumb_text"], sid)
+        # RFT-style card uses the FULL title as the thumbnail text
+        thumb_path = generate_thumbnail(metadata["title"], sid)
         print(f"      Title: {metadata['title']}")
 
         # [4/5] Video

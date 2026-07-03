@@ -12,6 +12,9 @@ ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 SONNET_MODEL = "claude-sonnet-5"
 HAIKU_MODEL = "claude-haiku-4-5"
 
+# Shown on the fake-Reddit-card thumbnail (niche house style).
+CHANNEL_NAME = os.environ.get("CHANNEL_NAME", "Golden Child Stories")
+
 BASE_DIR = Path(__file__).parent
 OUTPUT_DIR = BASE_DIR / "output"
 ASSETS_BG_DIR = BASE_DIR / "assets" / "bg"
