@@ -34,7 +34,7 @@ family betrayal stories, revenge stories, golden child, scapegoat, toxic family,
 - Category: **Entertainment** (sudah otomatis dari pipeline)
 - Language: **English**
 - License: Standard YouTube License
-- "Altered content" disclosure: **Yes** (suara & visual dibuat dengan AI — wajib dicentang sejak 2024, pipeline set `selfDeclaredMadeForKids=False` tapi disclosure ini setting akun)
+- "Altered content" disclosure: **otomatis** — pipeline set `containsSyntheticMedia: true` per video via API, tidak perlu dicentang manual
 
 ## Catatan penting
 - Deskripsi memuat disclaimer "dramatized / fictional" — ini lapisan perlindungan

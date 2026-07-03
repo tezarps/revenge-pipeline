@@ -49,6 +49,24 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python3 scheduler.py ${{ inputs.dry_run && '--dry-run' || '' }}
 
+      - name: Build 60s video preview for inspection
+        if: always()
+        run: |
+          mp4=$(ls output/video/*.mp4 2>/dev/null | head -1)
+          [ -n "$mp4" ] && ffmpeg -y -i "$mp4" -t 60 -c copy output/video/preview_60s.mp4 || true
+
+      - name: Upload inspection artifacts (thumbnail + preview)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inspect-${{ github.run_number }}
+          path: |
+            output/thumbs/*.jpg
+            output/video/preview_60s.mp4
+            output/metadata/*.json
+          retention-days: 14
+          if-no-files-found: ignore
+
       - name: Commit story queue state back
         if: always()
         run: |
