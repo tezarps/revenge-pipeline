@@ -82,7 +82,11 @@ Mau nambah lebih banyak wanita kapan pun: generate lagi dengan pola sama, kasih 
 
 ## Catatan teknis
 - Pipeline otomatis pilih SATU foto per cerita (rotasi berdasar nomor cerita), dipakai
-  konsisten untuk thumbnail DAN overlay video cerita itu.
+  konsisten untuk thumbnail DAN overlay video cerita itu. Video ke-11 balik lagi ke
+  person_01, dst (nambah foto baru kapan pun memperpanjang jarak sebelum berulang).
+- FULL Calm-Drama-style untuk SEMUA video (keputusan 2026-07-04): tidak ada lagi rotasi
+  A/B dengan kartu Reddit. Kartu Reddit cuma jadi fallback darurat kalau folder
+  character/ kosong, bukan gaya yang sengaja dipakai.
 - Overlay video: karakter di-crop otomatis jadi ukuran lebih kecil (640x820), diposisikan
   nempel bawah kiri dengan ruang kosong di atas kepala (bukan menutupi seluruh frame).
 - Foto akan otomatis dinaikkan brightness/contrast/saturation sedikit di kode (jaga-jaga),

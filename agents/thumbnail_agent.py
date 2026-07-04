@@ -280,11 +280,13 @@ def generate_thumbnail_b(thumb_lines, story_id):
 
 
 def generate_thumbnail_ab(title_text, thumb_lines, story_id):
-    """A/B rotation: even story ids try style B (character + colored stack),
-    odd use style A (Reddit card). Falls back to A when no character shots
-    exist yet or thumb_lines is missing (older cached metadata)."""
-    if int(story_id) % 2 == 0:
-        b = generate_thumbnail_b(thumb_lines, story_id)
-        if b:
-            return b
+    """Full switch to Calm-Drama-style (2026-07-04, user decision): every
+    video uses style B (character + colored stack), no more odd/even A/B
+    rotation with the Reddit-card style. Style A is kept ONLY as an
+    emergency fallback for when assets/character/ is empty or thumb_lines
+    is missing (e.g. older cached metadata) — not a deliberate design
+    choice, just so the pipeline never blocks on missing assets."""
+    b = generate_thumbnail_b(thumb_lines, story_id)
+    if b:
+        return b
     return generate_thumbnail(title_text, story_id)
