@@ -11,6 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+import status_manager as sm
 from agents import story_agent
 from agents.tts_agent import generate_audio
 from agents.assembly_agent import create_video
@@ -32,35 +33,41 @@ def run(dry_run=False):
     sid = story["id"]
     print(f"Story #{sid}: {story['premise']}\n")
     notify(f"🎬 Revenge pipeline — started\nStory #{sid}: {story['premise'][:200]}")
+    sm.run_start(sid, story["premise"])
 
     stage = "script"
     try:
-        # [1/5] Script — cache-aware so a failed later stage never re-pays the LLM
+        # [1/6] Script — cache-aware so a failed later stage never re-pays the LLM
+        sm.stage_start("script", "Sonnet 5 writing...")
         script_path = OUTPUT_DIR / "scripts" / f"{sid}.txt"
         if script_path.exists():
             script = script_path.read_text()
-            print(f"[1/5] Script: cached ({len(script.split()):,} words)")
+            print(f"[1/6] Script: cached ({len(script.split()):,} words)")
         else:
-            print("[1/5] Script: writing with Sonnet 5...")
+            print("[1/6] Script: writing with Sonnet 5...")
             script = story_agent.generate_script(story)
             script_path.write_text(script)
             print(f"      {len(script.split()):,} words")
+        sm.stage_done("script", f"{len(script.split()):,} words")
         notify(f"✍️ #{sid} script ready — {len(script.split()):,} kata")
 
-        # [2/5] TTS — Kokoro local. Never auto-delete finished audio
+        # [2/6] TTS — Kokoro local. Never auto-delete finished audio
         # (feedback_narava_no_autocleanup).
-        stage = "tts"
+        stage = "audio"
+        sm.stage_start("audio", "Kokoro af_bella narrating...")
         audio_path = OUTPUT_DIR / "audio" / f"{sid}.mp3"
         if audio_path.exists():
-            print("[2/5] Audio: cached")
+            print("[2/6] Audio: cached")
         else:
-            print("[2/5] Audio: Kokoro TTS (am_michael)...")
+            print("[2/6] Audio: Kokoro TTS (af_bella)...")
             audio_path = generate_audio(script, sid)
+        sm.stage_done("audio")
         notify(f"🎙️ #{sid} audio ready")
 
-        # [3/5] Metadata + thumbnail
-        stage = "metadata"
-        print("[3/5] Metadata + thumbnail...")
+        # [3/6] Metadata + thumbnail
+        stage = "thumb"
+        sm.stage_start("thumb", "Writing title/tags + rendering thumbnail...")
+        print("[3/6] Metadata + thumbnail...")
         meta_path = OUTPUT_DIR / "metadata" / f"{sid}.json"
         if meta_path.exists():
             metadata = json.loads(meta_path.read_text())
@@ -70,23 +77,30 @@ def run(dry_run=False):
         # A/B: odd ids = Reddit-card (full title), even ids = character style B
         thumb_path = generate_thumbnail_ab(metadata["title"], metadata.get("thumb_lines"), sid)
         print(f"      Title: {metadata['title']}")
+        sm.stage_done("thumb", metadata["title"][:80])
 
-        # [4/5] Video
+        # [4/6] Captions + Video assembly
         stage = "assembly"
-        print("[4/5] Assembling video (ffmpeg)...")
+        sm.stage_start("assembly", "ffmpeg: character + drone + captions + waveform...")
+        print("[4/6] Assembling video (ffmpeg)...")
         video_path, dur = create_video(audio_path, sid)
         print(f"      {dur/60:.1f} min, {video_path.stat().st_size/1e6:.0f}MB")
+        sm.stage_done("assembly", f"{dur/60:.1f} min, {video_path.stat().st_size/1e6:.0f}MB")
 
         if dry_run:
             print(f"\n⏸ DRY RUN — stopping before upload.\n  Video: {video_path}\n  Thumb: {thumb_path}")
             notify(f"🧪 #{sid} dry run selesai — {dur/60:.1f} mnt, belum diupload")
+            sm.run_done()
             return
 
-        # [5/5] Upload
+        # [5/6] Upload
         stage = "upload"
-        print("[5/5] Uploading to YouTube...")
+        sm.stage_start("upload")
+        print("[5/6] Uploading to YouTube...")
         video_id, publish_at = upload_video(video_path, thumb_path, metadata)
         story_agent.mark(sid, "done", video_id=video_id)
+        sm.stage_done("upload", f"youtube.com/watch?v={video_id}")
+        sm.run_done(video_id=video_id)
         print(f"\n✓ Complete — youtube.com/watch?v={video_id}")
         notify(
             f"✅ Revenge pipeline — published\n#{sid}: {metadata['title']}\n"
@@ -97,6 +111,7 @@ def run(dry_run=False):
         print(f"\n✗ Failed at [{stage}]: {e}")
         traceback.print_exc()
         story_agent.mark(sid, "failed")
+        sm.run_failed(stage, e)
         notify(f"❌ Revenge pipeline — failed at [{stage}]\n#{sid}\n{str(e)[:300]}")
         # Exit non-zero so GitHub Actions shows red (Apophenia lesson 2026-06-21).
         sys.exit(1)

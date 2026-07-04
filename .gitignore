@@ -3,6 +3,5 @@ youtube_client_secret.json
 youtube_token.pickle
 output/audio/
 output/video/
-output/thumbs/
 __pycache__/
 *.pyc

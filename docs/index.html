@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Child Stories — Pipeline Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f13; --card: #18181e; --card-hi: #1f1f27; --border: #2a2a33;
+    --text: #eeeef2; --muted: #8d8d9c; --accent: #e63946; --accent-soft: rgba(230,57,70,0.15);
+    --accent-text: #ffffff; --yellow: #ffd60a; --green: #5fd896; --red: #f2697a; --blue: #6fa8f5;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: "Inter", -apple-system, sans-serif; background: var(--bg); color: var(--text); padding: 20px 16px 48px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  .display { font-family: "Bebas Neue", "Inter", sans-serif; letter-spacing: 0.03em; }
+  header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; gap: 12px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: baseline; gap: 10px; }
+  h1.display { font-size: 34px; color: var(--accent); margin: 0; line-height: 1; }
+  .live-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(95,216,150,0.6); animation: pulse-dot 2s infinite; }
+  .live-dot.off { background: var(--muted); animation: none; box-shadow: none; }
+  @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(95,216,150,0.55); } 70% { box-shadow: 0 0 0 7px rgba(95,216,150,0); } 100% { box-shadow: 0 0 0 0 rgba(95,216,150,0); } }
+  .subtitle { color: var(--muted); font-size: 13px; margin: 6px 0 22px; }
+
+  .stat-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 18px; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); }
+  .stat-card.hero { background: linear-gradient(135deg, var(--accent), #a4222b); color: var(--accent-text); border: none; }
+  .stat-card-top { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 12px; opacity: .85; }
+  .stat-num { font-size: 30px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+  .stat-hint { font-size: 11px; color: var(--muted); }
+  .stat-card.hero .stat-hint { color: rgba(255,255,255,0.75); }
+  @media (max-width: 760px) { .stat-cards { grid-template-columns: repeat(2, 1fr); } }
+
+  .block { padding: 22px 0; border-bottom: 1px solid var(--border); }
+  .block:last-child { border-bottom: none; }
+  .block h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); margin: 0 0 14px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+
+  .stepper { display: flex; flex-direction: column; gap: 0; }
+  .step { display: flex; align-items: flex-start; gap: 12px; position: relative; padding-bottom: 16px; }
+  .step:last-child { padding-bottom: 0; }
+  .step-line { position: absolute; left: 15px; top: 32px; bottom: -2px; width: 2px; background: var(--border); }
+  .step:last-child .step-line { display: none; }
+  .step-dot { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; background: var(--bg); border: 2px solid var(--border); z-index: 1; }
+  .step.done .step-dot { border-color: var(--green); background: rgba(95,216,150,0.12); color: var(--green); }
+  .step.running .step-dot { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); animation: pulse-ring 1.6s infinite; }
+  .step.error .step-dot { border-color: var(--red); background: rgba(242,105,122,0.15); color: var(--red); }
+  @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(230,57,70,0.5); } 70% { box-shadow: 0 0 0 8px rgba(230,57,70,0); } 100% { box-shadow: 0 0 0 0 rgba(230,57,70,0); } }
+  .step-body { padding-top: 4px; flex: 1; }
+  .step-name { font-size: 14px; font-weight: 600; color: var(--muted); }
+  .step.done .step-name, .step.running .step-name, .step.error .step-name { color: var(--text); }
+  .step-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .idle-banner { text-align: center; padding: 20px 8px; color: var(--muted); font-size: 13px; }
+
+  .status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+  .status-done, .status-published { background: rgba(95,216,150,0.15); color: var(--green); }
+  .status-failed { background: rgba(242,105,122,0.15); color: var(--red); }
+  .status-pending { background: rgba(140,137,171,0.15); color: var(--muted); }
+
+  .story-card { display: flex; gap: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 12px; margin-bottom: 10px; cursor: pointer; transition: border-color .15s; }
+  .story-card:hover { border-color: var(--accent); }
+  .story-thumb { width: 140px; height: 79px; border-radius: 8px; object-fit: cover; background: var(--card-hi); flex-shrink: 0; }
+  .story-body { flex: 1; min-width: 0; }
+  .story-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+  .story-meta { font-size: 12px; color: var(--muted); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .empty { color: var(--muted); font-size: 13px; text-align: center; padding: 14px 0; }
+
+  a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .link-pill { display: inline-flex; align-items: center; gap: 5px; background: var(--card-hi); border: 1px solid var(--border); border-radius: 8px; padding: 6px 11px; font-size: 12px; white-space: nowrap; }
+  .link-pill:hover { border-color: var(--accent); }
+  .refresh-note { text-align: center; color: var(--muted); font-size: 11px; margin-top: 18px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .refresh-note a { color: var(--muted); font-weight: 400; }
+  .refresh-note a:hover { color: var(--accent); }
+
+  #modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.65); z-index: 100; align-items: flex-end; justify-content: center; }
+  #modal-backdrop.open { display: flex; }
+  #modal { background: var(--card); border-radius: 16px 16px 0 0; width: 100%; max-width: 720px; max-height: 85vh; display: flex; flex-direction: column; padding: 20px 18px 32px; overflow: hidden; }
+  #modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; gap: 10px; }
+  #modal-title { font-size: 15px; font-weight: 700; }
+  #modal-close { background: var(--card-hi); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 4px 10px; font-size: 13px; cursor: pointer; flex-shrink: 0; }
+  #modal-body { overflow-y: auto; flex: 1; }
+  .script-pre { white-space: pre-wrap; word-break: break-word; font-size: 13px; line-height: 1.75; }
+  .info-row { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; flex-shrink: 0; }
+  .tag-chip { display: inline-block; background: var(--card-hi); border: 1px solid var(--border); border-radius: 6px; padding: 2px 8px; font-size: 11px; margin: 2px; }
+  .modal-thumb { width: 100%; border-radius: 10px; margin-bottom: 14px; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+  .tab-btn { background: var(--card-hi); border: 1px solid var(--border); color: var(--muted); border-radius: 8px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-weight: 600; }
+  .tab-btn.active { color: var(--text); border-color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div id="modal-backdrop" onclick="closeModal(event)">
+  <div id="modal" onclick="event.stopPropagation()">
+    <div id="modal-header">
+      <div id="modal-title">Story</div>
+      <button id="modal-close" onclick="closeModal()">✕ Tutup</button>
+    </div>
+    <div id="modal-body"><div class="empty">Memuat...</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <h1 class="display">GOLDEN CHILD STORIES</h1>
+      <span id="live-dot" class="live-dot off"></span>
+    </div>
+  </header>
+  <div class="subtitle" id="subtitle-text">Pipeline monitor — auto-refresh tiap 60 detik</div>
+
+  <div class="stat-cards">
+    <div class="stat-card hero">
+      <div class="stat-card-top">Total Cerita</div>
+      <div class="stat-num" id="stat-total">–</div>
+      <div class="stat-hint">Semua premis di antrian</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-top">Published</div>
+      <div class="stat-num" id="stat-published">–</div>
+      <div class="stat-hint">Live di YouTube</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-top">Pending</div>
+      <div class="stat-num" id="stat-pending">–</div>
+      <div class="stat-hint">Nunggu giliran render</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-top">Failed</div>
+      <div class="stat-num" id="stat-failed">–</div>
+      <div class="stat-hint">Perlu dicek manual</div>
+    </div>
+  </div>
+
+  <div class="stack">
+    <section class="block">
+      <h2>Run Saat Ini</h2>
+      <div id="current-run"><div class="empty">Memuat...</div></div>
+    </section>
+
+    <section class="block">
+      <h2>Semua Cerita <span style="font-weight:400;text-transform:none;letter-spacing:0;">klik buat lihat naskah, thumbnail, link video</span></h2>
+      <div id="story-list"><div class="empty">Memuat...</div></div>
+    </section>
+
+    <section class="block">
+      <h2>Run GitHub Actions Terakhir</h2>
+      <div id="recent-runs"><div class="empty">Memuat...</div></div>
+    </section>
+  </div>
+
+  <div class="refresh-note">
+    <span>revenge-pipeline · dibaca langsung dari repo public</span>
+    <a href="https://github.com/tezarps/revenge-pipeline" target="_blank">Repo →</a>
+    <a href="https://github.com/tezarps/revenge-pipeline/actions" target="_blank">GitHub Actions →</a>
+    <a href="https://www.youtube.com/@GoldenChildStories" target="_blank">Channel →</a>
+  </div>
+</div>
+
+<script>
+  const OWNER = "tezarps";
+  const REPO = "revenge-pipeline";
+  const BRANCH = "main";
+  const RAW = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}`;
+  const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
+  const bust = () => `?_=${Date.now()}`;
+
+  async function fetchJSON(url, fallback = null) {
+    try {
+      const res = await fetch(url + (url.includes("?") ? "&" : "?") + `_=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) return fallback;
+      return await res.json();
+    } catch (e) { return fallback; }
+  }
+  async function fetchText(url, fallback = null) {
+    try {
+      const res = await fetch(url + `?_=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) return fallback;
+      return await res.text();
+    } catch (e) { return fallback; }
+  }
+  function esc(s) { return (s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  function timeAgo(iso) {
+    if (!iso) return "";
+    const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+    if (s < 60) return `${s}d lalu`;
+    if (s < 3600) return `${Math.floor(s/60)}mnt lalu`;
+    if (s < 86400) return `${Math.floor(s/3600)}jam lalu`;
+    return `${Math.floor(s/86400)}hari lalu`;
+  }
+
+  const STAGE_ORDER = ["script", "audio", "thumb", "assembly", "upload"];
+  const STAGE_ICON = { pen: "✎", mic: "●", text: "▤", film: "▶", image: "▧", upload: "↑", x: "✕" };
+
+  async function renderCurrentRun() {
+    const status = await fetchJSON(`${RAW}/status.json`);
+    const el = document.getElementById("current-run");
+    const liveDot = document.getElementById("live-dot");
+
+    if (!status || !status.stage && status.run_state !== "running") {
+      liveDot.className = "live-dot off";
+      el.innerHTML = `<div class="idle-banner">Tidak ada run aktif saat ini.</div>`;
+      return;
+    }
+    liveDot.className = status.run_state === "running" ? "live-dot" : "live-dot off";
+
+    let html = `<div style="margin-bottom:12px;font-size:13px;color:var(--muted)">Story #${status.story_id}: <strong style="color:var(--text)">${esc((status.premise||"").slice(0,120))}${(status.premise||"").length>120?"...":""}</strong></div>`;
+    html += `<div class="stepper">`;
+    for (const key of STAGE_ORDER) {
+      const st = (status.stages || {})[key];
+      const cls = st ? (st.status === "done" ? "done" : st.status === "error" ? "error" : "running") : "";
+      const label = st ? st.label : key;
+      const detail = st ? st.detail : "menunggu...";
+      html += `<div class="step ${cls}"><div class="step-line"></div>
+        <div class="step-dot">${st && st.status === "done" ? "✓" : st && st.status === "error" ? "✕" : STAGE_ICON[st ? st.icon : ""] || "○"}</div>
+        <div class="step-body"><div class="step-name">${esc(label)}</div><div class="step-detail">${esc(detail || "")}</div></div>
+      </div>`;
+    }
+    html += `</div>`;
+    html += `<div style="margin-top:10px;font-size:11px;color:var(--muted)">Update terakhir: ${timeAgo(status.updated_at)}</div>`;
+    el.innerHTML = html;
+  }
+
+  async function renderStories() {
+    const data = await fetchJSON(`${RAW}/stories.json`, { stories: [] });
+    const stories = (data.stories || []).slice().reverse();
+    document.getElementById("stat-total").textContent = stories.length;
+    document.getElementById("stat-published").textContent = stories.filter(s => s.status === "done").length;
+    document.getElementById("stat-pending").textContent = stories.filter(s => s.status === "pending").length;
+    document.getElementById("stat-failed").textContent = stories.filter(s => s.status === "failed").length;
+
+    const el = document.getElementById("story-list");
+    if (!stories.length) { el.innerHTML = `<div class="empty">Belum ada cerita.</div>`; return; }
+
+    el.innerHTML = stories.map(s => {
+      const badgeClass = s.status === "done" ? "status-done" : s.status === "failed" ? "status-failed" : "status-pending";
+      const thumbUrl = `${RAW}/output/thumbs/${s.id}_b.jpg`;
+      return `<div class="story-card" onclick="openStory(${s.id})">
+        <img class="story-thumb" src="${thumbUrl}" onerror="this.onerror=null;this.src='${RAW}/output/thumbs/${s.id}.jpg';this.onerror=function(){this.style.display='none'}" loading="lazy">
+        <div class="story-body">
+          <div class="story-title">#${s.id} ${esc((s.premise || "").slice(0, 90))}${(s.premise||"").length>90?"...":""}</div>
+          <div class="story-meta">
+            <span class="status-badge ${badgeClass}">${esc(s.status)}</span>
+            ${s.video_id ? `<a href="https://youtube.com/watch?v=${s.video_id}" target="_blank" onclick="event.stopPropagation()">▶ Tonton</a>` : ""}
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
+  async function renderRuns() {
+    const data = await fetchJSON(`${API}/actions/runs?per_page=8`, { workflow_runs: [] });
+    const runs = (data.workflow_runs || []).filter(r => r.name === "Revenge Pipeline");
+    const el = document.getElementById("recent-runs");
+    if (!runs.length) { el.innerHTML = `<div class="empty">Belum ada run.</div>`; return; }
+    el.innerHTML = runs.map(r => {
+      const conclusion = r.conclusion || r.status;
+      const cls = conclusion === "success" ? "status-done" : conclusion === "failure" ? "status-failed" : "status-pending";
+      return `<div class="story-card" style="align-items:center" onclick="window.open('${r.html_url}','_blank')">
+        <div class="story-body">
+          <div class="story-title">${new Date(r.created_at).toLocaleString('id-ID')}</div>
+          <div class="story-meta"><span class="status-badge ${cls}">${esc(conclusion)}</span> ${r.event === 'workflow_dispatch' ? '(manual)' : '(cron)'}</div>
+        </div>
+        <span class="link-pill">Buka log →</span>
+      </div>`;
+    }).join("");
+  }
+
+  async function openStory(id) {
+    const backdrop = document.getElementById("modal-backdrop");
+    const body = document.getElementById("modal-body");
+    document.getElementById("modal-title").textContent = `Story #${id}`;
+    backdrop.classList.add("open");
+    body.innerHTML = `<div class="empty">Memuat...</div>`;
+
+    const [meta, script] = await Promise.all([
+      fetchJSON(`${RAW}/output/metadata/${id}.json`),
+      fetchText(`${RAW}/output/scripts/${id}.txt`),
+    ]);
+
+    let html = "";
+    html += `<img class="modal-thumb" src="${RAW}/output/thumbs/${id}_b.jpg" onerror="this.onerror=null;this.src='${RAW}/output/thumbs/${id}.jpg';this.onerror=function(){this.style.display='none'}">`;
+
+    if (meta) {
+      html += `<div class="info-row"><div class="info-label">Judul</div><div style="text-align:right">${esc(meta.title)}</div></div>`;
+      html += `<div class="info-row"><div class="info-label">Deskripsi</div><div style="text-align:right;max-width:70%">${esc(meta.description)}</div></div>`;
+      if (meta.tags) html += `<div class="info-row"><div class="info-label">Tags</div><div style="text-align:right">${meta.tags.map(t=>`<span class="tag-chip">${esc(t)}</span>`).join("")}</div></div>`;
+    } else {
+      html += `<div class="empty">Metadata belum tersedia (mungkin masih di-render).</div>`;
+    }
+
+    html += `<div class="tabs">
+      <button class="tab-btn active" id="tab-script-btn" onclick="showTab('script')">Naskah</button>
+      <button class="tab-btn" id="tab-meta-btn" onclick="showTab('meta')">Thumbnail Lines</button>
+    </div>`;
+    html += `<div id="tab-script">`;
+    html += script ? `<div class="script-pre">${esc(script)}</div>` : `<div class="empty">Naskah belum tersedia.</div>`;
+    html += `</div>`;
+    html += `<div id="tab-meta" style="display:none">`;
+    if (meta && meta.thumb_lines) {
+      html += meta.thumb_lines.map(l => `<div class="info-row"><div class="info-label">${esc(l.style)}</div><div style="text-align:right">${esc(l.text)}</div></div>`).join("");
+    } else {
+      html += `<div class="empty">Belum ada.</div>`;
+    }
+    html += `</div>`;
+
+    body.innerHTML = html;
+  }
+  function showTab(name) {
+    document.getElementById("tab-script").style.display = name === "script" ? "block" : "none";
+    document.getElementById("tab-meta").style.display = name === "meta" ? "block" : "none";
+    document.getElementById("tab-script-btn").classList.toggle("active", name === "script");
+    document.getElementById("tab-meta-btn").classList.toggle("active", name === "meta");
+  }
+  function closeModal(e) {
+    document.getElementById("modal-backdrop").classList.remove("open");
+  }
+
+  async function refreshAll() {
+    await Promise.all([renderCurrentRun(), renderStories(), renderRuns()]);
+  }
+  refreshAll();
+  setInterval(refreshAll, 60000);
+</script>
+</body>
+</html>
