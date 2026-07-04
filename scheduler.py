@@ -17,7 +17,7 @@ from agents.tts_agent import generate_audio
 from agents.assembly_agent import create_video
 from agents.thumbnail_agent import generate_thumbnail_ab
 from agents.upload_agent import upload_video
-from config import OUTPUT_DIR
+from config import OUTPUT_DIR, SCRIPT_MIN_WORDS
 from telegram_notify import notify
 
 
@@ -40,11 +40,19 @@ def run(dry_run=False):
         # [1/6] Script — cache-aware so a failed later stage never re-pays the LLM
         sm.stage_start("script", "Sonnet 5 writing...")
         script_path = OUTPUT_DIR / "scripts" / f"{sid}.txt"
-        if script_path.exists():
+        cached_wc = len(script_path.read_text().split()) if script_path.exists() else 0
+        if cached_wc >= SCRIPT_MIN_WORDS:
             script = script_path.read_text()
-            print(f"[1/6] Script: cached ({len(script.split()):,} words)")
+            print(f"[1/6] Script: cached ({cached_wc:,} words)")
         else:
-            print("[1/6] Script: writing with Sonnet 5...")
+            if cached_wc:
+                # Stale cache from before a word-count target bump — a short
+                # cached script would otherwise be reused forever and silently
+                # ignore any SCRIPT_MIN_WORDS increase (bit us 2026-07-05).
+                print(f"[1/6] Script: cached copy is stale ({cached_wc:,} < {SCRIPT_MIN_WORDS:,} target), regenerating...")
+                (OUTPUT_DIR / "metadata" / f"{sid}.json").unlink(missing_ok=True)
+            else:
+                print("[1/6] Script: writing with Sonnet 5...")
             script = story_agent.generate_script(story)
             script_path.write_text(script)
             print(f"      {len(script.split()):,} words")
