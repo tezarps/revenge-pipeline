@@ -15,9 +15,12 @@ def _get_model():
     global _model
     if _model is None:
         from faster_whisper import WhisperModel
-        # base.en: faster than small.en on CPU runners, still solid word-level
-        # accuracy for clean single-speaker TTS narration (not noisy audio).
-        _model = WhisperModel("base.en", device="cpu", compute_type="int8")
+        # tiny.en: switched from base.en 2026-07-04 after run #3 hit 139.6 min
+        # total (vs ~50-70 min pre-Calm-Drama), pushing close to GitHub's free
+        # 2,000 min/month private-repo ceiling at 3 videos/week. Clean
+        # single-speaker TTS audio (not noisy/accented) doesn't need base's
+        # extra accuracy for word-level caption timing.
+        _model = WhisperModel("tiny.en", device="cpu", compute_type="int8")
     return _model
 
 
