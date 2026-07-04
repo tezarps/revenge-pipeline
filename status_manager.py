@@ -28,19 +28,40 @@ def _read():
     return {"story_id": None, "premise": None, "stage": None, "stages": {}, "updated_at": None}
 
 
-def _write_and_push(data):
+def _ensure_git_identity():
+    # Defensive backstop: the workflow now sets this up-front too (fixed
+    # 2026-07-05), but every mid-run commit silently failed for months before
+    # that without it, so self-configuring here means this module never
+    # depends on the caller getting the order right.
+    subprocess.run(["git", "config", "user.name", "revenge-pipeline-bot"], capture_output=True)
+    subprocess.run(["git", "config", "user.email", "bot@users.noreply.github.com"], capture_output=True)
+
+
+def _write_and_push(data, attempts=3):
     data["updated_at"] = datetime.now(timezone.utc).isoformat()
     STATUS_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2))
-    try:
-        subprocess.run(["git", "add", "status.json"], check=True, capture_output=True)
-        diff = subprocess.run(["git", "diff", "--cached", "--quiet"], capture_output=True)
-        if diff.returncode == 0:
-            return  # nothing changed
-        subprocess.run(["git", "commit", "-m", "status: live progress [skip ci]"], check=True, capture_output=True)
-        subprocess.run(["git", "pull", "--rebase", "--quiet"], check=True, capture_output=True)
-        subprocess.run(["git", "push", "--quiet"], check=True, capture_output=True)
-    except Exception as e:
-        print(f"    (status push skipped: {e})")
+    _ensure_git_identity()
+    for attempt in range(attempts):
+        try:
+            subprocess.run(["git", "add", "status.json"], check=True, capture_output=True)
+            diff = subprocess.run(["git", "diff", "--cached", "--quiet"], capture_output=True)
+            if diff.returncode == 0:
+                return  # nothing changed
+            subprocess.run(["git", "commit", "-m", "status: live progress [skip ci]"], check=True, capture_output=True)
+            # Reset onto latest origin/main instead of rebasing — status.json
+            # is disposable scratch state, so there's nothing worth a real
+            # rebase conflict resolution over; a plain fast-forward retry is
+            # both simpler and can't get stuck mid-rebase.
+            subprocess.run(["git", "fetch", "origin", "main", "--quiet"], check=True, capture_output=True)
+            subprocess.run(["git", "reset", "--mixed", "origin/main", "--quiet"], check=True, capture_output=True)
+            STATUS_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2))
+            subprocess.run(["git", "add", "status.json"], check=True, capture_output=True)
+            subprocess.run(["git", "commit", "-m", "status: live progress [skip ci]"], check=True, capture_output=True)
+            subprocess.run(["git", "push", "--quiet"], check=True, capture_output=True)
+            return
+        except Exception as e:
+            if attempt == attempts - 1:
+                print(f"    (status push skipped after {attempts} attempts: {e})")
 
 
 def run_start(story_id, premise):
