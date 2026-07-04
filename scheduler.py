@@ -68,7 +68,7 @@ def run(dry_run=False):
             metadata = story_agent.generate_metadata(story, script)
             meta_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2))
         # A/B: odd ids = Reddit-card (full title), even ids = character style B
-        thumb_path = generate_thumbnail_ab(metadata["title"], metadata.get("thumb_text", ""), sid)
+        thumb_path = generate_thumbnail_ab(metadata["title"], metadata.get("thumb_lines"), sid)
         print(f"      Title: {metadata['title']}")
 
         # [4/5] Video

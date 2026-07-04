@@ -101,17 +101,29 @@ def generate_script(story):
     return script
 
 
+THUMB_LINES_RULES = """Also write "thumb_lines": a 5-segment escalating thumbnail script copying the exact proven structure of the niche's top-performing channel:
+1. "setup" (short, yellow text): the lie or betrayal setup, ALL CAPS, 3-6 words.
+2. "twist" (short punchy, magenta text, biggest): the immediate consequence, ALL CAPS, 3-6 words.
+3. "context" (longer, white text): additional buildup context building to the climax moment, ALL CAPS, 8-14 words.
+4. "climax1" (white text on a red highlight box): first half of the shocking climax moment, ALL CAPS, 4-8 words.
+5. "climax2" (yellow text on a red highlight box): second half / punchline of the climax moment, ALL CAPS, 4-8 words.
+
+Each segment is ALL CAPS, no em dash. Together they should read like an escalating true-crime-style thumbnail teaser, not a repeat of the video title."""
+
+
 def generate_metadata(story, script):
     raw = call_haiku(
         f"""For this YouTube revenge-story video, write metadata. {TITLE_RULES}
 
+{THUMB_LINES_RULES}
+
 Story premise: {story['premise']}
 Opening of script: {script[:1200]}
 
-Never use an em dash (the "—" character) anywhere in the title, description, or thumb_text; use a comma, period, or "and"/"but" instead.
+Never use an em dash (the "—" character) anywhere in any field; use a comma, period, or "and"/"but" instead.
 
-Return ONLY JSON: {{"title": "...", "description": "2-3 sentence description ending with 3 relevant hashtags", "tags": ["10-14 tags"], "thumb_text": "6-10 word emotional punchline for the thumbnail, ALL CAPS"}}""",
-        max_tokens=1200,
+Return ONLY JSON: {{"title": "...", "description": "2-3 sentence description ending with 3 relevant hashtags", "tags": ["10-14 tags"], "thumb_text": "6-10 word emotional punchline for the fallback thumbnail, ALL CAPS", "thumb_lines": [{{"style": "setup", "text": "..."}}, {{"style": "twist", "text": "..."}}, {{"style": "context", "text": "..."}}, {{"style": "climax1", "text": "..."}}, {{"style": "climax2", "text": "..."}}]}}""",
+        max_tokens=1400,
     )
     m = re.search(r"\{.*\}", raw, re.S)
     return json.loads(m.group(0))

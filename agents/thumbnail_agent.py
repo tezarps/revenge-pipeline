@@ -162,70 +162,106 @@ def generate_thumbnail(title_text, story_id):
     return path
 
 
-def generate_thumbnail_b(thumb_text, story_id):
-    """Style B — Calm-Drama-inspired but cleaner: locked character (right 45%),
-    dark panel (left) with restrained 2-color typography instead of their
-    4-color eye-strain stack. Character shots come from assets/character/
-    (generated once in Flow, see assets/CHARACTER_PROMPTS.md)."""
+# style -> (text color, bg box color or None, base font size in px)
+LINE_STYLE = {
+    "setup":   ((255, 214, 0), None, 54),
+    "twist":   ((235, 25, 130), None, 66),
+    "context": ((255, 255, 255), None, 44),
+    "climax1": ((255, 255, 255), (196, 18, 18), 48),
+    "climax2": ((255, 214, 0), (196, 18, 18), 48),
+}
+DEFAULT_ORDER = ["setup", "twist", "context", "climax1", "climax2"]
+
+
+def generate_thumbnail_b(thumb_lines, story_id):
+    """Style B, copied deliberately from the niche's top performer
+    (Calm Drama Stories): full-width character photo on the right, and on
+    the left a stacked, multi-color, multi-size caption block (yellow setup,
+    magenta twist, white context, red-highlight climax) exactly matching
+    their proven eye-catching layout. Character shots come from
+    assets/character/ (see assets/CHARACTER_PROMPTS.md).
+
+    `thumb_lines`: list of {"style": ..., "text": ...} dicts from
+    story_agent.generate_metadata(), in the 5-segment order defined above.
+    Not aesthetic-optimized on purpose: this format is copied because it is
+    what the reference channel's data shows works, not because it looks good.
+    """
     chars = sorted(CHARACTER_DIR.glob("char_*.jpg")) if CHARACTER_DIR.exists() else []
-    if not chars:
+    if not chars or not thumb_lines:
         return None  # caller falls back to style A
 
-    img = Image.new("RGB", (W, H), (12, 12, 16))
-    # character on the right 45%, rotated deterministically per story
+    img = Image.new("RGB", (W, H), (8, 8, 8))
     shot = Image.open(chars[int(story_id) % len(chars)]).convert("RGB")
-    target_w = int(W * 0.45)
+    target_w = int(W * 0.42)
     scale = H / shot.height
     shot = shot.resize((int(shot.width * scale), H), Image.LANCZOS)
     left_crop = max(0, (shot.width - target_w) // 2)
     shot = shot.crop((left_crop, 0, left_crop + target_w, H))
     img.paste(shot, (W - target_w, 0))
     d = ImageDraw.Draw(img)
-    # soft blend seam
-    for i in range(60):
-        x = W - target_w + i
-        alpha = int(255 * (1 - i / 60))
-        d.line([(x, 0), (x, H)], fill=(12, 12, 16, alpha) if False else None)
-    d.rectangle([W - target_w - 4, 0, W - target_w, H], fill=(12, 12, 16))
 
-    # text: split into hook (white) + payoff (yellow), max ~12 words total
-    words = thumb_text.upper().split()
-    split = max(3, int(len(words) * 0.55))
-    hook, payoff = " ".join(words[:split]), " ".join(words[split:])
+    panel_w = W - target_w - 60
+    lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}
 
-    panel_w = W - target_w - 90
-    size = 92
-    while size > 44:
+    # Pass 1: wrap every segment at its BASE size to get line counts (word
+    # wrap only depends on width, so this is a safe upper bound on line
+    # count at any scale <= 1).
+    segments = []
+    for style in DEFAULT_ORDER:
+        text = lines_by_style.get(style, "").strip().upper()
+        if not text:
+            continue
+        color, box, base_size = LINE_STYLE[style]
+        base_font = _font(base_size)
+        wrapped = _wrap(d, text, base_font, panel_w - (24 if box else 0))
+        segments.append({"wrapped": wrapped, "color": color, "box": box, "base_size": base_size})
+
+    if not segments:
+        return None
+
+    # Pass 2: compute the scale factor that makes the WHOLE stack fit the
+    # frame height exactly, instead of an iterative loop that can stop short
+    # (bug: content clipped off-screen top/bottom in the first version).
+    top_margin, bottom_margin, gap = 28, 28, 16
+    raw_total = 0.0
+    for seg in segments:
+        line_h = seg["base_size"] * 1.15
+        block_h = len(seg["wrapped"]) * line_h + (16 if seg["box"] else 0)
+        raw_total += block_h + gap
+    raw_total += top_margin + bottom_margin - gap
+
+    scale = min(1.0, (H - top_margin - bottom_margin) / max(raw_total, 1))
+    scale = max(scale, 0.35)  # legibility floor; LLM prompt caps line counts so this rarely triggers
+
+    y = top_margin
+    x0 = 40
+    for seg in segments:
+        size = max(18, int(seg["base_size"] * scale))
         font = _font(size)
-        lines_h = _wrap(d, hook, font, panel_w)
-        lines_p = _wrap(d, payoff, font, panel_w) if payoff else []
-        line_h = size * 1.22
-        if (len(lines_h) + len(lines_p)) * line_h + 40 <= H - 120:
-            break
-        size -= 6
-
-    total = (len(lines_h) + len(lines_p)) * line_h + 40
-    y = (H - total) / 2
-    for line in lines_h:
-        d.text((58 + 4, y + 4), line, font=font, fill=(0, 0, 0))
-        d.text((58, y), line, font=font, fill=(255, 255, 255))
-        y += line_h
-    y += 40
-    for line in lines_p:
-        d.text((58 + 4, y + 4), line, font=font, fill=(0, 0, 0))
-        d.text((58, y), line, font=font, fill=(255, 214, 0))
-        y += line_h
+        line_h = size * 1.15
+        wrapped = seg["wrapped"]
+        box, color = seg["box"], seg["color"]
+        if box:
+            block_w = max(d.textlength(l, font=font) for l in wrapped) + 36
+            block_h = len(wrapped) * line_h + 14
+            d.rectangle([x0 - 12, y - 6, x0 - 12 + block_w, y - 6 + block_h], fill=box)
+        for line in wrapped:
+            d.text((x0 + 3, y + 3), line, font=font, fill=(0, 0, 0))
+            d.text((x0, y), line, font=font, fill=color)
+            y += line_h
+        y += (16 if box else 0) + gap
 
     path = OUTPUT_DIR / "thumbs" / f"{story_id}_b.jpg"
     img.save(path, quality=92)
     return path
 
 
-def generate_thumbnail_ab(title_text, thumb_text, story_id):
-    """A/B rotation: even story ids try style B (character), odd use style A
-    (Reddit card). Falls back to A when no character shots exist yet."""
+def generate_thumbnail_ab(title_text, thumb_lines, story_id):
+    """A/B rotation: even story ids try style B (character + colored stack),
+    odd use style A (Reddit card). Falls back to A when no character shots
+    exist yet or thumb_lines is missing (older cached metadata)."""
     if int(story_id) % 2 == 0:
-        b = generate_thumbnail_b(thumb_text or title_text, story_id)
+        b = generate_thumbnail_b(thumb_lines, story_id)
         if b:
             return b
     return generate_thumbnail(title_text, story_id)
