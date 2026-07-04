@@ -7,7 +7,7 @@ di-composite pipeline/aku (zero typo, tipografi konsisten).
 ## PROMPT — Profile photo / channel avatar (square, circle-crop safe)
 
 ```
-The same woman from the reference image, identical face and hair. Warm subtle smile with quiet confidence, direct eye contact, wearing the cream knit sweater. Head-and-shoulders portrait, perfectly centered with comfortable headroom, square 1:1 composition, plain dark warm-gray studio background with a soft vignette. Soft cinematic lighting, muted desaturated color grading, 85mm, shallow depth of field, no text, no watermark.
+The same woman from the reference image, identical face and hair. Bright photogenic smile with mouth slightly open as if laughing for a photo, natural and effortless — happy but not exaggerated. One hand raised in a casual peace sign near her face. Direct eye contact, wearing the cream knit sweater. Head-and-shoulders portrait, perfectly centered with comfortable headroom, square 1:1 composition, plain dark warm-gray studio background with a soft vignette. Soft cinematic lighting, warm natural color grading, 85mm, shallow depth of field, no text, no watermark.
 ```
 
 > Simpan sebagai `profile.jpg` → upload langsung di Studio → Customization →
