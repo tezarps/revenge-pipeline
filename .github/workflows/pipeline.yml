@@ -29,17 +29,20 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Install ffmpeg + emoji font (thumbnail award row)
+      - name: Install ffmpeg (with libass) + emoji font (thumbnail award row)
         run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-noto-color-emoji
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Cache Kokoro TTS model (~340MB)
+      - name: Cache Kokoro TTS, rembg, and faster-whisper models
         uses: actions/cache@v4
         with:
-          path: ~/.cache/revenge-tts
-          key: kokoro-v1.0
+          path: |
+            ~/.cache/revenge-tts
+            ~/.u2net
+            ~/.cache/huggingface
+          key: models-kokoro-v1.0-u2net-human-seg-whisper-base-en
 
       - name: Restore YouTube credentials
         run: |

@@ -116,7 +116,14 @@ def generate_thumbnail(title_text, story_id):
     d.rounded_rectangle([16, 12, W - 16, H - 12], radius=48, outline=(20, 20, 20), width=6, fill="white")
 
     # header: avatar + channel name + verified + badges
-    _avatar(d, 145, 145, 95)
+    logo_path = ASSETS_BG_DIR.parent / "mascot_logo.jpg"
+    if logo_path.exists():
+        logo = Image.open(logo_path).convert("RGB").resize((190, 190))
+        mask = Image.new("L", (190, 190), 0)
+        ImageDraw.Draw(mask).ellipse([0, 0, 190, 190], fill=255)
+        img.paste(logo, (50, 50), mask)
+    else:
+        _avatar(d, 145, 145, 95)
     name_font = _font(52)
     d.text((265, 88), CHANNEL_NAME, font=name_font, fill=(10, 10, 10))
     _verified(d, 265 + d.textlength(CHANNEL_NAME, font=name_font) + 42, 116)

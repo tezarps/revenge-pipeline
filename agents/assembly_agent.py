@@ -1,20 +1,28 @@
-"""Video assembly — the niche standard is minimal visuals over the narration
-(competitors use a static moody image or slow slideshow). V1: cycle the
-images in assets/bg/ with a slow Ken Burns zoom, muxed with the narration.
-If assets/bg/ is empty, a dark gradient card with the title is generated so
-the pipeline never blocks on art."""
+"""Video assembly, Calm-Drama-style (full switch, 2026-07-04): a single
+static character cutout on the left, looping drone/landscape stock footage
+as background, caption cards synced to the narration via faster-whisper,
+and an audio waveform strip along the bottom. Falls back to the old Ken
+Burns image slideshow when no drone footage has been sourced yet, so the
+pipeline keeps working while assets/drone/ is still empty."""
 import json
+import random
 import subprocess
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import OUTPUT_DIR, ASSETS_BG_DIR, FFMPEG_BIN, FFPROBE_BIN
+from agents.captions_agent import generate_captions
 
-SEGMENT_SEC = 90  # how long each background image stays on screen
+CHARACTER_DIR = ASSETS_BG_DIR.parent / "character"
+DRONE_DIR = ASSETS_BG_DIR.parent / "drone"
+CUTOUT_DIR = ASSETS_BG_DIR.parent / "character_cutout"
+LOGO_PATH = ASSETS_BG_DIR.parent / "mascot_logo.jpg"
+CHAR_WIDTH = 750
+SEGMENT_SEC = 90  # fallback slideshow only
 
 
-def audio_duration(path):
+def _probe_duration(path):
     out = subprocess.run(
         [FFPROBE_BIN, "-v", "quiet", "-print_format", "json", "-show_format", str(path)],
         capture_output=True, text=True, check=True,
@@ -22,61 +30,143 @@ def audio_duration(path):
     return float(json.loads(out.stdout)["format"]["duration"])
 
 
-def _fallback_bg(title_text):
-    from PIL import Image, ImageDraw
-    path = OUTPUT_DIR / "video" / "_fallback_bg.jpg"
-    img = Image.new("RGB", (1920, 1080))
-    d = ImageDraw.Draw(img)
-    for y in range(1080):  # vertical dark-navy gradient
-        shade = int(18 + (y / 1080) * 25)
-        d.line([(0, y), (1920, y)], fill=(shade, shade, shade + 14))
-    img.save(path, quality=90)
-    return [path]
+def audio_duration(path):
+    return _probe_duration(path)
 
 
-def create_video(audio_path, story_id, title_text=""):
-    dur = audio_duration(audio_path)
+def _cutout_character(char_path):
+    """Remove background once per character photo, cache the transparent
+    PNG so every future video reusing this shot skips the model pass."""
+    CUTOUT_DIR.mkdir(parents=True, exist_ok=True)
+    cutout_path = CUTOUT_DIR / f"{char_path.stem}.png"
+    if cutout_path.exists():
+        return cutout_path
+    print(f"    Cutting out character from {char_path.name} (rembg, cached after this)...")
+    from rembg import remove, new_session
+    from PIL import Image
+    session = new_session("u2net_human_seg")
+    img = Image.open(char_path).convert("RGB")
+    out = remove(img, session=session)
+    out.save(cutout_path)
+    return cutout_path
+
+
+def _pick_character(story_id):
+    """One static shot for the WHOLE video (matches the reference channel:
+    the same photo holds for the entire 30-45 min runtime), rotated
+    deterministically across videos for variety."""
+    chars = sorted(CHARACTER_DIR.glob("char_*.jpg"))
+    if not chars:
+        return None
+    chosen = chars[int(story_id) % len(chars)]
+    return _cutout_character(chosen)
+
+
+def _prepare_drone_concat(story_id, target_duration):
+    clips = sorted(p for p in DRONE_DIR.glob("*") if p.suffix.lower() in (".mp4", ".mov", ".webm"))
+    if not clips:
+        return None
+    rng = random.Random(story_id)
+    rng.shuffle(clips)
+
+    concat_file = OUTPUT_DIR / "video" / f"{story_id}_drone_concat.txt"
+    lines, total, i = [], 0.0, 0
+    while total < target_duration and i < 200:
+        clip = clips[i % len(clips)]
+        lines.append(f"file '{clip.resolve()}'")
+        total += _probe_duration(clip)
+        i += 1
+    concat_file.write_text("\n".join(lines))
+    return concat_file
+
+
+def _fallback_bg_concat(story_id, dur):
     bgs = sorted(p for p in ASSETS_BG_DIR.glob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png"))
     if not bgs:
-        print("    No images in assets/bg/ — using generated gradient background")
-        bgs = _fallback_bg(title_text)
-    else:
-        # Per-video shuffle + subset (seeded by story id) so no two videos share
-        # the same visual sequence — repetition-across-uploads mitigation for
-        # YouTube's inauthentic-content policy.
-        import random
-        rng = random.Random(story_id)
-        rng.shuffle(bgs)
-        if len(bgs) > 10:
-            bgs = bgs[:rng.randint(10, len(bgs))]
+        from PIL import Image, ImageDraw
+        path = OUTPUT_DIR / "video" / "_fallback_bg.jpg"
+        img = Image.new("RGB", (1920, 1080))
+        d = ImageDraw.Draw(img)
+        for y in range(1080):
+            shade = int(18 + (y / 1080) * 25)
+            d.line([(0, y), (1920, y)], fill=(shade, shade, shade + 14))
+        img.save(path, quality=90)
+        bgs = [path]
+    rng = random.Random(story_id)
+    rng.shuffle(bgs)
+    if len(bgs) > 10:
+        bgs = bgs[:rng.randint(10, len(bgs))]
 
-    # Build a looped slideshow long enough to cover the narration.
     n_segments = int(dur // SEGMENT_SEC) + 1
-    concat_file = OUTPUT_DIR / "video" / f"{story_id}_concat.txt"
+    concat_file = OUTPUT_DIR / "video" / f"{story_id}_img_concat.txt"
     lines = []
     for i in range(n_segments):
         bg = bgs[i % len(bgs)]
         lines.append(f"file '{bg.resolve()}'\nduration {SEGMENT_SEC}")
     lines.append(f"file '{bgs[(n_segments - 1) % len(bgs)].resolve()}'")
     concat_file.write_text("\n".join(lines))
+    return concat_file
+
+
+def create_video(audio_path, story_id):
+    dur = audio_duration(audio_path)
+    captions_path = generate_captions(audio_path, story_id)
+    char_cutout = _pick_character(story_id)
+
+    drone_concat = _prepare_drone_concat(story_id, dur)
+    bg_is_video = drone_concat is not None
+    if not bg_is_video:
+        drone_concat = _fallback_bg_concat(story_id, dur)
 
     video_path = OUTPUT_DIR / "video" / f"{story_id}.mp4"
-    # Slow push-in (Ken Burns) so the frame is never fully static — YouTube
-    # flags dead-static "image + audio" uploads more readily than moving ones.
-    vf = (
-        "scale=2112:1188,"
-        f"zoompan=z='min(zoom+0.00004,1.10)':d={SEGMENT_SEC * 25}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1920x1080:fps=25,"
-        "format=yuv420p"
-    )
-    subprocess.run(
-        [FFMPEG_BIN, "-y",
-         "-f", "concat", "-safe", "0", "-i", str(concat_file),
-         "-i", str(audio_path),
-         "-vf", vf, "-t", f"{dur + 1.5:.2f}",
-         "-c:v", "libx264", "-preset", "medium", "-crf", "23",
-         "-c:a", "aac", "-b:a", "192k", "-shortest",
-         str(video_path)],
-        check=True, capture_output=True,
-    )
-    concat_file.unlink()
+
+    inputs = ["-f", "concat", "-safe", "0", "-i", str(drone_concat)]
+    idx = 0
+    bg_in = idx; idx += 1
+    char_in = logo_in = None
+    if char_cutout:
+        inputs += ["-loop", "1", "-i", str(char_cutout)]
+        char_in = idx; idx += 1
+    if LOGO_PATH.exists():
+        inputs += ["-loop", "1", "-i", str(LOGO_PATH)]
+        logo_in = idx; idx += 1
+    inputs += ["-i", str(audio_path)]
+    audio_in = idx
+
+    filters = []
+    if bg_is_video:
+        filters.append(f"[{bg_in}:v]scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,setsar=1,fps=25[bg]")
+    else:
+        filters.append(
+            f"[{bg_in}:v]scale=2112:1188,"
+            f"zoompan=z='min(zoom+0.00004,1.10)':d={SEGMENT_SEC * 25}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1920x1080:fps=25,"
+            f"format=yuv420p,setsar=1[bg]"
+        )
+
+    last = "bg"
+    if char_in is not None:
+        filters.append(f"[{char_in}:v]scale={CHAR_WIDTH}:1080:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:1080[char]")
+        filters.append(f"[{last}][char]overlay=x=0:y=0[bgchar]")
+        last = "bgchar"
+    if logo_in is not None:
+        filters.append(f"[{logo_in}:v]scale=140:140[logo]")
+        filters.append(f"[{last}][logo]overlay=x=40:y=40[bglogo]")
+        last = "bglogo"
+
+    filters.append(f"[{last}]subtitles={captions_path}[withtext]")
+    filters.append(f"[{audio_in}:a]showwaves=s=1920x100:mode=cline:colors=white,format=yuv420p[wavesmall]")
+    filters.append("[wavesmall]pad=1920:1080:0:980:color=black[waveband]")
+    filters.append("[withtext][waveband]blend=all_mode=screen[vout]")
+
+    cmd = [FFMPEG_BIN, "-y", *inputs,
+           "-filter_complex", ";".join(filters),
+           "-map", "[vout]", "-map", f"{audio_in}:a",
+           "-t", f"{dur + 1.0:.2f}",
+           "-c:v", "libx264", "-preset", "medium", "-crf", "23",
+           "-c:a", "aac", "-b:a", "192k",
+           str(video_path)]
+    subprocess.run(cmd, check=True, capture_output=True)
+
+    for f in (OUTPUT_DIR / "video").glob(f"{story_id}_*concat.txt"):
+        f.unlink()
     return video_path, dur

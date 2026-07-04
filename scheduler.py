@@ -74,7 +74,7 @@ def run(dry_run=False):
         # [4/5] Video
         stage = "assembly"
         print("[4/5] Assembling video (ffmpeg)...")
-        video_path, dur = create_video(audio_path, sid, title_text=metadata["title"])
+        video_path, dur = create_video(audio_path, sid)
         print(f"      {dur/60:.1f} min, {video_path.stat().st_size/1e6:.0f}MB")
 
         if dry_run:
