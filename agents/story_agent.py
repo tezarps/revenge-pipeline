@@ -15,7 +15,7 @@ from agents.llm import call, call_haiku
 SCHEMA = """You are the head writer for a faceless YouTube channel that narrates original first-person family-betrayal revenge stories (25-45yo US audience). Write ONE complete video script following this exact structure:
 
 1. COLD-OPEN HOOK (first 3 sentences): restate the premise as a wound, then spoil the ending payoff ("...so I let them lose everything" energy). The viewer must know the OUTCOME and stay for the PROCESS.
-2. SETUP (~15% of length): first-person narrator with age+gender in Reddit style (e.g. "I'm a 31-year-old woman"), a real US city, hyper-specific details (dollar amounts, GPAs, years). Establish the golden-child sibling vs scapegoat-narrator dynamic. End setup with a foreshadow line ("Looking back, there were signs I ignored...").
+2. SETUP (~15% of length): first-person narrator — always a WOMAN aged 24-45 (the channel's narration voice is female; e.g. "I'm a 31-year-old woman") — Reddit style, a real US city, hyper-specific details (dollar amounts, GPAs, years). Establish the golden-child sibling vs scapegoat-narrator dynamic. End setup with a foreshadow line ("Looking back, there were signs I ignored...").
 3. INJUSTICE (~15%): the betrayal hits fast and brutally. The narrator is 100% innocent. Include quoted dialogue at the emotional peaks.
 4. ROCK BOTTOM (~25%): extended suffering, each beat worse than the last. This is the watch-time engine — do not rush it.
 5. TURNING POINT + REBUILD (~20%): an unexpected ally/mentor, then a multi-year rebuild montage into quiet success. Time-skip is fine.
@@ -69,7 +69,7 @@ def top_up_queue(n=5):
     data = _load()
     used = "\n".join(f"- {s['premise']}" for s in data["stories"][-30:]) or "(none yet)"
     raw = call_haiku(
-        f"""Generate {n} fresh premises for first-person family-betrayal revenge stories (YouTube long-form niche). Each premise: 1-2 sentences, hyper-specific (who betrayed, what was taken incl. a dollar amount or concrete stake, what the comeback is). Vary the narrator (gender, age 24-45), the betrayer (sister/brother/parents/in-laws), and the arena (inheritance, wedding, company, house, medical). Avoid anything similar to these already used:\n{used}\n\nReturn ONLY a JSON array of strings.""",
+        f"""Generate {n} fresh premises for first-person family-betrayal revenge stories (YouTube long-form niche). Each premise: 1-2 sentences, hyper-specific (who betrayed, what was taken incl. a dollar amount or concrete stake, what the comeback is). Narrator is ALWAYS a woman aged 24-45 (channel voice is female). Vary the betrayer (sister/brother/parents/in-laws) and the arena (inheritance, wedding, company, house, medical). Avoid anything similar to these already used:\n{used}\n\nReturn ONLY a JSON array of strings.""",
         max_tokens=1500,
     )
     m = re.search(r"\[.*\]", raw, re.S)

@@ -22,10 +22,11 @@ STORIES_FILE = BASE_DIR / "stories.json"
 TOKEN_FILE = BASE_DIR / "youtube_token.pickle"
 YOUTUBE_CLIENT_SECRET = os.environ.get("YOUTUBE_CLIENT_SECRET_PATH", "youtube_client_secret.json")
 
-# Kokoro TTS — local, $0/video. am_michael picked by user 2026-07-03 after
-# A/B against am_adam (revenge-story-lab/pilot/). Model files are fetched to
-# ~/.cache/revenge-tts/ on first run (~340MB, cached across GH Actions runs).
-KOKORO_VOICE = "am_michael"
+# Kokoro TTS — local, $0/video. af_bella picked by user 2026-07-04 (switched
+# from am_michael after locking a female thumbnail character; audience is
+# women 25-45, so voice+story+face now align female). Model files are fetched
+# to ~/.cache/revenge-tts/ on first run (~340MB, cached across GH Actions runs).
+KOKORO_VOICE = "af_bella"
 KOKORO_SPEED = 1.0
 KOKORO_MODEL_URL = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx"
 KOKORO_VOICES_URL = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin"
