@@ -2,10 +2,11 @@ name: Revenge Pipeline
 
 on:
   schedule:
-    # Mon/Wed/Fri 06:00 UTC — render+upload day-of; video is SCHEDULED by the
-    # uploader for the next Tue/Thu/Sat 3 PM ET slot, so render time never
-    # affects publish time.
-    - cron: "0 6 * * 1,3,5"
+    # Daily 06:00 UTC (user decision 2026-07-04: repo is public now, GH
+    # Actions minutes are unlimited, no more reason to wait). Video is
+    # SCHEDULED by the uploader for the next daily 3 PM ET slot, so render
+    # time never affects publish time.
+    - cron: "0 6 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -16,7 +17,7 @@ on:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 360  # GitHub's hard per-job ceiling for hosted runners; 2hr-target videos are untested at scale, this is the max runway available
     # Default GITHUB_TOKEN is read-only — state commit-back needs write
     # (403 "Write access not granted" bit both first runs, 2026-07-03/04).
     permissions:

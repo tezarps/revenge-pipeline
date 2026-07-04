@@ -29,8 +29,12 @@ from config import TOKEN_FILE, YOUTUBE_CLIENT_SECRET
 
 SCOPES = ["https://www.googleapis.com/auth/youtube"]
 
-PUBLISH_HOUR_ET = 15          # 3 PM Eastern
-PUBLISH_WEEKDAYS = {1, 3, 5}  # Tue / Thu / Sat (Mon=0)
+PUBLISH_HOUR_ET = 15                    # 3 PM Eastern
+PUBLISH_WEEKDAYS = {0, 1, 2, 3, 4, 5, 6}  # daily (user decision 2026-07-04:
+# "naikkan, jangan tunggu" — repo is now public so GH Actions minutes are
+# unlimited, removing the cost constraint that justified the slower 3x/week
+# test cadence. Real competitor (Calm Dad Stories) runs 2x/day at this
+# quality level without penalty.
 
 
 def _get_service():
