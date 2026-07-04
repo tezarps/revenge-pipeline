@@ -12,19 +12,37 @@ Photorealistic portrait of a 31-year-old American woman, shoulder-length chestnu
 > Simpan hasil terbaik → pakai sebagai **Ingredient/reference** di Flow untuk semua
 > variasi di bawah, supaya wajahnya identik di tiap thumbnail.
 
-## STEP 2 — 6 emotion variants (same woman, use the reference)
+## STEP 2 — 6 emotion variants (same woman, use the reference; tiap prompt siap copy utuh)
 
-Template (ganti bagian [EXPRESSION + WARDROBE + BACKGROUND]):
+char_01:
 ```
-The same woman from the reference image, identical face and hair. [EXPRESSION + WARDROBE + BACKGROUND]. Soft cinematic lighting, muted desaturated grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+The same woman from the reference image, identical face and hair. Shocked and hurt, eyes wide, lips parted, hand near her chest, wearing a cream knit sweater, dim family dining room background. Soft cinematic lighting, muted desaturated grading, 85mm, chest-up framing, 16:9, no text, no watermark.
 ```
 
-1. `Shocked and hurt, eyes wide, lips parted, hand near her chest — cream knit sweater, dim family dining room background`
-2. `Cold determined stare, jaw set, arms crossed — charcoal blazer, night office background with city lights`
-3. `Quiet smirk of vindication, one eyebrow slightly raised — cream sweater, dusk living room background`
-4. `Holding back tears, eyes glistening, looking slightly off-camera — gray cardigan, rainy window background`
-5. `Calm confident half-smile, shoulders relaxed — light blue blouse, bright modern office background`
-6. `Betrayed disbelief, brows furrowed, mouth slightly open — dark green sweater, dark hallway with family photos background`
+char_02:
+```
+The same woman from the reference image, identical face and hair. Cold determined stare, jaw set, arms crossed, wearing a charcoal blazer, night office background with city lights. Soft cinematic lighting, muted desaturated grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
+
+char_03:
+```
+The same woman from the reference image, identical face and hair. Quiet smirk of vindication, one eyebrow slightly raised, wearing a cream knit sweater, dusk living room background. Soft cinematic lighting, muted desaturated grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
+
+char_04:
+```
+The same woman from the reference image, identical face and hair. Holding back tears, eyes glistening, looking slightly off-camera, wearing a gray cardigan, rainy window background. Soft cinematic lighting, muted desaturated grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
+
+char_05:
+```
+The same woman from the reference image, identical face and hair. Calm confident half-smile, shoulders relaxed, wearing a light blue blouse, bright modern office background. Soft cinematic lighting, muted desaturated grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
+
+char_06:
+```
+The same woman from the reference image, identical face and hair. Betrayed disbelief, brows furrowed, mouth slightly open, wearing a dark green sweater, dark hallway with family photos background. Soft cinematic lighting, muted desaturated grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
 
 ## STEP 3
 Simpan 6 hasil sebagai `char_01.jpg` … `char_06.jpg` → taruh di
