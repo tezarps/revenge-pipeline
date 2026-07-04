@@ -9,7 +9,9 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from config import OUTPUT_DIR, CHANNEL_NAME
+from config import OUTPUT_DIR, CHANNEL_NAME, ASSETS_BG_DIR
+
+CHARACTER_DIR = ASSETS_BG_DIR.parent / "character"
 
 W, H = 1280, 720
 
@@ -151,3 +153,72 @@ def generate_thumbnail(title_text, story_id):
     path = OUTPUT_DIR / "thumbs" / f"{story_id}.jpg"
     img.save(path, quality=92)
     return path
+
+
+def generate_thumbnail_b(thumb_text, story_id):
+    """Style B — Calm-Drama-inspired but cleaner: locked character (right 45%),
+    dark panel (left) with restrained 2-color typography instead of their
+    4-color eye-strain stack. Character shots come from assets/character/
+    (generated once in Flow, see assets/CHARACTER_PROMPTS.md)."""
+    chars = sorted(CHARACTER_DIR.glob("char_*.jpg")) if CHARACTER_DIR.exists() else []
+    if not chars:
+        return None  # caller falls back to style A
+
+    img = Image.new("RGB", (W, H), (12, 12, 16))
+    # character on the right 45%, rotated deterministically per story
+    shot = Image.open(chars[int(story_id) % len(chars)]).convert("RGB")
+    target_w = int(W * 0.45)
+    scale = H / shot.height
+    shot = shot.resize((int(shot.width * scale), H), Image.LANCZOS)
+    left_crop = max(0, (shot.width - target_w) // 2)
+    shot = shot.crop((left_crop, 0, left_crop + target_w, H))
+    img.paste(shot, (W - target_w, 0))
+    d = ImageDraw.Draw(img)
+    # soft blend seam
+    for i in range(60):
+        x = W - target_w + i
+        alpha = int(255 * (1 - i / 60))
+        d.line([(x, 0), (x, H)], fill=(12, 12, 16, alpha) if False else None)
+    d.rectangle([W - target_w - 4, 0, W - target_w, H], fill=(12, 12, 16))
+
+    # text: split into hook (white) + payoff (yellow), max ~12 words total
+    words = thumb_text.upper().split()
+    split = max(3, int(len(words) * 0.55))
+    hook, payoff = " ".join(words[:split]), " ".join(words[split:])
+
+    panel_w = W - target_w - 90
+    size = 92
+    while size > 44:
+        font = _font(size)
+        lines_h = _wrap(d, hook, font, panel_w)
+        lines_p = _wrap(d, payoff, font, panel_w) if payoff else []
+        line_h = size * 1.22
+        if (len(lines_h) + len(lines_p)) * line_h + 40 <= H - 120:
+            break
+        size -= 6
+
+    total = (len(lines_h) + len(lines_p)) * line_h + 40
+    y = (H - total) / 2
+    for line in lines_h:
+        d.text((58 + 4, y + 4), line, font=font, fill=(0, 0, 0))
+        d.text((58, y), line, font=font, fill=(255, 255, 255))
+        y += line_h
+    y += 40
+    for line in lines_p:
+        d.text((58 + 4, y + 4), line, font=font, fill=(0, 0, 0))
+        d.text((58, y), line, font=font, fill=(255, 214, 0))
+        y += line_h
+
+    path = OUTPUT_DIR / "thumbs" / f"{story_id}_b.jpg"
+    img.save(path, quality=92)
+    return path
+
+
+def generate_thumbnail_ab(title_text, thumb_text, story_id):
+    """A/B rotation: even story ids try style B (character), odd use style A
+    (Reddit card). Falls back to A when no character shots exist yet."""
+    if int(story_id) % 2 == 0:
+        b = generate_thumbnail_b(thumb_text or title_text, story_id)
+        if b:
+            return b
+    return generate_thumbnail(title_text, story_id)

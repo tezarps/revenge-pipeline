@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from agents import story_agent
 from agents.tts_agent import generate_audio
 from agents.assembly_agent import create_video
-from agents.thumbnail_agent import generate_thumbnail
+from agents.thumbnail_agent import generate_thumbnail_ab
 from agents.upload_agent import upload_video
 from config import OUTPUT_DIR
 from telegram_notify import notify
@@ -67,8 +67,8 @@ def run(dry_run=False):
         else:
             metadata = story_agent.generate_metadata(story, script)
             meta_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2))
-        # RFT-style card uses the FULL title as the thumbnail text
-        thumb_path = generate_thumbnail(metadata["title"], sid)
+        # A/B: odd ids = Reddit-card (full title), even ids = character style B
+        thumb_path = generate_thumbnail_ab(metadata["title"], metadata.get("thumb_text", ""), sid)
         print(f"      Title: {metadata['title']}")
 
         # [4/5] Video
