@@ -18,7 +18,8 @@ CHARACTER_DIR = ASSETS_BG_DIR.parent / "character"
 DRONE_DIR = ASSETS_BG_DIR.parent / "drone"
 CUTOUT_DIR = ASSETS_BG_DIR.parent / "character_cutout"
 LOGO_PATH = ASSETS_BG_DIR.parent / "mascot_logo.jpg"
-CHAR_WIDTH = 750
+CHAR_WIDTH = 640
+CHAR_HEIGHT = 820  # < 1080 on purpose: leaves headroom above her, not full-frame close-up
 SEGMENT_SEC = 90  # fallback slideshow only
 
 
@@ -108,10 +109,29 @@ def _fallback_bg_concat(story_id, dur):
     return concat_file
 
 
+def _render_waveform_png(audio_path, story_id):
+    """Static bar-style waveform image spanning the WHOLE track (matches the
+    reference channel's look), not a live per-frame animated visualizer —
+    cheaper to render and closer to what showwaves' live line mode gave us.
+    showwavespic natively outputs a transparent background, so no colorkey
+    step is needed before compositing."""
+    png_path = OUTPUT_DIR / "video" / f"{story_id}_waveform.png"
+    if png_path.exists():
+        return png_path
+    subprocess.run(
+        [FFMPEG_BIN, "-y", "-i", str(audio_path),
+         "-filter_complex", "showwavespic=s=1920x100:colors=white",
+         "-frames:v", "1", "-update", "1", str(png_path)],
+        check=True, capture_output=True,
+    )
+    return png_path
+
+
 def create_video(audio_path, story_id):
     dur = audio_duration(audio_path)
     captions_path = generate_captions(audio_path, story_id)
     char_cutout = _pick_character(story_id)
+    waveform_png = _render_waveform_png(audio_path, story_id)
 
     drone_concat = _prepare_drone_concat(story_id, dur)
     bg_is_video = drone_concat is not None
@@ -130,6 +150,8 @@ def create_video(audio_path, story_id):
     if LOGO_PATH.exists():
         inputs += ["-loop", "1", "-i", str(LOGO_PATH)]
         logo_in = idx; idx += 1
+    inputs += ["-loop", "1", "-i", str(waveform_png)]
+    wave_in = idx; idx += 1
     inputs += ["-i", str(audio_path)]
     audio_in = idx
 
@@ -145,8 +167,12 @@ def create_video(audio_path, story_id):
 
     last = "bg"
     if char_in is not None:
-        filters.append(f"[{char_in}:v]scale={CHAR_WIDTH}:1080:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:1080[char]")
-        filters.append(f"[{last}][char]overlay=x=0:y=0[bgchar]")
+        # Smaller and bottom-anchored (not a full-height 0-1080 close-up
+        # covering the whole frame) — matches the reference: background
+        # visible above her head, she doesn't dominate the entire vertical
+        # space. See user feedback 2026-07-04.
+        filters.append(f"[{char_in}:v]scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]")
+        filters.append(f"[{last}][char]overlay=x=0:y=H-h[bgchar]")
         last = "bgchar"
     if logo_in is not None:
         filters.append(f"[{logo_in}:v]scale=140:140[logo]")
@@ -154,13 +180,14 @@ def create_video(audio_path, story_id):
         last = "bglogo"
 
     filters.append(f"[{last}]subtitles={captions_path}[withtext]")
-    # Plain alpha overlay of just the waveform strip, NOT a full-frame
-    # screen-blend (that corrupted the entire frame's colors, magenta tint,
-    # in the first test render). colorkey punches out the near-black
-    # background so only the white waveform line is composited.
-    filters.append(f"[{audio_in}:a]showwaves=s=1920x100:mode=cline:colors=white[waveraw]")
-    filters.append("[waveraw]format=rgba,colorkey=0x000000:0.15:0.1[wave]")
-    filters.append("[withtext][wave]overlay=x=0:y=H-h[vout]")
+    # Static waveform PNG already has a transparent background (verified:
+    # showwavespic outputs real RGBA alpha) — straight overlay, no colorkey
+    # needed. Replaces the earlier live showwaves+blend approach, which (a)
+    # corrupted the whole frame's colors via screen-blend and (b) required
+    # per-frame audio filtering; a static image spanning the whole track
+    # matches the reference channel's look and is cheaper to render.
+    filters.append(f"[{wave_in}:v]scale=1920:100[wave]")
+    filters.append(f"[withtext][wave]overlay=x=0:y=H-h[vout]")
 
     cmd = [FFMPEG_BIN, "-y", *inputs,
            "-filter_complex", ";".join(filters),
