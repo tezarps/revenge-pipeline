@@ -1,34 +1,29 @@
-# Google Flow — Channel Logo + YouTube Banner
+# Google Flow — Channel Branding (karakter sebagai wajah brand)
 
-## PROMPT 1 — Channel logo / avatar (square, 800x800)
+Semua prompt pakai reference/ingredient karakter yang sama dengan thumbnail
+(master dari CHARACTER_PROMPTS.md Step 1). TANPA teks — teks banner
+di-composite pipeline/aku (zero typo, tipografi konsisten).
 
-```
-Flat vector logo design, perfectly centered composition, square 1:1.
-
-A minimalist mascot logo: a bright orange circle (#FF4500) filling most of the frame, containing a simple white cartoon character head with two small round ears on top, a single antenna with a small ball tip, X-shaped eyes drawn in orange, and a small sad frowning mouth in orange.
-
-Clean solid white background, bold thick shapes, no gradients, no shadows, no text, no watermark. Style: modern flat app-icon design, high contrast, readable at very small sizes.
-```
-
-> Catatan: harus konsisten dengan avatar di thumbnail (snoo putih di lingkaran oranye,
-> mata X, cemberut) — penonton mengenali brand dari kesamaan ini.
-
-## PROMPT 2 — YouTube banner (2560x1440, safe area di tengah)
+## PROMPT — Profile photo / channel avatar (square, circle-crop safe)
 
 ```
-YouTube channel banner art, wide 16:9 cinematic composition, 2560x1440.
-
-Background: a dim moody American suburban living room at dusk, rain on the window, warm lamp glow on one side, muted desaturated color grading — melancholic family-drama atmosphere, photorealistic, no people.
-
-In the exact center, overlay a clean white rounded rectangle card (like a social media post card) containing the text "Golden Child Stories" in bold black sans-serif, and below it in smaller gray text: "Family betrayal stories. New episodes Tue / Thu / Sat."
-
-Keep ALL text and the card within the center third of the image (TV-safe area). No other text, no watermark, no logos.
+The same woman from the reference image, identical face and hair. Warm subtle smile with quiet confidence, direct eye contact, wearing the cream knit sweater. Head-and-shoulders portrait, perfectly centered with comfortable headroom, square 1:1 composition, plain dark warm-gray studio background with a soft vignette. Soft cinematic lighting, muted desaturated color grading, 85mm, shallow depth of field, no text, no watermark.
 ```
 
-> PENTING setelah generate:
-> - Periksa ejaan teks hasil AI huruf per huruf ("Golden Child Stories" sering typo).
->   Kalau typo, regenerate atau hapus teks dari prompt dan tambahkan teks manual di Canva.
-> - Uji di youtube: teks harus terbaca di preview mobile (area aman tengah 1546x423).
+> Simpan sebagai `profile.jpg` → upload langsung di Studio → Customization →
+> Branding → Picture. (Wajah di tengah — aman untuk crop lingkaran.)
 
-## Upload
-YouTube Studio → Customization → Branding → Picture (logo) & Banner image.
+## PROMPT — Banner RAW (tanpa teks, 16:9 lebar)
+
+```
+Wide cinematic scene, 16:9 composition. The same woman from the reference image, identical face and hair, standing on the right third of the frame inside a dim moody American living room at dusk, rain streaking the window behind her, warm lamp glow on her face, arms softly crossed, calm knowing expression looking at camera. The left two thirds of the frame: the dim living room fading into soft darkness — open empty space. Muted desaturated color grading, soft cinematic lighting, photorealistic, no text, no watermark.
+```
+
+> Simpan sebagai `banner_raw.jpg` → taruh di `~/Documents/revenge-pipeline/assets/`
+> → bilang aku. Aku composite teks "Golden Child Stories" + tagline + jadwal di
+> area aman tengah (1546x423) pakai Pillow, lalu hasil `banner_final.jpg` tinggal
+> diupload di Studio → Customization → Branding → Banner image.
+
+## Alur upload akhir (sekali)
+1. Studio → Customization → Branding
+2. Picture = `profile.jpg` | Banner = `banner_final.jpg` (hasil composite-ku)
