@@ -3,6 +3,7 @@ confirmed across 5 viral videos (see revenge-story-lab/SCHEMA_COMPARISON.md).
 Also generates the premise queue and per-video metadata. Fully autonomous:
 the agent decides premises, no human approval step (user decision 2026-07-03)."""
 import json
+import random
 import re
 import sys
 from pathlib import Path
@@ -33,6 +34,28 @@ TITLE_RULES = """Title formula (from the proven pattern): [specific betrayal by 
 - "My Parents Gave My Sister $450K At Dinner. I Got A Gift Card. So I Called The Bank Mid-Bite"
 The comeback clause must be PASSIVE and non-violent (refused, walked away, watched them lose it, said nothing) — never destructive imagery like burn/destroy/ruin someone physically, even metaphorically. Advertiser-safe.
 """
+
+# Alternate mode (2026-07-04): a longer, more elaborate procedural-thriller
+# structure, adapted from a real competitor script the user transcribed.
+# Kept as a SEPARATE schema (not a replacement) so the channel has variety;
+# story_agent picks between SCHEMA and HEIST_SCHEMA per story (see
+# generate_script). Narrator stays female per the earlier voice decision,
+# even though the source example used a male narrator.
+HEIST_SCHEMA = """You are the head writer for a faceless YouTube channel that narrates original first-person family-betrayal revenge stories (25-45yo US audience). Write ONE long, elaborate procedural-thriller-style video script following this exact structure (this is the "heist" variant, richer and more detail-driven than a plain emotional drama):
+
+1. COLD-OPEN HOOK (first 3-4 sentences): state the inciting object/moment (a hidden box, a locked drawer, a warning left behind) and spoil the shape of the ending. The viewer must know something big is coming and stay for the mechanics of how it unfolds.
+2. ENGAGEMENT LINE: immediately after the hook, one line: "Before I continue this story, let me know where you're watching from in the comments below. Hit like and subscribe if you believe [a one-line moral premise tied to this story's theme]." Then continue naturally.
+3. SETUP (~12%): first-person narrator, always a WOMAN aged 30-55 (the channel's narration voice is female), hyper-specific backstory (career, decades of sacrifice, a modest frugal life, a spouse or parent who was "the quiet architect" of the family's survival). Establish who she sacrificed for and how invisible that sacrifice was.
+4. THE DISCOVERY (~10%): a death or major loss triggers the plot. Within a day, "the vultures circle": a golden-child relative and their slick, image-obsessed spouse arrive to manage rather than mourn. The narrator finds a small, unassuming object (a box, a book, an old note) that the golden-child relative dismisses as worthless junk and discards. The narrator secretly retrieves it. On its last page, in the deceased's handwriting, is a short chilling warning: "Do not trust them. Save yourself" (or equivalent).
+5. THE MANIPULATION (~12%): the antagonists pressure the narrator to sign over the house, assets, or power of attorney, disguised as "taking care of you." The narrator strategically plays weak, foggy, and compliant to avoid suspicion while secretly refusing to sign anything yet. They are moved into the antagonists' home under the guise of care, which is actually a control tactic.
+6. UNDERCOVER INVESTIGATION (~20%, the heart of the story): over several scenes, the narrator quietly observes financial red flags (frantic phone calls, dodged calls, panicked pacing, extravagant unsustainable spending). A household accident or chore gives the narrator a reason to fix something with a hidden skill from their old working-class life, revealing the contrast between their competence and the antagonists' helplessness. The narrator finds physical evidence (shredded documents, a filing cabinet, a locked office) and uses an old practical skill (not violence: lockpicking from a trade background, reading financial documents from decades of careful budgeting, etc.) to retrieve proof: a forged signature, an offshore account, a predatory loan, evidence the narrator is being set up as the legal scapegoat for the antagonists' debt.
+7. THE ALLY (~10%): the narrator discovers the deceased had ALREADY seen this coming and had taken a quiet, brilliant countermeasure before dying (a dead-man's-switch style lock on funds or assets, tied to the narrator's own presence/identity, so the antagonists can never access it without the narrator physically present and willing). Optionally, the narrator makes contact with a legitimate authority (a bank compliance officer, a federal investigator, a lawyer) who confirms the scale of the antagonists' fraud and recruits the narrator to help gather final proof (e.g., planting a data-extraction tool, providing a key document).
+8. MAXIMUM CRUELTY BEAT (~8%): a scene proving the antagonists have zero remaining humanity: the narrator stages a medical scare (a fake collapse) to test them, and the antagonist steps over the "dying" narrator with total indifference to grab a document instead of helping. This is the point of no return; any residual family loyalty the narrator felt is extinguished.
+9. THE CONFRONTATION (~18%): the antagonists, desperate and cornered, march the narrator to the final location (a bank, an office) to force a signature or access code. The narrator refuses with a short, dignified, quotable line (never violent). Authorities or the countermeasure trigger at this exact moment: the antagonists are exposed, arrested, or financially ruined by their own scheme.
+10. AFTERMATH (~10%): concrete consequences for the antagonists (prison, seized assets, public disgrace). The narrator receives quiet, EARNED restitution (never a violent windfall: a legitimate reward, reclaimed property, an inheritance that was rightfully theirs). The narrator reflects on the deceased's brilliance and closes with a short moral aphorism about integrity, boundaries, or family.
+11. ENDING: one direct question to the audience ("Have you ever discovered a dark secret about someone you trusted completely? How did you handle it?") followed by a subscribe/like call-to-action tied to the story's theme, then a short sign-off. NO Reddit-style "Edit:" Q&A blocks in this variant (that belongs to the plain-drama SCHEMA only).
+
+Style rules: plain spoken American English, richly detailed procedural/technical specifics (financial jargon, trade-skill mechanics, investigative detail) to build hyper-competence and authenticity, first person past tense, no chapter headings, no markdown, output ONLY the narration text exactly as it will be read aloud. NEVER use an em dash (the "—" character) anywhere in the output; use a comma, period, or "and"/"but" instead. This variant runs LONG: aim for the top of the target word range or beyond, since the procedural detail needs room to breathe."""
 
 
 def _load():
@@ -82,22 +105,40 @@ def top_up_queue(n=5):
     print(f"    Queue topped up with {len(premises)} premises")
 
 
+# Fraction of stories that use the richer procedural-thriller variant
+# (see HEIST_SCHEMA docstring above) instead of the plain emotional-drama
+# SCHEMA. User request 2026-07-04: make it "a variation of our template",
+# not a full replacement, so most stories stay on the original schema.
+HEIST_SCHEMA_RATIO = 0.35
+
+
 def generate_script(story):
     words_hint = f"{SCRIPT_MIN_WORDS}-{SCRIPT_MAX_WORDS}"
+    rng = random.Random(story["id"])
+    use_heist = rng.random() < HEIST_SCHEMA_RATIO
+    schema = HEIST_SCHEMA if use_heist else SCHEMA
+    variant_name = "heist-thriller" if use_heist else "plain-drama"
+    print(f"    Schema variant: {variant_name}")
+
     script = call(
         f"Premise: {story['premise']}\n\nWrite the full script now. Target length: {words_hint} words. Remember: output ONLY the narration text.",
-        system=SCHEMA,
-        max_tokens=16000,
+        system=schema,
+        max_tokens=32000,
     )
     wc = len(script.split())
-    # One continuation pass if it came in short — cheaper than a full regen.
-    if wc < SCRIPT_MIN_WORDS:
-        print(f"    Script short ({wc} words) — extending rock-bottom + rebuild...")
+
+    # At this word-count target, one extension pass is rarely enough — loop
+    # with a cap so a single stubborn generation can't run away with cost.
+    attempts = 0
+    while wc < SCRIPT_MIN_WORDS and attempts < 3:
+        attempts += 1
+        print(f"    Script short ({wc} words, need {SCRIPT_MIN_WORDS}+) — extension pass {attempts}/3...")
         script = call(
-            f"Premise: {story['premise']}\n\nHere is a draft that is too short ({wc} words, need {words_hint}). Rewrite it at full target length by DEEPENING the rock-bottom section and the rebuild montage (more beats, more specific detail) without changing the plot. Output ONLY the narration text.\n\nDRAFT:\n{script}",
-            system=SCHEMA,
-            max_tokens=16000,
+            f"Premise: {story['premise']}\n\nHere is a draft that is too short ({wc} words, need {words_hint}). Rewrite it at full target length by DEEPENING every section with more scenes, more procedural/emotional detail, and more beats, without changing the plot or ending. Output ONLY the narration text.\n\nDRAFT:\n{script}",
+            system=schema,
+            max_tokens=32000,
         )
+        wc = len(script.split())
     return script
 
 

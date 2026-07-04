@@ -32,10 +32,18 @@ KOKORO_MODEL_URL = "https://github.com/thewh1teagle/kokoro-onnx/releases/downloa
 KOKORO_VOICES_URL = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin"
 KOKORO_CACHE = Path(os.environ.get("KOKORO_CACHE", Path.home() / ".cache" / "revenge-tts"))
 
-# Target script length. 6000-7500 words ≈ 33-40 min narration — the niche's
-# sweet spot (mid-rolls every ~8 min, matches Reddit Family Tales durations).
-SCRIPT_MIN_WORDS = 5500
-SCRIPT_MAX_WORDS = 7500
+# Target script length. Bumped 2026-07-04 (user decision, "hajar aja"):
+# ~18,000-21,000 words ~ 100-120 min narration at Kokoro/af_bella's calibrated
+# ~175 wpm (measured from story #2: 5,869 words / 33.3 min). Matches
+# Calm Dad Stories' real 2+ hour runtime (7,500-9,300s observed). Longer
+# videos accumulate watch-time hours (4,000h YPP threshold) and mid-roll
+# slots much faster per upload. NOTE: this multiplies Kokoro/whisper/ffmpeg
+# render time roughly 3x per video (see project memory for the GH Actions
+# minutes math) — decide the compute lever (self-hosted runner / public
+# repo) before also cranking upload cadence, or the free 2,000 min/month
+# ceiling blows past quickly.
+SCRIPT_MIN_WORDS = 17000
+SCRIPT_MAX_WORDS = 21000
 
 FFMPEG_BIN = os.environ.get("FFMPEG_BIN", "ffmpeg")
 FFPROBE_BIN = os.environ.get("FFPROBE_BIN", "ffprobe")

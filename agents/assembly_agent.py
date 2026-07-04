@@ -109,6 +109,105 @@ def _fallback_bg_concat(story_id, dur):
     return concat_file
 
 
+DISCLAIMER_SEC = 3
+DISCLAIMER_TEXT = (
+    "The stories featured on this channel are inspired by real-life experiences "
+    "shared on public platforms such as Reddit and other online forums. We "
+    "thoughtfully craft and reimagine these narratives, often incorporating "
+    "fictional elements to enhance storytelling, build emotional resonance, "
+    "and deliver a meaningful experience to our viewers. All content is created "
+    "with the intent of providing entertainment and inspiration. Any "
+    "similarities to actual persons, living or dead, names, or entities are "
+    "purely coincidental."
+)
+
+
+def _render_disclaimer_card():
+    """Legal/policy shield shown for a few seconds before the story starts,
+    matching real monetized competitor channels (user showed a reference
+    screenshot 2026-07-04: yellow card, warning emoji, red bold serif text,
+    green title). Flashed briefly and never narrated on purpose: a longer or
+    read-aloud disclaimer would hurt retention on the hook."""
+    card_path = OUTPUT_DIR / "video" / "_disclaimer.png"
+    if card_path.exists():
+        return card_path
+    from PIL import Image, ImageDraw
+
+    img = Image.new("RGB", (1920, 1080), (247, 216, 90))
+    d = ImageDraw.Draw(img)
+    title_font = _disclaimer_font(56)
+    body_font = _disclaimer_font(34)
+
+    def _warning_triangle(cx, cy, size):
+        # Drawn shape, not a unicode emoji glyph — emoji rendering in a
+        # serif font is unreliable cross-platform (same lesson learned with
+        # the thumbnail's award-emoji row).
+        h = size
+        pts = [(cx, cy - h * 0.55), (cx - h * 0.55, cy + h * 0.4), (cx + h * 0.55, cy + h * 0.4)]
+        d.polygon(pts, outline=(20, 20, 20), fill=(255, 214, 0), width=4)
+        d.text((cx - 6, cy - 2), "!", font=_disclaimer_font(int(size * 0.5)), fill=(20, 20, 20))
+
+    title = "Content Disclaimer"
+    tw = d.textlength(title, font=title_font)
+    tx = (1920 - tw) / 2
+    d.text((tx, 60), title, font=title_font, fill=(30, 160, 130))
+    _warning_triangle(tx - 55, 92, 60)
+    _warning_triangle(tx + tw + 55, 92, 60)
+
+    words, lines, cur, max_w = DISCLAIMER_TEXT.split(), [], "", 1760
+    for w in words:
+        test = f"{cur} {w}".strip()
+        if d.textlength(test, font=body_font) <= max_w:
+            cur = test
+        else:
+            lines.append(cur)
+            cur = w
+    if cur:
+        lines.append(cur)
+
+    y = 220
+    for line in lines:
+        lw = d.textlength(line, font=body_font)
+        d.text(((1920 - lw) / 2, y), line, font=body_font, fill=(230, 60, 50))
+        y += 54
+
+    img.save(card_path)
+    return card_path
+
+
+def _disclaimer_font(size):
+    for name in ("/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
+                 "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+                 "Georgia Bold.ttf"):
+        try:
+            from PIL import ImageFont
+            return ImageFont.truetype(name, size)
+        except OSError:
+            continue
+    from PIL import ImageFont
+    return ImageFont.load_default(size)
+
+
+def _render_disclaimer_clip():
+    """Static disclaimer card muxed with DISCLAIMER_SEC of silence, encoded
+    to match the main content clip so the two concat cleanly."""
+    clip_path = OUTPUT_DIR / "video" / "_disclaimer_clip.mp4"
+    if clip_path.exists():
+        return clip_path
+    card = _render_disclaimer_card()
+    subprocess.run(
+        [FFMPEG_BIN, "-y", "-loop", "1", "-i", str(card),
+         "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo",
+         "-t", str(DISCLAIMER_SEC),
+         "-vf", "scale=1920:1080,format=yuv420p",
+         "-c:v", "libx264", "-preset", "medium", "-crf", "23",
+         "-c:a", "aac", "-b:a", "192k",
+         str(clip_path)],
+        check=True, capture_output=True,
+    )
+    return clip_path
+
+
 def create_video(audio_path, story_id):
     dur = audio_duration(audio_path)
     captions_path = generate_captions(audio_path, story_id)
@@ -169,15 +268,28 @@ def create_video(audio_path, story_id):
     filters.append("[waveraw]format=rgba,colorkey=0x000000:0.15:0.1[wave]")
     filters.append("[withtext][wave]overlay=x=0:y=H-h[vout]")
 
+    content_path = OUTPUT_DIR / "video" / f"{story_id}_content.mp4"
     cmd = [FFMPEG_BIN, "-y", *inputs,
            "-filter_complex", ";".join(filters),
            "-map", "[vout]", "-map", f"{audio_in}:a",
            "-t", f"{dur + 1.0:.2f}",
            "-c:v", "libx264", "-preset", "medium", "-crf", "23",
            "-c:a", "aac", "-b:a", "192k",
-           str(video_path)]
+           str(content_path)]
     subprocess.run(cmd, check=True, capture_output=True)
+
+    disclaimer_clip = _render_disclaimer_clip()
+    concat_list = OUTPUT_DIR / "video" / f"{story_id}_final_concat.txt"
+    concat_list.write_text(f"file '{disclaimer_clip.resolve()}'\nfile '{content_path.resolve()}'\n")
+    subprocess.run(
+        [FFMPEG_BIN, "-y", "-f", "concat", "-safe", "0", "-i", str(concat_list),
+         "-c:v", "libx264", "-preset", "medium", "-crf", "23",
+         "-c:a", "aac", "-b:a", "192k",
+         str(video_path)],
+        check=True, capture_output=True,
+    )
+    content_path.unlink()
 
     for f in (OUTPUT_DIR / "video").glob(f"{story_id}_*concat.txt"):
         f.unlink()
-    return video_path, dur
+    return video_path, dur + DISCLAIMER_SEC
