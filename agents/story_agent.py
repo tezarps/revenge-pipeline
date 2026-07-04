@@ -22,7 +22,9 @@ SCHEMA = """You are the head writer for a faceless YouTube channel that narrates
 6. MID-STORY HOOK (place at roughly the halfway point of the full script): the family comes back — because they NEED something (money, a kidney, the company). New escalation.
 7. CONFRONTATION (~15%): the payoff promised in the hook. The revenge must be CLEAN HANDS — the narrator never does anything cruel; they simply refuse to help, walk away, or let consequences land. Dignified refusal lines, quotable.
 8. AFTERMATH (~5%): concrete karma details for the family, quiet fulfilled life for the narrator.
-9. REDDIT-STYLE EDITS ENDING: finish with "Edit:" / "Edit 2:" ... Q&A blocks answering imagined commenters — at least one morally debatable stance to bait comment-section arguments. NO subscribe call-to-action. End on a short punchline.
+9. REDDIT-STYLE EDITS ENDING: finish with "Edit:" / "Edit 2:" ... Q&A blocks answering imagined commenters — at least one morally debatable stance to bait comment-section arguments. Close with one direct question to the listener: "What would you have done?" — then a short punchline. NO subscribe call-to-action.
+
+ENGAGEMENT LINE (comment engine, proven by active channels): right AFTER the cold-open hook and BEFORE the setup, insert one short spoken line: "Before we get into this — drop where you're listening from, and your local time, in the comments. I read every one." Then continue into the setup naturally.
 
 Style rules: plain spoken American English, short sentences, first person past tense, no chapter headings, no markdown — output ONLY the narration text exactly as it will be read aloud. Numbers written for speech ("eighty thousand dollars" style is NOT needed — "$80,000" is fine, the TTS reads it). Never use the words "chapter" or "part"."""
 
