@@ -154,9 +154,13 @@ def create_video(audio_path, story_id):
         last = "bglogo"
 
     filters.append(f"[{last}]subtitles={captions_path}[withtext]")
-    filters.append(f"[{audio_in}:a]showwaves=s=1920x100:mode=cline:colors=white,format=yuv420p[wavesmall]")
-    filters.append("[wavesmall]pad=1920:1080:0:980:color=black[waveband]")
-    filters.append("[withtext][waveband]blend=all_mode=screen[vout]")
+    # Plain alpha overlay of just the waveform strip, NOT a full-frame
+    # screen-blend (that corrupted the entire frame's colors, magenta tint,
+    # in the first test render). colorkey punches out the near-black
+    # background so only the white waveform line is composited.
+    filters.append(f"[{audio_in}:a]showwaves=s=1920x100:mode=cline:colors=white[waveraw]")
+    filters.append("[waveraw]format=rgba,colorkey=0x000000:0.15:0.1[wave]")
+    filters.append("[withtext][wave]overlay=x=0:y=H-h[vout]")
 
     cmd = [FFMPEG_BIN, "-y", *inputs,
            "-filter_complex", ";".join(filters),

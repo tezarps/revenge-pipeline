@@ -6,28 +6,38 @@ Verified against the real thumbnails in revenge-story-lab/thumbs/."""
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import OUTPUT_DIR, CHANNEL_NAME, ASSETS_BG_DIR
 
 CHARACTER_DIR = ASSETS_BG_DIR.parent / "character"
+FONTS_DIR = ASSETS_BG_DIR.parent / "fonts"
 
 W, H = 1280, 720
 
 
 def _font(size, bold=True):
     candidates = [
+        FONTS_DIR / "Anton-Regular.ttf",  # bundled: identical on Mac + Ubuntu CI
         "/System/Library/Fonts/Supplemental/Arial Bold.ttf" if bold else "/System/Library/Fonts/Supplemental/Arial.ttf",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
         "Arial Bold.ttf" if bold else "Arial.ttf",
     ]
     for name in candidates:
         try:
-            return ImageFont.truetype(name, size)
+            return ImageFont.truetype(str(name), size)
         except OSError:
             continue
     return ImageFont.load_default(size)
+
+
+def _font_condensed(size):
+    """Style B specifically wants the bold-condensed impact look of the
+    reference channel's thumbnails; Anton renders ~25% narrower than Arial
+    Bold at the same pixel size, so callers sizing against it should expect
+    tighter wraps (more words per line) than the Arial-based style A."""
+    return _font(size)
 
 
 def _wrap(draw, text, font, max_w):
@@ -163,12 +173,15 @@ def generate_thumbnail(title_text, story_id):
 
 
 # style -> (text color, bg box color or None, base font size in px)
+# Sizes are bigger than a first glance at the reference suggests, because
+# Anton is a condensed face (~25% narrower per character than Arial Bold at
+# the same pixel size) so it needs more px to occupy the same visual weight.
 LINE_STYLE = {
-    "setup":   ((255, 214, 0), None, 54),
-    "twist":   ((235, 25, 130), None, 66),
-    "context": ((255, 255, 255), None, 44),
-    "climax1": ((255, 255, 255), (196, 18, 18), 48),
-    "climax2": ((255, 214, 0), (196, 18, 18), 48),
+    "setup":   ((255, 214, 0), None, 62),
+    "twist":   ((235, 25, 130), None, 76),
+    "context": ((255, 255, 255), None, 50),
+    "climax1": ((255, 255, 255), (196, 18, 18), 54),
+    "climax2": ((255, 214, 0), (196, 18, 18), 54),
 }
 DEFAULT_ORDER = ["setup", "twist", "context", "climax1", "climax2"]
 
@@ -192,6 +205,13 @@ def generate_thumbnail_b(thumb_lines, story_id):
 
     img = Image.new("RGB", (W, H), (8, 8, 8))
     shot = Image.open(chars[int(story_id) % len(chars)]).convert("RGB")
+    # The character photos were shot moody/desaturated for the VIDEO's b-roll
+    # mood; thumbnails need bright, punchy, commercial-stock-photo energy
+    # instead (reference channel look). Boost until the underlying photos
+    # are regenerated brighter at the source (see CHARACTER_PROMPTS.md).
+    shot = ImageEnhance.Brightness(shot).enhance(1.18)
+    shot = ImageEnhance.Contrast(shot).enhance(1.12)
+    shot = ImageEnhance.Color(shot).enhance(1.35)
     target_w = int(W * 0.42)
     scale = H / shot.height
     shot = shot.resize((int(shot.width * scale), H), Image.LANCZOS)
@@ -222,11 +242,13 @@ def generate_thumbnail_b(thumb_lines, story_id):
     # Pass 2: compute the scale factor that makes the WHOLE stack fit the
     # frame height exactly, instead of an iterative loop that can stop short
     # (bug: content clipped off-screen top/bottom in the first version).
-    top_margin, bottom_margin, gap = 28, 28, 16
+    # Gap is small and constant (the reference stacks blocks almost flush,
+    # not our earlier generously-spaced version).
+    top_margin, bottom_margin, gap = 14, 14, 4
     raw_total = 0.0
     for seg in segments:
-        line_h = seg["base_size"] * 1.15
-        block_h = len(seg["wrapped"]) * line_h + (16 if seg["box"] else 0)
+        line_h = seg["base_size"] * 1.06
+        block_h = len(seg["wrapped"]) * line_h + (10 if seg["box"] else 0)
         raw_total += block_h + gap
     raw_total += top_margin + bottom_margin - gap
 
@@ -234,22 +256,23 @@ def generate_thumbnail_b(thumb_lines, story_id):
     scale = max(scale, 0.35)  # legibility floor; LLM prompt caps line counts so this rarely triggers
 
     y = top_margin
-    x0 = 40
+    x0 = 36
     for seg in segments:
         size = max(18, int(seg["base_size"] * scale))
         font = _font(size)
-        line_h = size * 1.15
+        line_h = size * 1.06
         wrapped = seg["wrapped"]
         box, color = seg["box"], seg["color"]
         if box:
-            block_w = max(d.textlength(l, font=font) for l in wrapped) + 36
-            block_h = len(wrapped) * line_h + 14
-            d.rectangle([x0 - 12, y - 6, x0 - 12 + block_w, y - 6 + block_h], fill=box)
+            block_w = max(d.textlength(l, font=font) for l in wrapped) + 30
+            block_h = len(wrapped) * line_h + 10
+            d.rectangle([x0 - 10, y - 4, x0 - 10 + block_w, y - 4 + block_h], fill=box)
         for line in wrapped:
-            d.text((x0 + 3, y + 3), line, font=font, fill=(0, 0, 0))
-            d.text((x0, y), line, font=font, fill=color)
+            # true stroke outline (not an offset duplicate) — matches the
+            # reference's flat, clean look instead of a drop-shadow smear.
+            d.text((x0, y), line, font=font, fill=color, stroke_width=3, stroke_fill=(0, 0, 0))
             y += line_h
-        y += (16 if box else 0) + gap
+        y += (10 if box else 0) + gap
 
     path = OUTPUT_DIR / "thumbs" / f"{story_id}_b.jpg"
     img.save(path, quality=92)
