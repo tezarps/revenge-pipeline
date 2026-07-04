@@ -1,19 +1,19 @@
-# Google Flow — 16 Background Images
+# Google Flow: 16 Background Images
 
-## PROMPT 1 — Agent instruction (paste first)
+## PROMPT 1: Agent instruction (paste first)
 
 ```
 You are generating a consistent set of cinematic background images for a long-form storytelling YouTube channel. Follow these rules for EVERY image in this session:
 
 - Photorealistic cinematic still frame, shot on 35mm, shallow depth of field
 - Muted desaturated color grading, dim moody lighting, quiet melancholic atmosphere
-- Theme: American middle-class family drama — silence, absence, aftermath
+- Theme: American middle-class family drama, silence, absence, aftermath
 - Aspect ratio 16:9 landscape, highest resolution available
 - STRICTLY NO people, NO faces, NO body parts, NO text, NO lettering, NO watermarks
 - All images must feel like frames from the same film: same grading, same mood, same visual language
 ```
 
-## PROMPT 2 — Execution 1 (10 images, home & family settings)
+## PROMPT 2: Execution 1 (10 images, home & family settings)
 
 ```
 Using the style rules above, generate 10 separate images, one per scene:
@@ -30,7 +30,7 @@ Using the style rules above, generate 10 separate images, one per scene:
 10. A dark staircase in a family home, cold light spilling down from the top floor
 ```
 
-## PROMPT 3 — Execution 2 (6 images, story-arena settings)
+## PROMPT 3: Execution 2 (6 images, story-arena settings)
 
 ```
 Using the same style rules, generate 6 separate images, one per scene:

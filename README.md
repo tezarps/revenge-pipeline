@@ -1,7 +1,7 @@
 # Revenge Pipeline
 
 Full-auto YouTube channel: revenge/betrayal story narration (US audience, RPM ~$10-12).
-Copy of the apophenia-pipeline architecture, simplified. **No approval gates — Telegram is notify-only.**
+Copy of the apophenia-pipeline architecture, simplified. **No approval gates, Telegram is notify-only.**
 
 - Riset & skema konten: `~/Documents/revenge-story-lab/` (SCHEMA_COMPARISON.md = formula terkunci)
 - Script: Claude **Sonnet 5** (~$0.11/video) · judul/tags/premis: Haiku

@@ -15,20 +15,20 @@ from agents.llm import call, call_haiku
 SCHEMA = """You are the head writer for a faceless YouTube channel that narrates original first-person family-betrayal revenge stories (25-45yo US audience). Write ONE complete video script following this exact structure:
 
 1. COLD-OPEN HOOK (first 3 sentences): restate the premise as a wound, then spoil the ending payoff ("...so I let them lose everything" energy). The viewer must know the OUTCOME and stay for the PROCESS.
-2. SETUP (~15% of length): first-person narrator — always a WOMAN aged 24-45 (the channel's narration voice is female; e.g. "I'm a 31-year-old woman") — Reddit style, a real US city, hyper-specific details (dollar amounts, GPAs, years). Establish the golden-child sibling vs scapegoat-narrator dynamic. End setup with a foreshadow line ("Looking back, there were signs I ignored...").
+2. SETUP (~15% of length): first-person narrator, always a WOMAN aged 24-45 (the channel's narration voice is female; e.g. "I'm a 31-year-old woman"), Reddit style, a real US city, hyper-specific details (dollar amounts, GPAs, years). Establish the golden-child sibling vs scapegoat-narrator dynamic. End setup with a foreshadow line ("Looking back, there were signs I ignored...").
 3. INJUSTICE (~15%): the betrayal hits fast and brutally. The narrator is 100% innocent. Include quoted dialogue at the emotional peaks.
-4. ROCK BOTTOM (~25%): extended suffering, each beat worse than the last. This is the watch-time engine — do not rush it.
+4. ROCK BOTTOM (~25%): extended suffering, each beat worse than the last. This is the watch-time engine, so do not rush it.
 5. TURNING POINT + REBUILD (~20%): an unexpected ally/mentor, then a multi-year rebuild montage into quiet success. Time-skip is fine.
-6. MID-STORY HOOK (place at roughly the halfway point of the full script): the family comes back — because they NEED something (money, a kidney, the company). New escalation.
-7. CONFRONTATION (~15%): the payoff promised in the hook. The revenge must be CLEAN HANDS — the narrator never does anything cruel; they simply refuse to help, walk away, or let consequences land. Dignified refusal lines, quotable.
+6. MID-STORY HOOK (place at roughly the halfway point of the full script): the family comes back, because they NEED something (money, a kidney, the company). New escalation.
+7. CONFRONTATION (~15%): the payoff promised in the hook. The revenge must be CLEAN HANDS: the narrator never does anything cruel, they simply refuse to help, walk away, or let consequences land. Dignified refusal lines, quotable.
 8. AFTERMATH (~5%): concrete karma details for the family, quiet fulfilled life for the narrator.
-9. REDDIT-STYLE EDITS ENDING: finish with "Edit:" / "Edit 2:" ... Q&A blocks answering imagined commenters — at least one morally debatable stance to bait comment-section arguments. Close with one direct question to the listener: "What would you have done?" — then a short punchline. NO subscribe call-to-action.
+9. REDDIT-STYLE EDITS ENDING: finish with "Edit:" / "Edit 2:" ... Q&A blocks answering imagined commenters, at least one morally debatable stance to bait comment-section arguments. Close with one direct question to the listener: "What would you have done?" then a short punchline. NO subscribe call-to-action.
 
-ENGAGEMENT LINE (comment engine, proven by active channels): right AFTER the cold-open hook and BEFORE the setup, insert one short spoken line: "Before we get into this — drop where you're listening from, and your local time, in the comments. I read every one." Then continue into the setup naturally.
+ENGAGEMENT LINE (comment engine, proven by active channels): right AFTER the cold-open hook and BEFORE the setup, insert one short spoken line: "Before we get into this, drop where you're listening from, and your local time, in the comments. I read every one." Then continue into the setup naturally.
 
-Style rules: plain spoken American English, short sentences, first person past tense, no chapter headings, no markdown — output ONLY the narration text exactly as it will be read aloud. Numbers written for speech ("eighty thousand dollars" style is NOT needed — "$80,000" is fine, the TTS reads it). Never use the words "chapter" or "part"."""
+Style rules: plain spoken American English, short sentences, first person past tense, no chapter headings, no markdown, output ONLY the narration text exactly as it will be read aloud. Numbers written for speech ("eighty thousand dollars" style is NOT needed, "$80,000" is fine, the TTS reads it). Never use the words "chapter" or "part". NEVER use an em dash (the "—" character) anywhere in the output; use a comma, period, or "and"/"but" instead."""
 
-TITLE_RULES = """Title formula (from the proven pattern): [specific betrayal by family] + [abandonment], then a second clause with the turn, cut with an em-dash or "So I...". 70-95 characters. Examples of the shape:
+TITLE_RULES = """Title formula (from the proven pattern): [specific betrayal by family] + [abandonment], then a second clause with the turn, cut with a period and "So I..." (never an em dash). 70-95 characters. Examples of the shape:
 - "My Family Believed My Sister's Lie, Disowned Me, And Let Me Rot. Now They Want My Help"
 - "My Parents Gave My Sister $450K At Dinner. I Got A Gift Card. So I Called The Bank Mid-Bite"
 The comeback clause must be PASSIVE and non-violent (refused, walked away, watched them lose it, said nothing) — never destructive imagery like burn/destroy/ruin someone physically, even metaphorically. Advertiser-safe.
@@ -107,6 +107,8 @@ def generate_metadata(story, script):
 
 Story premise: {story['premise']}
 Opening of script: {script[:1200]}
+
+Never use an em dash (the "—" character) anywhere in the title, description, or thumb_text; use a comma, period, or "and"/"but" instead.
 
 Return ONLY JSON: {{"title": "...", "description": "2-3 sentence description ending with 3 relevant hashtags", "tags": ["10-14 tags"], "thumb_text": "6-10 word emotional punchline for the thumbnail, ALL CAPS"}}""",
         max_tokens=1200,
