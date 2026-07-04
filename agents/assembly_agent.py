@@ -56,7 +56,7 @@ def _pick_character(story_id):
     """One static shot for the WHOLE video (matches the reference channel:
     the same photo holds for the entire 30-45 min runtime), rotated
     deterministically across videos for variety."""
-    chars = sorted(CHARACTER_DIR.glob("char_*.jpg"))
+    chars = sorted((p for p in CHARACTER_DIR.glob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png")))
     if not chars:
         return None
     chosen = chars[int(story_id) % len(chars)]

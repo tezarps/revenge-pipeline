@@ -199,7 +199,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
     Not aesthetic-optimized on purpose: this format is copied because it is
     what the reference channel's data shows works, not because it looks good.
     """
-    chars = sorted(CHARACTER_DIR.glob("char_*.jpg")) if CHARACTER_DIR.exists() else []
+    chars = sorted(p for p in CHARACTER_DIR.glob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png")) if CHARACTER_DIR.exists() else []
     if not chars or not thumb_lines:
         return None  # caller falls back to style A
 
