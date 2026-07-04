@@ -1,67 +1,89 @@
-# Google Flow: Locked Thumbnail Character ("The Narrator")
+# Google Flow: Character Pool (beda wanita tiap video)
 
-Karakter terkunci = wajah sama di semua thumbnail style B (brand recognition ala Calm Drama).
-Wanita, menyesuaikan audiens inti niche (wanita AS 25-45, empati wajah sesama wanita).
+**REVISI BESAR 2026-07-04**: dari "1 wajah terkunci, 6 ekspresi" jadi "kumpulan wanita
+BERBEDA, satu foto per wanita". User lihat langsung video Calm Drama Stories: mereka
+gonta-ganti wanita antar-video, bukan 1 karakter tetap. Kita ikuti pola ini.
 
-**REVISI 2026-07-04**: batch pertama (moody/cinematic/desaturated) terlalu redup dan kurang
-photogenic dibanding referensi (Calm Drama pakai foto model komersial: pencahayaan studio
-terang, kulit glowy, ekspresi hangat/enerjik). Prompt di bawah sudah direvisi ke arah itu.
-Kalau kamu regenerasi ulang, timpa file `char_01-06.jpg` yang lama.
+Setiap video (thumbnail + overlay video) otomatis pilih SATU wanita dari kumpulan ini
+secara rotasi (berdasarkan nomor cerita), jadi thumbnail dan video-nya selalu wanita
+yang sama untuk video itu, tapi beda dari video sebelah.
 
-## STEP 1: Master character (generate once, save as reference/ingredient)
+Tidak perlu reference/ingredient chaining lagi (tiap wanita berdiri sendiri, gak perlu
+wajah identik dengan yang lain) — lebih simpel digenerate.
 
+## Instruksi gaya (berlaku semua foto)
 ```
-Photorealistic commercial headshot of a 30-year-old American woman, shoulder-length chestnut brown hair styled in soft glossy waves, warm hazel eyes, radiant glowing skin, soft natural makeup with a warm-toned lip. Bright, warm, high-key studio lighting, vivid saturated color grading like a professional lifestyle stock photo. Engaging warm smile, direct eye contact, confident and approachable. Clean softly blurred bright background. Shot on 85mm, shallow depth of field, chest-up framing, 16:9.
-```
-
-> Simpan hasil terbaik -> pakai sebagai **Ingredient/reference** di Flow untuk semua
-> variasi di bawah, supaya wajahnya identik di tiap thumbnail. Kunci kata yang beda dari
-> versi lama: "commercial headshot", "bright high-key studio lighting", "vivid saturated",
-> "radiant glowing skin", "engaging warm smile" (bukan "muted desaturated cinematic").
-
-## STEP 2: 6 emotion variants (same woman, use the reference; tiap prompt siap copy utuh)
-
-char_01:
-```
-The same woman from the reference image, identical face and hair. Shocked expression, eyes wide, lips parted, hand near her chest, wearing a cream knit sweater, bright warm home background softly blurred. Bright high-key studio lighting, vivid saturated color grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+Photorealistic commercial headshot, bright warm high-key studio lighting, vivid
+saturated color grading like a professional lifestyle stock photo. Radiant glowing
+skin, engaging warm expression, direct eye contact. Clean softly blurred bright
+background. Shot on 85mm, shallow depth of field, chest-up framing, 16:9, no text,
+no watermark.
 ```
 
-char_02:
+## Generate 10 wanita berbeda (siap copy tiap prompt)
+
+person_01:
 ```
-The same woman from the reference image, identical face and hair. Confident determined stare, slight smirk, arms crossed, wearing a smart charcoal blazer, bright modern office background with soft bokeh city lights. Bright high-key studio lighting, vivid saturated color grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+A 28-year-old American woman with long straight dark brown hair, warm brown eyes, wearing a burgundy blouse, bright smile. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
 ```
 
-char_03:
+person_02:
 ```
-The same woman from the reference image, identical face and hair. Warm knowing smirk of vindication, one eyebrow slightly raised, wearing a cream knit sweater, bright cozy living room background softly blurred. Bright high-key studio lighting, vivid saturated color grading, 85mm, chest-up framing, 16:9, no text, no watermark.
-```
-
-char_04:
-```
-The same woman from the reference image, identical face and hair. Emotional, eyes glistening with a single tear, looking slightly off-camera, wearing a soft gray cardigan, bright window light background softly blurred. Bright high-key studio lighting, vivid saturated color grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+A 34-year-old American woman with a chic shoulder-length auburn bob, green eyes, wearing teal medical scrubs with a stethoscope, warm confident smile. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
 ```
 
-char_05:
+person_03:
 ```
-The same woman from the reference image, identical face and hair. Calm confident bright smile, shoulders relaxed, wearing a light blue blouse, bright modern office background softly blurred. Bright high-key studio lighting, vivid saturated color grading, 85mm, chest-up framing, 16:9, no text, no watermark.
-```
-
-char_06:
-```
-The same woman from the reference image, identical face and hair. Wide-eyed betrayed disbelief, brows raised, mouth slightly open, wearing a dark green sweater, bright hallway with family photos background softly blurred. Bright high-key studio lighting, vivid saturated color grading, 85mm, chest-up framing, 16:9, no text, no watermark.
+A 30-year-old American woman with long wavy blonde hair, blue eyes, wearing a cream cable-knit sweater, gentle warm smile. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
 ```
 
-## STEP 3
-Simpan 6 hasil sebagai `char_01.jpg` ... `char_06.jpg` -> taruh di
-`~/Documents/revenge-pipeline/assets/character/` (timpa file lama).
+person_04:
+```
+A 37-year-old American woman with shoulder-length black hair, dark eyes, wearing a navy blazer, confident composed expression. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
 
-Pipeline otomatis: video ber-ID genap pakai style B (karakter + panel teks bersih,
-sekarang ikut skema warna persis Calm Drama), ID ganjil pakai style A (kartu Reddit).
-Semua teks di-render pipeline (bukan AI), font Anton (bold-condensed) bundled di
-`assets/fonts/`, konsisten di Mac maupun cloud render, tanpa typo.
+person_05:
+```
+A 26-year-old American woman with curly reddish-brown hair, hazel eyes, wearing a mustard yellow top, bright energetic smile. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
 
-Sambil menunggu regenerasi: pipeline sudah otomatis menaikkan brightness/contrast/saturation
-foto lama di kode (`thumbnail_agent.py`) supaya sementara lebih dekat ke referensi.
+person_06:
+```
+A 41-year-old American woman with short stylish gray-blonde hair, blue-gray eyes, wearing a white blouse and pearl necklace, poised warm smile. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
 
-## Catatan suara (opsional, keputusan nanti)
-Narator audio saat ini wanita (af_bella). Sudah selaras dengan karakter thumbnail wanita.
+person_07:
+```
+A 32-year-old American woman with long dark hair with subtle highlights, brown eyes, wearing a rose pink cardigan, warm relatable smile. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
+
+person_08:
+```
+A 29-year-old American woman with a sleek dark brown ponytail, green eyes, wearing a charcoal blazer over a white top, confident professional smile. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
+
+person_09:
+```
+A 35-year-old American woman with long wavy chestnut hair, hazel eyes, wearing a soft lavender sweater, warm nurturing smile. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
+
+person_10:
+```
+A 27-year-old American woman with short curly dark hair, brown eyes, wearing a denim jacket over a striped top, bright cheerful smile. Photorealistic commercial headshot, bright warm high-key studio lighting, vivid saturated color grading, radiant glowing skin, direct eye contact, clean softly blurred bright background, 85mm, chest-up framing, 16:9, no text, no watermark.
+```
+
+## Setelah generate
+Simpan sebagai `person_01.jpg` ... `person_10.jpg` -> taruh di
+`~/Documents/revenge-pipeline/assets/character/` (HAPUS dulu file `char_*.jpg` lama
+supaya tidak ikut ke-rotasi campur).
+
+Mau nambah lebih banyak wanita kapan pun: generate lagi dengan pola sama, kasih nama
+`person_11.jpg` dst, drop ke folder yang sama, otomatis ikut rotasi.
+
+## Catatan teknis
+- Pipeline otomatis pilih SATU foto per cerita (rotasi berdasar nomor cerita), dipakai
+  konsisten untuk thumbnail DAN overlay video cerita itu.
+- Overlay video: karakter di-crop otomatis jadi ukuran lebih kecil (640x820), diposisikan
+  nempel bawah kiri dengan ruang kosong di atas kepala (bukan menutupi seluruh frame).
+- Foto akan otomatis dinaikkan brightness/contrast/saturation sedikit di kode (jaga-jaga),
+  tapi prompt di atas sudah dirancang supaya foto asli sudah terang dari sono-nya.
