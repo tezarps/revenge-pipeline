@@ -1,34 +1,8 @@
 {
   "story_id": 2,
   "premise": "My sister told my parents I stole my grandmother's jewelry, and they cut me off at 22. Seven years later the jewelry turned up in my sister's divorce inventory — and now the whole family wants me to co-sign a loan for her.",
-  "stage": "assembly",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "17,004 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Framed Me For Theft, My Parents Disowned Me. So I Watched Them Lose Ev"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "91.1 min, 1446MB"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-05T15:49:05.875805+00:00",
-  "video_id": null
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-05T16:10:27.236286+00:00"
 }
