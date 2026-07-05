@@ -1,27 +1,8 @@
 {
   "story_id": 2,
   "premise": "My sister told my parents I stole my grandmother's jewelry, and they cut me off at 22. Seven years later the jewelry turned up in my sister's divorce inventory — and now the whole family wants me to co-sign a loan for her.",
-  "stage": "thumb",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "18,603 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "error",
-      "detail": "Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011CciDYNo3wpDKcPHgGqLjQ'}"
-    }
-  },
-  "run_state": "failed",
-  "updated_at": "2026-07-05T03:40:51.659574+00:00"
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-05T04:25:58.672090+00:00"
 }
