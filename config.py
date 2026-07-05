@@ -6,9 +6,10 @@ load_dotenv(override=True)
 
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 
-# Full Haiku (user decision 2026-07-05): scripts, metadata, and premise
-# ideas all run on Haiku now, not Sonnet. SONNET_MODEL is kept only in case
-# a future job needs it explicitly; nothing in the pipeline calls it by default.
+# Sonnet for the story script (long-form coherence is the channel's only
+# moat vs the dead clone farms, see revenge-story-lab/SCHEMA_COMPARISON.md),
+# Haiku for cheap short jobs (titles, tags, premise ideas). Reverted
+# 2026-07-05 after a same-day Haiku experiment, back to Sonnet by user decision.
 SONNET_MODEL = "claude-sonnet-5"
 HAIKU_MODEL = "claude-haiku-4-5"
 

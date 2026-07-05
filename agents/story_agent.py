@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from config import STORIES_FILE, SCRIPT_MIN_WORDS, SCRIPT_MAX_WORDS, HAIKU_MODEL
+from config import STORIES_FILE, SCRIPT_MIN_WORDS, SCRIPT_MAX_WORDS
 from agents.llm import call, call_haiku
 
 # The 6 non-negotiable schema rules, distilled from the 5-video teardown.
@@ -124,7 +124,6 @@ def generate_script(story):
         f"Premise: {story['premise']}\n\nWrite the full script now. Target length: {words_hint} words. Remember: output ONLY the narration text.",
         system=schema,
         max_tokens=32000,
-        model=HAIKU_MODEL,
     )
     wc = len(script.split())
 
@@ -138,7 +137,6 @@ def generate_script(story):
             f"Premise: {story['premise']}\n\nHere is a draft that is too short ({wc} words, need {words_hint}). Rewrite it at full target length by DEEPENING every section with more scenes, more procedural/emotional detail, and more beats, without changing the plot or ending. Output ONLY the narration text.\n\nDRAFT:\n{script}",
             system=schema,
             max_tokens=32000,
-            model=HAIKU_MODEL,
         )
         wc = len(script.split())
     return script
