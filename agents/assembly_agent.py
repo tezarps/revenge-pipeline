@@ -212,7 +212,7 @@ def _render_disclaimer_clip():
          "-t", str(DISCLAIMER_SEC),
          "-vf", "scale=1920:1080,format=yuv420p",
          "-c:v", "libx264", "-preset", "medium", "-crf", "23",
-         "-c:a", "aac", "-ar", "44100", "-b:a", "192k",
+         "-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "192k",
          str(clip_path)],
         check=True, capture_output=True,
     )
@@ -273,30 +273,44 @@ def create_video(audio_path, story_id):
     filters.append("[withtext][wave]overlay=x=0:y=H-h[vout]")
 
     content_path = OUTPUT_DIR / "video" / f"{story_id}_content.mp4"
-    # -ar 44100 explicit on every audio encode in this function (here, the
-    # disclaimer clip, and the final concat below): Kokoro's tts_agent.py
-    # output was left at its native 24000Hz with no rate pinned downstream,
-    # so each of these three separate encode passes was implicitly
-    # resampling by a slightly different amount, and the mismatches
-    # compounded into audio/caption drift that grew across the video
-    # (root-caused 2026-07-05: captions in sync at 5s, ~2s ahead of the
-    # actual words by 30s). One consistent rate everywhere removes it.
+    # -ar 44100 -ac 2 explicit on every audio encode in this function (here
+    # and the disclaimer clip): Kokoro's tts_agent.py output was left at its
+    # native 24000Hz mono with nothing downstream pinning rate/channels, so
+    # each encode pass was implicitly resampling by a different amount and
+    # the mismatches compounded into audio/caption drift that grew across
+    # the video (root-caused 2026-07-05: captions in sync at 5s, ~2s ahead
+    # of the actual words by 30s). One consistent rate/channel layout
+    # everywhere removes it, and as a side effect also makes the two clips
+    # byte-identical enough on the audio side for a stream-copy concat below.
+    #
+    # -preset veryfast (was medium): this is the one full-length encode of
+    # the whole video (the other two ffmpeg calls in this function are a
+    # 3-second disclaimer card and, as of this fix, a stream copy) so preset
+    # is the single biggest lever on total render time. crf holds quality
+    # constant; veryfast trades a bit of compression efficiency (mildly
+    # larger file) for a large cut in encode time, worth it for a 2-hour
+    # target video on a free CPU-only GitHub Actions runner.
     cmd = [FFMPEG_BIN, "-y", *inputs,
            "-filter_complex", ";".join(filters),
            "-map", "[vout]", "-map", f"{audio_in}:a",
            "-t", f"{dur + 1.0:.2f}",
-           "-c:v", "libx264", "-preset", "medium", "-crf", "23",
-           "-c:a", "aac", "-ar", "44100", "-b:a", "192k",
+           "-c:v", "libx264", "-preset", "veryfast", "-crf", "23",
+           "-c:a", "aac", "-ar", "44100", "-ac", "2", "-b:a", "192k",
            str(content_path)]
     subprocess.run(cmd, check=True, capture_output=True)
 
     disclaimer_clip = _render_disclaimer_clip()
     concat_list = OUTPUT_DIR / "video" / f"{story_id}_final_concat.txt"
     concat_list.write_text(f"file '{disclaimer_clip.resolve()}'\nfile '{content_path.resolve()}'\n")
+    # Stream copy, not a re-encode: this used to re-encode the ENTIRE
+    # multi-hour content clip a second time just to prepend a 3-second
+    # disclaimer card, roughly doubling total render time for no visual
+    # benefit. Both clips now share identical video (libx264/yuv420p/1080p)
+    # and audio (aac/44100/stereo) parameters, so the concat demuxer can
+    # just remux them, which takes seconds instead of hours.
     subprocess.run(
         [FFMPEG_BIN, "-y", "-f", "concat", "-safe", "0", "-i", str(concat_list),
-         "-c:v", "libx264", "-preset", "medium", "-crf", "23",
-         "-c:a", "aac", "-ar", "44100", "-b:a", "192k",
+         "-c", "copy",
          str(video_path)],
         check=True, capture_output=True,
     )
