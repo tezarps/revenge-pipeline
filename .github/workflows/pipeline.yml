@@ -91,10 +91,33 @@ jobs:
       - name: Commit story queue state back
         if: always()
         run: |
+          # status_manager.py owns status.json (pushes it independently after
+          # every stage transition); if one of ITS push attempts failed, it can
+          # leave a stray local modification to status.json that this step has
+          # no business touching. Left alone it silently breaks the commands
+          # below (root-caused 2026-07-05, run 28727065821: `git pull --rebase`
+          # refused with "You have unstaged changes" because status.json was
+          # dirty but wasn't in this step's `git add` list).
+          git checkout -- status.json 2>/dev/null || true
+
           git add stories.json output/scripts output/metadata output/thumbs || true
           git diff --cached --quiet && exit 0
           git commit -m "pipeline: update story state [skip ci]"
-          # Rebase in case origin moved during the (long) run, then push for real —
-          # a swallowed push here silently loses the paid-for script (bit us 2026-07-03).
-          git pull --rebase origin main
-          git push
+
+          # status_manager.py pushes to main throughout the run, so origin
+          # keeps moving under us — a plain `git pull --rebase` here conflicts
+          # (root-caused 2026-07-05, run 28714486587: "could not apply ...
+          # update story state"). Rebuild this commit on top of the latest
+          # origin tip instead, the same fetch+reset pattern status_manager.py
+          # already uses successfully — no rebase history left to conflict.
+          for attempt in 1 2 3 4 5; do
+            git push && exit 0
+            echo "push rejected (attempt $attempt/5), rebuilding on latest origin..."
+            git fetch origin main --quiet
+            git reset --mixed origin/main --quiet
+            git checkout -- status.json 2>/dev/null || true
+            git add stories.json output/scripts output/metadata output/thumbs || true
+            git diff --cached --quiet && exit 0
+            git commit -m "pipeline: update story state [skip ci]"
+          done
+          echo "::warning::Failed to push story state after 5 attempts"
