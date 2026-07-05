@@ -193,14 +193,16 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
 <html><head><meta charset="utf-8"><style>
   @font-face {{ font-family: 'Anton'; src: url('{font_uri}') format('truetype'); }}
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #14161f; font-family: 'Anton', Arial, sans-serif; }}
-  .frame {{ position: relative; width: 1280px; height: 720px; background: #14161f; }}
+  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #22252f; font-family: 'Anton', Arial, sans-serif; }}
+  .frame {{ position: relative; width: 1280px; height: 720px; background: #22252f; }}
   .photo-box {{ position: absolute; top: 0; right: 0; width: 560px; height: 720px; overflow: hidden; z-index: 1; }}
   .photo-box img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }}
-  .photo-box::after {{ content: ""; position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(20,22,31,0.95) 0%, rgba(20,22,31,0) 22%); }}
-  .panel-fade {{ position: absolute; top: 0; left: 0; width: 800px; height: 720px;
-    background: linear-gradient(to right, #14161f 0%, #14161f 62%, rgba(20,22,31,0) 100%); z-index: 2; }}
+  /* Single unified gradient spanning the panel/photo seam (600px-870px of
+     the 1280 frame, straddling the photo_x=720 boundary) — one smooth fade
+     instead of two overlapping gradients, which was creating a visible
+     double-band seam ("kasar") in the previous version. */
+  .panel-fade {{ position: absolute; inset: 0;
+    background: linear-gradient(to right, #22252f 0%, #22252f 46.9%, rgba(34,37,47,0) 68%); z-index: 2; }}
   .text-stack {{ position: absolute; top: 34px; left: 42px; width: 660px; bottom: 116px;
     z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px;
     transform-origin: top left; }}
@@ -208,7 +210,7 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
     -webkit-text-stroke: 2.5px black; paint-order: stroke fill; text-transform: uppercase; }}
   .white {{ color: #ffffff; }}
   .cyan {{ color: #4adede; }}
-  .badge {{ position: absolute; left: 18px; right: 18px; bottom: 18px; height: 78px;
+  .badge {{ position: absolute; left: 42px; width: 660px; bottom: 18px; height: 78px;
     background: #13ad6a; border-radius: 39px; display: flex; align-items: center;
     justify-content: center; z-index: 4; }}
   .badge span {{ font-family: 'Anton', Arial, sans-serif; color: white; font-size: 42px; letter-spacing: 1px; }}
