@@ -6,10 +6,10 @@
     "script": {
       "label": "Writing script",
       "icon": "pen",
-      "status": "running",
-      "detail": "testing..."
+      "status": "done",
+      "detail": "12345 words"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-05T02:29:34.399060+00:00"
+  "updated_at": "2026-07-05T02:29:37.395641+00:00"
 }
