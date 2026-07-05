@@ -204,6 +204,30 @@ def generate_thumbnail_b(thumb_lines, story_id):
         return None  # caller falls back to style A
 
     img = Image.new("RGB", (W, H), (8, 8, 8))
+    d = ImageDraw.Draw(img)
+
+    # "TRUE STORY" badge, copied from the niche's other top performer
+    # (Calm Dad Stories) after user comparison 2026-07-05: rounded pill,
+    # bold color, sits above the text stack. Kept even though the content
+    # is AI-narrated/reimagined (disclosed via the in-video disclaimer
+    # card) because the reference channel runs this label across dozens
+    # of monetized videos without penalty — user decision, proceed as-is.
+    badge_font = _font(38)
+    badge_text = "TRUE STORY"
+    badge_pad_x, badge_pad_y = 26, 12
+    badge_w = d.textlength(badge_text, font=badge_font) + badge_pad_x * 2
+    badge_h = 38 + badge_pad_y * 2
+    badge_x0, badge_y0 = 36, 30
+    d.rounded_rectangle(
+        [badge_x0, badge_y0, badge_x0 + badge_w, badge_y0 + badge_h],
+        radius=badge_h / 2, fill=(214, 24, 24),
+    )
+    d.text(
+        (badge_x0 + badge_pad_x, badge_y0 + badge_pad_y - 2),
+        badge_text, font=badge_font, fill=(255, 255, 255),
+    )
+    text_top = badge_y0 + badge_h + 22
+
     shot = Image.open(chars[int(story_id) % len(chars)]).convert("RGB")
     # The character photos were shot moody/desaturated for the VIDEO's b-roll
     # mood; thumbnails need bright, punchy, commercial-stock-photo energy
@@ -218,7 +242,6 @@ def generate_thumbnail_b(thumb_lines, story_id):
     left_crop = max(0, (shot.width - target_w) // 2)
     shot = shot.crop((left_crop, 0, left_crop + target_w, H))
     img.paste(shot, (W - target_w, 0))
-    d = ImageDraw.Draw(img)
 
     panel_w = W - target_w - 60
     lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}
@@ -244,7 +267,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
     # (bug: content clipped off-screen top/bottom in the first version).
     # Gap is small and constant (the reference stacks blocks almost flush,
     # not our earlier generously-spaced version).
-    top_margin, bottom_margin, gap = 14, 14, 14
+    top_margin, bottom_margin, gap = text_top, 14, 14
     raw_total = 0.0
     for seg in segments:
         line_h = seg["base_size"] * 1.18
@@ -266,7 +289,10 @@ def generate_thumbnail_b(thumb_lines, story_id):
         if box:
             block_w = max(d.textlength(l, font=font) for l in wrapped) + 30
             block_h = len(wrapped) * line_h + 10
-            d.rectangle([x0 - 10, y - 4, x0 - 10 + block_w, y - 4 + block_h], fill=box)
+            # Rounded, not sharp corners — user feedback 2026-07-05 comparing
+            # against reference thumbnails: hard rectangle edges read as
+            # "kasar" (harsh); a soft rounded pill matches the niche look.
+            d.rounded_rectangle([x0 - 10, y - 4, x0 - 10 + block_w, y - 4 + block_h], radius=14, fill=box)
         for line in wrapped:
             # true stroke outline (not an offset duplicate) — matches the
             # reference's flat, clean look instead of a drop-shadow smear.
