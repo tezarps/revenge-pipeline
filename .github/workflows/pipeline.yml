@@ -57,6 +57,27 @@ jobs:
             ~/.cache/huggingface
           key: models-kokoro-v1.0-u2net-human-seg-whisper-base-en
 
+      - name: Determine next pending story id (for audio cache key below)
+        id: nextstory
+        run: |
+          id=$(python3 -c "import json; d=json.load(open('stories.json')); print(next((s['id'] for s in d['stories'] if s['status']=='pending'), 'none'))")
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Kokoro-synthesized narration for the current story
+        # GitHub Actions runners are ephemeral and output/audio/ is
+        # gitignored (too large for git), so every dry-run re-test of the
+        # same still-pending story was re-synthesizing ~45 minutes of
+        # narration from scratch, even when nothing about the script or
+        # voice had changed (root cause of "audio kokoro sudah 5 kali
+        # ngulang" 2026-07-05, from same-day thumbnail/git/speed-fix
+        # iterations that each needed a fresh dry run of story #2). Cache
+        # keyed on story id + a hash of all committed scripts, so it's
+        # invalidated automatically if the target script changes.
+        uses: actions/cache@v4
+        with:
+          path: output/audio
+          key: audio-story-${{ steps.nextstory.outputs.id }}-${{ hashFiles('output/scripts/*.txt') }}
+
       - name: Restore YouTube credentials
         run: |
           echo "${{ secrets.YOUTUBE_CLIENT_SECRET_B64 }}" | base64 -d > youtube_client_secret.json
