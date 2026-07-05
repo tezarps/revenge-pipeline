@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister Framed Me For Theft, My Parents Disowned Me. So I Watched Them Lose Ev"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-05T10:23:02.081972+00:00"
+  "updated_at": "2026-07-05T10:23:04.572216+00:00"
 }
