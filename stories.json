@@ -15,6 +15,11 @@
       "id": 3,
       "premise": "I ran my dad's roofing company for 12 years while my brother partied. At the retirement dinner, dad handed my brother the company in front of 40 guests. I quit that night, joined our biggest client, and watched the firm collapse in 18 months.",
       "status": "pending"
+    },
+    {
+      "id": 4,
+      "premise": "My in-laws took $85,000 from my late husband's life insurance, telling the rest of the family I'd already spent it selfishly on myself, and cut me and my kids out of every holiday for six years. When their retirement fund collapsed, they asked to move into my house.",
+      "status": "pending"
     }
   ]
 }
