@@ -193,15 +193,18 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
 <html><head><meta charset="utf-8"><style>
   @font-face {{ font-family: 'Anton'; src: url('{font_uri}') format('truetype'); }}
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #0a0c14; font-family: 'Anton', Arial, sans-serif; }}
-  .frame {{ position: relative; width: 1280px; height: 720px; background: #0a0c14; }}
-  .photo {{ position: absolute; top: 0; right: 0; height: 720px; width: auto; z-index: 1; }}
-  .fade {{ position: absolute; top: 0; left: 0; width: 780px; height: 720px;
-    background: linear-gradient(to right, #0a0c14 0%, #0a0c14 55%, rgba(10,12,20,0) 100%); z-index: 2; }}
-  .text-stack {{ position: absolute; top: 34px; left: 40px; width: 700px; bottom: 112px;
-    z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 12px;
+  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #14161f; font-family: 'Anton', Arial, sans-serif; }}
+  .frame {{ position: relative; width: 1280px; height: 720px; background: #14161f; }}
+  .photo-box {{ position: absolute; top: 0; right: 0; width: 560px; height: 720px; overflow: hidden; z-index: 1; }}
+  .photo-box img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }}
+  .photo-box::after {{ content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(20,22,31,0.95) 0%, rgba(20,22,31,0) 22%); }}
+  .panel-fade {{ position: absolute; top: 0; left: 0; width: 800px; height: 720px;
+    background: linear-gradient(to right, #14161f 0%, #14161f 62%, rgba(20,22,31,0) 100%); z-index: 2; }}
+  .text-stack {{ position: absolute; top: 34px; left: 42px; width: 660px; bottom: 116px;
+    z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px;
     transform-origin: top left; }}
-  .line {{ font-size: 46px; line-height: 1.16; letter-spacing: 0.5px;
+  .line {{ font-size: 50px; line-height: 1.16; letter-spacing: 0.5px;
     -webkit-text-stroke: 2.5px black; paint-order: stroke fill; text-transform: uppercase; }}
   .white {{ color: #ffffff; }}
   .cyan {{ color: #4adede; }}
@@ -212,8 +215,8 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
 </style></head>
 <body>
   <div class="frame">
-    <img class="photo" src="{photo_uri}">
-    <div class="fade"></div>
+    <div class="photo-box"><img src="{photo_uri}"></div>
+    <div class="panel-fade"></div>
     <div class="text-stack" id="stack">{lines_html}</div>
     <div class="badge"><span>- TRUE STORY -</span></div>
   </div>
