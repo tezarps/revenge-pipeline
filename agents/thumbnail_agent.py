@@ -187,12 +187,17 @@ DEFAULT_ORDER = ["setup", "twist", "context", "climax1", "climax2"]
 
 
 def generate_thumbnail_b(thumb_lines, story_id):
-    """Style B, copied deliberately from the niche's top performer
-    (Calm Drama Stories): full-width character photo on the right, and on
-    the left a stacked, multi-color, multi-size caption block (yellow setup,
-    magenta twist, white context, red-highlight climax) exactly matching
-    their proven eye-catching layout. Character shots come from
-    assets/character/ (see assets/CHARACTER_PROMPTS.md).
+    """Style B, copied deliberately from the niche's top performers: a
+    FULL-BLEED character photo covering the entire frame (not a cropped
+    strip beside a solid black panel), with the caption stack (yellow
+    setup, magenta twist, white context, red-highlight climax) and a
+    "TRUE STORY" badge overlaid directly on top, darkened just enough on
+    the left for legibility. Matches the reference layout exactly per
+    user correction 2026-07-05 — the earlier photo-on-right/black-panel-
+    on-left split was wrong. Character shots come from assets/character/
+    (see assets/CHARACTER_PROMPTS.md). Photo is used as-is, no brightness/
+    contrast/color enhancement (that read as an orange, overexposed
+    "on fire" look — user feedback 2026-07-05, don't re-add it).
 
     `thumb_lines`: list of {"style": ..., "text": ...} dicts from
     story_agent.generate_metadata(), in the 5-segment order defined above.
@@ -203,15 +208,32 @@ def generate_thumbnail_b(thumb_lines, story_id):
     if not chars or not thumb_lines:
         return None  # caller falls back to style A
 
-    img = Image.new("RGB", (W, H), (8, 8, 8))
+    shot = Image.open(chars[int(story_id) % len(chars)]).convert("RGB")
+    scale = max(W / shot.width, H / shot.height)
+    shot = shot.resize((int(shot.width * scale) + 1, int(shot.height * scale) + 1), Image.LANCZOS)
+    left_crop = max(0, (shot.width - W) // 2)
+    # Bias toward the top, not centered: these are portrait upper-body
+    # shots, and a pure center crop chops the face off at the mouth
+    # (found rendering the first real thumbnail with this layout).
+    top_crop = max(0, int((shot.height - H) * 0.12))
+    img = shot.crop((left_crop, top_crop, left_crop + W, top_crop + H))
+
+    # Dark scrim over the left ~60% only, so the caption stack stays legible
+    # while the photo itself (and the subject's face on the right) stays
+    # untouched and visible, matching the reference thumbnails.
+    scrim = Image.new("L", (W, H), 0)
+    scrim_d = ImageDraw.Draw(scrim)
+    scrim_w = int(W * 0.62)
+    for x in range(scrim_w):
+        alpha = 190 if x < scrim_w - 120 else int(190 * (scrim_w - x) / 120)
+        scrim_d.line([(x, 0), (x, H)], fill=alpha)
+    dark = Image.new("RGB", (W, H), (0, 0, 0))
+    img = Image.composite(dark, img, scrim)
     d = ImageDraw.Draw(img)
 
-    # "TRUE STORY" badge, copied from the niche's other top performer
-    # (Calm Dad Stories) after user comparison 2026-07-05: rounded pill,
-    # bold color, sits above the text stack. Kept even though the content
-    # is AI-narrated/reimagined (disclosed via the in-video disclaimer
-    # card) because the reference channel runs this label across dozens
-    # of monetized videos without penalty — user decision, proceed as-is.
+    # "TRUE STORY" badge, matching the niche's proven layout (user decision
+    # 2026-07-05, kept despite content being AI-narrated/reimagined - already
+    # disclosed via the in-video disclaimer card).
     badge_font = _font(38)
     badge_text = "TRUE STORY"
     badge_pad_x, badge_pad_y = 26, 12
@@ -228,22 +250,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
     )
     text_top = badge_y0 + badge_h + 22
 
-    shot = Image.open(chars[int(story_id) % len(chars)]).convert("RGB")
-    # The character photos were shot moody/desaturated for the VIDEO's b-roll
-    # mood; thumbnails need bright, punchy, commercial-stock-photo energy
-    # instead (reference channel look). Boost until the underlying photos
-    # are regenerated brighter at the source (see CHARACTER_PROMPTS.md).
-    shot = ImageEnhance.Brightness(shot).enhance(1.18)
-    shot = ImageEnhance.Contrast(shot).enhance(1.12)
-    shot = ImageEnhance.Color(shot).enhance(1.35)
-    target_w = int(W * 0.42)
-    scale = H / shot.height
-    shot = shot.resize((int(shot.width * scale), H), Image.LANCZOS)
-    left_crop = max(0, (shot.width - target_w) // 2)
-    shot = shot.crop((left_crop, 0, left_crop + target_w, H))
-    img.paste(shot, (W - target_w, 0))
-
-    panel_w = W - target_w - 60
+    panel_w = int(W * 0.62) - 70
     lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}
 
     # Pass 1: wrap every segment at its BASE size to get line counts (word
