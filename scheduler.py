@@ -82,7 +82,8 @@ def run(dry_run=False):
         else:
             metadata = story_agent.generate_metadata(story, script)
             meta_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2))
-        # A/B: odd ids = Reddit-card (full title), even ids = character style B
+        # Style B (character + colored stack) always tried first; style A
+        # (Reddit-card) is an emergency fallback only, see thumbnail_ab docstring.
         thumb_path = generate_thumbnail_ab(metadata["title"], metadata.get("thumb_lines"), sid)
         print(f"      Title: {metadata['title']}")
         sm.stage_done("thumb", metadata["title"][:80])

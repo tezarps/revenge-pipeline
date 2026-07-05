@@ -70,12 +70,24 @@ def _prepare_drone_concat(story_id, target_duration):
     rng.shuffle(clips)
 
     concat_file = OUTPUT_DIR / "video" / f"{story_id}_drone_concat.txt"
+    # Cap must scale with target_duration, not be a flat number: with only 6
+    # clips averaging ~18s, a flat 200-clip cap tops out around 60 minutes of
+    # background and silently runs out mid-video for the 2hr target (found
+    # inspecting the first full-length render, which ran out of background
+    # around 60% through - the concat demuxer just ends early, so the tail
+    # of the narration would play over nothing). Cap is now generous relative
+    # to how much runway is actually needed, plus a hard sanity ceiling.
+    clip_durations = [_probe_duration(c) for c in clips]
+    avg_clip = sum(clip_durations) / len(clip_durations)
+    max_iters = min(5000, int(target_duration / avg_clip) + len(clips) + 10)
     lines, total, i = [], 0.0, 0
-    while total < target_duration and i < 200:
+    while total < target_duration and i < max_iters:
         clip = clips[i % len(clips)]
         lines.append(f"file '{clip.resolve()}'")
-        total += _probe_duration(clip)
+        total += clip_durations[i % len(clips)]
         i += 1
+    if total < target_duration:
+        print(f"    Warning: drone background ({total:.0f}s) still short of target ({target_duration:.0f}s) after {i} clips")
     concat_file.write_text("\n".join(lines))
     return concat_file
 
