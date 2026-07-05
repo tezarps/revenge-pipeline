@@ -173,15 +173,18 @@ def generate_thumbnail(title_text, story_id):
 
 
 # style -> (text color, bg box color or None, base font size in px)
-# Sizes are bigger than a first glance at the reference suggests, because
-# Anton is a condensed face (~25% narrower per character than Arial Bold at
-# the same pixel size) so it needs more px to occupy the same visual weight.
+# Rebuilt 2026-07-05 to match the exact reference thumbnail the user
+# pointed to: NOT a yellow/magenta/red-box color stack, just plain white
+# narration alternating with cyan for the reveal/quoted/twist lines, no
+# background boxes anywhere, uniform size throughout. "SAMAKAN 1000000%".
+CYAN = (74, 222, 222)
+WHITE = (255, 255, 255)
 LINE_STYLE = {
-    "setup":   ((255, 214, 0), None, 62),
-    "twist":   ((235, 25, 130), None, 76),
-    "context": ((255, 255, 255), None, 50),
-    "climax1": ((255, 255, 255), (196, 18, 18), 54),
-    "climax2": ((255, 214, 0), (196, 18, 18), 54),
+    "setup":   (WHITE, None, 46),
+    "twist":   (CYAN, None, 46),
+    "context": (WHITE, None, 46),
+    "climax1": (CYAN, None, 46),
+    "climax2": (WHITE, None, 46),
 }
 DEFAULT_ORDER = ["setup", "twist", "context", "climax1", "climax2"]
 
@@ -223,7 +226,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
     # untouched and visible, matching the reference thumbnails.
     scrim = Image.new("L", (W, H), 0)
     scrim_d = ImageDraw.Draw(scrim)
-    scrim_w = int(W * 0.62)
+    scrim_w = int(W * 0.66)
     for x in range(scrim_w):
         alpha = 190 if x < scrim_w - 120 else int(190 * (scrim_w - x) / 120)
         scrim_d.line([(x, 0), (x, H)], fill=alpha)
@@ -231,26 +234,27 @@ def generate_thumbnail_b(thumb_lines, story_id):
     img = Image.composite(dark, img, scrim)
     d = ImageDraw.Draw(img)
 
-    # "TRUE STORY" badge, matching the niche's proven layout (user decision
-    # 2026-07-05, kept despite content being AI-narrated/reimagined - already
-    # disclosed via the in-video disclaimer card).
-    badge_font = _font(38)
-    badge_text = "TRUE STORY"
-    badge_pad_x, badge_pad_y = 26, 12
-    badge_w = d.textlength(badge_text, font=badge_font) + badge_pad_x * 2
-    badge_h = 38 + badge_pad_y * 2
-    badge_x0, badge_y0 = 36, 30
+    # "TRUE STORY" badge: full-width GREEN rounded pill at the BOTTOM of
+    # the frame, exact match to the reference (not a small top-left badge -
+    # corrected 2026-07-05 after direct side-by-side comparison).
+    badge_font = _font(46)
+    badge_text = "- TRUE STORY -"
+    badge_h = 78
+    badge_margin_x = 18
+    badge_y0 = H - badge_h - 18
     d.rounded_rectangle(
-        [badge_x0, badge_y0, badge_x0 + badge_w, badge_y0 + badge_h],
-        radius=badge_h / 2, fill=(214, 24, 24),
+        [badge_margin_x, badge_y0, W - badge_margin_x, badge_y0 + badge_h],
+        radius=badge_h / 2, fill=(19, 173, 106),
     )
+    tw = d.textlength(badge_text, font=badge_font)
     d.text(
-        (badge_x0 + badge_pad_x, badge_y0 + badge_pad_y - 2),
+        ((W - tw) / 2, badge_y0 + (badge_h - 46) / 2 - 6),
         badge_text, font=badge_font, fill=(255, 255, 255),
     )
-    text_top = badge_y0 + badge_h + 22
+    text_top = 40
+    bottom_reserved = badge_h + 40
 
-    panel_w = int(W * 0.62) - 70
+    panel_w = int(W * 0.66) - 60
     lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}
 
     # Pass 1: wrap every segment at its BASE size to get line counts (word
@@ -274,7 +278,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
     # (bug: content clipped off-screen top/bottom in the first version).
     # Gap is small and constant (the reference stacks blocks almost flush,
     # not our earlier generously-spaced version).
-    top_margin, bottom_margin, gap = text_top, 14, 14
+    top_margin, bottom_margin, gap = text_top, bottom_reserved, 10
     raw_total = 0.0
     for seg in segments:
         line_h = seg["base_size"] * 1.18
