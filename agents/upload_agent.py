@@ -1,8 +1,8 @@
 """YouTube upload — lean adaptation of apophenia-pipeline's upload_agent.
 Keeps the IPv4 fix and the live publishAt collision check; drops playlists,
-Shorts and analytics for v1. Publishes on a fixed weekday cadence at 3 PM US
-Eastern (audience: US women 25-45; evening peak ~7-9 PM ET, publish ahead of
-it — same principle as Apophenia's AU timing)."""
+Shorts and analytics for v1. Publish cadence matches Calm Drama Stories
+(the channel's primary visual/style reference), measured directly off their
+channel 2026-07-05: 3 uploads/day, every day, at ~10:30/16:00/20:00 ET."""
 import pickle
 import socket
 from datetime import datetime, timezone, timedelta
@@ -29,12 +29,10 @@ from config import TOKEN_FILE, YOUTUBE_CLIENT_SECRET
 
 SCOPES = ["https://www.googleapis.com/auth/youtube"]
 
-PUBLISH_HOUR_ET = 15                    # 3 PM Eastern
-PUBLISH_WEEKDAYS = {0, 1, 2, 3, 4, 5, 6}  # daily (user decision 2026-07-04:
-# "naikkan, jangan tunggu" — repo is now public so GH Actions minutes are
-# unlimited, removing the cost constraint that justified the slower 3x/week
-# test cadence. Real competitor (Calm Dad Stories) runs 2x/day at this
-# quality level without penalty.
+# 3 slots/day matching Calm Drama Stories' measured cadence (user decision
+# 2026-07-05: match their schedule and pattern exactly). All 7 days.
+PUBLISH_SLOTS_ET = [(10, 30), (16, 0), (20, 0)]
+PUBLISH_WEEKDAYS = {0, 1, 2, 3, 4, 5, 6}
 
 
 def _get_service():
@@ -90,11 +88,18 @@ def _next_publish_time(yt):
     if latest and latest.astimezone(et) > anchor:
         anchor = latest.astimezone(et)
 
-    target = anchor.replace(hour=PUBLISH_HOUR_ET, minute=0, second=0, microsecond=0)
-    while target <= anchor or target.weekday() not in PUBLISH_WEEKDAYS:
-        target += timedelta(days=1)
-        target = target.replace(hour=PUBLISH_HOUR_ET)
-    return target.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+    # Walk forward day by day, checking each of today's remaining slots (or
+    # tomorrow's, etc.) in order, until we pass one that's after anchor and
+    # on a valid weekday.
+    day = anchor
+    for _ in range(14):  # generous cap, cadence is daily so this resolves fast
+        if day.weekday() in PUBLISH_WEEKDAYS:
+            for hour, minute in PUBLISH_SLOTS_ET:
+                target = day.replace(hour=hour, minute=minute, second=0, microsecond=0)
+                if target > anchor:
+                    return target.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+        day = (day + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+    raise RuntimeError("_next_publish_time: no valid slot found in 14 days — check PUBLISH_WEEKDAYS")
 
 
 def upload_video(video_path, thumb_path, metadata):
