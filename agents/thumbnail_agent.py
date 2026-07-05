@@ -195,14 +195,20 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #22252f; font-family: 'Anton', Arial, sans-serif; }}
   .frame {{ position: relative; width: 1280px; height: 720px; background: #22252f; }}
+  /* Full-bleed blurred backdrop so the dark panel has something to show
+     through at 55% opacity — a translucent panel over a flat color just
+     looks like a slightly duller flat color, not a real tinted overlay. */
+  .bg-blur {{ position: absolute; inset: 0; overflow: hidden; z-index: 0; }}
+  .bg-blur img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%;
+    filter: blur(30px) brightness(0.75); transform: scale(1.15); }}
   .photo-box {{ position: absolute; top: 0; right: 0; width: 560px; height: 720px; overflow: hidden; z-index: 1; }}
   .photo-box img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }}
-  /* Single unified gradient spanning the panel/photo seam (600px-870px of
-     the 1280 frame, straddling the photo_x=720 boundary) — one smooth fade
-     instead of two overlapping gradients, which was creating a visible
-     double-band seam ("kasar") in the previous version. */
-  .panel-fade {{ position: absolute; inset: 0;
-    background: linear-gradient(to right, #22252f 0%, #22252f 46.9%, rgba(34,37,47,0) 68%); z-index: 2; }}
+  /* Wide, gentle fade (roughly 640px-1000px of the 1280 frame) straddling
+     the photo_x=720 boundary well on both sides, at 55% max opacity instead
+     of a solid near-opaque color, so it reads as a soft tint, not a hard
+     edge or a flat wall ("kasar"/"pekat" feedback 2026-07-05). */
+  .panel-fade {{ position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(to right, rgba(20,22,30,0.55) 0%, rgba(20,22,30,0.55) 50%, rgba(20,22,30,0) 78%); }}
   .text-stack {{ position: absolute; top: 34px; left: 42px; width: 660px; bottom: 116px;
     z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px;
     transform-origin: top left; }}
@@ -217,6 +223,7 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
 </style></head>
 <body>
   <div class="frame">
+    <div class="bg-blur"><img src="{photo_uri}"></div>
     <div class="photo-box"><img src="{photo_uri}"></div>
     <div class="panel-fade"></div>
     <div class="text-stack" id="stack">{lines_html}</div>
