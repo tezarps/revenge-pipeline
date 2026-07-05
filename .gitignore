@@ -5,3 +5,4 @@ output/audio/
 output/video/
 __pycache__/
 *.pyc
+.claude/

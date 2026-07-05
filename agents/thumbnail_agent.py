@@ -189,121 +189,102 @@ LINE_STYLE = {
 DEFAULT_ORDER = ["setup", "twist", "context", "climax1", "climax2"]
 
 
+THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+  @font-face {{ font-family: 'Anton'; src: url('{font_uri}') format('truetype'); }}
+  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #0a0c14; font-family: 'Anton', Arial, sans-serif; }}
+  .frame {{ position: relative; width: 1280px; height: 720px; background: #0a0c14; }}
+  .photo {{ position: absolute; top: 0; right: 0; height: 720px; width: auto; z-index: 1; }}
+  .fade {{ position: absolute; top: 0; left: 0; width: 780px; height: 720px;
+    background: linear-gradient(to right, #0a0c14 0%, #0a0c14 55%, rgba(10,12,20,0) 100%); z-index: 2; }}
+  .text-stack {{ position: absolute; top: 34px; left: 40px; width: 700px; bottom: 112px;
+    z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 12px;
+    transform-origin: top left; }}
+  .line {{ font-size: 46px; line-height: 1.16; letter-spacing: 0.5px;
+    -webkit-text-stroke: 2.5px black; paint-order: stroke fill; text-transform: uppercase; }}
+  .white {{ color: #ffffff; }}
+  .cyan {{ color: #4adede; }}
+  .badge {{ position: absolute; left: 18px; right: 18px; bottom: 18px; height: 78px;
+    background: #13ad6a; border-radius: 39px; display: flex; align-items: center;
+    justify-content: center; z-index: 4; }}
+  .badge span {{ font-family: 'Anton', Arial, sans-serif; color: white; font-size: 42px; letter-spacing: 1px; }}
+</style></head>
+<body>
+  <div class="frame">
+    <img class="photo" src="{photo_uri}">
+    <div class="fade"></div>
+    <div class="text-stack" id="stack">{lines_html}</div>
+    <div class="badge"><span>- TRUE STORY -</span></div>
+  </div>
+<script>
+  function fitStack() {{
+    const stack = document.getElementById('stack');
+    stack.style.transform = 'scale(1)';
+    const available = stack.clientHeight;
+    const contentHeight = stack.scrollHeight;
+    if (contentHeight > available) {{
+      const scale = Math.max(0.5, available / contentHeight);
+      stack.style.transform = `scale(${{scale}})`;
+    }}
+  }}
+  window.onload = fitStack;
+</script>
+</body></html>"""
+
+
 def generate_thumbnail_b(thumb_lines, story_id):
-    """Style B: exact copy of Calm Dad Stories / Calm Drama Stories layout.
-    LEFT ~60%: solid dark background + text stack.
-    RIGHT ~40%: character photo scaled to full frame height, right-anchored.
-    Soft gradient blend at photo left edge. Full-width green TRUE STORY bar.
+    """Style B: exact copy of Calm Dad Stories / Calm Drama Stories layout,
+    rendered as real HTML/CSS via a headless Chromium (Playwright) instead
+    of hand-computed Pillow pixel math. Verified visually against the
+    reference thumbnail 2026-07-05 (photo right ~40%, dark bg left ~60%,
+    white/cyan Anton stack, full-width green TRUE STORY pill) before being
+    wired in here - HTML/CSS gives exact flexbox/gradient/font-stroke
+    control that blind Pillow coordinate math kept getting wrong.
     """
+    import base64
+    from playwright.sync_api import sync_playwright
+
     chars = sorted(p for p in CHARACTER_DIR.glob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png")) if CHARACTER_DIR.exists() else []
     if not chars or not thumb_lines:
         return None
 
-    shot = Image.open(chars[int(story_id) % len(chars)]).convert("RGB")
+    photo_path = chars[int(story_id) % len(chars)]
+    font_path = FONTS_DIR / "Anton-Regular.ttf"
 
-    # Scale portrait to full frame height; right-anchor it.
-    # 1792x2400 at H=720 -> ~538px wide = right 42% of frame.
-    photo_scale = H / shot.height
-    photo_w = int(shot.width * photo_scale) + 1
-    shot = shot.resize((photo_w, H), Image.LANCZOS)
-    photo_x = max(0, W - photo_w)
+    def _data_uri(path, mime):
+        return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
 
-    BG = (10, 12, 20)
-    img = Image.new("RGB", (W, H), BG)
-    img.paste(shot, (photo_x, 0))
+    photo_uri = _data_uri(photo_path, "image/jpeg")
+    font_uri = _data_uri(font_path, "font/ttf") if font_path.exists() else ""
 
-    # Gradient fade from BG into photo on the left edge of photo
-    blend_w = 180
-    overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    gd = ImageDraw.Draw(overlay)
-    for x in range(min(blend_w, W - photo_x)):
-        alpha = int(240 * (1 - x / blend_w))
-        gd.line([(photo_x + x, 0), (photo_x + x, H)], fill=(*BG, alpha))
-    img = img.convert("RGBA")
-    img.alpha_composite(overlay)
-    img = img.convert("RGB")
-
-    d = ImageDraw.Draw(img)
-
-    # "TRUE STORY" badge: full-width GREEN rounded pill at the BOTTOM of
-    # the frame, exact match to the reference (not a small top-left badge -
-    # corrected 2026-07-05 after direct side-by-side comparison).
-    badge_font = _font(46)
-    badge_text = "- TRUE STORY -"
-    badge_h = 78
-    badge_margin_x = 18
-    badge_y0 = H - badge_h - 18
-    d.rounded_rectangle(
-        [badge_margin_x, badge_y0, W - badge_margin_x, badge_y0 + badge_h],
-        radius=badge_h / 2, fill=(19, 173, 106),
-    )
-    tw = d.textlength(badge_text, font=badge_font)
-    d.text(
-        ((W - tw) / 2, badge_y0 + (badge_h - 46) / 2 - 6),
-        badge_text, font=badge_font, fill=(255, 255, 255),
-    )
-    text_top = 40
-    bottom_reserved = badge_h + 40
-
-    panel_w = photo_x - 60  # stay left of character photo
     lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}
-
-    # Pass 1: wrap every segment at its BASE size to get line counts (word
-    # wrap only depends on width, so this is a safe upper bound on line
-    # count at any scale <= 1).
-    segments = []
+    lines_html = ""
     for style in DEFAULT_ORDER:
         text = lines_by_style.get(style, "").strip().upper()
         if not text:
             continue
-        color, box, base_size = LINE_STYLE[style]
-        base_font = _font(base_size)
-        wrapped = _wrap(d, text, base_font, panel_w - (24 if box else 0))
-        segments.append({"wrapped": wrapped, "color": color, "box": box, "base_size": base_size})
+        color_rgb, _box, _size = LINE_STYLE[style]
+        css_class = "cyan" if color_rgb == CYAN else "white"
+        lines_html += f'<div class="line {css_class}">{text}</div>'
 
-    if not segments:
+    if not lines_html:
         return None
 
-    # Pass 2: compute the scale factor that makes the WHOLE stack fit the
-    # frame height exactly, instead of an iterative loop that can stop short
-    # (bug: content clipped off-screen top/bottom in the first version).
-    # Gap is small and constant (the reference stacks blocks almost flush,
-    # not our earlier generously-spaced version).
-    top_margin, bottom_margin, gap = text_top, bottom_reserved, 10
-    raw_total = 0.0
-    for seg in segments:
-        line_h = seg["base_size"] * 1.18
-        block_h = len(seg["wrapped"]) * line_h + (10 if seg["box"] else 0)
-        raw_total += block_h + gap
-    raw_total += top_margin + bottom_margin - gap
-
-    scale = min(1.0, (H - top_margin - bottom_margin) / max(raw_total, 1))
-    scale = max(scale, 0.35)  # legibility floor; LLM prompt caps line counts so this rarely triggers
-
-    y = top_margin
-    x0 = 36
-    for seg in segments:
-        size = max(18, int(seg["base_size"] * scale))
-        font = _font(size)
-        line_h = size * 1.18
-        wrapped = seg["wrapped"]
-        box, color = seg["box"], seg["color"]
-        if box:
-            block_w = max(d.textlength(l, font=font) for l in wrapped) + 30
-            block_h = len(wrapped) * line_h + 10
-            # Rounded, not sharp corners — user feedback 2026-07-05 comparing
-            # against reference thumbnails: hard rectangle edges read as
-            # "kasar" (harsh); a soft rounded pill matches the niche look.
-            d.rounded_rectangle([x0 - 10, y - 4, x0 - 10 + block_w, y - 4 + block_h], radius=14, fill=box)
-        for line in wrapped:
-            # true stroke outline (not an offset duplicate) — matches the
-            # reference's flat, clean look instead of a drop-shadow smear.
-            d.text((x0, y), line, font=font, fill=color, stroke_width=3, stroke_fill=(0, 0, 0))
-            y += line_h
-        y += (10 if box else 0) + gap
+    html = THUMB_HTML_TEMPLATE.format(photo_uri=photo_uri, font_uri=font_uri, lines_html=lines_html)
 
     path = OUTPUT_DIR / "thumbs" / f"{story_id}_b.jpg"
-    img.save(path, quality=92)
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page(viewport={"width": W, "height": H})
+        page.set_content(html)
+        page.wait_for_timeout(150)  # let the fitStack() onload scale settle
+        png_path = path.with_suffix(".png")
+        page.screenshot(path=str(png_path))
+        browser.close()
+
+    Image.open(png_path).convert("RGB").save(path, quality=92)
+    png_path.unlink(missing_ok=True)
     return path
 
 
