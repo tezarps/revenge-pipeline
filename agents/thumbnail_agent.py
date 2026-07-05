@@ -193,22 +193,18 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
 <html><head><meta charset="utf-8"><style>
   @font-face {{ font-family: 'Anton'; src: url('{font_uri}') format('truetype'); }}
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #22252f; font-family: 'Anton', Arial, sans-serif; }}
-  .frame {{ position: relative; width: 1280px; height: 720px; background: #22252f; }}
-  /* Full-bleed blurred backdrop so the dark panel has something to show
-     through at 55% opacity — a translucent panel over a flat color just
-     looks like a slightly duller flat color, not a real tinted overlay. */
-  .bg-blur {{ position: absolute; inset: 0; overflow: hidden; z-index: 0; }}
-  .bg-blur img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%;
-    filter: blur(30px) brightness(0.75); transform: scale(1.15); }}
+  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #1c1e26; font-family: 'Anton', Arial, sans-serif; }}
+  .frame {{ position: relative; width: 1280px; height: 720px; background: #1c1e26; }}
   .photo-box {{ position: absolute; top: 0; right: 0; width: 560px; height: 720px; overflow: hidden; z-index: 1; }}
   .photo-box img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }}
-  /* Wide, gentle fade (roughly 640px-1000px of the 1280 frame) straddling
-     the photo_x=720 boundary well on both sides, at 55% max opacity instead
-     of a solid near-opaque color, so it reads as a soft tint, not a hard
-     edge or a flat wall ("kasar"/"pekat" feedback 2026-07-05). */
+  /* No blur, no hard-edged solid zone — the gradient starts fading
+     immediately from the left edge and tapers out gradually over a wide
+     span (roughly 490px-1050px of the 1280 frame), so there is no visible
+     line anywhere, just a continuous soft falloff. Max opacity capped at
+     55% throughout (never a solid/opaque block) per direct feedback
+     2026-07-05: no blur, opacity down, no hard edge. */
   .panel-fade {{ position: absolute; inset: 0; z-index: 2;
-    background: linear-gradient(to right, rgba(20,22,30,0.55) 0%, rgba(20,22,30,0.55) 50%, rgba(20,22,30,0) 78%); }}
+    background: linear-gradient(to right, rgba(15,17,23,0.55) 0%, rgba(15,17,23,0.5) 25%, rgba(15,17,23,0.3) 55%, rgba(15,17,23,0) 82%); }}
   .text-stack {{ position: absolute; top: 34px; left: 42px; width: 660px; bottom: 116px;
     z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px;
     transform-origin: top left; }}
@@ -223,7 +219,6 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
 </style></head>
 <body>
   <div class="frame">
-    <div class="bg-blur"><img src="{photo_uri}"></div>
     <div class="photo-box"><img src="{photo_uri}"></div>
     <div class="panel-fade"></div>
     <div class="text-stack" id="stack">{lines_html}</div>
