@@ -17,7 +17,6 @@ from agents.captions_agent import generate_captions
 CHARACTER_DIR = ASSETS_BG_DIR.parent / "character"
 DRONE_DIR = ASSETS_BG_DIR.parent / "drone"
 CUTOUT_DIR = ASSETS_BG_DIR.parent / "character_cutout"
-LOGO_PATH = ASSETS_BG_DIR.parent / "mascot_logo.jpg"
 CHAR_WIDTH = 640
 CHAR_HEIGHT = 820  # < 1080 on purpose: leaves headroom above her, not full-frame close-up
 SEGMENT_SEC = 90  # fallback slideshow only
@@ -223,13 +222,10 @@ def create_video(audio_path, story_id):
     inputs = ["-f", "concat", "-safe", "0", "-i", str(drone_concat)]
     idx = 0
     bg_in = idx; idx += 1
-    char_in = logo_in = None
+    char_in = None
     if char_cutout:
         inputs += ["-loop", "1", "-i", str(char_cutout)]
         char_in = idx; idx += 1
-    if LOGO_PATH.exists():
-        inputs += ["-loop", "1", "-i", str(LOGO_PATH)]
-        logo_in = idx; idx += 1
     inputs += ["-i", str(audio_path)]
     audio_in = idx
 
@@ -252,10 +248,6 @@ def create_video(audio_path, story_id):
         filters.append(f"[{char_in}:v]scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]")
         filters.append(f"[{last}][char]overlay=x=0:y=H-h[bgchar]")
         last = "bgchar"
-    if logo_in is not None:
-        filters.append(f"[{logo_in}:v]scale=140:140[logo]")
-        filters.append(f"[{last}][logo]overlay=x=40:y=40[bglogo]")
-        last = "bglogo"
 
     filters.append(f"[{last}]subtitles={captions_path}[withtext]")
     # LIVE per-frame waveform (user confirmed: it must react to the actual

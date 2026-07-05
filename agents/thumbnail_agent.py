@@ -244,10 +244,10 @@ def generate_thumbnail_b(thumb_lines, story_id):
     # (bug: content clipped off-screen top/bottom in the first version).
     # Gap is small and constant (the reference stacks blocks almost flush,
     # not our earlier generously-spaced version).
-    top_margin, bottom_margin, gap = 14, 14, 4
+    top_margin, bottom_margin, gap = 14, 14, 14
     raw_total = 0.0
     for seg in segments:
-        line_h = seg["base_size"] * 1.06
+        line_h = seg["base_size"] * 1.18
         block_h = len(seg["wrapped"]) * line_h + (10 if seg["box"] else 0)
         raw_total += block_h + gap
     raw_total += top_margin + bottom_margin - gap
@@ -260,7 +260,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
     for seg in segments:
         size = max(18, int(seg["base_size"] * scale))
         font = _font(size)
-        line_h = size * 1.06
+        line_h = size * 1.18
         wrapped = seg["wrapped"]
         box, color = seg["box"], seg["color"]
         if box:
