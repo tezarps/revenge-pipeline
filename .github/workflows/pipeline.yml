@@ -72,12 +72,13 @@ jobs:
           mp4=$(ls output/video/*.mp4 2>/dev/null | head -1)
           [ -n "$mp4" ] && ffmpeg -y -i "$mp4" -t 60 -c copy output/video/preview_60s.mp4 || true
 
-      - name: Upload inspection artifacts (thumbnail + preview)
+      - name: Upload inspection artifacts (script + thumbnail + preview)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: inspect-${{ github.run_number }}
           path: |
+            output/scripts/*.txt
             output/thumbs/*.jpg
             output/video/preview_60s.mp4
             output/metadata/*.json
