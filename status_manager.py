@@ -48,7 +48,7 @@ def _write_and_push(data, attempts=3):
             if diff.returncode == 0:
                 return  # nothing changed
             subprocess.run(["git", "commit", "-m", "status: live progress [skip ci]"], check=True, capture_output=True)
-            # Reset onto latest origin/main instead of rebasing — status.json
+            # Reset onto latest origin/main instead of rebasing. status.json
             # is disposable scratch state, so there's nothing worth a real
             # rebase conflict resolution over; a plain fast-forward retry is
             # both simpler and can't get stuck mid-rebase.

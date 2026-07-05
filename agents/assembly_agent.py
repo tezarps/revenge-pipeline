@@ -150,7 +150,7 @@ def _render_disclaimer_card():
     body_font = _disclaimer_font(34)
 
     def _warning_triangle(cx, cy, size):
-        # Drawn shape, not a unicode emoji glyph — emoji rendering in a
+        # Drawn shape, not a unicode emoji glyph. Emoji rendering in a
         # serif font is unreliable cross-platform (same lesson learned with
         # the thumbnail's award-emoji row).
         h = size
@@ -212,7 +212,7 @@ def _render_disclaimer_clip():
          "-t", str(DISCLAIMER_SEC),
          "-vf", "scale=1920:1080,format=yuv420p",
          "-c:v", "libx264", "-preset", "medium", "-crf", "23",
-         "-c:a", "aac", "-b:a", "192k",
+         "-c:a", "aac", "-ar", "44100", "-b:a", "192k",
          str(clip_path)],
         check=True, capture_output=True,
     )
@@ -254,7 +254,7 @@ def create_video(audio_path, story_id):
     last = "bg"
     if char_in is not None:
         # Smaller and bottom-anchored (not a full-height 0-1080 close-up
-        # covering the whole frame) — matches the reference: background
+        # covering the whole frame), matches the reference: background
         # visible above her head, she doesn't dominate the entire vertical
         # space. See user feedback 2026-07-04.
         filters.append(f"[{char_in}:v]scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]")
@@ -263,7 +263,7 @@ def create_video(audio_path, story_id):
 
     filters.append(f"[{last}]subtitles={captions_path}[withtext]")
     # LIVE per-frame waveform (user confirmed: it must react to the actual
-    # narration in real time, not a single static whole-track image — see
+    # narration in real time, not a single static whole-track image, see
     # 2026-07-04 correction). colorkey punches out showwaves' near-black
     # background so only the white line composites; this is the color-safe
     # replacement for the earlier blend=all_mode=screen version, which
@@ -273,12 +273,20 @@ def create_video(audio_path, story_id):
     filters.append("[withtext][wave]overlay=x=0:y=H-h[vout]")
 
     content_path = OUTPUT_DIR / "video" / f"{story_id}_content.mp4"
+    # -ar 44100 explicit on every audio encode in this function (here, the
+    # disclaimer clip, and the final concat below): Kokoro's tts_agent.py
+    # output was left at its native 24000Hz with no rate pinned downstream,
+    # so each of these three separate encode passes was implicitly
+    # resampling by a slightly different amount, and the mismatches
+    # compounded into audio/caption drift that grew across the video
+    # (root-caused 2026-07-05: captions in sync at 5s, ~2s ahead of the
+    # actual words by 30s). One consistent rate everywhere removes it.
     cmd = [FFMPEG_BIN, "-y", *inputs,
            "-filter_complex", ";".join(filters),
            "-map", "[vout]", "-map", f"{audio_in}:a",
            "-t", f"{dur + 1.0:.2f}",
            "-c:v", "libx264", "-preset", "medium", "-crf", "23",
-           "-c:a", "aac", "-b:a", "192k",
+           "-c:a", "aac", "-ar", "44100", "-b:a", "192k",
            str(content_path)]
     subprocess.run(cmd, check=True, capture_output=True)
 
@@ -288,7 +296,7 @@ def create_video(audio_path, story_id):
     subprocess.run(
         [FFMPEG_BIN, "-y", "-f", "concat", "-safe", "0", "-i", str(concat_list),
          "-c:v", "libx264", "-preset", "medium", "-crf", "23",
-         "-c:a", "aac", "-b:a", "192k",
+         "-c:a", "aac", "-ar", "44100", "-b:a", "192k",
          str(video_path)],
         check=True, capture_output=True,
     )

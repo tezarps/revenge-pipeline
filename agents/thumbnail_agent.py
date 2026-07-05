@@ -1,4 +1,4 @@
-"""Thumbnail — fake-Reddit-post card, copied from the niche's top performer
+"""Thumbnail, fake-Reddit-post card, copied from the niche's top performer
 (Reddit Family Tales, 582K/404K views: white rounded card, orange avatar,
 channel name + blue check, award badges, full title in huge bold black text,
 gray 99+ likes/comments footer). Pure Pillow, $0, no image APIs.
@@ -55,7 +55,7 @@ def _wrap(draw, text, font, max_w):
 
 
 def _avatar(d, cx, cy, r):
-    """Snoo-style mascot: white head on orange circle, x-eyes, frown —
+    """Snoo-style mascot: white head on orange circle, x-eyes, frown,
     matches the niche house style (see revenge-story-lab/thumbs/)."""
     ORANGE = (255, 69, 0)
     d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=ORANGE)
@@ -139,7 +139,7 @@ def generate_thumbnail(title_text, story_id):
     _verified(d, 265 + d.textlength(CHANNEL_NAME, font=name_font) + 42, 116)
     _emoji_row(img, 268, 172, size=48)
 
-    # title block — the whole card is the title, like the original
+    # title block, the whole card is the title, like the original
     size = 88
     while size > 40:
         font = _font(size)
@@ -197,7 +197,7 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
   .frame {{ position: relative; width: 1280px; height: 720px; background: #1c1e26; }}
   .photo-box {{ position: absolute; top: 0; right: 0; width: 560px; height: 720px; overflow: hidden; z-index: 1; }}
   .photo-box img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }}
-  /* No blur, no hard-edged solid zone — the gradient starts fading
+  /* No blur, no hard-edged solid zone. The gradient starts fading
      immediately from the left edge and tapers out gradually over a wide
      span (roughly 490px-1050px of the 1280 frame), so there is no visible
      line anywhere, just a continuous soft falloff. Max opacity capped at
@@ -300,7 +300,7 @@ def generate_thumbnail_ab(title_text, thumb_lines, story_id):
     video uses style B (character + colored stack), no more odd/even A/B
     rotation with the Reddit-card style. Style A is kept ONLY as an
     emergency fallback for when assets/character/ is empty or thumb_lines
-    is missing (e.g. older cached metadata) — not a deliberate design
+    is missing (e.g. older cached metadata), not a deliberate design
     choice, just so the pipeline never blocks on missing assets."""
     b = generate_thumbnail_b(thumb_lines, story_id)
     if b:

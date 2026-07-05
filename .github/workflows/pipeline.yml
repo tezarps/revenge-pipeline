@@ -18,7 +18,7 @@ jobs:
   run-pipeline:
     runs-on: ubuntu-latest
     timeout-minutes: 360  # GitHub's hard per-job ceiling for hosted runners; 2hr-target videos are untested at scale, this is the max runway available
-    # Default GITHUB_TOKEN is read-only — state commit-back needs write
+    # Default GITHUB_TOKEN is read-only, state commit-back needs write
     # (403 "Write access not granted" bit both first runs, 2026-07-03/04).
     permissions:
       contents: write
@@ -105,11 +105,11 @@ jobs:
           git commit -m "pipeline: update story state [skip ci]"
 
           # status_manager.py pushes to main throughout the run, so origin
-          # keeps moving under us — a plain `git pull --rebase` here conflicts
+          # keeps moving under us, so a plain `git pull --rebase` here conflicts
           # (root-caused 2026-07-05, run 28714486587: "could not apply ...
           # update story state"). Rebuild this commit on top of the latest
           # origin tip instead, the same fetch+reset pattern status_manager.py
-          # already uses successfully — no rebase history left to conflict.
+          # already uses successfully, no rebase history left to conflict.
           for attempt in 1 2 3 4 5; do
             git push && exit 0
             echo "push rejected (attempt $attempt/5), rebuilding on latest origin..."

@@ -1,4 +1,4 @@
-"""Kokoro TTS — local/CPU, $0 per video. Replaces ElevenLabs entirely
+"""Kokoro TTS, local/CPU, $0 per video. Replaces ElevenLabs entirely
 (user decision 2026-07-03: script cost stays, TTS cost goes to zero).
 Chunks the script by sentence groups, synthesizes each, concatenates with
 short pauses, writes mp3 via ffmpeg."""
@@ -67,11 +67,21 @@ def generate_audio(script, story_id):
     sf.write(wav_path, np.concatenate(audio), sr)
 
     # Single loudnorm pass (lesson from narava-pipeline: double-normalizing
-    # audibly pumps), then mp3 for the video mux.
+    # audibly pumps), then mp3 for the video mux. Explicit -ar 44100: Kokoro
+    # outputs 24000Hz and nothing downstream pinned a rate, so ffmpeg's
+    # encoders were implicitly resampling at different points in the
+    # pipeline (mp3 encode, then again at the mp3->AAC mux, then again at
+    # the final disclaimer+content concat re-encode), and each implicit
+    # resample is a separate clock-rate approximation. They compounded
+    # into audio/caption drift that grew over the length of the video
+    # (confirmed 2026-07-05: captions synced at the 5s mark, ~2s ahead of
+    # the actual words by the 30s mark). Pinning one consistent rate here,
+    # matching the disclaimer clip's anullsrc=r=44100, removes the mismatch
+    # at its source instead of re-deriving captions after the fact.
     mp3_path = OUTPUT_DIR / "audio" / f"{story_id}.mp3"
     subprocess.run(
         [FFMPEG_BIN, "-y", "-i", str(wav_path), "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
-         "-b:a", "192k", str(mp3_path)],
+         "-ar", "44100", "-b:a", "192k", str(mp3_path)],
         check=True, capture_output=True,
     )
     wav_path.unlink()
