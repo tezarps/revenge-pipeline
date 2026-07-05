@@ -1,0 +1,27 @@
+name: Test Anthropic API Key
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test key with two back-to-back calls (Sonnet then Haiku)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "Key length: ${#ANTHROPIC_API_KEY}"
+          echo "Key prefix: ${ANTHROPIC_API_KEY:0:12}..."
+          echo "--- Sonnet call ---"
+          curl -s https://api.anthropic.com/v1/messages \
+            -H "x-api-key: $ANTHROPIC_API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "content-type: application/json" \
+            -d '{"model":"claude-sonnet-5","max_tokens":20,"messages":[{"role":"user","content":"say hi"}]}'
+          echo
+          echo "--- Haiku call ---"
+          curl -s https://api.anthropic.com/v1/messages \
+            -H "x-api-key: $ANTHROPIC_API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "content-type: application/json" \
+            -d '{"model":"claude-haiku-4-5","max_tokens":20,"messages":[{"role":"user","content":"say hi"}]}'
