@@ -28,6 +28,7 @@
       "detail": "91.1 min, 2359MB"
     }
   },
-  "run_state": "running",
-  "updated_at": "2026-07-05T08:26:15.726522+00:00"
+  "run_state": "done",
+  "updated_at": "2026-07-05T08:26:17.688843+00:00",
+  "video_id": null
 }
