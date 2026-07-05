@@ -212,9 +212,18 @@ def generate_thumbnail_b(thumb_lines, story_id):
         return None  # caller falls back to style A
 
     shot = Image.open(chars[int(story_id) % len(chars)]).convert("RGB")
-    scale = max(W / shot.width, H / shot.height)
+    # Character photos are centered portrait headshots (see
+    # CHARACTER_PROMPTS.md), not composed off-to-one-side for this layout.
+    # A plain cover-crop puts the face dead center, colliding with the text
+    # zone (found 2026-07-05: "malah ditengah karakternya bukan di kanan").
+    # No face-detection lib is installed, so instead we zoom in well past
+    # the minimum cover scale and keep the LEFT-most crop window of that
+    # zoomed image - for a centered subject at consistent source dimensions
+    # (all character photos are 1792x2400), this reliably pushes the face
+    # toward the right ~65-70% of the frame instead of dead center.
+    scale = max(W / shot.width, H / shot.height) * 1.4
     shot = shot.resize((int(shot.width * scale) + 1, int(shot.height * scale) + 1), Image.LANCZOS)
-    left_crop = max(0, (shot.width - W) // 2)
+    left_crop = 0
     # Bias toward the top, not centered: these are portrait upper-body
     # shots, and a pure center crop chops the face off at the mouth
     # (found rendering the first real thumbnail with this layout).
