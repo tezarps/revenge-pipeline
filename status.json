@@ -1,40 +1,8 @@
 {
-  "story_id": 3,
-  "premise": "I ran my dad's roofing company for 12 years while my brother partied. At the retirement dinner, dad handed my brother the company in front of 40 guests. I quit that night, joined our biggest client, and watched the firm collapse in 18 months.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "17,312 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Dad Gave My Brother The Company After 12 Years. So I Walked Away And Watched "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "96.9 min, 1544MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=ys_rkWyLlNg"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-06T08:05:03.809952+00:00",
-  "video_id": "ys_rkWyLlNg"
+  "story_id": 4,
+  "premise": "My in-laws took $85,000 from my late husband's life insurance, telling the rest of the family I'd already spent it selfishly on myself, and cut me and my kids out of every holiday for six years. When their retirement fund collapsed, they asked to move into my house.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-06T10:17:28.750996+00:00"
 }
