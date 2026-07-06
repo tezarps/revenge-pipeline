@@ -174,17 +174,16 @@ def generate_thumbnail(title_text, story_id):
 
 
 # style -> (text color, bg box color or None, base font size in px)
-# Rebuilt 2026-07-05 to match the exact reference thumbnail the user
-# pointed to: NOT a yellow/magenta/red-box color stack, just plain white
-# narration alternating with cyan for the reveal/quoted/twist lines, no
-# background boxes anywhere, uniform size throughout. "SAMAKAN 1000000%".
-CYAN = (74, 222, 222)
+# Rebuilt 2026-07-06 to match a manually-built reference the user sent:
+# white/yellow alternating lines (was white/cyan), Baloo2 rounded-bold
+# font, top-left yellow/blue "TRUE STORY" badge (was a bottom green bar).
+YELLOW = (255, 245, 0)
 WHITE = (255, 255, 255)
 LINE_STYLE = {
     "setup":   (WHITE, None, 46),
-    "twist":   (CYAN, None, 46),
+    "twist":   (YELLOW, None, 46),
     "context": (WHITE, None, 46),
-    "climax1": (CYAN, None, 46),
+    "climax1": (YELLOW, None, 46),
     "climax2": (WHITE, None, 46),
 }
 DEFAULT_ORDER = ["setup", "twist", "context", "climax1", "climax2"]
@@ -192,17 +191,16 @@ DEFAULT_ORDER = ["setup", "twist", "context", "climax1", "climax2"]
 
 THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
 <html><head><meta charset="utf-8"><style>
-  @font-face {{ font-family: 'Anton'; src: url('{font_uri}') format('truetype'); }}
+  @font-face {{ font-family: 'Baloo2'; src: url('{font_uri}') format('truetype'); }}
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #1c1e26; font-family: 'Anton', Arial, sans-serif; }}
+  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #1c1e26; font-family: 'Baloo2', Arial, sans-serif; }}
   .frame {{ position: relative; width: 1280px; height: 720px; background: #1c1e26; }}
   /* Full-bleed backdrop: the SAME photo, heavily blurred and zoomed so it
      reads as a soft out-of-focus color wash, not a second recognizable
-     face competing with the text (that was the result the first pass at
-     this produced, a distracting ghosted duplicate portrait behind the
-     caption stack). The mask below darkens this instead of sitting over a
-     flat solid color. No separate solid-black panel anywhere per direct
-     feedback 2026-07-06 ("hapus panel hitam solid"). */
+     face competing with the text (an earlier sharp-backdrop attempt looked
+     like a distracting ghosted duplicate portrait). The mask below darkens
+     this instead of sitting over a flat solid color, so there is no
+     separate solid-black panel anywhere (feedback 2026-07-06). */
   .backdrop {{ position: absolute; inset: 0; overflow: hidden; z-index: 0; }}
   .backdrop img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%;
     filter: blur(45px) brightness(0.8); transform: scale(1.15); }}
@@ -214,25 +212,30 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
      darkest zone still shows photo through it, not a flat solid block. */
   .panel-fade {{ position: absolute; inset: 0; z-index: 2; opacity: 0.82;
     background-image: url('{mask_uri}'); background-size: 1280px 720px; }}
-  .text-stack {{ position: absolute; top: 34px; left: 42px; width: 660px; bottom: 116px;
-    z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px;
+  /* Badge moved to top-left, yellow/blue, per a manually-built reference
+     the user sent 2026-07-06 to replace the earlier bottom green bar. */
+  .badge {{ position: absolute; left: 42px; top: 46px; z-index: 4;
+    background: #fff500; border: 6px solid white; border-radius: 22px;
+    padding: 14px 34px; display: inline-block; }}
+  .badge span {{ font-family: 'Baloo2', Arial, sans-serif; font-variation-settings: 'wght' 800;
+    color: #376ec3; font-size: 62px; letter-spacing: 1px;
+    -webkit-text-stroke: 2px #1f4162; paint-order: stroke fill; }}
+  .text-stack {{ position: absolute; top: 200px; left: 42px; width: 660px; bottom: 30px;
+    z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 10px;
     transform-origin: top left; }}
   .line {{ font-size: 50px; line-height: 1.16; letter-spacing: 0.5px;
-    -webkit-text-stroke: 2.5px black; paint-order: stroke fill; text-transform: uppercase; }}
+    font-variation-settings: 'wght' 800;
+    -webkit-text-stroke: 2.5px #1f4162; paint-order: stroke fill; text-transform: uppercase; }}
   .white {{ color: #ffffff; }}
-  .cyan {{ color: #4adede; }}
-  .badge {{ position: absolute; left: 42px; width: 660px; bottom: 18px; height: 78px;
-    background: #13ad6a; border-radius: 39px; display: flex; align-items: center;
-    justify-content: center; z-index: 4; }}
-  .badge span {{ font-family: 'Anton', Arial, sans-serif; color: white; font-size: 42px; letter-spacing: 1px; }}
+  .yellow {{ color: #fff500; }}
 </style></head>
 <body>
   <div class="frame">
     <div class="backdrop"><img src="{photo_uri}"></div>
     <div class="photo-box"><img src="{photo_uri}"></div>
     <div class="panel-fade"></div>
+    <div class="badge"><span>TRUE STORY</span></div>
     <div class="text-stack" id="stack">{lines_html}</div>
-    <div class="badge"><span>- TRUE STORY -</span></div>
   </div>
 <script>
   function fitStack() {{
@@ -267,7 +270,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
         return None
 
     photo_path = chars[int(story_id) % len(chars)]
-    font_path = FONTS_DIR / "Anton-Regular.ttf"
+    font_path = FONTS_DIR / "Baloo2-Variable.ttf"
 
     def _data_uri(path, mime):
         return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
@@ -283,7 +286,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
         if not text:
             continue
         color_rgb, _box, _size = LINE_STYLE[style]
-        css_class = "cyan" if color_rgb == CYAN else "white"
+        css_class = "yellow" if color_rgb == YELLOW else "white"
         lines_html += f'<div class="line {css_class}">{text}</div>'
 
     if not lines_html:
