@@ -196,14 +196,23 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #1c1e26; font-family: 'Anton', Arial, sans-serif; }}
   .frame {{ position: relative; width: 1280px; height: 720px; background: #1c1e26; }}
+  /* Full-bleed backdrop: the SAME photo, heavily blurred and zoomed so it
+     reads as a soft out-of-focus color wash, not a second recognizable
+     face competing with the text (that was the result the first pass at
+     this produced, a distracting ghosted duplicate portrait behind the
+     caption stack). The mask below darkens this instead of sitting over a
+     flat solid color. No separate solid-black panel anywhere per direct
+     feedback 2026-07-06 ("hapus panel hitam solid"). */
+  .backdrop {{ position: absolute; inset: 0; overflow: hidden; z-index: 0; }}
+  .backdrop img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%;
+    filter: blur(45px) brightness(0.8); transform: scale(1.15); }}
   .photo-box {{ position: absolute; top: 0; right: 0; width: 560px; height: 720px; overflow: hidden; z-index: 1; }}
   .photo-box img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }}
-  /* User-supplied alpha mask (assets/panel_gradient_mask.png), not a
-     computed CSS gradient: opaque black at the left edge easing to fully
-     transparent by ~75% width, already sized exactly 1280x720. Replaces
-     the earlier hand-tuned linear-gradient stops per direct feedback
-     2026-07-06 ("ganti panel hitam solid... dengan ini"). */
-  .panel-fade {{ position: absolute; inset: 0; z-index: 2;
+  /* User-supplied alpha mask (assets/panel_gradient_mask.png): opaque
+     black at the left edge easing to fully transparent by ~75% width,
+     sized exactly 1280x720. Opacity capped below 100% so even the
+     darkest zone still shows photo through it, not a flat solid block. */
+  .panel-fade {{ position: absolute; inset: 0; z-index: 2; opacity: 0.82;
     background-image: url('{mask_uri}'); background-size: 1280px 720px; }}
   .text-stack {{ position: absolute; top: 34px; left: 42px; width: 660px; bottom: 116px;
     z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px;
@@ -219,6 +228,7 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
 </style></head>
 <body>
   <div class="frame">
+    <div class="backdrop"><img src="{photo_uri}"></div>
     <div class="photo-box"><img src="{photo_uri}"></div>
     <div class="panel-fade"></div>
     <div class="text-stack" id="stack">{lines_html}</div>
