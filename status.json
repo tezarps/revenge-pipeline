@@ -1,40 +1,8 @@
 {
-  "story_id": 2,
-  "premise": "My sister told my parents I stole my grandmother's jewelry, and they cut me off at 22. Seven years later the jewelry turned up in my sister's divorce inventory — and now the whole family wants me to co-sign a loan for her.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "17,004 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Framed Me For Theft, My Parents Disowned Me. So I Watched Them Lose Ev"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "91.1 min, 1446MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=IPig4pIGnMM"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-05T18:36:31.177471+00:00",
-  "video_id": "IPig4pIGnMM"
+  "story_id": 3,
+  "premise": "I ran my dad's roofing company for 12 years while my brother partied. At the retirement dinner, dad handed my brother the company in front of 40 guests. I quit that night, joined our biggest client, and watched the firm collapse in 18 months.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-06T05:25:37.447974+00:00"
 }
