@@ -53,12 +53,18 @@ def _cutout_character(char_path):
 
 def _pick_character(story_id):
     """One static shot for the WHOLE video (matches the reference channel:
-    the same photo holds for the entire 30-45 min runtime), rotated
-    deterministically across videos for variety."""
-    chars = sorted((p for p in CHARACTER_DIR.glob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png")))
-    if not chars:
-        return None
-    chosen = chars[int(story_id) % len(chars)]
+    the same photo holds for the entire 30-45 min runtime). Uses the shared
+    character_number_for_story() mapping (config.py) so the video cutout
+    and the thumbnail template always show the same person (fixed
+    2026-07-06 after story #3/#4 published with mismatched characters)."""
+    from config import character_number_for_story
+    num = character_number_for_story(story_id)
+    chosen = CHARACTER_DIR / f"person_{num:02d}.jpg"
+    if not chosen.exists():
+        chars = sorted((p for p in CHARACTER_DIR.glob("*") if p.suffix.lower() in (".jpg", ".jpeg", ".png")))
+        if not chars:
+            return None
+        chosen = chars[int(story_id) % len(chars)]
     return _cutout_character(chosen)
 
 
@@ -120,34 +126,44 @@ def _fallback_bg_concat(story_id, dur):
     return concat_file
 
 
-DISCLAIMER_SEC = 3
+# Shown only 1 second (down from 3, feedback 2026-07-06): long enough to
+# register as a real disclaimer card, short enough not to cost any watch
+# time on the hook.
+DISCLAIMER_SEC = 1
+# Reworded from scratch 2026-07-06 (own phrasing, not the reference
+# channel's wording), same legal substance (fictionalized, inspired by
+# real posts, no factual claim, no real-person resemblance), different
+# sentence structure and word choice throughout.
 DISCLAIMER_TEXT = (
-    "The stories featured on this channel are inspired by real-life experiences "
-    "shared on public platforms such as Reddit and other online forums. We "
-    "thoughtfully craft and reimagine these narratives, often incorporating "
-    "fictional elements to enhance storytelling, build emotional resonance, "
-    "and deliver a meaningful experience to our viewers. All content is created "
-    "with the intent of providing entertainment and inspiration. Any "
-    "similarities to actual persons, living or dead, names, or entities are "
-    "purely coincidental."
+    "This channel dramatizes stories inspired by posts shared across "
+    "online communities. Names, details, and dialogue are altered or "
+    "invented for narrative purposes, and nothing presented here is a "
+    "factual account of real events. Any resemblance to a specific "
+    "living or deceased person is unintentional and coincidental."
 )
 
 
 def _render_disclaimer_card():
-    """Legal/policy shield shown for a few seconds before the story starts,
-    matching real monetized competitor channels (user showed a reference
-    screenshot 2026-07-04: yellow card, warning emoji, red bold serif text,
-    green title). Flashed briefly and never narrated on purpose: a longer or
-    read-aloud disclaimer would hurt retention on the hook."""
+    """Legal/policy shield shown briefly before the story starts, matching
+    real monetized competitor channels (user showed a reference screenshot
+    2026-07-04: yellow card, warning emoji). Reworded and restyled
+    2026-07-06 per feedback: too close to the reference channel's own
+    wording, empty space below the text block, single flat color hurt
+    readability. Now uses the channel's own bundled fonts (Fredoka title,
+    Open Sans body) instead of a system serif, the whole block is
+    vertically centered instead of anchored near the top, and body lines
+    alternate two dark, high-contrast colors against the yellow card."""
     card_path = OUTPUT_DIR / "video" / "_disclaimer.png"
     if card_path.exists():
         return card_path
-    from PIL import Image, ImageDraw
+    from PIL import Image, ImageDraw, ImageFont
 
-    img = Image.new("RGB", (1920, 1080), (247, 216, 90))
+    W, H = 1920, 1080
+    img = Image.new("RGB", (W, H), (247, 216, 90))
     d = ImageDraw.Draw(img)
-    title_font = _disclaimer_font(56)
-    body_font = _disclaimer_font(34)
+    title_font = _disclaimer_font(_FREDOKA_PATH, 72)
+    body_font = _disclaimer_font(_OPENSANS_PATH, 40)
+    BODY_COLORS = [(31, 58, 95), (122, 31, 43)]  # dark navy / dark maroon, alternating per line
 
     def _warning_triangle(cx, cy, size):
         # Drawn shape, not a unicode emoji glyph. Emoji rendering in a
@@ -156,14 +172,11 @@ def _render_disclaimer_card():
         h = size
         pts = [(cx, cy - h * 0.55), (cx - h * 0.55, cy + h * 0.4), (cx + h * 0.55, cy + h * 0.4)]
         d.polygon(pts, outline=(20, 20, 20), fill=(255, 214, 0), width=4)
-        d.text((cx - 6, cy - 2), "!", font=_disclaimer_font(int(size * 0.5)), fill=(20, 20, 20))
+        d.text((cx - 7, cy - 4), "!", font=_disclaimer_font(_OPENSANS_PATH, int(size * 0.55)), fill=(20, 20, 20))
 
     title = "Content Disclaimer"
-    tw = d.textlength(title, font=title_font)
-    tx = (1920 - tw) / 2
-    d.text((tx, 60), title, font=title_font, fill=(30, 160, 130))
-    _warning_triangle(tx - 55, 92, 60)
-    _warning_triangle(tx + tw + 55, 92, 60)
+    title_w = d.textlength(title, font=title_font)
+    title_h = 90  # includes the warning triangles' vertical footprint
 
     words, lines, cur, max_w = DISCLAIMER_TEXT.split(), [], "", 1760
     for w in words:
@@ -176,27 +189,37 @@ def _render_disclaimer_card():
     if cur:
         lines.append(cur)
 
-    y = 220
-    for line in lines:
+    gap = 50
+    line_h = 58
+    body_h = len(lines) * line_h
+    total_h = title_h + gap + body_h
+    y = (H - total_h) / 2  # vertically center the whole block, no dead space below
+
+    tx = (W - title_w) / 2
+    d.text((tx, y), title, font=title_font, fill=(30, 160, 130))
+    _warning_triangle(tx - 60, y + 34, 66)
+    _warning_triangle(tx + title_w + 60, y + 34, 66)
+
+    y += title_h + gap
+    for i, line in enumerate(lines):
         lw = d.textlength(line, font=body_font)
-        d.text(((1920 - lw) / 2, y), line, font=body_font, fill=(230, 60, 50))
-        y += 54
+        d.text(((W - lw) / 2, y), line, font=body_font, fill=BODY_COLORS[i % 2])
+        y += line_h
 
     img.save(card_path)
     return card_path
 
 
-def _disclaimer_font(size):
-    for name in ("/System/Library/Fonts/Supplemental/Georgia Bold.ttf",
-                 "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
-                 "Georgia Bold.ttf"):
-        try:
-            from PIL import ImageFont
-            return ImageFont.truetype(name, size)
-        except OSError:
-            continue
+_FREDOKA_PATH = ASSETS_BG_DIR.parent / "fonts" / "Fredoka-Variable.ttf"
+_OPENSANS_PATH = ASSETS_BG_DIR.parent / "fonts" / "OpenSans-Variable.ttf"
+
+
+def _disclaimer_font(path, size):
     from PIL import ImageFont
-    return ImageFont.load_default(size)
+    try:
+        return ImageFont.truetype(str(path), size)
+    except OSError:
+        return ImageFont.load_default(size)
 
 
 def _render_disclaimer_clip():

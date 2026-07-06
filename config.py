@@ -23,7 +23,7 @@ STORIES_FILE = BASE_DIR / "stories.json"
 TOKEN_FILE = BASE_DIR / "youtube_token.pickle"
 YOUTUBE_CLIENT_SECRET = os.environ.get("YOUTUBE_CLIENT_SECRET_PATH", "youtube_client_secret.json")
 
-# Kokoro TTS — local, $0/video. af_bella picked by user 2026-07-04 (switched
+# Kokoro TTS, local, $0/video. af_bella picked by user 2026-07-04 (switched
 # from am_michael after locking a female thumbnail character; audience is
 # women 25-45, so voice+story+face now align female). Model files are fetched
 # to ~/.cache/revenge-tts/ on first run (~340MB, cached across GH Actions runs).
@@ -40,7 +40,7 @@ KOKORO_CACHE = Path(os.environ.get("KOKORO_CACHE", Path.home() / ".cache" / "rev
 # videos accumulate watch-time hours (4,000h YPP threshold) and mid-roll
 # slots much faster per upload. NOTE: this multiplies Kokoro/whisper/ffmpeg
 # render time roughly 3x per video (see project memory for the GH Actions
-# minutes math) — decide the compute lever (self-hosted runner / public
+# minutes math), decide the compute lever (self-hosted runner / public
 # repo) before also cranking upload cadence, or the free 2,000 min/month
 # ceiling blows past quickly.
 SCRIPT_MIN_WORDS = 17000
@@ -52,3 +52,17 @@ FFPROBE_BIN = os.environ.get("FFPROBE_BIN", "ffprobe")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 for sub in ("scripts", "audio", "video", "thumbs", "metadata"):
     (OUTPUT_DIR / sub).mkdir(exist_ok=True)
+
+# Character numbers 1-7: the user supplies matched pairs, assets/character/
+# person_0{N}.jpg (video cutout) and assets/thumb_templates/{N}.png
+# (thumbnail background), same woman in both so the thumbnail never shows
+# a different person than the video (root-caused 2026-07-06: story #3 and
+# #4 published with mismatched thumbnail/video characters because the two
+# assets were being picked by two different, uncoordinated rotations).
+# Story #2 used character 1 (the original template), so the rotation
+# anchors there: story N -> character ((N - 2) % 7) + 1.
+CHARACTER_COUNT = 7
+
+
+def character_number_for_story(story_id):
+    return ((int(story_id) - 2) % CHARACTER_COUNT) + 1

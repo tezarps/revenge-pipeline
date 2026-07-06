@@ -305,16 +305,19 @@ def generate_thumbnail_b(thumb_lines, story_id):
     if not chars or not thumb_lines:
         return None
 
-    photo_path = chars[int(story_id) % len(chars)]
+    from config import character_number_for_story
+    char_num = character_number_for_story(story_id)
+    numbered_photo = CHARACTER_DIR / f"person_{char_num:02d}.jpg"
+    photo_path = numbered_photo if numbered_photo.exists() else chars[int(story_id) % len(chars)]
     fredoka_path = FONTS_DIR / "Fredoka-Variable.ttf"
     opensans_path = FONTS_DIR / "OpenSans-Variable.ttf"
-    # One fixed template reused for every video, not per-story: the user
-    # built a single background (character + sky/field scene) in Canva and
-    # wants every thumbnail to just overlay new caption text on top of it,
-    # not a different rotated character/backdrop per story (corrected
-    # 2026-07-06 after story #3 fell back to the old composed look because
-    # only assets/thumb_templates/2.png existed, not a per-id file for #3).
-    template_path = THUMB_TEMPLATE_DIR / f"{story_id}.png"
+    # Template picked by CHARACTER NUMBER (1-7, user-supplied matched pairs:
+    # assets/thumb_templates/{N}.png + assets/character/person_0{N}.jpg),
+    # not by story_id directly, so the thumbnail always shows the same
+    # person as the video's character cutout (fixed 2026-07-06, see
+    # config.py's character_number_for_story and assembly_agent.py's
+    # _pick_character - both must use the same mapping).
+    template_path = THUMB_TEMPLATE_DIR / f"{char_num}.png"
     if not template_path.exists():
         template_path = THUMB_TEMPLATE_DIR / "default.png"
 
