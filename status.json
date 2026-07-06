@@ -1,7 +1,7 @@
 {
   "story_id": 4,
   "premise": "My in-laws took $85,000 from my late husband's life insurance, telling the rest of the family I'd already spent it selfishly on myself, and cut me and my kids out of every holiday for six years. When their retirement fund collapsed, they asked to move into my house.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-06T11:24:08.230995+00:00"
+  "updated_at": "2026-07-06T11:24:10.054045+00:00"
 }
