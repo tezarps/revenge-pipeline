@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Dad Gave My Brother The Company After 12 Years. So I Walked Away And Watched "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-06T06:15:46.916459+00:00"
+  "updated_at": "2026-07-06T06:15:54.800033+00:00"
 }
