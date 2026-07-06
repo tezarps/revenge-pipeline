@@ -30,10 +30,10 @@
     "upload": {
       "label": "Uploading to YouTube",
       "icon": "upload",
-      "status": "running",
-      "detail": ""
+      "status": "done",
+      "detail": "youtube.com/watch?v=ys_rkWyLlNg"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-06T08:04:04.598073+00:00"
+  "updated_at": "2026-07-06T08:05:02.428375+00:00"
 }
