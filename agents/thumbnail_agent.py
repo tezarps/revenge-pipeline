@@ -13,6 +13,7 @@ from config import OUTPUT_DIR, CHANNEL_NAME, ASSETS_BG_DIR
 
 CHARACTER_DIR = ASSETS_BG_DIR.parent / "character"
 FONTS_DIR = ASSETS_BG_DIR.parent / "fonts"
+PANEL_MASK_PATH = ASSETS_BG_DIR.parent / "panel_gradient_mask.png"
 
 W, H = 1280, 720
 
@@ -197,14 +198,13 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
   .frame {{ position: relative; width: 1280px; height: 720px; background: #1c1e26; }}
   .photo-box {{ position: absolute; top: 0; right: 0; width: 560px; height: 720px; overflow: hidden; z-index: 1; }}
   .photo-box img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }}
-  /* No blur, no hard-edged solid zone. The gradient starts fading
-     immediately from the left edge and tapers out gradually over a wide
-     span (roughly 490px-1050px of the 1280 frame), so there is no visible
-     line anywhere, just a continuous soft falloff. Max opacity capped at
-     55% throughout (never a solid/opaque block) per direct feedback
-     2026-07-05: no blur, opacity down, no hard edge. */
+  /* User-supplied alpha mask (assets/panel_gradient_mask.png), not a
+     computed CSS gradient: opaque black at the left edge easing to fully
+     transparent by ~75% width, already sized exactly 1280x720. Replaces
+     the earlier hand-tuned linear-gradient stops per direct feedback
+     2026-07-06 ("ganti panel hitam solid... dengan ini"). */
   .panel-fade {{ position: absolute; inset: 0; z-index: 2;
-    background: linear-gradient(to right, rgba(15,17,23,0.55) 0%, rgba(15,17,23,0.5) 25%, rgba(15,17,23,0.3) 55%, rgba(15,17,23,0) 82%); }}
+    background-image: url('{mask_uri}'); background-size: 1280px 720px; }}
   .text-stack {{ position: absolute; top: 34px; left: 42px; width: 660px; bottom: 116px;
     z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px;
     transform-origin: top left; }}
@@ -264,6 +264,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
 
     photo_uri = _data_uri(photo_path, "image/jpeg")
     font_uri = _data_uri(font_path, "font/ttf") if font_path.exists() else ""
+    mask_uri = _data_uri(PANEL_MASK_PATH, "image/png") if PANEL_MASK_PATH.exists() else ""
 
     lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}
     lines_html = ""
@@ -278,7 +279,7 @@ def generate_thumbnail_b(thumb_lines, story_id):
     if not lines_html:
         return None
 
-    html = THUMB_HTML_TEMPLATE.format(photo_uri=photo_uri, font_uri=font_uri, lines_html=lines_html)
+    html = THUMB_HTML_TEMPLATE.format(photo_uri=photo_uri, font_uri=font_uri, mask_uri=mask_uri, lines_html=lines_html)
 
     path = OUTPUT_DIR / "thumbs" / f"{story_id}_b.jpg"
     with sync_playwright() as p:
