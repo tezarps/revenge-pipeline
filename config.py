@@ -5,13 +5,17 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 
-# Sonnet for the story script (long-form coherence is the channel's only
-# moat vs the dead clone farms, see revenge-story-lab/SCHEMA_COMPARISON.md),
-# Haiku for cheap short jobs (titles, tags, premise ideas). Reverted
-# 2026-07-05 after a same-day Haiku experiment, back to Sonnet by user decision.
+# Haiku for cheap short jobs (titles, tags, premise ideas) stays Anthropic.
+# The long-form script (the expensive call, ~$1.25/video on Sonnet) moved
+# to DeepSeek's top tier 2026-07-06 (user decision, own API key) to cut
+# that cost to near zero. deepseek-v4-pro is a reasoning model (see
+# agents/llm.py's call_deepseek), so it needs a generous max_tokens to
+# leave room for both the hidden reasoning pass and the actual output.
 SONNET_MODEL = "claude-sonnet-5"
 HAIKU_MODEL = "claude-haiku-4-5"
+DEEPSEEK_MODEL = "deepseek-v4-pro"
 
 # Shown on the fake-Reddit-card thumbnail (niche house style).
 CHANNEL_NAME = os.environ.get("CHANNEL_NAME", "Golden Child Stories")

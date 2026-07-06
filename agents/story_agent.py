@@ -10,7 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import STORIES_FILE, SCRIPT_MIN_WORDS, SCRIPT_MAX_WORDS
-from agents.llm import call, call_haiku
+from agents.llm import call_deepseek, call_haiku
 
 # The 6 non-negotiable schema rules, distilled from the 5-video teardown.
 SCHEMA = """You are the head writer for a faceless YouTube channel that narrates original first-person family-betrayal revenge stories (25-45yo US audience). Write ONE complete video script following this exact structure:
@@ -120,20 +120,20 @@ def generate_script(story):
     variant_name = "heist-thriller" if use_heist else "plain-drama"
     print(f"    Schema variant: {variant_name}")
 
-    script = call(
+    script = call_deepseek(
         f"Premise: {story['premise']}\n\nWrite the full script now. Target length: {words_hint} words. Remember: output ONLY the narration text.",
         system=schema,
         max_tokens=32000,
     )
     wc = len(script.split())
 
-    # At this word-count target, one extension pass is rarely enough — loop
-    # with a cap so a single stubborn generation can't run away with cost.
+    # At this word-count target, one extension pass is rarely enough, so
+    # loop with a cap so a single stubborn generation can't run away with cost.
     attempts = 0
     while wc < SCRIPT_MIN_WORDS and attempts < 3:
         attempts += 1
-        print(f"    Script short ({wc} words, need {SCRIPT_MIN_WORDS}+) — extension pass {attempts}/3...")
-        script = call(
+        print(f"    Script short ({wc} words, need {SCRIPT_MIN_WORDS}+), extension pass {attempts}/3...")
+        script = call_deepseek(
             f"Premise: {story['premise']}\n\nHere is a draft that is too short ({wc} words, need {words_hint}). Rewrite it at full target length by DEEPENING every section with more scenes, more procedural/emotional detail, and more beats, without changing the plot or ending. Output ONLY the narration text.\n\nDRAFT:\n{script}",
             system=schema,
             max_tokens=32000,
