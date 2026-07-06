@@ -308,7 +308,15 @@ def generate_thumbnail_b(thumb_lines, story_id):
     photo_path = chars[int(story_id) % len(chars)]
     fredoka_path = FONTS_DIR / "Fredoka-Variable.ttf"
     opensans_path = FONTS_DIR / "OpenSans-Variable.ttf"
+    # One fixed template reused for every video, not per-story: the user
+    # built a single background (character + sky/field scene) in Canva and
+    # wants every thumbnail to just overlay new caption text on top of it,
+    # not a different rotated character/backdrop per story (corrected
+    # 2026-07-06 after story #3 fell back to the old composed look because
+    # only assets/thumb_templates/2.png existed, not a per-id file for #3).
     template_path = THUMB_TEMPLATE_DIR / f"{story_id}.png"
+    if not template_path.exists():
+        template_path = THUMB_TEMPLATE_DIR / "default.png"
 
     def _data_uri(path, mime):
         return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
@@ -318,8 +326,8 @@ def generate_thumbnail_b(thumb_lines, story_id):
     opensans_uri = _data_uri(opensans_path, "font/ttf") if opensans_path.exists() else ""
 
     if template_path.exists():
-        # Pre-made per-story background (e.g. a manually-built Canva
-        # export the user supplies), used as-is, full-bleed.
+        # Pre-made background (a manually-built Canva export the user
+        # supplies), used as-is, full-bleed, same one for every video.
         template_uri = _data_uri(template_path, "image/png")
         background_css = _TEMPLATE_BACKGROUND_CSS
         background_html = _TEMPLATE_BACKGROUND_HTML.replace("TEMPLATE_URI_PLACEHOLDER", template_uri)
