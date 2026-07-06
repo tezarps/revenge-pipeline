@@ -201,13 +201,13 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
   /* Badge top-left, yellow/blue, per a manually-built reference the user
      sent 2026-07-06 to replace the earlier bottom green bar. Badge font
      is Fredoka (rounded display face); body lines are Open Sans. */
-  .badge {{ position: absolute; left: 42px; top: 46px; z-index: 4;
-    background: #fff500; border: 6px solid white; border-radius: 22px;
-    padding: 14px 34px; display: inline-block; }}
+  .badge {{ position: absolute; left: 42px; top: 40px; z-index: 4;
+    background: #fff500; border: 7px solid white; border-radius: 26px;
+    padding: 16px 38px; display: inline-block; }}
   .badge span {{ font-family: 'Fredoka', Arial, sans-serif; font-variation-settings: 'wght' 700;
-    color: #376ec3; font-size: 62px; letter-spacing: 1px;
-    -webkit-text-stroke: 2px #1f4162; paint-order: stroke fill; }}
-  .text-stack {{ position: absolute; top: 200px; left: 42px; width: 660px; bottom: 30px;
+    color: #376ec3; font-size: 74px; letter-spacing: 1px;
+    -webkit-text-stroke: 2.5px #1f4162; paint-order: stroke fill; }}
+  .text-stack {{ position: absolute; top: 224px; left: 42px; width: 660px; bottom: 30px;
     z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 10px;
     transform-origin: top left; }}
   .line {{ font-family: 'OpenSans', Arial, sans-serif; font-size: 50px; line-height: 1.16;
