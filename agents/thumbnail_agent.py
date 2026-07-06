@@ -280,13 +280,23 @@ _TEMPLATE_BACKGROUND_CSS = """
 
 
 def generate_thumbnail_b(thumb_lines, story_id):
-    """Style B: exact copy of Calm Dad Stories / Calm Drama Stories layout,
-    rendered as real HTML/CSS via a headless Chromium (Playwright) instead
-    of hand-computed Pillow pixel math. Verified visually against the
-    reference thumbnail 2026-07-05 (photo right ~40%, dark bg left ~60%,
-    white/cyan Anton stack, full-width green TRUE STORY pill) before being
-    wired in here - HTML/CSS gives exact flexbox/gradient/font-stroke
-    control that blind Pillow coordinate math kept getting wrong.
+    """Style B, LOCKED 2026-07-06, confirmed by user, do not change
+    without explicit new direction:
+
+      - Rendered as real HTML/CSS via headless Chromium (Playwright), not
+        hand-computed Pillow pixel math (that kept drifting from the
+        reference across many rounds of feedback).
+      - Badge: top-left, yellow (#fff500) rounded rect, white border,
+        "TRUE STORY" in bold blue (#376ec3) Fredoka, dark navy stroke.
+      - Caption stack: Open Sans bold, white/yellow alternating lines,
+        left-aligned below the badge.
+      - Background: if assets/thumb_templates/{story_id}.png exists, use
+        it full-bleed as-is (a pre-made composite the user supplies per
+        video). Otherwise fall back to the composed look: photo on the
+        right ~44% (photo-box), a heavily blurred/darkened full-bleed copy
+        of the same photo as backdrop, and the user-supplied alpha-gradient
+        mask (assets/panel_gradient_mask.png) over it at 82% opacity so the
+        left side is never a flat solid block.
     """
     import base64
     from playwright.sync_api import sync_playwright
