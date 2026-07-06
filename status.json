@@ -1,15 +1,21 @@
 {
   "story_id": 3,
   "premise": "I ran my dad's roofing company for 12 years while my brother partied. At the retirement dinner, dad handed my brother the company in front of 40 guests. I quit that night, joined our biggest client, and watched the firm collapse in 18 months.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "17,312 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-06T05:42:26.913690+00:00"
+  "updated_at": "2026-07-06T05:42:28.673649+00:00"
 }
