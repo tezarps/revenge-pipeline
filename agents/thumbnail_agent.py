@@ -14,6 +14,7 @@ from config import OUTPUT_DIR, CHANNEL_NAME, ASSETS_BG_DIR
 CHARACTER_DIR = ASSETS_BG_DIR.parent / "character"
 FONTS_DIR = ASSETS_BG_DIR.parent / "fonts"
 PANEL_MASK_PATH = ASSETS_BG_DIR.parent / "panel_gradient_mask.png"
+THUMB_TEMPLATE_DIR = ASSETS_BG_DIR.parent / "thumb_templates"
 
 W, H = 1280, 720
 
@@ -175,8 +176,8 @@ def generate_thumbnail(title_text, story_id):
 
 # style -> (text color, bg box color or None, base font size in px)
 # Rebuilt 2026-07-06 to match a manually-built reference the user sent:
-# white/yellow alternating lines (was white/cyan), Baloo2 rounded-bold
-# font, top-left yellow/blue "TRUE STORY" badge (was a bottom green bar).
+# white/yellow alternating lines (was white/cyan), Open Sans body font,
+# top-left yellow/blue "TRUE STORY" badge in Fredoka (was a bottom green bar).
 YELLOW = (255, 245, 0)
 WHITE = (255, 255, 255)
 LINE_STYLE = {
@@ -191,49 +192,33 @@ DEFAULT_ORDER = ["setup", "twist", "context", "climax1", "climax2"]
 
 THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
 <html><head><meta charset="utf-8"><style>
-  @font-face {{ font-family: 'Baloo2'; src: url('{font_uri}') format('truetype'); }}
+  @font-face {{ font-family: 'Fredoka'; src: url('{fredoka_uri}') format('truetype'); }}
+  @font-face {{ font-family: 'OpenSans'; src: url('{opensans_uri}') format('truetype'); }}
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #1c1e26; font-family: 'Baloo2', Arial, sans-serif; }}
+  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #1c1e26; font-family: 'OpenSans', Arial, sans-serif; }}
   .frame {{ position: relative; width: 1280px; height: 720px; background: #1c1e26; }}
-  /* Full-bleed backdrop: the SAME photo, heavily blurred and zoomed so it
-     reads as a soft out-of-focus color wash, not a second recognizable
-     face competing with the text (an earlier sharp-backdrop attempt looked
-     like a distracting ghosted duplicate portrait). The mask below darkens
-     this instead of sitting over a flat solid color, so there is no
-     separate solid-black panel anywhere (feedback 2026-07-06). */
-  .backdrop {{ position: absolute; inset: 0; overflow: hidden; z-index: 0; }}
-  .backdrop img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%;
-    filter: blur(45px) brightness(0.8); transform: scale(1.15); }}
-  .photo-box {{ position: absolute; top: 0; right: 0; width: 560px; height: 720px; overflow: hidden; z-index: 1; }}
-  .photo-box img {{ width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }}
-  /* User-supplied alpha mask (assets/panel_gradient_mask.png): opaque
-     black at the left edge easing to fully transparent by ~75% width,
-     sized exactly 1280x720. Opacity capped below 100% so even the
-     darkest zone still shows photo through it, not a flat solid block. */
-  .panel-fade {{ position: absolute; inset: 0; z-index: 2; opacity: 0.82;
-    background-image: url('{mask_uri}'); background-size: 1280px 720px; }}
-  /* Badge moved to top-left, yellow/blue, per a manually-built reference
-     the user sent 2026-07-06 to replace the earlier bottom green bar. */
+  {background_css}
+  /* Badge top-left, yellow/blue, per a manually-built reference the user
+     sent 2026-07-06 to replace the earlier bottom green bar. Badge font
+     is Fredoka (rounded display face); body lines are Open Sans. */
   .badge {{ position: absolute; left: 42px; top: 46px; z-index: 4;
     background: #fff500; border: 6px solid white; border-radius: 22px;
     padding: 14px 34px; display: inline-block; }}
-  .badge span {{ font-family: 'Baloo2', Arial, sans-serif; font-variation-settings: 'wght' 800;
+  .badge span {{ font-family: 'Fredoka', Arial, sans-serif; font-variation-settings: 'wght' 700;
     color: #376ec3; font-size: 62px; letter-spacing: 1px;
     -webkit-text-stroke: 2px #1f4162; paint-order: stroke fill; }}
   .text-stack {{ position: absolute; top: 200px; left: 42px; width: 660px; bottom: 30px;
     z-index: 3; display: flex; flex-direction: column; justify-content: flex-start; gap: 10px;
     transform-origin: top left; }}
-  .line {{ font-size: 50px; line-height: 1.16; letter-spacing: 0.5px;
-    font-variation-settings: 'wght' 800;
+  .line {{ font-family: 'OpenSans', Arial, sans-serif; font-size: 50px; line-height: 1.16;
+    letter-spacing: 0.5px; font-variation-settings: 'wght' 800;
     -webkit-text-stroke: 2.5px #1f4162; paint-order: stroke fill; text-transform: uppercase; }}
   .white {{ color: #ffffff; }}
   .yellow {{ color: #fff500; }}
 </style></head>
 <body>
   <div class="frame">
-    <div class="backdrop"><img src="{photo_uri}"></div>
-    <div class="photo-box"><img src="{photo_uri}"></div>
-    <div class="panel-fade"></div>
+    {background_html}
     <div class="badge"><span>TRUE STORY</span></div>
     <div class="text-stack" id="stack">{lines_html}</div>
   </div>
@@ -251,6 +236,47 @@ THUMB_HTML_TEMPLATE = """<!DOCTYPE html>
   window.onload = fitStack;
 </script>
 </body></html>"""
+
+# Used when no pre-made per-story template exists in assets/thumb_templates/
+# (the general case): the photo composited with a blurred full-bleed
+# backdrop and the user's alpha-mask panel fade, same as before.
+_COMPOSED_BACKGROUND_CSS = """
+  /* Full-bleed backdrop: the SAME photo, heavily blurred and zoomed so it
+     reads as a soft out-of-focus color wash, not a second recognizable
+     face competing with the text (an earlier sharp-backdrop attempt looked
+     like a distracting ghosted duplicate portrait). The mask below darkens
+     this instead of sitting over a flat solid color, so there is no
+     separate solid-black panel anywhere (feedback 2026-07-06). */
+  .backdrop { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+  .backdrop img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%;
+    filter: blur(45px) brightness(0.8); transform: scale(1.15); }
+  .photo-box { position: absolute; top: 0; right: 0; width: 560px; height: 720px; overflow: hidden; z-index: 1; }
+  .photo-box img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+  /* User-supplied alpha mask (assets/panel_gradient_mask.png): opaque
+     black at the left edge easing to fully transparent by ~75% width,
+     sized exactly 1280x720. Opacity capped below 100% so even the
+     darkest zone still shows photo through it, not a flat solid block. */
+  .panel-fade { position: absolute; inset: 0; z-index: 2; opacity: 0.82;
+    background-image: url('MASK_URI_PLACEHOLDER'); background-size: 1280px 720px; }
+"""
+
+_COMPOSED_BACKGROUND_HTML = """
+    <div class="backdrop"><img src="PHOTO_URI_PLACEHOLDER"></div>
+    <div class="photo-box"><img src="PHOTO_URI_PLACEHOLDER"></div>
+    <div class="panel-fade"></div>
+"""
+
+# Used when assets/thumb_templates/{story_id}.png exists: a fully
+# pre-composited background (photo + sky/scene already merged, e.g. a
+# manually-built Canva export the user supplies per video) is used as-is,
+# full-bleed, with only the badge and caption stack drawn on top.
+_TEMPLATE_BACKGROUND_HTML = """
+    <div class="template-bg"><img src="TEMPLATE_URI_PLACEHOLDER"></div>
+"""
+_TEMPLATE_BACKGROUND_CSS = """
+  .template-bg { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+  .template-bg img { width: 100%; height: 100%; object-fit: cover; }
+"""
 
 
 def generate_thumbnail_b(thumb_lines, story_id):
@@ -270,14 +296,27 @@ def generate_thumbnail_b(thumb_lines, story_id):
         return None
 
     photo_path = chars[int(story_id) % len(chars)]
-    font_path = FONTS_DIR / "Baloo2-Variable.ttf"
+    fredoka_path = FONTS_DIR / "Fredoka-Variable.ttf"
+    opensans_path = FONTS_DIR / "OpenSans-Variable.ttf"
+    template_path = THUMB_TEMPLATE_DIR / f"{story_id}.png"
 
     def _data_uri(path, mime):
         return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
 
     photo_uri = _data_uri(photo_path, "image/jpeg")
-    font_uri = _data_uri(font_path, "font/ttf") if font_path.exists() else ""
-    mask_uri = _data_uri(PANEL_MASK_PATH, "image/png") if PANEL_MASK_PATH.exists() else ""
+    fredoka_uri = _data_uri(fredoka_path, "font/ttf") if fredoka_path.exists() else ""
+    opensans_uri = _data_uri(opensans_path, "font/ttf") if opensans_path.exists() else ""
+
+    if template_path.exists():
+        # Pre-made per-story background (e.g. a manually-built Canva
+        # export the user supplies), used as-is, full-bleed.
+        template_uri = _data_uri(template_path, "image/png")
+        background_css = _TEMPLATE_BACKGROUND_CSS
+        background_html = _TEMPLATE_BACKGROUND_HTML.replace("TEMPLATE_URI_PLACEHOLDER", template_uri)
+    else:
+        mask_uri = _data_uri(PANEL_MASK_PATH, "image/png") if PANEL_MASK_PATH.exists() else ""
+        background_css = _COMPOSED_BACKGROUND_CSS.replace("MASK_URI_PLACEHOLDER", mask_uri)
+        background_html = _COMPOSED_BACKGROUND_HTML.replace("PHOTO_URI_PLACEHOLDER", photo_uri)
 
     lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}
     lines_html = ""
@@ -292,7 +331,11 @@ def generate_thumbnail_b(thumb_lines, story_id):
     if not lines_html:
         return None
 
-    html = THUMB_HTML_TEMPLATE.format(photo_uri=photo_uri, font_uri=font_uri, mask_uri=mask_uri, lines_html=lines_html)
+    html = THUMB_HTML_TEMPLATE.format(
+        fredoka_uri=fredoka_uri, opensans_uri=opensans_uri,
+        background_css=background_css, background_html=background_html,
+        lines_html=lines_html,
+    )
 
     path = OUTPUT_DIR / "thumbs" / f"{story_id}_b.jpg"
     with sync_playwright() as p:
