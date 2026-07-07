@@ -1,7 +1,7 @@
 {
   "story_id": 6,
   "premise": "My parents forged my signature on a $400,000 trust my grandmother left me, transferring it to my brother’s failing construction business while they told the family I’d blown it on drugs. I bought the debt from the bank for $12,000 a decade later, foreclosed on his house, and sold it at auction while he watched.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "73.5 min, 1128MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-07T14:50:32.365704+00:00"
+  "updated_at": "2026-07-07T14:50:33.636951+00:00"
 }
