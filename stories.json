@@ -23,6 +23,31 @@
       "premise": "My in-laws took $85,000 from my late husband's life insurance, telling the rest of the family I'd already spent it selfishly on myself, and cut me and my kids out of every holiday for six years. When their retirement fund collapsed, they asked to move into my house.",
       "status": "done",
       "video_id": "HSkXlglvJhU"
+    },
+    {
+      "id": 5,
+      "premise": "My sister convinced our dying mother to sign her entire $435,000 estate into a secret trust just for her, and then told me I was cut off for being 'greedy.' Five years later she needed a bone marrow donor for her daughter and I was the only match — I donated only after she publicly confessed and wired me every cent.",
+      "status": "failed"
+    },
+    {
+      "id": 6,
+      "premise": "My parents forged my signature on a $400,000 trust my grandmother left me, transferring it to my brother’s failing construction business while they told the family I’d blown it on drugs. I bought the debt from the bank for $12,000 a decade later, foreclosed on his house, and sold it at auction while he watched.",
+      "status": "pending"
+    },
+    {
+      "id": 7,
+      "premise": "My in-laws manipulated my dying husband into signing over our $300,000 startup equity to 'protect' it from me, then evicted me and our baby from our apartment. Six years later I was hired as CFO of the company that acquired their business — I found the fraudulent transfer, clawed it all back with interest, and bankrupted them.",
+      "status": "pending"
+    },
+    {
+      "id": 8,
+      "premise": "My brother, a neurologist, tricked our father into granting him medical power of attorney and then drained $380,000 from a custodial account I co-owned by billing for sham home visits. I filed a complaint with the state medical board, got his license suspended, and won a $520,000 civil judgment that forced him to sell his practice.",
+      "status": "pending"
+    },
+    {
+      "id": 9,
+      "premise": "My sister forged my signature on a quitclaim deed for the $285,000 condo our aunt left me, rented it out, and pocketed $40,000 in rent while I unknowingly paid the mortgage. I moved back in the day the lease ended, changed the locks, and sued for fraud — the court awarded me triple damages and I put a lien on her house.",
+      "status": "pending"
     }
   ]
 }
