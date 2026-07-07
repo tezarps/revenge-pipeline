@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "error",
+      "detail": "'NoneType' object has no attribute 'group'"
     }
   },
-  "run_state": "running",
-  "updated_at": "2026-07-07T12:12:58.790707+00:00"
+  "run_state": "failed",
+  "updated_at": "2026-07-07T12:14:41.529209+00:00"
 }
