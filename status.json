@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Parents Stole My $400K Inheritance, Told Everyone I Did Drugs. So I Foreclose"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-07T13:17:12.313254+00:00"
+  "updated_at": "2026-07-07T13:18:12.320806+00:00"
 }
