@@ -10,7 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import STORIES_FILE, SCRIPT_MIN_WORDS, SCRIPT_MAX_WORDS
-from agents.llm import call_deepseek, call_haiku
+from agents.llm import call_deepseek
 
 # The 6 non-negotiable schema rules, distilled from the 5-video teardown.
 SCHEMA = """You are the head writer for a faceless YouTube channel that narrates original first-person family-betrayal revenge stories (25-45yo US audience). Write ONE complete video script following this exact structure:
@@ -91,9 +91,13 @@ def top_up_queue(n=5):
     """Agent generates fresh premises, avoiding repeats of what's in the queue."""
     data = _load()
     used = "\n".join(f"- {s['premise']}" for s in data["stories"][-30:]) or "(none yet)"
-    raw = call_haiku(
+    raw = call_deepseek(
         f"""Generate {n} fresh premises for first-person family-betrayal revenge stories (YouTube long-form niche). Each premise: 1-2 sentences, hyper-specific (who betrayed, what was taken incl. a dollar amount or concrete stake, what the comeback is). Narrator is ALWAYS a woman aged 24-45 (channel voice is female). Vary the betrayer (sister/brother/parents/in-laws) and the arena (inheritance, wedding, company, house, medical). Avoid anything similar to these already used:\n{used}\n\nReturn ONLY a JSON array of strings.""",
-        max_tokens=1500,
+        # 6000 not 1500: deepseek-v4-pro is a reasoning model that spends
+        # part of max_tokens on a hidden reasoning pass before the visible
+        # output, confirmed directly 2026-07-07 (a 1400-token metadata call
+        # came back completely empty, the whole budget went to reasoning).
+        max_tokens=6000,
     )
     m = re.search(r"\[.*\]", raw, re.S)
     premises = json.loads(m.group(0)) if m else []
@@ -153,7 +157,7 @@ Each segment is ALL CAPS, no em dash. Together they should read like an escalati
 
 
 def generate_metadata(story, script):
-    raw = call_haiku(
+    raw = call_deepseek(
         f"""For this YouTube revenge-story video, write metadata. {TITLE_RULES}
 
 {THUMB_LINES_RULES}
@@ -164,7 +168,10 @@ Opening of script: {script[:1200]}
 Never use an em dash (the "—" character) anywhere in any field; use a comma, period, or "and"/"but" instead.
 
 Return ONLY JSON: {{"title": "...", "description": "2-3 sentence description ending with 3 relevant hashtags", "tags": ["10-14 tags"], "thumb_text": "6-10 word emotional punchline for the fallback thumbnail, ALL CAPS", "thumb_lines": [{{"style": "setup", "text": "..."}}, {{"style": "twist", "text": "..."}}, {{"style": "context", "text": "..."}}, {{"style": "climax1", "text": "..."}}, {{"style": "climax2", "text": "..."}}]}}""",
-        max_tokens=1400,
+        # 6000 not 1400: see the comment in top_up_queue, same reasoning-
+        # model token accounting issue, confirmed directly with this exact
+        # prompt (1400 came back empty, 6000 returned full valid JSON).
+        max_tokens=6000,
     )
     m = re.search(r"\{.*\}", raw, re.S)
     return json.loads(m.group(0))

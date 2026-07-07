@@ -4,17 +4,16 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
-ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 
-# Haiku for cheap short jobs (titles, tags, premise ideas) stays Anthropic.
-# The long-form script (the expensive call, ~$1.25/video on Sonnet) moved
-# to DeepSeek's top tier 2026-07-06 (user decision, own API key) to cut
-# that cost to near zero. deepseek-v4-pro is a reasoning model (see
-# agents/llm.py's call_deepseek), so it needs a generous max_tokens to
-# leave room for both the hidden reasoning pass and the actual output.
-SONNET_MODEL = "claude-sonnet-5"
-HAIKU_MODEL = "claude-haiku-4-5"
+# All content generation (script, premises, metadata) runs on DeepSeek's
+# top tier now (user decision 2026-07-07, own API key): moved off Sonnet
+# 2026-07-06 to cut the ~$1.25/video script cost, then off Haiku too after
+# a run failed on an empty Anthropic credit balance, no reason to still
+# depend on a second billing account for the cheap calls once the
+# expensive one was already gone. deepseek-v4-pro is a reasoning model
+# (see agents/llm.py's call_deepseek), so it needs a generous max_tokens
+# to leave room for both the hidden reasoning pass and the actual output.
 DEEPSEEK_MODEL = "deepseek-v4-pro"
 
 # Shown on the fake-Reddit-card thumbnail (niche house style).
