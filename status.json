@@ -1,40 +1,8 @@
 {
-  "story_id": 4,
-  "premise": "My in-laws took $85,000 from my late husband's life insurance, telling the rest of the family I'd already spent it selfishly on myself, and cut me and my kids out of every holiday for six years. When their retirement fund collapsed, they asked to move into my house.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "18,122 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My In-Laws Stole $85K From My Husband's Insurance, Blamed Me For Six Years. So I"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "99.6 min, 1556MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=HSkXlglvJhU"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-06T13:27:18.028780+00:00",
-  "video_id": "HSkXlglvJhU"
+  "story_id": 5,
+  "premise": "My sister convinced our dying mother to sign her entire $435,000 estate into a secret trust just for her, and then told me I was cut off for being 'greedy.' Five years later she needed a bone marrow donor for her daughter and I was the only match — I donated only after she publicly confessed and wired me every cent.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-07T11:16:01.528670+00:00"
 }
