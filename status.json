@@ -1,7 +1,7 @@
 {
   "story_id": 6,
   "premise": "My parents forged my signature on a $400,000 trust my grandmother left me, transferring it to my brother’s failing construction business while they told the family I’d blown it on drugs. I bought the debt from the bank for $12,000 a decade later, foreclosed on his house, and sold it at auction while he watched.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Parents Stole My $400K Inheritance, Told Everyone I Did Drugs. So I Foreclose"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-07T13:18:12.320806+00:00"
+  "updated_at": "2026-07-07T13:18:13.542870+00:00"
 }
