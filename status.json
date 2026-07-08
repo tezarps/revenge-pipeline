@@ -34,6 +34,7 @@
       "detail": "youtube.com/watch?v=Ny-pkgZhLf4"
     }
   },
-  "run_state": "running",
-  "updated_at": "2026-07-08T08:04:39.925390+00:00"
+  "run_state": "done",
+  "updated_at": "2026-07-08T08:04:40.920025+00:00",
+  "video_id": "Ny-pkgZhLf4"
 }
