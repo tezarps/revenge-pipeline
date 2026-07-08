@@ -1,7 +1,7 @@
 {
   "story_id": 7,
   "premise": "My in-laws manipulated my dying husband into signing over our $300,000 startup equity to 'protect' it from me, then evicted me and our baby from our apartment. Six years later I was hired as CFO of the company that acquired their business — I found the fraudulent transfer, clawed it all back with interest, and bankrupted them.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "94.3 min, 1471MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-08T11:21:55.705228+00:00"
+  "updated_at": "2026-07-08T11:21:56.809439+00:00"
 }
