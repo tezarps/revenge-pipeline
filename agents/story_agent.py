@@ -99,13 +99,15 @@ def next_pending():
     return pending[0] if pending else None
 
 
-def mark(story_id, status, video_id=None):
+def mark(story_id, status, video_id=None, publish_at=None):
     data = _load()
     for s in data["stories"]:
         if s["id"] == story_id:
             s["status"] = status
             if video_id:
                 s["video_id"] = video_id
+            if publish_at:
+                s["publish_at"] = publish_at
     _save(data)
 
 

@@ -145,6 +145,11 @@
     </section>
 
     <section class="block">
+      <h2>Jadwal Tayang <span style="font-weight:400;text-transform:none;letter-spacing:0;">1 video/hari, 10:30 ET</span></h2>
+      <div id="schedule-list"><div class="empty">Memuat...</div></div>
+    </section>
+
+    <section class="block">
       <h2>Semua Cerita <span style="font-weight:400;text-transform:none;letter-spacing:0;">klik buat lihat naskah, thumbnail, link video</span></h2>
       <div id="story-list"><div class="empty">Memuat...</div></div>
     </section>
@@ -186,6 +191,16 @@
     } catch (e) { return fallback; }
   }
   function esc(s) { return (s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  // ET is fixed UTC-4 here (matches upload_agent.py's coarse EDT-only
+  // assumption, see agents/upload_agent.py _et_zone) - not DST-accurate
+  // year round, but consistent with what the pipeline actually schedules.
+  function formatSchedule(iso) {
+    const d = new Date(iso);
+    const et = new Date(d.getTime() - 4 * 3600 * 1000);
+    const wib = new Date(d.getTime() + 7 * 3600 * 1000);
+    const fmt = (dt) => dt.toISOString().replace("T", " ").slice(0, 16);
+    return { et: fmt(et) + " ET", wib: fmt(wib) + " WIB" };
+  }
   function timeAgo(iso) {
     if (!iso) return "";
     const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
@@ -227,11 +242,48 @@
     el.innerHTML = html;
   }
 
+  // A story is "scheduled" (private, not live yet) only if it has a
+  // publish_at AND that time is still in the future; once YouTube auto-
+  // publishes at that time, the field is stale (we never re-check the API
+  // from a static page) so anything in the past is treated as live.
+  function scheduleState(s) {
+    if (!s.publish_at) return null;
+    const t = new Date(s.publish_at).getTime();
+    return t > Date.now() ? t : null;
+  }
+
+  async function renderSchedule() {
+    const data = await fetchJSON(`${RAW}/stories.json`, { stories: [] });
+    const stories = data.stories || [];
+    const upcoming = stories
+      .map(s => ({ s, t: scheduleState(s) }))
+      .filter(x => x.t !== null)
+      .sort((a, b) => a.t - b.t);
+
+    const el = document.getElementById("schedule-list");
+    if (!upcoming.length) {
+      el.innerHTML = `<div class="empty">Tidak ada video terjadwal saat ini.</div>`;
+      return;
+    }
+    el.innerHTML = upcoming.map(({ s }) => {
+      const { et, wib } = formatSchedule(s.publish_at);
+      return `<div class="story-card" onclick="openStory(${s.id})">
+        <div class="story-body">
+          <div class="story-title">#${s.id} ${esc((s.premise || "").slice(0, 90))}${(s.premise||"").length>90?"...":""}</div>
+          <div class="story-meta">
+            <span class="status-badge status-pending">Scheduled</span>
+            <span>${et} &middot; ${wib}</span>
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
   async function renderStories() {
     const data = await fetchJSON(`${RAW}/stories.json`, { stories: [] });
     const stories = (data.stories || []).slice().reverse();
     document.getElementById("stat-total").textContent = stories.length;
-    document.getElementById("stat-published").textContent = stories.filter(s => s.status === "done").length;
+    document.getElementById("stat-published").textContent = stories.filter(s => s.status === "done" && scheduleState(s) === null).length;
     document.getElementById("stat-pending").textContent = stories.filter(s => s.status === "pending").length;
     document.getElementById("stat-failed").textContent = stories.filter(s => s.status === "failed").length;
 
@@ -239,14 +291,19 @@
     if (!stories.length) { el.innerHTML = `<div class="empty">Belum ada cerita.</div>`; return; }
 
     el.innerHTML = stories.map(s => {
-      const badgeClass = s.status === "done" ? "status-done" : s.status === "failed" ? "status-failed" : "status-pending";
+      const scheduledAt = scheduleState(s);
+      const isLive = s.status === "done" && scheduledAt === null;
+      const badgeClass = s.status === "failed" ? "status-failed" : isLive ? "status-done" : "status-pending";
+      const badgeText = s.status === "failed" ? "failed" : isLive ? "live" : scheduledAt ? "scheduled" : s.status;
       const thumbUrl = `${RAW}/output/thumbs/${s.id}_b.jpg`;
+      const scheduleNote = scheduledAt ? (() => { const { et, wib } = formatSchedule(s.publish_at); return `<span>${et} &middot; ${wib}</span>`; })() : "";
       return `<div class="story-card" onclick="openStory(${s.id})">
         <img class="story-thumb" src="${thumbUrl}" onerror="this.onerror=null;this.src='${RAW}/output/thumbs/${s.id}.jpg';this.onerror=function(){this.style.display='none'}" loading="lazy">
         <div class="story-body">
           <div class="story-title">#${s.id} ${esc((s.premise || "").slice(0, 90))}${(s.premise||"").length>90?"...":""}</div>
           <div class="story-meta">
-            <span class="status-badge ${badgeClass}">${esc(s.status)}</span>
+            <span class="status-badge ${badgeClass}">${esc(badgeText)}</span>
+            ${scheduleNote}
             ${s.video_id ? `<a href="https://youtube.com/watch?v=${s.video_id}" target="_blank" onclick="event.stopPropagation()">▶ Tonton</a>` : ""}
           </div>
         </div>
@@ -323,7 +380,7 @@
   }
 
   async function refreshAll() {
-    await Promise.all([renderCurrentRun(), renderStories(), renderRuns()]);
+    await Promise.all([renderCurrentRun(), renderSchedule(), renderStories(), renderRuns()]);
   }
   refreshAll();
   setInterval(refreshAll, 60000);

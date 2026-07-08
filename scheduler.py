@@ -107,7 +107,7 @@ def run(dry_run=False):
         sm.stage_start("upload")
         print("[5/6] Uploading to YouTube...")
         video_id, publish_at = upload_video(video_path, thumb_path, metadata)
-        story_agent.mark(sid, "done", video_id=video_id)
+        story_agent.mark(sid, "done", video_id=video_id, publish_at=publish_at)
         sm.stage_done("upload", f"youtube.com/watch?v={video_id}")
         sm.run_done(video_id=video_id)
         print(f"\n✓ Complete — youtube.com/watch?v={video_id}")
