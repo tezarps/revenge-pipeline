@@ -1,40 +1,8 @@
 {
-  "story_id": 5,
-  "premise": "My sister convinced our dying mother to sign her entire $435,000 estate into a secret trust just for her, and then told me I was cut off for being 'greedy.' Five years later she needed a bone marrow donor for her daughter and I was the only match — I donated only after she publicly confessed and wired me every cent.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "11,111 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Stole $435K From Our Dying Mom And Cut Me Off. So I Refused To Help He"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "58.7 min, 932MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=Ny-pkgZhLf4"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-08T08:04:40.920025+00:00",
-  "video_id": "Ny-pkgZhLf4"
+  "story_id": 7,
+  "premise": "My in-laws manipulated my dying husband into signing over our $300,000 startup equity to 'protect' it from me, then evicted me and our baby from our apartment. Six years later I was hired as CFO of the company that acquired their business — I found the fraudulent transfer, clawed it all back with interest, and bankrupted them.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-08T08:25:46.529525+00:00"
 }
