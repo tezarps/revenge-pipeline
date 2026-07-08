@@ -1,8 +1,12 @@
-"""YouTube upload — lean adaptation of apophenia-pipeline's upload_agent.
+"""YouTube upload, lean adaptation of apophenia-pipeline's upload_agent.
 Keeps the IPv4 fix and the live publishAt collision check; drops playlists,
-Shorts and analytics for v1. Publish cadence matches Calm Drama Stories
-(the channel's primary visual/style reference), measured directly off their
-channel 2026-07-05: 3 uploads/day, every day, at ~10:30/16:00/20:00 ET."""
+Shorts and analytics for v1. Publish cadence: 1 video/day at 10:30 ET
+(user correction 2026-07-08: the original 3-slots/day design, matching
+Calm Drama Stories' measured cadence, only makes sense if production
+actually keeps pace at 3 videos/day. Real production is 1/day via the
+daily cron, so 3 slots just meant multiple videos landing on the same
+day whenever more than one run happened close together, e.g. during a
+bug-fix session, instead of spreading one per day as intended)."""
 import pickle
 import socket
 from datetime import datetime, timezone, timedelta
@@ -29,9 +33,8 @@ from config import TOKEN_FILE, YOUTUBE_CLIENT_SECRET
 
 SCOPES = ["https://www.googleapis.com/auth/youtube"]
 
-# 3 slots/day matching Calm Drama Stories' measured cadence (user decision
-# 2026-07-05: match their schedule and pattern exactly). All 7 days.
-PUBLISH_SLOTS_ET = [(10, 30), (16, 0), (20, 0)]
+# One slot/day (was 3, see module docstring), all 7 days.
+PUBLISH_SLOTS_ET = [(10, 30)]
 PUBLISH_WEEKDAYS = {0, 1, 2, 3, 4, 5, 6}
 
 
