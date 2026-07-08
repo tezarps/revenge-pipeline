@@ -1,7 +1,7 @@
 {
   "story_id": 5,
   "premise": "My sister convinced our dying mother to sign her entire $435,000 estate into a secret trust just for her, and then told me I was cut off for being 'greedy.' Five years later she needed a bone marrow donor for her daughter and I was the only match — I donated only after she publicly confessed and wired me every cent.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Sister Stole $435K From Our Dying Mom And Cut Me Off. So I Refused To Help He"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-08T06:57:24.524755+00:00"
+  "updated_at": "2026-07-08T06:57:25.463912+00:00"
 }
