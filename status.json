@@ -1,15 +1,21 @@
 {
   "story_id": 5,
   "premise": "My sister convinced our dying mother to sign her entire $435,000 estate into a secret trust just for her, and then told me I was cut off for being 'greedy.' Five years later she needed a bone marrow donor for her daughter and I was the only match — I donated only after she publicly confessed and wired me every cent.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "11,111 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-08T06:28:11.438966+00:00"
+  "updated_at": "2026-07-08T06:28:12.918771+00:00"
 }
