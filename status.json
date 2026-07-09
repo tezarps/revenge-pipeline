@@ -1,7 +1,7 @@
 {
   "story_id": 8,
   "premise": "My brother, a neurologist, tricked our father into granting him medical power of attorney and then drained $380,000 from a custodial account I co-owned by billing for sham home visits. I filed a complaint with the state medical board, got his license suspended, and won a $520,000 civil judgment that forced him to sell his practice.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "88.5 min, 1461MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-09T13:30:18.794779+00:00"
+  "updated_at": "2026-07-09T13:30:20.260521+00:00"
 }
