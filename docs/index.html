@@ -213,8 +213,17 @@
   const STAGE_ORDER = ["script", "audio", "thumb", "assembly", "upload"];
   const STAGE_ICON = { pen: "✎", mic: "●", text: "▤", film: "▶", image: "▧", upload: "↑", x: "✕" };
 
-  async function renderCurrentRun() {
-    const status = await fetchJSON(`${RAW}/status.json`);
+  // Last-known-good cache: raw.githubusercontent.com rate-limits fairly
+  // aggressively (confirmed 2026-07-09, a transient 429 on just the
+  // stories.json request wiped the whole story list and stat cards back
+  // to zero, even though status.json's parallel fetch succeeded fine in
+  // the same refresh cycle). A single failed fetch should never blank out
+  // data that was already showing; only render "empty" the first time,
+  // before anything has ever loaded successfully.
+  let lastStatus = null;
+  let lastStories = null;
+
+  async function renderCurrentRun(status) {
     const el = document.getElementById("current-run");
     const liveDot = document.getElementById("live-dot");
 
@@ -252,9 +261,7 @@
     return t > Date.now() ? t : null;
   }
 
-  async function renderSchedule() {
-    const data = await fetchJSON(`${RAW}/stories.json`, { stories: [] });
-    const stories = data.stories || [];
+  async function renderSchedule(stories) {
     const upcoming = stories
       .map(s => ({ s, t: scheduleState(s) }))
       .filter(x => x.t !== null)
@@ -279,9 +286,8 @@
     }).join("");
   }
 
-  async function renderStories() {
-    const data = await fetchJSON(`${RAW}/stories.json`, { stories: [] });
-    const stories = (data.stories || []).slice().reverse();
+  async function renderStories(storiesRaw) {
+    const stories = storiesRaw.slice().reverse();
     document.getElementById("stat-total").textContent = stories.length;
     document.getElementById("stat-published").textContent = stories.filter(s => s.status === "done" && scheduleState(s) === null).length;
     document.getElementById("stat-pending").textContent = stories.filter(s => s.status === "pending").length;
@@ -380,7 +386,24 @@
   }
 
   async function refreshAll() {
-    await Promise.all([renderCurrentRun(), renderSchedule(), renderStories(), renderRuns()]);
+    // Fetch status.json and stories.json exactly once per cycle (both
+    // renderSchedule and renderStories used to each fetch stories.json
+    // independently, doubling the request rate against exactly the file
+    // that turned out to be the one hitting rate limits). Fall back to
+    // the last successful payload instead of an empty one on failure.
+    const [statusFetched, storiesData] = await Promise.all([
+      fetchJSON(`${RAW}/status.json`),
+      fetchJSON(`${RAW}/stories.json`),
+    ]);
+    if (statusFetched) lastStatus = statusFetched;
+    if (storiesData && storiesData.stories) lastStories = storiesData.stories;
+
+    await Promise.all([
+      renderCurrentRun(lastStatus),
+      renderSchedule(lastStories || []),
+      renderStories(lastStories || []),
+      renderRuns(),
+    ]);
   }
   refreshAll();
   setInterval(refreshAll, 60000);
