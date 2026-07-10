@@ -1,7 +1,7 @@
 {
   "story_id": 9,
   "premise": "My sister forged my signature on a quitclaim deed for the $285,000 condo our aunt left me, rented it out, and pocketed $40,000 in rent while I unknowingly paid the mortgage. I moved back in the day the lease ended, changed the locks, and sued for fraud — the court awarded me triple damages and I put a lien on her house.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "123.3 min, 1956MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-10T13:20:16.228710+00:00"
+  "updated_at": "2026-07-10T13:20:17.520888+00:00"
 }
