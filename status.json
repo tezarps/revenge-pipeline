@@ -1,40 +1,8 @@
 {
-  "story_id": 8,
-  "premise": "My brother, a neurologist, tricked our father into granting him medical power of attorney and then drained $380,000 from a custodial account I co-owned by billing for sham home visits. I filed a complaint with the state medical board, got his license suspended, and won a $520,000 civil judgment that forced him to sell his practice.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "15,529 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Brother Drained Dad's Account Of $380K, Left Me Nothing. So I Took His Medica"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "88.5 min, 1461MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=TfdSM7mF6oI"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-09T13:31:44.237981+00:00",
-  "video_id": "TfdSM7mF6oI"
+  "story_id": 9,
+  "premise": "My sister forged my signature on a quitclaim deed for the $285,000 condo our aunt left me, rented it out, and pocketed $40,000 in rent while I unknowingly paid the mortgage. I moved back in the day the lease ended, changed the locks, and sued for fraud — the court awarded me triple damages and I put a lien on her house.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-10T09:32:59.011858+00:00"
 }
