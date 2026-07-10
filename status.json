@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister Forged My Signature, Stole My Condo, And Rented It Out. So I Let Her L"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-10T10:53:10.370843+00:00"
+  "updated_at": "2026-07-10T10:53:47.446238+00:00"
 }
