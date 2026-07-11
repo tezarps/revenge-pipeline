@@ -1,7 +1,7 @@
 {
   "story_id": 10,
   "premise": "My mother tricked me into signing a power of attorney while I was deployed overseas, sold the $190,000 house my grandmother left me, and kept every cent. A decade later she suffered a stroke and begged to move in — I told her I’d bought the house back at foreclosure auction for $85,000 and it was now occupied by a family who actually deserved it.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-11T08:41:36.285420+00:00"
+  "updated_at": "2026-07-11T08:41:37.796724+00:00"
 }
