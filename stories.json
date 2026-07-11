@@ -57,6 +57,33 @@
       "status": "done",
       "video_id": "_rOwGMxiW8U",
       "publish_at": "2026-07-12T14:30:00.000000Z"
+    },
+    {
+      "id": 10,
+      "premise": "My mother tricked me into signing a power of attorney while I was deployed overseas, sold the $190,000 house my grandmother left me, and kept every cent. A decade later she suffered a stroke and begged to move in — I told her I’d bought the house back at foreclosure auction for $85,000 and it was now occupied by a family who actually deserved it.",
+      "status": "done",
+      "video_id": "SjMbwbDlyvg",
+      "publish_at": "2026-07-13T14:30:00.000000Z"
+    },
+    {
+      "id": 11,
+      "premise": "My brother-in-law convinced my terminally ill husband to change his $250,000 life insurance beneficiary from me to him, claiming I would just remarry and waste it. After my husband died, I sued for undue influence, won back every penny plus $50,000 in legal fees, and used the money to open a competing auto repair shop that bankrupted his garage within two years.",
+      "status": "pending"
+    },
+    {
+      "id": 12,
+      "premise": "My sister secretly canceled my $15,000 wedding venue two weeks before the ceremony, pocketed the nonrefundable deposit for her own honeymoon, and told everyone I’d called it off. Five years later, when she needed a co-signer to buy her dream home, I lent her the down payment at 25% interest — and when she missed a single payment, I foreclosed, sold the house for a $40,000 profit, and sent her the itemized bill.",
+      "status": "pending"
+    },
+    {
+      "id": 13,
+      "premise": "My father and stepmother intercepted the $124,000 life insurance payout my late mother left me, forged my signature, and bought a luxury RV to travel the country while I worked two jobs to finish college. Fifteen years later, when his dementia worsened and she begged me to pay for a private nursing home, I offered to buy the RV for $1,000 — then converted it into a mobile bar and made $80,000 the first year booking parties.",
+      "status": "pending"
+    },
+    {
+      "id": 14,
+      "premise": "My mother-in-law stole my patented edible glitter formula, filed a trademark in her own name, and launched a competing bakery supply business, cutting me off from $220,000 in pre-orders. I waited silently while she took out a large expansion loan, then sued for trademark fraud, won a $195,000 judgment, poached her entire sales team, and watched her file for bankruptcy within six months.",
+      "status": "pending"
     }
   ]
 }
