@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Mom Tricked Me, Sold My Inheritance While I Was Deployed. So I Bought It Back"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-11T08:41:37.796724+00:00"
+  "updated_at": "2026-07-11T08:42:43.994420+00:00"
 }
