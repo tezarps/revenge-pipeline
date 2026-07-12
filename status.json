@@ -1,40 +1,8 @@
 {
-  "story_id": 10,
-  "premise": "My mother tricked me into signing a power of attorney while I was deployed overseas, sold the $190,000 house my grandmother left me, and kept every cent. A decade later she suffered a stroke and begged to move in — I told her I’d bought the house back at foreclosure auction for $85,000 and it was now occupied by a family who actually deserved it.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "13,551 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Mom Tricked Me, Sold My Inheritance While I Was Deployed. So I Bought It Back"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "69.9 min, 1119MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=SjMbwbDlyvg"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-11T10:02:28.260271+00:00",
-  "video_id": "SjMbwbDlyvg"
+  "story_id": 11,
+  "premise": "My brother-in-law convinced my terminally ill husband to change his $250,000 life insurance beneficiary from me to him, claiming I would just remarry and waste it. After my husband died, I sued for undue influence, won back every penny plus $50,000 in legal fees, and used the money to open a competing auto repair shop that bankrupted his garage within two years.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-12T08:15:00.770535+00:00"
 }
