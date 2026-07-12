@@ -1,7 +1,7 @@
 {
   "story_id": 11,
   "premise": "My brother-in-law convinced my terminally ill husband to change his $250,000 life insurance beneficiary from me to him, claiming I would just remarry and waste it. After my husband died, I sued for undue influence, won back every penny plus $50,000 in legal fees, and used the money to open a competing auto repair shop that bankrupted his garage within two years.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-12T09:05:43.093747+00:00"
+  "updated_at": "2026-07-12T09:05:44.995568+00:00"
 }
