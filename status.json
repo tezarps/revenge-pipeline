@@ -1,15 +1,8 @@
 {
-  "story_id": 13,
-  "premise": "My father and stepmother intercepted the $124,000 life insurance payout my late mother left me, forged my signature, and bought a luxury RV to travel the country while I worked two jobs to finish college. Fifteen years later, when his dementia worsened and she begged me to pay for a private nursing home, I offered to buy the RV for $1,000 — then converted it into a mobile bar and made $80,000 the first year booking parties.",
-  "stage": "script",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "running",
-      "detail": "Sonnet 5 writing..."
-    }
-  },
+  "story_id": 15,
+  "premise": "My son, whom I raised alone on night shifts, convinced me to co-sign a $240,000 mortgage for his 'starter home,' then stopped paying, sold it at a $90,000 profit, and told everyone I was a greedy leech. At 58, I went back to school, became a financial paralegal, found a hidden bank account, and garnished his wages until I recovered every cent plus 10% interest.",
+  "stage": null,
+  "stages": {},
   "run_state": "running",
-  "updated_at": "2026-07-13T19:12:58.861985+00:00"
+  "updated_at": "2026-07-13T19:23:00.575518+00:00"
 }
