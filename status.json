@@ -1,40 +1,8 @@
 {
-  "story_id": 11,
-  "premise": "My brother-in-law convinced my terminally ill husband to change his $250,000 life insurance beneficiary from me to him, claiming I would just remarry and waste it. After my husband died, I sued for undue influence, won back every penny plus $50,000 in legal fees, and used the money to open a competing auto repair shop that bankrupted his garage within two years.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "15,277 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Husband's Brother Took His $250K Insurance. So I Sued, Got It Back, Watched H"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "81.9 min, 1279MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=IZ4HP8QPtkg"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-12T10:52:09.665697+00:00",
-  "video_id": "IZ4HP8QPtkg"
+  "story_id": 12,
+  "premise": "My sister secretly canceled my $15,000 wedding venue two weeks before the ceremony, pocketed the nonrefundable deposit for her own honeymoon, and told everyone I’d called it off. Five years later, when she needed a co-signer to buy her dream home, I lent her the down payment at 25% interest — and when she missed a single payment, I foreclosed, sold the house for a $40,000 profit, and sent her the itemized bill.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-13T09:23:33.144263+00:00"
 }
