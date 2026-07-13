@@ -1,7 +1,7 @@
 {
   "story_id": 15,
   "premise": "My son, whom I raised alone on night shifts, convinced me to co-sign a $240,000 mortgage for his 'starter home,' then stopped paying, sold it at a $90,000 profit, and told everyone I was a greedy leech. At 58, I went back to school, became a financial paralegal, found a hidden bank account, and garnished his wages until I recovered every cent plus 10% interest.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Son Tricked Me Into A $240K Mortgage, Sold It, Called Me A Leech. So I Garnis"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-13T20:16:17.013204+00:00"
+  "updated_at": "2026-07-13T20:16:18.407030+00:00"
 }
