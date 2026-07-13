@@ -1,15 +1,21 @@
 {
   "story_id": 12,
   "premise": "My sister secretly canceled my $15,000 wedding venue two weeks before the ceremony, pocketed the nonrefundable deposit for her own honeymoon, and told everyone I’d called it off. Five years later, when she needed a co-signer to buy her dream home, I lent her the down payment at 25% interest — and when she missed a single payment, I foreclosed, sold the house for a $40,000 profit, and sent her the itemized bill.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "11,664 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-13T09:39:31.328683+00:00"
+  "updated_at": "2026-07-13T09:39:32.993780+00:00"
 }
