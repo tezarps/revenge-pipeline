@@ -33,8 +33,21 @@ from config import TOKEN_FILE, YOUTUBE_CLIENT_SECRET
 
 SCOPES = ["https://www.googleapis.com/auth/youtube"]
 
-# One slot/day (was 3, see module docstring), all 7 days.
-PUBLISH_SLOTS_ET = [(10, 30)]
+# 3 slots/day (2026-07-14, user decision: RealDadRevenge-cadence experiment,
+# "aku ingin boost konten kita juga sehari 3 video"). Was a single 10:30 ET
+# slot after an earlier accidental-3x-in-one-day bug (see git history); this
+# time it's deliberate and paired with 3 cron triggers/day in pipeline.yml,
+# each run fills the next slot in order via _next_publish_time's day-walk
+# below. Revert to [(10, 30)] if the experiment doesn't pan out (see
+# project_golden_child_thumbnail_baseline.md).
+#
+# Times picked so each of the 3 slots hits a different market's evening
+# prime instead of clustering all 3 in US daytime (all times ET):
+#   08:00 ET -> 22:00 AEST (Australia prime), 13:00 BST (UK lunch)
+#   13:00 ET -> 18:00 BST (UK prime), US lunch break
+#   19:30 ET -> 19:30 ET (US/Canada prime, the biggest RPM market),
+#               09:30 AEST (Australia morning)
+PUBLISH_SLOTS_ET = [(8, 0), (13, 0), (19, 30)]
 PUBLISH_WEEKDAYS = {0, 1, 2, 3, 4, 5, 6}
 
 

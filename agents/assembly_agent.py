@@ -15,6 +15,7 @@ from config import OUTPUT_DIR, ASSETS_BG_DIR, FFMPEG_BIN, FFPROBE_BIN
 from agents.captions_agent import generate_captions
 
 CHARACTER_DIR = ASSETS_BG_DIR.parent / "character"
+CHARACTER_V2_DIR = ASSETS_BG_DIR.parent / "character_v2"
 DRONE_DIR = ASSETS_BG_DIR.parent / "drone"
 CUTOUT_DIR = ASSETS_BG_DIR.parent / "character_cutout"
 CHAR_WIDTH = 640
@@ -56,8 +57,22 @@ def _pick_character(story_id):
     the same photo holds for the entire 30-45 min runtime). Uses the shared
     character_number_for_story() mapping (config.py) so the video cutout
     and the thumbnail template always show the same person (fixed
-    2026-07-06 after story #3/#4 published with mismatched characters)."""
-    from config import character_number_for_story
+    2026-07-06 after story #3/#4 published with mismatched characters).
+
+    When config.THUMBNAIL_EXPERIMENT is on (2026-07-14 RealDadRevenge-cadence
+    experiment), pulls from the separate character_v2/ pool instead, using
+    character_v2_number_for_story() so this stays in sync with
+    thumbnail_agent.generate_thumbnail_c's character choice for the same
+    story_id. rembg still does the actual cutout, same as v1 - the v2
+    source photos have a composed dark-room background behind the woman
+    (built for the thumbnail's own fade), rembg strips that off just the
+    same as it strips a plain background from a v1 photo."""
+    from config import character_number_for_story, character_v2_number_for_story, THUMBNAIL_EXPERIMENT
+    if THUMBNAIL_EXPERIMENT:
+        num = character_v2_number_for_story(story_id)
+        chosen = CHARACTER_V2_DIR / f"person_v2_{num:02d}.png"
+        if chosen.exists():
+            return _cutout_character(chosen)
     num = character_number_for_story(story_id)
     chosen = CHARACTER_DIR / f"person_{num:02d}.jpg"
     if not chosen.exists():
@@ -280,8 +295,23 @@ def create_video(audio_path, story_id):
         # covering the whole frame), matches the reference: background
         # visible above her head, she doesn't dominate the entire vertical
         # space. See user feedback 2026-07-04.
-        filters.append(f"[{char_in}:v]scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]")
-        filters.append(f"[{last}][char]overlay=x=0:y=H-h[bgchar]")
+        if char_cutout.stem.startswith("person_v2_"):
+            # character_v2/ sources are landscape 1280x720 with the woman
+            # framed in the right ~40% (built for the style-C thumbnail's
+            # own fade), not a portrait close-up like v1's person_0N.jpg.
+            # Precrop to that right-side region BEFORE the portrait
+            # scale/crop below, otherwise the centered crop grabs empty
+            # space or only half her face (verified 2026-07-14).
+            char_filter = f"[{char_in}:v]crop=520:720:760:0,scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]"
+            # Right-anchored for the v2/experiment pool (user decision
+            # 2026-07-14, verified via a rendered still against real drone
+            # footage before wiring it in), v1 stays left-anchored as before.
+            overlay_x = "W-w"
+        else:
+            char_filter = f"[{char_in}:v]scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]"
+            overlay_x = "0"
+        filters.append(char_filter)
+        filters.append(f"[{last}][char]overlay=x={overlay_x}:y=H-h[bgchar]")
         last = "bgchar"
 
     filters.append(f"[{last}]subtitles={captions_path}[withtext]")

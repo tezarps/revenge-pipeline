@@ -19,6 +19,12 @@ DEEPSEEK_MODEL = "deepseek-v4-pro"
 # Shown on the fake-Reddit-card thumbnail (niche house style).
 CHANNEL_NAME = os.environ.get("CHANNEL_NAME", "Golden Child Stories")
 
+# RealDadRevenge-style thumbnail experiment (2026-07-14, user decision:
+# explicitly "eksperimen", not a permanent replacement). Default OFF so the
+# live channel keeps using the locked Style B unless a run opts in. See
+# project_golden_child_thumbnail_baseline.md for the pre-experiment state.
+THUMBNAIL_EXPERIMENT = os.environ.get("THUMBNAIL_EXPERIMENT", "false").lower() == "true"
+
 BASE_DIR = Path(__file__).parent
 OUTPUT_DIR = BASE_DIR / "output"
 ASSETS_BG_DIR = BASE_DIR / "assets" / "bg"
@@ -46,8 +52,13 @@ KOKORO_CACHE = Path(os.environ.get("KOKORO_CACHE", Path.home() / ".cache" / "rev
 # minutes math), decide the compute lever (self-hosted runner / public
 # repo) before also cranking upload cadence, or the free 2,000 min/month
 # ceiling blows past quickly.
-SCRIPT_MIN_WORDS = 17000
-SCRIPT_MAX_WORDS = 21000
+# Measured Kokoro af_bella @ speed 1.0: ~242 wpm average (17000w -> 58min,
+# 21000w -> 99min observed). Scaled down for the RealDadRevenge-cadence
+# experiment to target 50-60min instead of 58-99min (see
+# project_golden_child_thumbnail_baseline.md for the pre-experiment values
+# to revert to: 17000/21000).
+SCRIPT_MIN_WORDS = 12000
+SCRIPT_MAX_WORDS = 14500
 
 FFMPEG_BIN = os.environ.get("FFMPEG_BIN", "ffmpeg")
 FFPROBE_BIN = os.environ.get("FFPROBE_BIN", "ffprobe")
@@ -69,3 +80,17 @@ CHARACTER_COUNT = 7
 
 def character_number_for_story(story_id):
     return ((int(story_id) - 2) % CHARACTER_COUNT) + 1
+
+
+# Second, SEPARATE character pool for the RealDadRevenge-style thumbnail
+# experiment (2026-07-14): 10 women, coded 45-60, in assets/character_v2/
+# person_v2_{N:02d}.png, each already framed with the subject right-aligned
+# and dark negative space on the left (so it doubles as the thumbnail
+# background, no separate template needed like the v1 pool). Independent
+# rotation from character_number_for_story so the experiment never touches
+# the locked v1 pool/mapping (see project_golden_child_thumbnail_baseline.md).
+CHARACTER_V2_COUNT = 10
+
+
+def character_v2_number_for_story(story_id):
+    return ((int(story_id) - 1) % CHARACTER_V2_COUNT) + 1

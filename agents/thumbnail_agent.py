@@ -373,13 +373,139 @@ def generate_thumbnail_b(thumb_lines, story_id):
     return path
 
 
+CHARACTER_V2_DIR = ASSETS_BG_DIR.parent / "character_v2"
+
+# style -> (css class, base font size in px). Style C reuses the same
+# setup/twist/context/climax1/climax2 slots as style B, but only two colors:
+# white (default) and red (emphasis, mapped from the twist/climax "highlight"
+# slots) per the RealDadRevenge reference (dense text, white + red only).
+LINE_STYLE_C = {
+    "setup":   ("white", 92),
+    "twist":   ("red", 106),
+    "context": ("white", 92),
+    "climax1": ("red", 106),
+    "climax2": ("white", 92),
+}
+
+_THUMB_C_HTML_TEMPLATE = """<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+  @font-face {{ font-family: 'Anton'; src: url('{anton_uri}') format('truetype'); }}
+  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+  html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #000; font-family: 'Anton', Arial, sans-serif; }}
+  .frame {{ position: relative; width: 1280px; height: 720px; background: #000; }}
+  .photo {{ position: absolute; inset: 0; z-index: 0; }}
+  .photo img {{ width: 100%; height: 100%; object-fit: cover; }}
+  /* No CSS panel/fade here, the character_v2 source photos already have
+     the dark-left/character-right composition baked in (user-composed),
+     text sits directly on top of that. */
+  .badge {{ position: absolute; left: 46px; top: 30px; z-index: 3;
+    background: #ff1f1f; padding: 14px 34px; }}
+  .badge span {{ font-family: 'Anton', Arial, sans-serif; color: #ffffff; font-size: 68px;
+    letter-spacing: 3px; text-transform: uppercase; }}
+  .text-stack {{ position: absolute; top: 230px; left: 46px; width: 980px; bottom: 24px;
+    z-index: 2; display: flex; flex-direction: column; justify-content: space-evenly; gap: 6px;
+    transform-origin: top left; }}
+  .line {{ font-family: 'Anton', Arial, sans-serif; line-height: 1.06;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    -webkit-text-stroke: 2px #000; paint-order: stroke fill; }}
+  .white {{ color: #ffffff; }}
+  .red {{ color: #ff1f1f; }}
+</style></head>
+<body>
+  <div class="frame">
+    <div class="photo"><img src="{photo_uri}"></div>
+    <div class="badge"><span>-TRUE LIFE STORY-</span></div>
+    <div class="text-stack" id="stack">{lines_html}</div>
+  </div>
+<script>
+  function fitStack() {{
+    const stack = document.getElementById('stack');
+    stack.style.transform = 'scale(1)';
+    const available = stack.clientHeight;
+    const contentHeight = stack.scrollHeight;
+    if (contentHeight > available) {{
+      const scale = Math.max(0.5, available / contentHeight);
+      stack.style.transform = `scale(${{scale}})`;
+    }}
+  }}
+  window.onload = fitStack;
+</script>
+</body></html>"""
+
+
+def generate_thumbnail_c(thumb_lines, story_id):
+    """Style C, EXPERIMENTAL (2026-07-14, RealDadRevenge-inspired, gated
+    behind config.THUMBNAIL_EXPERIMENT so the live channel keeps style B
+    unless a run opts in): dense Anton-font all-caps text stack, white with
+    red emphasis lines, solid black panel over ~68-78% of the frame fading
+    into the character_v2 photo on the right (the photos in that pool are
+    already framed with dark negative space on the left, so no separate
+    blurred-backdrop composite is needed like style B's fallback path).
+    Independent character pool/rotation, see config.character_v2_number_for_story."""
+    import base64
+    from playwright.sync_api import sync_playwright
+
+    if not CHARACTER_V2_DIR.exists() or not thumb_lines:
+        return None
+    from config import character_v2_number_for_story
+    char_num = character_v2_number_for_story(story_id)
+    photo_path = CHARACTER_V2_DIR / f"person_v2_{char_num:02d}.png"
+    if not photo_path.exists():
+        return None
+
+    anton_path = FONTS_DIR / "Anton-Regular.ttf"
+
+    def _data_uri(path, mime):
+        return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
+
+    photo_uri = _data_uri(photo_path, "image/png")
+    anton_uri = _data_uri(anton_path, "font/ttf") if anton_path.exists() else ""
+
+    lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}
+    lines_html = ""
+    for style in DEFAULT_ORDER:
+        text = lines_by_style.get(style, "").strip().upper()
+        if not text:
+            continue
+        css_class, size = LINE_STYLE_C[style]
+        lines_html += f'<div class="line {css_class}" style="font-size:{size}px">{text}</div>'
+
+    if not lines_html:
+        return None
+
+    html = _THUMB_C_HTML_TEMPLATE.format(anton_uri=anton_uri, photo_uri=photo_uri, lines_html=lines_html)
+
+    path = OUTPUT_DIR / "thumbs" / f"{story_id}_c.jpg"
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page(viewport={"width": W, "height": H})
+        page.set_content(html)
+        page.wait_for_timeout(150)
+        png_path = path.with_suffix(".png")
+        page.screenshot(path=str(png_path))
+        browser.close()
+
+    Image.open(png_path).convert("RGB").save(path, quality=92)
+    png_path.unlink(missing_ok=True)
+    return path
+
+
 def generate_thumbnail_ab(title_text, thumb_lines, story_id):
     """Full switch to Calm-Drama-style (2026-07-04, user decision): every
     video uses style B (character + colored stack), no more odd/even A/B
     rotation with the Reddit-card style. Style A is kept ONLY as an
     emergency fallback for when assets/character/ is empty or thumb_lines
     is missing (e.g. older cached metadata), not a deliberate design
-    choice, just so the pipeline never blocks on missing assets."""
+    choice, just so the pipeline never blocks on missing assets.
+
+    Style C (2026-07-14 experiment) is opt-in via config.THUMBNAIL_EXPERIMENT,
+    tried first when enabled, falling back to B/A exactly like before if it
+    can't produce an image (e.g. character_v2/ missing)."""
+    from config import THUMBNAIL_EXPERIMENT
+    if THUMBNAIL_EXPERIMENT:
+        c = generate_thumbnail_c(thumb_lines, story_id)
+        if c:
+            return c
     b = generate_thumbnail_b(thumb_lines, story_id)
     if b:
         return b
