@@ -112,13 +112,23 @@ def mark(story_id, status, video_id=None, publish_at=None):
 
 
 def top_up_queue(n=5):
-    """Agent generates fresh premises, avoiding repeats of what's in the queue."""
+    """Agent generates fresh premises, avoiding repeats of what's in the queue.
+
+    When config.THUMBNAIL_EXPERIMENT is on, premises are written for a
+    45-60yo narrator (decades-of-sacrifice / parent-death framing) instead
+    of the usual 24-45yo sibling-drama premise, to match the character_v2
+    pool's coded-older faces and pair with HEIST_SCHEMA in generate_script
+    below (root-caused 2026-07-14: stories #13/#14 were queued before the
+    experiment with young-narrator premises that don't fit the older
+    character, same class of mismatch as the earlier thumbnail/video bug)."""
+    from config import THUMBNAIL_EXPERIMENT
     data = _load()
     used = "\n".join(f"- {s['premise']}" for s in data["stories"][-30:]) or "(none yet)"
-    raw_json = _call_deepseek_json(
-        f"""Generate {n} fresh premises for first-person family-betrayal revenge stories (YouTube long-form niche). Each premise: 1-2 sentences, hyper-specific (who betrayed, what was taken incl. a dollar amount or concrete stake, what the comeback is). Narrator is ALWAYS a woman aged 24-45 (channel voice is female). Vary the betrayer (sister/brother/parents/in-laws) and the arena (inheritance, wedding, company, house, medical). Avoid anything similar to these already used:\n{used}\n\nReturn ONLY a JSON array of strings.""",
-        r"\[.*\]",
-    )
+    if THUMBNAIL_EXPERIMENT:
+        prompt = f"""Generate {n} fresh premises for first-person family-betrayal revenge stories (YouTube long-form niche). Each premise: 1-2 sentences, hyper-specific (who betrayed, what was taken incl. a dollar amount or concrete stake, what the comeback is). Narrator is ALWAYS a woman aged 45-60, framed around decades of sacrifice for family (a parent's death triggering an inheritance-fraud/undercover-investigation plot, a lifetime of frugal work exploited by a golden-child relative, etc.), not a young-adult/early-career premise. Vary the betrayer (adult children/stepchildren/siblings/in-laws) and the arena (inheritance, retirement fund, house, medical, small business). Avoid anything similar to these already used:\n{used}\n\nReturn ONLY a JSON array of strings."""
+    else:
+        prompt = f"""Generate {n} fresh premises for first-person family-betrayal revenge stories (YouTube long-form niche). Each premise: 1-2 sentences, hyper-specific (who betrayed, what was taken incl. a dollar amount or concrete stake, what the comeback is). Narrator is ALWAYS a woman aged 24-45 (channel voice is female). Vary the betrayer (sister/brother/parents/in-laws) and the arena (inheritance, wedding, company, house, medical). Avoid anything similar to these already used:\n{used}\n\nReturn ONLY a JSON array of strings."""
+    raw_json = _call_deepseek_json(prompt, r"\[.*\]")
     premises = json.loads(raw_json)
     next_id = max([s["id"] for s in data["stories"]], default=0) + 1
     for p in premises:
@@ -136,9 +146,17 @@ HEIST_SCHEMA_RATIO = 0.35
 
 
 def generate_script(story):
+    from config import THUMBNAIL_EXPERIMENT
     words_hint = f"{SCRIPT_MIN_WORDS}-{SCRIPT_MAX_WORDS}"
-    rng = random.Random(story["id"])
-    use_heist = rng.random() < HEIST_SCHEMA_RATIO
+    if THUMBNAIL_EXPERIMENT:
+        # Always the older-narrator (30-55) HEIST_SCHEMA during the
+        # character_v2 experiment, no random 24-45 SCHEMA pick, so the
+        # narration voice always matches the coded-older character photo
+        # held for the whole video. See top_up_queue's docstring above.
+        use_heist = True
+    else:
+        rng = random.Random(story["id"])
+        use_heist = rng.random() < HEIST_SCHEMA_RATIO
     schema = HEIST_SCHEMA if use_heist else SCHEMA
     variant_name = "heist-thriller" if use_heist else "plain-drama"
     print(f"    Schema variant: {variant_name}")

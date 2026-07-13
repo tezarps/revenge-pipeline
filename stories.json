@@ -82,12 +82,12 @@
     {
       "id": 13,
       "premise": "My father and stepmother intercepted the $124,000 life insurance payout my late mother left me, forged my signature, and bought a luxury RV to travel the country while I worked two jobs to finish college. Fifteen years later, when his dementia worsened and she begged me to pay for a private nursing home, I offered to buy the RV for $1,000 — then converted it into a mobile bar and made $80,000 the first year booking parties.",
-      "status": "pending"
+      "status": "shelved"
     },
     {
       "id": 14,
       "premise": "My mother-in-law stole my patented edible glitter formula, filed a trademark in her own name, and launched a competing bakery supply business, cutting me off from $220,000 in pre-orders. I waited silently while she took out a large expansion loan, then sued for trademark fraud, won a $195,000 judgment, poached her entire sales team, and watched her file for bankruptcy within six months.",
-      "status": "pending"
+      "status": "shelved"
     }
   ]
 }
