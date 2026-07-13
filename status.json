@@ -1,40 +1,8 @@
 {
-  "story_id": 12,
-  "premise": "My sister secretly canceled my $15,000 wedding venue two weeks before the ceremony, pocketed the nonrefundable deposit for her own honeymoon, and told everyone I’d called it off. Five years later, when she needed a co-signer to buy her dream home, I lent her the down payment at 25% interest — and when she missed a single payment, I foreclosed, sold the house for a $40,000 profit, and sent her the itemized bill.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "11,664 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Stole My Wedding Deposit, Nixed My Venue, Lied I Cheated. So I Watched"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "61.5 min, 978MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=CxHuo2qn3Ms"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-13T11:20:37.243464+00:00",
-  "video_id": "CxHuo2qn3Ms"
+  "story_id": 13,
+  "premise": "My father and stepmother intercepted the $124,000 life insurance payout my late mother left me, forged my signature, and bought a luxury RV to travel the country while I worked two jobs to finish college. Fifteen years later, when his dementia worsened and she begged me to pay for a private nursing home, I offered to buy the RV for $1,000 — then converted it into a mobile bar and made $80,000 the first year booking parties.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-13T19:12:57.540229+00:00"
 }
