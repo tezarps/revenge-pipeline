@@ -1,7 +1,7 @@
 {
   "story_id": 12,
   "premise": "My sister secretly canceled my $15,000 wedding venue two weeks before the ceremony, pocketed the nonrefundable deposit for her own honeymoon, and told everyone I’d called it off. Five years later, when she needed a co-signer to buy her dream home, I lent her the down payment at 25% interest — and when she missed a single payment, I foreclosed, sold the house for a $40,000 profit, and sent her the itemized bill.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Sister Stole My Wedding Deposit, Nixed My Venue, Lied I Cheated. So I Watched"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-13T10:10:11.152539+00:00"
+  "updated_at": "2026-07-13T10:10:12.313099+00:00"
 }
