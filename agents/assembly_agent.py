@@ -20,6 +20,10 @@ DRONE_DIR = ASSETS_BG_DIR.parent / "drone"
 CUTOUT_DIR = ASSETS_BG_DIR.parent / "character_cutout"
 CHAR_WIDTH = 640
 CHAR_HEIGHT = 820  # < 1080 on purpose: leaves headroom above her, not full-frame close-up
+# Experiment pool (2026-07-14, user decision: "penuhkan kepalanya hingga
+# menyentuh frame atas"): full frame height, no headroom, her head reaches
+# the top edge.
+CHAR_HEIGHT_V2 = 1080
 SEGMENT_SEC = 90  # fallback slideshow only
 
 
@@ -302,7 +306,7 @@ def create_video(audio_path, story_id):
             # Precrop to that right-side region BEFORE the portrait
             # scale/crop below, otherwise the centered crop grabs empty
             # space or only half her face (verified 2026-07-14).
-            char_filter = f"[{char_in}:v]crop=520:720:760:0,scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]"
+            char_filter = f"[{char_in}:v]crop=520:720:760:0,scale={CHAR_WIDTH}:{CHAR_HEIGHT_V2}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT_V2}[char]"
             # Right-anchored for the v2/experiment pool (user decision
             # 2026-07-14, verified via a rendered still against real drone
             # footage before wiring it in), v1 stays left-anchored as before.

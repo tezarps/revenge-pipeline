@@ -393,7 +393,10 @@ _THUMB_C_HTML_TEMPLATE = """<!DOCTYPE html>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #000; font-family: 'Anton', Arial, sans-serif; }}
   .frame {{ position: relative; width: 1280px; height: 720px; background: #000; }}
-  .photo {{ position: absolute; inset: 0; z-index: 0; }}
+  /* Right 80% only (cropped server-side, see generate_thumbnail_c), left
+     20% stays the frame's plain #000 for the badge/text to sit on cleanly,
+     no dead mid-frame strip between text and her (2026-07-14 fix). */
+  .photo {{ position: absolute; right: 0; top: 0; width: 80%; height: 100%; z-index: 0; }}
   .photo img {{ width: 100%; height: 100%; object-fit: cover; }}
   /* No CSS panel/fade here, the character_v2 source photos already have
      the dark-left/character-right composition baked in (user-composed),
@@ -458,7 +461,17 @@ def generate_thumbnail_c(thumb_lines, story_id):
     def _data_uri(path, mime):
         return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
 
-    photo_uri = _data_uri(photo_path, "image/png")
+    # Crop to the right 80% of the source (x=256..1280) before embedding:
+    # the full-bleed photo left a visible dead strip of plain room
+    # background between the text and her (user feedback 2026-07-14,
+    # "masih ada space kosong, ambil saja sisi kanan nya hingga 80%").
+    # 1024x720 is exactly 80% width x 100% height of the W,H canvas, so the
+    # .photo box below can show it 1:1 with no extra scale/crop needed.
+    import io
+    cropped = Image.open(photo_path).convert("RGBA").crop((W - int(W * 0.8), 0, W, H))
+    buf = io.BytesIO()
+    cropped.save(buf, format="PNG")
+    photo_uri = f"data:image/png;base64,{base64.b64encode(buf.getvalue()).decode()}"
     anton_uri = _data_uri(anton_path, "font/ttf") if anton_path.exists() else ""
 
     lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}

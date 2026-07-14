@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from config import OUTPUT_DIR
+from config import OUTPUT_DIR, THUMBNAIL_EXPERIMENT
 
 WORDS_PER_CARD = 8
 _model = None
@@ -54,7 +54,18 @@ def _ass_time(t):
     return f"{h:d}:{m:02d}:{s:05.2f}"
 
 
-ASS_HEADER = """[Script Info]
+# MarginL/MarginR=620/60 (asymmetric) puts the caption card's true center at
+# x=1240 of a 1920-wide frame, right-of-center, tuned for v1's LEFT-anchored
+# character so cards sit clear of her on the left. The character_v2
+# experiment overlay is RIGHT-anchored instead (assembly_agent.py), so that
+# same asymmetric margin now pushes cards into her face. Symmetric
+# 340/340 margins (same 1240-wide text region, but truly centered at x=960)
+# fix this for the experiment; v1 keeps the original 620/60 (root-caused
+# 2026-07-14, same class of left/right mismatch as the earlier
+# thumbnail/character bug).
+_MARGIN_L, _MARGIN_R = (340, 340) if THUMBNAIL_EXPERIMENT else (620, 60)
+
+ASS_HEADER = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: 1920
 PlayResY: 1080
@@ -62,7 +73,7 @@ WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Card,Arial,56,&H00FFFFFF,&H000000FF,&H00000000,&HD8000000,1,0,0,0,100,100,0,0,3,14,0,5,620,60,0,1
+Style: Card,Arial,56,&H00FFFFFF,&H000000FF,&H00000000,&HD8000000,1,0,0,0,100,100,0,0,3,14,0,5,{_MARGIN_L},{_MARGIN_R},0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
