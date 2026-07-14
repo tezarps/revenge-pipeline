@@ -1,40 +1,8 @@
 {
-  "story_id": 15,
-  "premise": "My son, whom I raised alone on night shifts, convinced me to co-sign a $240,000 mortgage for his 'starter home,' then stopped paying, sold it at a $90,000 profit, and told everyone I was a greedy leech. At 58, I went back to school, became a financial paralegal, found a hidden bank account, and garnished his wages until I recovered every cent plus 10% interest.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "15,036 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son Tricked Me Into A $240K Mortgage, Sold It, Called Me A Leech. So I Garnis"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "80.2 min, 1992MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=8MvCp2_plOE"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-14T18:48:27.213734+00:00",
-  "video_id": "8MvCp2_plOE"
+  "story_id": 16,
+  "premise": "After my husband died, his adult daughter from his first marriage handed me a forged lease and evicted me from the apartment above the bakery we’d built together, pocketing $75,000 of his life insurance she claimed I was never entitled to. I let her believe she’d won for two years, then revealed that I’d bought the entire building years earlier with a trust my grandmother left me — I evicted her bakery, reopened my own café across the street, and sent her a bill for market-rate back rent that forced her into bankruptcy.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-14T18:51:46.127692+00:00"
 }
