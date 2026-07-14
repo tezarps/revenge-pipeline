@@ -58,12 +58,19 @@ def _ass_time(t):
 # x=1240 of a 1920-wide frame, right-of-center, tuned for v1's LEFT-anchored
 # character so cards sit clear of her on the left. The character_v2
 # experiment overlay is RIGHT-anchored instead (assembly_agent.py), so that
-# same asymmetric margin now pushes cards into her face. Symmetric
-# 340/340 margins (same 1240-wide text region, but truly centered at x=960)
-# fix this for the experiment; v1 keeps the original 620/60 (root-caused
-# 2026-07-14, same class of left/right mismatch as the earlier
-# thumbnail/character bug).
-_MARGIN_L, _MARGIN_R = (340, 340) if THUMBNAIL_EXPERIMENT else (620, 60)
+# same asymmetric margin now pushes cards into her face.
+#
+# For the experiment, MarginL=40/MarginR=680 centers the card at x~640 -
+# the midpoint of the EMPTY zone to her left, not the full frame's x=960.
+# Full-frame centering was tried first but still let the card's right edge
+# creep under her (user feedback 2026-07-14, "kurang keatas, pas kan
+# ditengah tengah" after also flagging the earlier overlap). 850px is the
+# leftmost bbox edge across all 8 character_v2/ photos (character #1),
+# used as the safe worst-case boundary so the card clears every photo, not
+# just the one being tested at the time. v1 keeps the original 620/60
+# (root-caused 2026-07-14, same class of left/right mismatch as the
+# earlier thumbnail/character bug).
+_MARGIN_L, _MARGIN_R = (40, 680) if THUMBNAIL_EXPERIMENT else (620, 60)
 
 ASS_HEADER = f"""[Script Info]
 ScriptType: v4.00+

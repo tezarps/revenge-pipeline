@@ -374,18 +374,25 @@ def generate_thumbnail_b(thumb_lines, story_id):
 
 
 CHARACTER_V2_DIR = ASSETS_BG_DIR.parent / "character_v2"
+# Thumbnail-only source: the ORIGINAL v2 batch, pre-composited landscape
+# photos (dark room background baked in, character already on the right),
+# pulled directly from ~/Downloads/new_characters/8-17.png. Used FULL-BLEED
+# as-is (user feedback 2026-07-14: "tinggal kau timpa teks overlay" - just
+# overlay text on top of the photo as supplied, no cropping/boxing it).
+CHARACTER_V2_PHOTOS_DIR = ASSETS_BG_DIR.parent / "character_v2_original"
 
-# style -> (css class, base font size in px). Style C reuses the same
-# setup/twist/context/climax1/climax2 slots as style B, but only two colors:
-# white (default) and red (emphasis, mapped from the twist/climax "highlight"
-# slots) per the RealDadRevenge reference (dense text, white + red only).
+# style -> (css class, base font size in px). Dense/tightly packed per the
+# reference (small gaps, near-full-width lines), white with red emphasis.
 LINE_STYLE_C = {
-    "setup":   ("white", 92),
-    "twist":   ("red", 106),
-    "context": ("white", 92),
-    "climax1": ("red", 106),
-    "climax2": ("white", 92),
+    "setup":   ("white", 46),
+    "twist":   ("red", 46),
+    "context": ("white", 46),
+    "climax1": ("red", 46),
+    "climax2": ("white", 46),
 }
+
+# Bottom red badge bar, full width.
+_BADGE_H = 110
 
 _THUMB_C_HTML_TEMPLATE = """<!DOCTYPE html>
 <html><head><meta charset="utf-8"><style>
@@ -393,31 +400,31 @@ _THUMB_C_HTML_TEMPLATE = """<!DOCTYPE html>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #000; font-family: 'Anton', Arial, sans-serif; }}
   .frame {{ position: relative; width: 1280px; height: 720px; background: #000; }}
-  /* Full-bleed: photo_uri is already the complete composited frame (solid
-     black canvas + her cutout positioned right/bottom, done in Python by
-     generate_thumbnail_c) so no extra CSS positioning/cropping is needed
-     here (2026-07-14, replaced the old 80%-width crop-box approach that
-     was built for a different, pre-composited photo batch). */
+  /* Full-bleed, the source photo used exactly as supplied - it already has
+     the dark-left/character-right composition baked in. */
   .photo {{ position: absolute; inset: 0; z-index: 0; }}
   .photo img {{ width: 100%; height: 100%; object-fit: cover; }}
-  .badge {{ position: absolute; left: 46px; top: 30px; z-index: 3;
-    background: #ff1f1f; padding: 14px 34px; }}
-  .badge span {{ font-family: 'Anton', Arial, sans-serif; color: #ffffff; font-size: 68px;
-    letter-spacing: 3px; text-transform: uppercase; }}
-  .text-stack {{ position: absolute; top: 230px; left: 46px; width: 980px; bottom: 24px;
-    z-index: 2; display: flex; flex-direction: column; justify-content: space-evenly; gap: 6px;
-    transform-origin: top left; }}
-  .line {{ font-family: 'Anton', Arial, sans-serif; line-height: 1.06;
+  /* Capped to 70% width from the left (user feedback 2026-07-14: "tulisan
+     menimpa karakter, ambil 70% saja bagian kiri ke kanan") so text never
+     overlaps her, instead of running full-width behind her. */
+  .text-stack {{ position: absolute; left: 20px; top: 14px; width: 70%; bottom: {badge_h}px;
+    z-index: 1; display: flex; flex-direction: column; justify-content: space-evenly; gap: 4px;
+    transform-origin: top left; overflow: hidden; }}
+  .line {{ font-family: 'Anton', Arial, sans-serif; line-height: 1.12;
     letter-spacing: 0.5px; text-transform: uppercase;
-    -webkit-text-stroke: 2px #000; paint-order: stroke fill; }}
+    -webkit-text-stroke: 1.5px #000; paint-order: stroke fill; }}
   .white {{ color: #ffffff; }}
   .red {{ color: #ff1f1f; }}
+  .badge {{ position: absolute; left: 0; right: 0; bottom: 0; height: {badge_h}px; z-index: 3;
+    background: #ff1f1f; display: flex; align-items: center; padding: 0 34px; }}
+  .badge span {{ font-family: 'Anton', Arial, sans-serif; color: #ffffff; font-size: 52px;
+    letter-spacing: 3px; text-transform: uppercase; }}
 </style></head>
 <body>
   <div class="frame">
     <div class="photo"><img src="{photo_uri}"></div>
-    <div class="badge"><span>-TRUE LIFE STORY-</span></div>
     <div class="text-stack" id="stack">{lines_html}</div>
+    <div class="badge"><span>-TRUE LIFE STORY-</span></div>
   </div>
 <script>
   function fitStack() {{
@@ -426,10 +433,17 @@ _THUMB_C_HTML_TEMPLATE = """<!DOCTYPE html>
     const available = stack.clientHeight;
     const contentHeight = stack.scrollHeight;
     if (contentHeight > available) {{
-      const scale = Math.max(0.5, available / contentHeight);
+      // No artificial floor here: long thumb_lines need to shrink as much
+      // as necessary to fit, a hardcoded minimum caused clipped text
+      // before (root-caused 2026-07-14, "ada yang terpotong kebawah").
+      const scale = Math.max(0.3, available / contentHeight);
       stack.style.transform = `scale(${{scale}})`;
     }}
   }}
+  // window.onload can fire before the embedded Anton @font-face finishes
+  // swapping in, so fitStack() would measure the fallback font's (shorter)
+  // metrics and under-scale. document.fonts.ready waits for the real font.
+  document.fonts.ready.then(fitStack);
   window.onload = fitStack;
 </script>
 </body></html>"""
@@ -438,28 +452,24 @@ _THUMB_C_HTML_TEMPLATE = """<!DOCTYPE html>
 def generate_thumbnail_c(thumb_lines, story_id):
     """Style C, EXPERIMENTAL (2026-07-14, RealDadRevenge-inspired, gated
     behind config.THUMBNAIL_EXPERIMENT so the live channel keeps style B
-    unless a run opts in): dense Anton-font all-caps text stack, white with
-    red emphasis lines, over a solid black canvas with the character
-    composited on the right (rembg cutout + tight bbox crop, same as the
-    video overlay in assembly_agent.py, so the framing/zoom stays
-    consistent between video and thumbnail). Independent character
-    pool/rotation, see config.character_v2_number_for_story.
+    unless a run opts in). Dense Anton-font all-caps text overlaid directly
+    on the FULL, unmodified source photo (white, red emphasis lines), plus
+    a full-width red "-TRUE LIFE STORY-" badge bar along the bottom.
+    Independent character pool/rotation, see
+    config.character_v2_number_for_story.
 
-    2026-07-14 batch replaced an earlier pool of pre-composited
-    landscape photos (dark room backdrop baked in, used full-bleed with a
-    plain crop) with plain-white full-body portraits - compositing is now
-    done here in Python instead of relying on the source photo's own
-    background."""
+    Uses CHARACTER_V2_PHOTOS_DIR: the original pre-composited landscape
+    photos (dark background baked in already, character already positioned
+    on the right) - used exactly as supplied, no cropping or repositioning
+    (user feedback 2026-07-14: "tinggal kau timpa teks overlay")."""
     import base64
-    import io
     from playwright.sync_api import sync_playwright
-    from agents.assembly_agent import _cutout_character
 
-    if not CHARACTER_V2_DIR.exists() or not thumb_lines:
+    if not CHARACTER_V2_PHOTOS_DIR.exists() or not thumb_lines:
         return None
     from config import character_v2_number_for_story
     char_num = character_v2_number_for_story(story_id)
-    photo_path = CHARACTER_V2_DIR / f"person_v2_{char_num:02d}.png"
+    photo_path = CHARACTER_V2_PHOTOS_DIR / f"person_v2_{char_num:02d}.png"
     if not photo_path.exists():
         return None
 
@@ -468,21 +478,7 @@ def generate_thumbnail_c(thumb_lines, story_id):
     def _data_uri(path, mime):
         return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
 
-    # Cutout (rembg, cached) + composite onto solid black, right-anchored,
-    # bottom-anchored at a fixed height so her scale is consistent across
-    # all 8 photos regardless of each one's exact bbox size. Same target
-    # height as the video overlay's look (assembly_agent.py CHAR_WIDTH
-    # logic), verified together against a real render 2026-07-14.
-    cutout_path = _cutout_character(photo_path, tight_crop=True)
-    char_img = Image.open(cutout_path).convert("RGBA")
-    target_h = 760
-    scale = target_h / char_img.height
-    char_img = char_img.resize((int(char_img.width * scale), target_h))
-    canvas = Image.new("RGBA", (W, H), (0, 0, 0, 255))
-    canvas.alpha_composite(char_img, (W - char_img.width, H - target_h))
-    buf = io.BytesIO()
-    canvas.convert("RGB").save(buf, format="PNG")
-    photo_uri = f"data:image/png;base64,{base64.b64encode(buf.getvalue()).decode()}"
+    photo_uri = _data_uri(photo_path, "image/png")
     anton_uri = _data_uri(anton_path, "font/ttf") if anton_path.exists() else ""
 
     lines_by_style = {ln.get("style"): ln.get("text", "") for ln in thumb_lines}
@@ -497,7 +493,9 @@ def generate_thumbnail_c(thumb_lines, story_id):
     if not lines_html:
         return None
 
-    html = _THUMB_C_HTML_TEMPLATE.format(anton_uri=anton_uri, photo_uri=photo_uri, lines_html=lines_html)
+    html = _THUMB_C_HTML_TEMPLATE.format(
+        anton_uri=anton_uri, photo_uri=photo_uri, lines_html=lines_html, badge_h=_BADGE_H,
+    )
 
     path = OUTPUT_DIR / "thumbs" / f"{story_id}_c.jpg"
     with sync_playwright() as p:

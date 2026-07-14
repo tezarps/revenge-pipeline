@@ -84,15 +84,17 @@ def _pick_character(story_id):
     experiment), pulls from the separate character_v2/ pool instead, using
     character_v2_number_for_story() so this stays in sync with
     thumbnail_agent.generate_thumbnail_c's character choice for the same
-    story_id. v2 photos (2026-07-14 batch) are full-body waist-up shots on
-    plain white, cutout+tight-cropped to her bounding box (see
-    _cutout_character's tight_crop)."""
+    story_id. v2 photos (2nd batch, 2026-07-14) are user-supplied, ALREADY
+    transparent PNGs pre-positioned on a 1280x720 canvas (right-anchored,
+    small top margin) - no rembg cutout needed, used as-is. (The first v2
+    batch needed rembg; that path stayed for v1 back-compat but is dead for
+    v2 now.)"""
     from config import character_number_for_story, character_v2_number_for_story, THUMBNAIL_EXPERIMENT
     if THUMBNAIL_EXPERIMENT:
         num = character_v2_number_for_story(story_id)
         chosen = CHARACTER_V2_DIR / f"person_v2_{num:02d}.png"
         if chosen.exists():
-            return _cutout_character(chosen, tight_crop=True)
+            return chosen
     num = character_number_for_story(story_id)
     chosen = CHARACTER_DIR / f"person_{num:02d}.jpg"
     if not chosen.exists():
@@ -319,18 +321,13 @@ def create_video(audio_path, story_id):
         # visible above her head, she doesn't dominate the entire vertical
         # space. See user feedback 2026-07-04.
         if char_cutout.stem.startswith("person_v2_"):
-            # character_v2/ sources (2026-07-14 batch) are full-body
-            # waist-up portraits, already tight-cropped to her bounding box
-            # by _cutout_character's tight_crop. No precrop needed here
-            # (an earlier landscape-photo batch needed one, no longer
-            # relevant): just scale to a fixed height, preserving aspect,
-            # so both hands and head stay in frame at a consistent size
-            # across all 8 photos regardless of their exact bbox dimensions.
-            char_filter = f"[{char_in}:v]scale=-1:820[char]"
-            # Right-anchored, top-anchored (her head starts at the very top
-            # of the tight-cropped source, so this reaches the frame's top
-            # edge with no extra zoom/gap).
-            overlay_x, overlay_y = "W-w", "0"
+            # character_v2/ sources (2nd batch, 2026-07-14) are user-supplied
+            # transparent PNGs already composed on a 1280x720 canvas with
+            # her final position/headroom baked in by the user. Just scale
+            # that whole canvas up 1.5x to the 1920x1080 video frame and
+            # overlay at the origin, no cropping or anchoring math needed.
+            char_filter = f"[{char_in}:v]scale=1920:1080[char]"
+            overlay_x, overlay_y = "0", "0"
         else:
             char_filter = f"[{char_in}:v]scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]"
             overlay_x, overlay_y = "0", "H-h"
