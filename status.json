@@ -1,8 +1,15 @@
 {
   "story_id": 15,
   "premise": "My son, whom I raised alone on night shifts, convinced me to co-sign a $240,000 mortgage for his 'starter home,' then stopped paying, sold it at a $90,000 profit, and told everyone I was a greedy leech. At 58, I went back to school, became a financial paralegal, found a hidden bank account, and garnished his wages until I recovered every cent plus 10% interest.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-14T05:35:07.018301+00:00"
+  "updated_at": "2026-07-14T05:35:08.510782+00:00"
 }
