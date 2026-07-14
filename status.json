@@ -1,7 +1,7 @@
 {
   "story_id": 17,
   "premise": "I spent seven years as the sole caregiver for my elderly in-laws, pouring $93,000 of my own savings into renovating their lakefront cabin, while my brother-in-law visited once a year. When the last parent died, the will left the cabin solely to him, and he served me an eviction notice on the day of the funeral — I proved the final will was signed while my mother-in-law was heavily medicated, won an undue influence suit, reclaimed the cabin, and won a $93,000 reimbursement judgment that forced him to sell.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "He Evicted Me At The Funeral After Getting The Lake Cabin I Renovated. So I Watc"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-14T20:56:11.485159+00:00"
+  "updated_at": "2026-07-14T20:56:12.945897+00:00"
 }
