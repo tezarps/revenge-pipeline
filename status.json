@@ -1,40 +1,8 @@
 {
-  "story_id": 16,
-  "premise": "After my husband died, his adult daughter from his first marriage handed me a forged lease and evicted me from the apartment above the bakery we’d built together, pocketing $75,000 of his life insurance she claimed I was never entitled to. I let her believe she’d won for two years, then revealed that I’d bought the entire building years earlier with a trust my grandmother left me — I evicted her bakery, reopened my own café across the street, and sent her a bill for market-rate back rent that forced her into bankruptcy.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "12,549 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Stepdaughter Forged A Lease, Evicted Me, And Stole $75K. So I Watched Her Go "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "69.7 min, 1721MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=AgzbJEsdrcI"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-14T20:07:35.229475+00:00",
-  "video_id": "AgzbJEsdrcI"
+  "story_id": 17,
+  "premise": "I spent seven years as the sole caregiver for my elderly in-laws, pouring $93,000 of my own savings into renovating their lakefront cabin, while my brother-in-law visited once a year. When the last parent died, the will left the cabin solely to him, and he served me an eviction notice on the day of the funeral — I proved the final will was signed while my mother-in-law was heavily medicated, won an undue influence suit, reclaimed the cabin, and won a $93,000 reimbursement judgment that forced him to sell.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-14T20:10:15.544245+00:00"
 }
