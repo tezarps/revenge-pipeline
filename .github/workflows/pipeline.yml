@@ -1,18 +1,17 @@
 name: Revenge Pipeline
 
 on:
-  schedule:
-    # 3x/day, 8h apart (2026-07-14, RealDadRevenge-cadence experiment: user
-    # wants 3 videos/day). Repo is public, GH Actions minutes are unlimited.
-    # Render time never affects publish time, upload_agent schedules each
-    # video into the next open ET slot (agents/upload_agent.py
-    # PUBLISH_SLOTS_ET), independent of when its own render finished, so
-    # these 3 triggers don't need to line up with the 10:30/16:00/20:00 ET
-    # publish slots, just be spaced enough apart to avoid 3 renders
-    # overlapping. Revert to a single "0 6 * * *" if the experiment ends.
-    - cron: "0 6 * * *"
-    - cron: "0 14 * * *"
-    - cron: "0 22 * * *"
+  # Cron PAUSED 2026-07-14: the driving-POV background clip turned out to be
+  # racing footage (speedometer visible, 251 km/h), not a calm drive like the
+  # user's reference, and the character_v2 photos are being redone too. No
+  # auto-runs until the user supplies new driving footage + characters and
+  # asks to resume. Manual runs still work via workflow_dispatch below.
+  # Un-comment this schedule block to resume 3x/day (see git history/PR for
+  # the exact block; was 0 6/14/22 * * * UTC).
+  # schedule:
+  #   - cron: "0 6 * * *"
+  #   - cron: "0 14 * * *"
+  #   - cron: "0 22 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
