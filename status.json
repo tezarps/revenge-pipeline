@@ -1,7 +1,7 @@
 {
   "story_id": 16,
   "premise": "After my husband died, his adult daughter from his first marriage handed me a forged lease and evicted me from the apartment above the bakery we’d built together, pocketing $75,000 of his life insurance she claimed I was never entitled to. I let her believe she’d won for two years, then revealed that I’d bought the entire building years earlier with a trust my grandmother left me — I evicted her bakery, reopened my own café across the street, and sent her a bill for market-rate back rent that forced her into bankruptcy.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "69.7 min, 1721MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-14T20:06:25.694579+00:00"
+  "updated_at": "2026-07-14T20:06:27.179832+00:00"
 }
