@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Brother-In-Law Evicted Me On The Day Of The Funeral. So I Watched Him Lose Th"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-14T04:12:34.339547+00:00"
+  "updated_at": "2026-07-14T04:13:38.738027+00:00"
 }
