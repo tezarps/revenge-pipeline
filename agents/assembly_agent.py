@@ -17,13 +17,16 @@ from agents.captions_agent import generate_captions
 CHARACTER_DIR = ASSETS_BG_DIR.parent / "character"
 CHARACTER_V2_DIR = ASSETS_BG_DIR.parent / "character_v2"
 DRONE_DIR = ASSETS_BG_DIR.parent / "drone"
+# Driving-POV loop background for the RealDadRevenge experiment (2026-07-14,
+# user reference: a windshield/dashboard driving clip, looped for the whole
+# video instead of drone/landscape footage). Free stock libraries only offer
+# short clips (seconds, not a single continuous 9min+ file), so this reuses
+# the same shuffle-and-repeat-to-target-duration technique as
+# _prepare_drone_concat below, just pointed at a different clip pool.
+DRIVING_DIR = ASSETS_BG_DIR.parent / "driving"
 CUTOUT_DIR = ASSETS_BG_DIR.parent / "character_cutout"
 CHAR_WIDTH = 640
 CHAR_HEIGHT = 820  # < 1080 on purpose: leaves headroom above her, not full-frame close-up
-# Experiment pool (2026-07-14, user decision: "penuhkan kepalanya hingga
-# menyentuh frame atas"): full frame height, no headroom, her head reaches
-# the top edge.
-CHAR_HEIGHT_V2 = 1080
 SEGMENT_SEC = 90  # fallback slideshow only
 
 
@@ -87,14 +90,15 @@ def _pick_character(story_id):
     return _cutout_character(chosen)
 
 
-def _prepare_drone_concat(story_id, target_duration):
-    clips = sorted(p for p in DRONE_DIR.glob("*") if p.suffix.lower() in (".mp4", ".mov", ".webm"))
+def _prepare_drone_concat(story_id, target_duration, bg_dir=None):
+    bg_dir = bg_dir or DRONE_DIR
+    clips = sorted(p for p in bg_dir.glob("*") if p.suffix.lower() in (".mp4", ".mov", ".webm"))
     if not clips:
         return None
     rng = random.Random(story_id)
     rng.shuffle(clips)
 
-    concat_file = OUTPUT_DIR / "video" / f"{story_id}_drone_concat.txt"
+    concat_file = OUTPUT_DIR / "video" / f"{story_id}_{bg_dir.name}_concat.txt"
     # Cap must scale with target_duration, not be a flat number: with only 6
     # clips averaging ~18s, a flat 200-clip cap tops out around 60 minutes of
     # background and silently runs out mid-video for the 2hr target (found
@@ -266,7 +270,9 @@ def create_video(audio_path, story_id):
     captions_path = generate_captions(audio_path, story_id)
     char_cutout = _pick_character(story_id)
 
-    drone_concat = _prepare_drone_concat(story_id, dur)
+    from config import THUMBNAIL_EXPERIMENT
+    bg_dir = DRIVING_DIR if THUMBNAIL_EXPERIMENT and DRIVING_DIR.exists() else DRONE_DIR
+    drone_concat = _prepare_drone_concat(story_id, dur, bg_dir=bg_dir)
     bg_is_video = drone_concat is not None
     if not bg_is_video:
         drone_concat = _fallback_bg_concat(story_id, dur)
@@ -303,19 +309,24 @@ def create_video(audio_path, story_id):
             # character_v2/ sources are landscape 1280x720 with the woman
             # framed in the right ~40% (built for the style-C thumbnail's
             # own fade), not a portrait close-up like v1's person_0N.jpg.
-            # Precrop to that right-side region BEFORE the portrait
-            # scale/crop below, otherwise the centered crop grabs empty
-            # space or only half her face (verified 2026-07-14).
-            char_filter = f"[{char_in}:v]crop=520:720:760:0,scale={CHAR_WIDTH}:{CHAR_HEIGHT_V2}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT_V2}[char]"
-            # Right-anchored for the v2/experiment pool (user decision
-            # 2026-07-14, verified via a rendered still against real drone
-            # footage before wiring it in), v1 stays left-anchored as before.
-            overlay_x = "W-w"
+            # Precrop to that right-side region BEFORE scaling, otherwise
+            # the centered crop grabs empty space or only half her face
+            # (verified 2026-07-14). Scale preserves the crop's own aspect
+            # ratio (no forced height/second crop) so her hands and head
+            # both stay fully in frame - an earlier version force-fit this
+            # into a full 1080-tall box, which zoomed in ~1.5x and clipped
+            # both hands off the sides (user feedback 2026-07-14, "karakter
+            # wanita yang utuh tanpa kepala atau tangan terpotong").
+            char_filter = f"[{char_in}:v]crop=520:720:760:0,scale={CHAR_WIDTH}:-1[char]"
+            # Right-anchored, top-anchored for v2 (her head already sits at
+            # the top of the source crop, so top-anchoring alone reaches
+            # the frame's top edge without needing to zoom past her hands).
+            overlay_x, overlay_y = "W-w", "0"
         else:
             char_filter = f"[{char_in}:v]scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]"
-            overlay_x = "0"
+            overlay_x, overlay_y = "0", "H-h"
         filters.append(char_filter)
-        filters.append(f"[{last}][char]overlay=x={overlay_x}:y=H-h[bgchar]")
+        filters.append(f"[{last}][char]overlay=x={overlay_x}:y={overlay_y}[bgchar]")
         last = "bgchar"
 
     filters.append(f"[{last}]subtitles={captions_path}[withtext]")
