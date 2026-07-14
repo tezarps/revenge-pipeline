@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "He Evicted Me At The Funeral After Getting The Lake Cabin I Renovated. So I Watc"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-14T20:55:29.755418+00:00"
+  "updated_at": "2026-07-14T20:56:11.485159+00:00"
 }
