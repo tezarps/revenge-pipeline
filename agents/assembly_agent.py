@@ -42,9 +42,19 @@ def audio_duration(path):
     return _probe_duration(path)
 
 
-def _cutout_character(char_path):
+def _cutout_character(char_path, tight_crop=False):
     """Remove background once per character photo, cache the transparent
-    PNG so every future video reusing this shot skips the model pass."""
+    PNG so every future video reusing this shot skips the model pass.
+
+    tight_crop=True (v2 pool only, see _pick_character below): the
+    user-supplied v2 photos are full-body waist-up shots on a plain white
+    background with a lot of empty headroom above her (portrait
+    1536x2752), so after rembg strips the white, the transparent PNG still
+    carries that empty margin. Cropping to the alpha channel's bounding box
+    removes it, so a top-anchored overlay actually starts at her head
+    instead of a blank gap (verified 2026-07-14 against the new asset
+    batch). v1's photos are already tightly framed, so this stays off for
+    them to avoid changing the locked look."""
     CUTOUT_DIR.mkdir(parents=True, exist_ok=True)
     cutout_path = CUTOUT_DIR / f"{char_path.stem}.png"
     if cutout_path.exists():
@@ -55,6 +65,10 @@ def _cutout_character(char_path):
     session = new_session("u2net_human_seg")
     img = Image.open(char_path).convert("RGB")
     out = remove(img, session=session)
+    if tight_crop:
+        bbox = out.getbbox()
+        if bbox:
+            out = out.crop(bbox)
     out.save(cutout_path)
     return cutout_path
 
@@ -70,16 +84,15 @@ def _pick_character(story_id):
     experiment), pulls from the separate character_v2/ pool instead, using
     character_v2_number_for_story() so this stays in sync with
     thumbnail_agent.generate_thumbnail_c's character choice for the same
-    story_id. rembg still does the actual cutout, same as v1 - the v2
-    source photos have a composed dark-room background behind the woman
-    (built for the thumbnail's own fade), rembg strips that off just the
-    same as it strips a plain background from a v1 photo."""
+    story_id. v2 photos (2026-07-14 batch) are full-body waist-up shots on
+    plain white, cutout+tight-cropped to her bounding box (see
+    _cutout_character's tight_crop)."""
     from config import character_number_for_story, character_v2_number_for_story, THUMBNAIL_EXPERIMENT
     if THUMBNAIL_EXPERIMENT:
         num = character_v2_number_for_story(story_id)
         chosen = CHARACTER_V2_DIR / f"person_v2_{num:02d}.png"
         if chosen.exists():
-            return _cutout_character(chosen)
+            return _cutout_character(chosen, tight_crop=True)
     num = character_number_for_story(story_id)
     chosen = CHARACTER_DIR / f"person_{num:02d}.jpg"
     if not chosen.exists():
@@ -306,21 +319,17 @@ def create_video(audio_path, story_id):
         # visible above her head, she doesn't dominate the entire vertical
         # space. See user feedback 2026-07-04.
         if char_cutout.stem.startswith("person_v2_"):
-            # character_v2/ sources are landscape 1280x720 with the woman
-            # framed in the right ~40% (built for the style-C thumbnail's
-            # own fade), not a portrait close-up like v1's person_0N.jpg.
-            # Precrop to that right-side region BEFORE scaling, otherwise
-            # the centered crop grabs empty space or only half her face
-            # (verified 2026-07-14). Scale preserves the crop's own aspect
-            # ratio (no forced height/second crop) so her hands and head
-            # both stay fully in frame - an earlier version force-fit this
-            # into a full 1080-tall box, which zoomed in ~1.5x and clipped
-            # both hands off the sides (user feedback 2026-07-14, "karakter
-            # wanita yang utuh tanpa kepala atau tangan terpotong").
-            char_filter = f"[{char_in}:v]crop=520:720:760:0,scale={CHAR_WIDTH}:-1[char]"
-            # Right-anchored, top-anchored for v2 (her head already sits at
-            # the top of the source crop, so top-anchoring alone reaches
-            # the frame's top edge without needing to zoom past her hands).
+            # character_v2/ sources (2026-07-14 batch) are full-body
+            # waist-up portraits, already tight-cropped to her bounding box
+            # by _cutout_character's tight_crop. No precrop needed here
+            # (an earlier landscape-photo batch needed one, no longer
+            # relevant): just scale to a fixed height, preserving aspect,
+            # so both hands and head stay in frame at a consistent size
+            # across all 8 photos regardless of their exact bbox dimensions.
+            char_filter = f"[{char_in}:v]scale=-1:820[char]"
+            # Right-anchored, top-anchored (her head starts at the very top
+            # of the tight-cropped source, so this reaches the frame's top
+            # edge with no extra zoom/gap).
             overlay_x, overlay_y = "W-w", "0"
         else:
             char_filter = f"[{char_in}:v]scale={CHAR_WIDTH}:{CHAR_HEIGHT}:force_original_aspect_ratio=increase,crop={CHAR_WIDTH}:{CHAR_HEIGHT}[char]"

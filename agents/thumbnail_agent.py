@@ -393,14 +393,13 @@ _THUMB_C_HTML_TEMPLATE = """<!DOCTYPE html>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   html, body {{ width: 1280px; height: 720px; overflow: hidden; background: #000; font-family: 'Anton', Arial, sans-serif; }}
   .frame {{ position: relative; width: 1280px; height: 720px; background: #000; }}
-  /* Right 80% only (cropped server-side, see generate_thumbnail_c), left
-     20% stays the frame's plain #000 for the badge/text to sit on cleanly,
-     no dead mid-frame strip between text and her (2026-07-14 fix). */
-  .photo {{ position: absolute; right: 0; top: 0; width: 80%; height: 100%; z-index: 0; }}
+  /* Full-bleed: photo_uri is already the complete composited frame (solid
+     black canvas + her cutout positioned right/bottom, done in Python by
+     generate_thumbnail_c) so no extra CSS positioning/cropping is needed
+     here (2026-07-14, replaced the old 80%-width crop-box approach that
+     was built for a different, pre-composited photo batch). */
+  .photo {{ position: absolute; inset: 0; z-index: 0; }}
   .photo img {{ width: 100%; height: 100%; object-fit: cover; }}
-  /* No CSS panel/fade here, the character_v2 source photos already have
-     the dark-left/character-right composition baked in (user-composed),
-     text sits directly on top of that. */
   .badge {{ position: absolute; left: 46px; top: 30px; z-index: 3;
     background: #ff1f1f; padding: 14px 34px; }}
   .badge span {{ font-family: 'Anton', Arial, sans-serif; color: #ffffff; font-size: 68px;
@@ -440,13 +439,21 @@ def generate_thumbnail_c(thumb_lines, story_id):
     """Style C, EXPERIMENTAL (2026-07-14, RealDadRevenge-inspired, gated
     behind config.THUMBNAIL_EXPERIMENT so the live channel keeps style B
     unless a run opts in): dense Anton-font all-caps text stack, white with
-    red emphasis lines, solid black panel over ~68-78% of the frame fading
-    into the character_v2 photo on the right (the photos in that pool are
-    already framed with dark negative space on the left, so no separate
-    blurred-backdrop composite is needed like style B's fallback path).
-    Independent character pool/rotation, see config.character_v2_number_for_story."""
+    red emphasis lines, over a solid black canvas with the character
+    composited on the right (rembg cutout + tight bbox crop, same as the
+    video overlay in assembly_agent.py, so the framing/zoom stays
+    consistent between video and thumbnail). Independent character
+    pool/rotation, see config.character_v2_number_for_story.
+
+    2026-07-14 batch replaced an earlier pool of pre-composited
+    landscape photos (dark room backdrop baked in, used full-bleed with a
+    plain crop) with plain-white full-body portraits - compositing is now
+    done here in Python instead of relying on the source photo's own
+    background."""
     import base64
+    import io
     from playwright.sync_api import sync_playwright
+    from agents.assembly_agent import _cutout_character
 
     if not CHARACTER_V2_DIR.exists() or not thumb_lines:
         return None
@@ -461,16 +468,20 @@ def generate_thumbnail_c(thumb_lines, story_id):
     def _data_uri(path, mime):
         return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode()}"
 
-    # Crop to the right 80% of the source (x=256..1280) before embedding:
-    # the full-bleed photo left a visible dead strip of plain room
-    # background between the text and her (user feedback 2026-07-14,
-    # "masih ada space kosong, ambil saja sisi kanan nya hingga 80%").
-    # 1024x720 is exactly 80% width x 100% height of the W,H canvas, so the
-    # .photo box below can show it 1:1 with no extra scale/crop needed.
-    import io
-    cropped = Image.open(photo_path).convert("RGBA").crop((W - int(W * 0.8), 0, W, H))
+    # Cutout (rembg, cached) + composite onto solid black, right-anchored,
+    # bottom-anchored at a fixed height so her scale is consistent across
+    # all 8 photos regardless of each one's exact bbox size. Same target
+    # height as the video overlay's look (assembly_agent.py CHAR_WIDTH
+    # logic), verified together against a real render 2026-07-14.
+    cutout_path = _cutout_character(photo_path, tight_crop=True)
+    char_img = Image.open(cutout_path).convert("RGBA")
+    target_h = 760
+    scale = target_h / char_img.height
+    char_img = char_img.resize((int(char_img.width * scale), target_h))
+    canvas = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+    canvas.alpha_composite(char_img, (W - char_img.width, H - target_h))
     buf = io.BytesIO()
-    cropped.save(buf, format="PNG")
+    canvas.convert("RGB").save(buf, format="PNG")
     photo_uri = f"data:image/png;base64,{base64.b64encode(buf.getvalue()).decode()}"
     anton_uri = _data_uri(anton_path, "font/ttf") if anton_path.exists() else ""
 

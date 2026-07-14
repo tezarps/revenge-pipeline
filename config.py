@@ -83,13 +83,14 @@ def character_number_for_story(story_id):
 
 
 # Second, SEPARATE character pool for the RealDadRevenge-style thumbnail
-# experiment (2026-07-14): 10 women, coded 45-60, in assets/character_v2/
-# person_v2_{N:02d}.png, each already framed with the subject right-aligned
-# and dark negative space on the left (so it doubles as the thumbnail
-# background, no separate template needed like the v1 pool). Independent
-# rotation from character_number_for_story so the experiment never touches
-# the locked v1 pool/mapping (see project_golden_child_thumbnail_baseline.md).
-CHARACTER_V2_COUNT = 10
+# experiment. assets/character_v2/person_v2_{N:02d}.png, women coded 45-60.
+# Independent rotation from character_number_for_story so the experiment
+# never touches the locked v1 pool/mapping (see
+# project_golden_child_thumbnail_baseline.md). Replaced 2026-07-14 with a
+# user-supplied set of 8 (was 10): full-body waist-up on a plain white
+# background, cutout via rembg at render time same as the v1 pool, NOT
+# pre-composited with a dark room backdrop like the first v2 batch was.
+CHARACTER_V2_COUNT = 8
 
 
 def character_v2_number_for_story(story_id):
