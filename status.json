@@ -1,7 +1,7 @@
 {
   "story_id": 18,
   "premise": "My husband’s son from his first marriage was the lawyer for our farm-to-table restaurant, and after my husband died suddenly, he forged documents to claim he owned 80% of the business, liquidated $300,000 in assets, and left me with just the farmhouse and a mountain of debt. I spent five years auditing every transaction until I found the forgery, reported him to the state bar and got him disbarred, then bought the restaurant’s debt at auction for $18,000, forced a bankruptcy sale, and repurchased the business.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Stepson Forged Documents, Stole $300K, Left Me. So I Bought The Debt And Watc"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-15T07:01:50.867626+00:00"
+  "updated_at": "2026-07-15T07:01:52.218318+00:00"
 }
