@@ -384,11 +384,11 @@ CHARACTER_V2_PHOTOS_DIR = ASSETS_BG_DIR.parent / "character_v2_original"
 # style -> (css class, base font size in px). Dense/tightly packed per the
 # reference (small gaps, near-full-width lines), white with red emphasis.
 LINE_STYLE_C = {
-    "setup":   ("white", 46),
-    "twist":   ("red", 46),
-    "context": ("white", 46),
-    "climax1": ("red", 46),
-    "climax2": ("white", 46),
+    "setup":   ("white", 60),
+    "twist":   ("red", 60),
+    "context": ("white", 60),
+    "climax1": ("red", 60),
+    "climax2": ("white", 60),
 }
 
 # Bottom red badge bar, full width.
@@ -407,8 +407,14 @@ _THUMB_C_HTML_TEMPLATE = """<!DOCTYPE html>
   /* Capped to 70% width from the left (user feedback 2026-07-14: "tulisan
      menimpa karakter, ambil 70% saja bagian kiri ke kanan") so text never
      overlaps her, instead of running full-width behind her. */
+  /* flex-start + a small fixed gap (not space-evenly) so short thumb_lines
+     pack tightly instead of stretching into big gaps to fill the box
+     (user feedback 2026-07-14: "spasi jarak antara tulisan masih terlalu
+     jauh"). Bigger base font size (see LINE_STYLE_C, 46->60px) fills more
+     of the vertical space on its own now instead of relying on gaps to do
+     it. fitStack() still scales the whole block down if it overflows. */
   .text-stack {{ position: absolute; left: 20px; top: 14px; width: 70%; bottom: {badge_h}px;
-    z-index: 1; display: flex; flex-direction: column; justify-content: space-evenly; gap: 4px;
+    z-index: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px;
     transform-origin: top left; overflow: hidden; }}
   .line {{ font-family: 'Anton', Arial, sans-serif; line-height: 1.12;
     letter-spacing: 0.5px; text-transform: uppercase;
