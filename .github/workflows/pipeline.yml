@@ -1,17 +1,26 @@
 name: Revenge Pipeline
 
 on:
-  # Cron PAUSED 2026-07-14: the driving-POV background clip turned out to be
-  # racing footage (speedometer visible, 251 km/h), not a calm drive like the
-  # user's reference, and the character_v2 photos are being redone too. No
-  # auto-runs until the user supplies new driving footage + characters and
-  # asks to resume. Manual runs still work via workflow_dispatch below.
-  # Un-comment this schedule block to resume 3x/day (see git history/PR for
-  # the exact block; was 0 6/14/22 * * * UTC).
-  # schedule:
-  #   - cron: "0 6 * * *"
-  #   - cron: "0 14 * * *"
-  #   - cron: "0 22 * * *"
+  # Resumed 2026-07-15: driving footage + character assets replaced with
+  # user-supplied ones, thumbnail/subtitle fixes locked in.
+  #
+  # Triggers are each ~8h BEFORE the publish slot they feed (not evenly
+  # spaced), since the 3 publish slots themselves aren't evenly spaced
+  # (00:00/06:30/19:00 WIB, see upload_agent.py PUBLISH_SLOTS_ET) - an
+  # earlier evenly-spaced 06/14/22 UTC schedule put some triggers only
+  # 1.5-3h before their nearest slot, too tight against the render job's
+  # up-to-6h runtime (see timeout-minutes below). 8h buffer comfortably
+  # covers that. Even if a render still runs long, upload_agent schedules
+  # into the NEXT open slot rather than publishing late/incomplete, so a
+  # tight buffer degrades to a shifted slot, never a broken publish - this
+  # is just to keep that shifting rare.
+  #   04:00 UTC (11:00 WIB) -> feeds the 19:00 WIB slot (~8h buffer)
+  #   09:00 UTC (16:00 WIB) -> feeds the 00:00 WIB slot (~8h buffer)
+  #   15:00 UTC (22:00 WIB) -> feeds the 06:30 WIB slot (~8.5h buffer)
+  schedule:
+    - cron: "0 4 * * *"
+    - cron: "0 9 * * *"
+    - cron: "0 15 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
