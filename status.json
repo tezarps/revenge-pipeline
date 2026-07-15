@@ -1,40 +1,8 @@
 {
-  "story_id": 18,
-  "premise": "My husband’s son from his first marriage was the lawyer for our farm-to-table restaurant, and after my husband died suddenly, he forged documents to claim he owned 80% of the business, liquidated $300,000 in assets, and left me with just the farmhouse and a mountain of debt. I spent five years auditing every transaction until I found the forgery, reported him to the state bar and got him disbarred, then bought the restaurant’s debt at auction for $18,000, forced a bankruptcy sale, and repurchased the business.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "12,370 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Stepson Forged Documents, Stole $300K, Left Me. So I Bought The Debt And Watc"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "64.0 min, 1650MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=ElA9dlToSA0"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-15T07:41:49.741562+00:00",
-  "video_id": "ElA9dlToSA0"
+  "story_id": 19,
+  "premise": "When my mother was diagnosed with stage-four cancer, I emptied my $130,000 retirement account to pay for an experimental treatment abroad while my sister refused to contribute a dime. Mom recovered fully — and then secretly rewrote her will to leave the $360,000 family home entirely to my sister, who evicted me right after the funeral; I later discovered a hidden codicil and a diary proving she manipulated Mom into changing the will, sued for tortious interference, and won a judgment that forced her to sell the house and pay me $275,000.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-15T10:50:45.724857+00:00"
 }
