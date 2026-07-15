@@ -1,8 +1,15 @@
 {
   "story_id": 19,
   "premise": "When my mother was diagnosed with stage-four cancer, I emptied my $130,000 retirement account to pay for an experimental treatment abroad while my sister refused to contribute a dime. Mom recovered fully — and then secretly rewrote her will to leave the $360,000 family home entirely to my sister, who evicted me right after the funeral; I later discovered a hidden codicil and a diary proving she manipulated Mom into changing the will, sued for tortious interference, and won a judgment that forced her to sell the house and pay me $275,000.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-15T10:50:45.724857+00:00"
+  "updated_at": "2026-07-15T10:50:47.408230+00:00"
 }
