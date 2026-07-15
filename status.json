@@ -1,15 +1,21 @@
 {
   "story_id": 18,
   "premise": "My husband’s son from his first marriage was the lawyer for our farm-to-table restaurant, and after my husband died suddenly, he forged documents to claim he owned 80% of the business, liquidated $300,000 in assets, and left me with just the farmhouse and a mountain of debt. I spent five years auditing every transaction until I found the forgery, reported him to the state bar and got him disbarred, then bought the restaurant’s debt at auction for $18,000, forced a bankruptcy sale, and repurchased the business.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "12,370 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-15T06:29:25.565240+00:00"
+  "updated_at": "2026-07-15T06:29:27.766584+00:00"
 }
