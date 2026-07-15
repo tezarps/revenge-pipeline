@@ -1,40 +1,8 @@
 {
-  "story_id": 17,
-  "premise": "I spent seven years as the sole caregiver for my elderly in-laws, pouring $93,000 of my own savings into renovating their lakefront cabin, while my brother-in-law visited once a year. When the last parent died, the will left the cabin solely to him, and he served me an eviction notice on the day of the funeral — I proved the final will was signed while my mother-in-law was heavily medicated, won an undue influence suit, reclaimed the cabin, and won a $93,000 reimbursement judgment that forced him to sell.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "13,854 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "He Evicted Me At The Funeral After Getting The Lake Cabin I Renovated. So I Watc"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "79.3 min, 2037MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=xNj7F1qYkrE"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-14T21:49:46.804123+00:00",
-  "video_id": "xNj7F1qYkrE"
+  "story_id": 18,
+  "premise": "My husband’s son from his first marriage was the lawyer for our farm-to-table restaurant, and after my husband died suddenly, he forged documents to claim he owned 80% of the business, liquidated $300,000 in assets, and left me with just the farmhouse and a mountain of debt. I spent five years auditing every transaction until I found the forgery, reported him to the state bar and got him disbarred, then bought the restaurant’s debt at auction for $18,000, forced a bankruptcy sale, and repurchased the business.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-15T06:14:26.622010+00:00"
 }
