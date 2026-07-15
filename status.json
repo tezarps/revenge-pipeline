@@ -1,7 +1,7 @@
 {
   "story_id": 20,
   "premise": "After my husband died, I poured $175,000 of my pension into buying a duplex for my son and his wife with the promise they’d pay me rent and eventually buy me out — they forged my signature on a quitclaim deed, sold the building for $200,000, and disappeared. Seven years later I spotted their new four-bedroom house on social media, proved the fraud in court, and not only reclaimed every cent with interest but also foreclosed on that house and turned it into a vacation rental that now funds my retirement.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "63.9 min, 1679MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-15T17:40:55.837814+00:00"
+  "updated_at": "2026-07-15T17:40:57.027182+00:00"
 }
