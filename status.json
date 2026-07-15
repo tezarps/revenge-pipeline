@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Mom Left Me Homeless After I Paid For Her Cancer. So I Watched Her Lose The H"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-15T11:35:14.595581+00:00"
+  "updated_at": "2026-07-15T11:36:04.140641+00:00"
 }
