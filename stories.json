@@ -123,6 +123,33 @@
       "status": "done",
       "video_id": "_m_7kszmAxk",
       "publish_at": "2026-07-16T12:00:00.000000Z"
+    },
+    {
+      "id": 20,
+      "premise": "After my husband died, I poured $175,000 of my pension into buying a duplex for my son and his wife with the promise they’d pay me rent and eventually buy me out — they forged my signature on a quitclaim deed, sold the building for $200,000, and disappeared. Seven years later I spotted their new four-bedroom house on social media, proved the fraud in court, and not only reclaimed every cent with interest but also foreclosed on that house and turned it into a vacation rental that now funds my retirement.",
+      "status": "done",
+      "video_id": "v0I0yw6xeNA",
+      "publish_at": "2026-07-16T17:00:00.000000Z"
+    },
+    {
+      "id": 21,
+      "premise": "My half-sister, who visited our father once in eight years, pretended to reconcile when his dementia worsened and maneuvered him into signing over his $420,000 apartment building while he was sedated — she sold it for cash and dumped him in a state-funded nursing home. I found the medical records proving he couldn’t consent, won an elder-abuse suit with $500,000 in damages, and when she couldn’t pay, I accepted the deed to her own home in lieu of interest — then evicted her and converted it into a grief counseling center for fellow forgotten caregivers.",
+      "status": "pending"
+    },
+    {
+      "id": 22,
+      "premise": "I raised my stepdaughter from age six and drained $140,000 of my nursing salary to put her through college, but after my husband’s cancer diagnosis she secretly forged my signature on his $300,000 life insurance beneficiary form and collected every cent. A stray tax document led me to the forgery a decade later — I hired a forensic examiner, got her convicted of insurance fraud, and when the judgment forced the sale of her house, I bought it at auction for $120,000 and now rent it to her mother, who never believed me.",
+      "status": "pending"
+    },
+    {
+      "id": 23,
+      "premise": "My brother and I turned a $5,000 catering cart into a million-dollar business over 25 years, but while I ran the kitchen he siphoned $340,000 into a shell company and forged a buyout to push me out with nothing. I burned my retirement savings on a forensic accountant, uncovered the paper trail, and on the day he was set to close a major expansion deal I tipped off his bank and biggest client about the embezzlement — the loan vanished, the client canceled, and I won a judgment and a lien on his house, which I now own and rent to his ex-wife.",
+      "status": "pending"
+    },
+    {
+      "id": 24,
+      "premise": "I emptied my $180,000 retirement account to launch a veterinary hospital for my daughter and son-in-law, trusting their promise of 30% equity, but they secretly reincorporated under a new name, stripped the assets, and filed bankruptcy, leaving me penniless while they reopened an identical clinic two towns over. I tracked the bankruptcy fraud, bought their equipment debt from the bank for $12,000, foreclosed on the new location, and reopened it as a low-cost spay-and-neuter clinic that poached their entire client list within six months.",
+      "status": "pending"
     }
   ]
 }
