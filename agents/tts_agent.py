@@ -14,11 +14,18 @@ import soundfile as sf
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from config import (
     OUTPUT_DIR, FFMPEG_BIN,
-    KOKORO_VOICE, KOKORO_SPEED, KOKORO_CACHE, KOKORO_MODEL_URL, KOKORO_VOICES_URL,
+    KOKORO_VOICE, KOKORO_VOICE_ALT, KOKORO_SPEED, KOKORO_CACHE, KOKORO_MODEL_URL, KOKORO_VOICES_URL,
 )
 
 MAX_CHUNK_CHARS = 900  # keeps Kokoro prosody stable; same idea as Narava's MAX_CHUNK_CHARS
 PAUSE_SEC = 0.45       # breath between chunks
+
+
+def voice_for_story(story_id):
+    """Alternates KOKORO_VOICE/KOKORO_VOICE_ALT every other video (user
+    decision 2026-07-15: af_bella stays primary, bf_isabella as an
+    occasional change of pace, not a full swap)."""
+    return KOKORO_VOICE_ALT if int(story_id) % 2 == 0 else KOKORO_VOICE
 
 
 def _ensure_models():
@@ -53,11 +60,12 @@ def generate_audio(script, story_id):
     model, voices = _ensure_models()
     kokoro = Kokoro(str(model), str(voices))
 
+    voice = voice_for_story(story_id)
     parts = list(_chunks(script))
-    print(f"    {len(parts)} chunks, voice={KOKORO_VOICE}")
+    print(f"    {len(parts)} chunks, voice={voice}")
     audio, sr = [], 24000
     for i, chunk in enumerate(parts, 1):
-        samples, sr = kokoro.create(chunk, voice=KOKORO_VOICE, speed=KOKORO_SPEED, lang="en-us")
+        samples, sr = kokoro.create(chunk, voice=voice, speed=KOKORO_SPEED, lang="en-us")
         audio.append(samples)
         audio.append(np.zeros(int(sr * PAUSE_SEC), dtype=samples.dtype))
         if i % 10 == 0 or i == len(parts):
