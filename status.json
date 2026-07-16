@@ -1,40 +1,8 @@
 {
-  "story_id": 22,
-  "premise": "I raised my stepdaughter from age six and drained $140,000 of my nursing salary to put her through college, but after my husband’s cancer diagnosis she secretly forged my signature on his $300,000 life insurance beneficiary form and collected every cent. A stray tax document led me to the forgery a decade later — I hired a forensic examiner, got her convicted of insurance fraud, and when the judgment forced the sale of her house, I bought it at auction for $120,000 and now rent it to her mother, who never believed me.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "12,239 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Stepdaughter Stole My Husband's $300K Life Insurance And Left Me Penniless. S"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "62.8 min, 1614MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=2J3unHbtAsI"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-16T12:27:24.440236+00:00",
-  "video_id": "2J3unHbtAsI"
+  "story_id": 23,
+  "premise": "My brother and I turned a $5,000 catering cart into a million-dollar business over 25 years, but while I ran the kitchen he siphoned $340,000 into a shell company and forged a buyout to push me out with nothing. I burned my retirement savings on a forensic accountant, uncovered the paper trail, and on the day he was set to close a major expansion deal I tipped off his bank and biggest client about the embezzlement — the loan vanished, the client canceled, and I won a judgment and a lien on his house, which I now own and rent to his ex-wife.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-16T16:12:06.367873+00:00"
 }
