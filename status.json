@@ -1,15 +1,21 @@
 {
   "story_id": 21,
   "premise": "My half-sister, who visited our father once in eight years, pretended to reconcile when his dementia worsened and maneuvered him into signing over his $420,000 apartment building while he was sedated — she sold it for cash and dumped him in a state-funded nursing home. I found the medical records proving he couldn’t consent, won an elder-abuse suit with $500,000 in damages, and when she couldn’t pay, I accepted the deed to her own home in lieu of interest — then evicted her and converted it into a grief counseling center for fellow forgotten caregivers.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "13,947 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-16T06:33:37.325995+00:00"
+  "updated_at": "2026-07-16T06:33:38.959511+00:00"
 }
