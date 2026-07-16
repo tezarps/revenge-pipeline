@@ -1,7 +1,7 @@
 {
   "story_id": 22,
   "premise": "I raised my stepdaughter from age six and drained $140,000 of my nursing salary to put her through college, but after my husband’s cancer diagnosis she secretly forged my signature on his $300,000 life insurance beneficiary form and collected every cent. A stray tax document led me to the forgery a decade later — I hired a forensic examiner, got her convicted of insurance fraud, and when the judgment forced the sale of her house, I bought it at auction for $120,000 and now rent it to her mother, who never believed me.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Stepdaughter Stole My Husband's $300K Life Insurance And Left Me Penniless. S"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-16T11:48:45.069034+00:00"
+  "updated_at": "2026-07-16T11:48:46.465529+00:00"
 }
