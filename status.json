@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Brother Embezzled $340,000 And Left Me With Nothing. So I Watched His Deal Fa"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-16T17:10:05.067194+00:00"
+  "updated_at": "2026-07-16T17:11:23.160937+00:00"
 }
