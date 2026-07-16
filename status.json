@@ -1,15 +1,21 @@
 {
   "story_id": 23,
   "premise": "My brother and I turned a $5,000 catering cart into a million-dollar business over 25 years, but while I ran the kitchen he siphoned $340,000 into a shell company and forged a buyout to push me out with nothing. I burned my retirement savings on a forensic accountant, uncovered the paper trail, and on the day he was set to close a major expansion deal I tipped off his bank and biggest client about the embezzlement — the loan vanished, the client canceled, and I won a judgment and a lien on his house, which I now own and rent to his ex-wife.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "16,898 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-16T16:27:03.852871+00:00"
+  "updated_at": "2026-07-16T16:27:06.312013+00:00"
 }
