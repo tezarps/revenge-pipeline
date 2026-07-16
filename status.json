@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Half-Sister Stole Dad's Dementia-Signed Building, Dumped Him. So I Turned Her"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-16T07:10:41.677707+00:00"
+  "updated_at": "2026-07-16T07:12:39.709132+00:00"
 }
