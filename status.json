@@ -1,7 +1,7 @@
 {
   "story_id": 23,
   "premise": "My brother and I turned a $5,000 catering cart into a million-dollar business over 25 years, but while I ran the kitchen he siphoned $340,000 into a shell company and forged a buyout to push me out with nothing. I burned my retirement savings on a forensic accountant, uncovered the paper trail, and on the day he was set to close a major expansion deal I tipped off his bank and biggest client about the embezzlement — the loan vanished, the client canceled, and I won a judgment and a lien on his house, which I now own and rent to his ex-wife.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Brother Embezzled $340,000 And Left Me With Nothing. So I Watched His Deal Fa"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-16T17:11:23.160937+00:00"
+  "updated_at": "2026-07-16T17:11:24.802053+00:00"
 }
