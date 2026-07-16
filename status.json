@@ -1,40 +1,8 @@
 {
-  "story_id": 20,
-  "premise": "After my husband died, I poured $175,000 of my pension into buying a duplex for my son and his wife with the promise they’d pay me rent and eventually buy me out — they forged my signature on a quitclaim deed, sold the building for $200,000, and disappeared. Seven years later I spotted their new four-bedroom house on social media, proved the fraud in court, and not only reclaimed every cent with interest but also foreclosed on that house and turned it into a vacation rental that now funds my retirement.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "12,804 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son And His Wife Forged My Signature, Took $200K And Vanished. So I Foreclose"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "63.9 min, 1679MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=v0I0yw6xeNA"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-15T17:41:52.158841+00:00",
-  "video_id": "v0I0yw6xeNA"
+  "story_id": 21,
+  "premise": "My half-sister, who visited our father once in eight years, pretended to reconcile when his dementia worsened and maneuvered him into signing over his $420,000 apartment building while he was sedated — she sold it for cash and dumped him in a state-funded nursing home. I found the medical records proving he couldn’t consent, won an elder-abuse suit with $500,000 in damages, and when she couldn’t pay, I accepted the deed to her own home in lieu of interest — then evicted her and converted it into a grief counseling center for fellow forgotten caregivers.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-16T06:16:12.688245+00:00"
 }
