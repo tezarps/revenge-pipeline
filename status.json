@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister Forged A Will, Stole Mom's House, And Left Me Nothing. So I Named A Wi"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-17T16:55:47.118861+00:00"
+  "updated_at": "2026-07-17T16:58:05.727570+00:00"
 }
