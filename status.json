@@ -1,7 +1,7 @@
 {
   "story_id": 24,
   "premise": "I emptied my $180,000 retirement account to launch a veterinary hospital for my daughter and son-in-law, trusting their promise of 30% equity, but they secretly reincorporated under a new name, stripped the assets, and filed bankruptcy, leaving me penniless while they reopened an identical clinic two towns over. I tracked the bankruptcy fraud, bought their equipment debt from the bank for $12,000, foreclosed on the new location, and reopened it as a low-cost spay-and-neuter clinic that poached their entire client list within six months.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-17T07:05:54.638274+00:00"
+  "updated_at": "2026-07-17T07:05:56.777906+00:00"
 }
