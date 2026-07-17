@@ -1,8 +1,15 @@
 {
   "story_id": 26,
   "premise": "I'd given my sister $90,000 over fifteen years for home nurses and remodels so our mother could age in place, while my sister never visited, but when Mom passed, she produced a ‘new’ will — signed while Mom was on heavy sedatives — leaving me nothing and handing her the $380,000 house. I found a hidden video diary where Mom begged me to stop the coercion, sued for undue influence and caregiver reimbursement, won $150,000 plus the house, bought it back at the forced auction for $85,000, and converted it into an assisted-living home for seniors whose families had abandoned them — naming the wing after my sister.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-17T16:09:18.516027+00:00"
+  "updated_at": "2026-07-17T16:09:20.356336+00:00"
 }
