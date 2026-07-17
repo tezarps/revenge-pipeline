@@ -1,7 +1,7 @@
 {
   "story_id": 25,
   "premise": "After my husband died, I poured my entire $200,000 widow's pension into launching a bed-and-breakfast with his son from his first marriage, trusting him to honor a 50/50 handshake deal, but he forged documents claiming I owned just 10%, forced a sale the day after my 60th birthday, and pocketed $275,000 in cash. I spent two years uncovering the forgery, sued for fraud and elder abuse, won a $320,000 judgment that forced him to sell his own house, and used the money to open a rival inn across the lake that bankrupted his new ‘luxury lodge’ within a season.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "65.8 min, 1689MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-17T12:17:55.689704+00:00"
+  "updated_at": "2026-07-17T12:17:56.958653+00:00"
 }
