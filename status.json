@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Daughter Took My $180K, Bankrupted Me, And Reopened. So I Foreclosed On Her C"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-17T07:05:56.777906+00:00"
+  "updated_at": "2026-07-17T07:06:58.191988+00:00"
 }
