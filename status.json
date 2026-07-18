@@ -24,10 +24,10 @@
     "assembly": {
       "label": "Assembling video",
       "icon": "film",
-      "status": "running",
-      "detail": "ffmpeg: character + drone + captions + waveform..."
+      "status": "done",
+      "detail": "60.9 min, 1616MB"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-18T06:35:07.022289+00:00"
+  "updated_at": "2026-07-18T07:06:52.947726+00:00"
 }
