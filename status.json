@@ -1,7 +1,7 @@
 {
   "story_id": 27,
   "premise": "I cashed out my $250,000 teaching pension to buy a farm and build a wedding venue for my daughter and son-in-law, believing their promise I'd live in the guest cottage and own half the business, but they secretly filed a quitclaim, evicted me into a trailer park, and sold the property for $480,000 — all while telling guests I'd 'run off with the money.' I discovered they'd taken PPP loans under my name, handed the evidence to the SBA, got them convicted of fraud, then bought the farm back at the USDA foreclosure auction for $112,000, reopened as a whimsical 'Second Chance Weddings' venue, and on opening day, mailed them a framed photo of me sipping champagne on the porch.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Daughter Stole My Farm And Evicted Me Into A Trailer. So I Bought It Back At "
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-18T06:35:05.607501+00:00"
+  "updated_at": "2026-07-18T06:35:07.022289+00:00"
 }
