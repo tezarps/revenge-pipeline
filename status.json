@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Mom Left Her $400K House To A Church, My Family Mocked Me. So I Watched Them "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-18T16:39:26.443928+00:00"
+  "updated_at": "2026-07-18T16:42:11.735300+00:00"
 }
