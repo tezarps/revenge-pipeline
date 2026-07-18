@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Brother-In-Law Evicted Me And Stole $200K From His Kids. So I Watched Him Los"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-18T11:02:04.878956+00:00"
+  "updated_at": "2026-07-18T11:04:35.191867+00:00"
 }
