@@ -1,7 +1,7 @@
 {
   "story_id": 28,
   "premise": "When my sister died, I moved in at 49 to raise her two kids alongside my brother-in-law, sinking $60,000 of my own savings into the house and their college funds, only for him to remarry a woman who convinced him I was just a freeloading tenant — they evicted me via a fake lease and diverted a $200,000 life insurance check my sister had left for the children into their own account. I lawyered up, proved a constructive trust, recovered every cent into a court-supervised trust with me as trustee, then sued for reimbursement and forced the sale of his house; I used the $310,000 settlement to buy a cottage on the property next door and now host the kids every holiday while he rents a basement apartment.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Brother-In-Law Evicted Me And Stole $200K From His Kids. So I Watched Him Los"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-18T11:04:35.191867+00:00"
+  "updated_at": "2026-07-18T11:04:36.552104+00:00"
 }
