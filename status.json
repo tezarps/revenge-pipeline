@@ -1,15 +1,21 @@
 {
   "story_id": 29,
   "premise": "For three decades I lived on rice and beans so I could pay my mother's mortgage, totaling $120,000 in payments, while my siblings called me a martyr; when she died, we learned she'd been swayed by a televangelist and quietly deeded me nothing, leaving the $400,000 house entirely to his church. I rallied the neighbors, proved she'd been unduly influenced while suffering from cognitive decline, sued the church for exploitation, won back the house, then donated a small front parlor to a rival women's shelter — renaming it 'True Sanctuary' — and now I live rent-free in the rest of the home, having shipped the pastor a box of my memoir titled 'The Unclaimed Daughter.'",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "13,081 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-18T16:04:36.940531+00:00"
+  "updated_at": "2026-07-18T16:04:38.976561+00:00"
 }
