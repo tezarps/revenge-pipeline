@@ -1,40 +1,8 @@
 {
-  "story_id": 26,
-  "premise": "I'd given my sister $90,000 over fifteen years for home nurses and remodels so our mother could age in place, while my sister never visited, but when Mom passed, she produced a ‘new’ will — signed while Mom was on heavy sedatives — leaving me nothing and handing her the $380,000 house. I found a hidden video diary where Mom begged me to stop the coercion, sued for undue influence and caregiver reimbursement, won $150,000 plus the house, bought it back at the forced auction for $85,000, and converted it into an assisted-living home for seniors whose families had abandoned them — naming the wing after my sister.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "12,496 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Forged A Will, Stole Mom's House, And Left Me Nothing. So I Named A Wi"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "64.8 min, 1672MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=ZeXTrq0sanY"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-17T17:37:56.287342+00:00",
-  "video_id": "ZeXTrq0sanY"
+  "story_id": 27,
+  "premise": "I cashed out my $250,000 teaching pension to buy a farm and build a wedding venue for my daughter and son-in-law, believing their promise I'd live in the guest cottage and own half the business, but they secretly filed a quitclaim, evicted me into a trailer park, and sold the property for $480,000 — all while telling guests I'd 'run off with the money.' I discovered they'd taken PPP loans under my name, handed the evidence to the SBA, got them convicted of fraud, then bought the farm back at the USDA foreclosure auction for $112,000, reopened as a whimsical 'Second Chance Weddings' venue, and on opening day, mailed them a framed photo of me sipping champagne on the porch.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-18T06:04:16.837679+00:00"
 }
