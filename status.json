@@ -1,7 +1,7 @@
 {
   "story_id": 30,
   "premise": "I cleaned offices at night for 15 years to repay $85,000 in parent PLUS loans for my son’s medical degree, trusting his promise I’d live with him once he finished his residency. The week he became a cardiologist, he and his wife forged my signature on a loan-consolidation document, filed a restraining order claiming mental instability, and sold the house I’d helped fund — telling the family I’d embezzled his tuition. At 55, I became a paralegal, proved the forgery, sued for fraud, and now garnish 40% of his attending-physician salary every month; I’ve already recouped $210,000 and mail him a holiday card from my paid-off cottage each year.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "72.0 min, 1847MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-19T08:02:35.450170+00:00"
+  "updated_at": "2026-07-19T08:02:36.819528+00:00"
 }
