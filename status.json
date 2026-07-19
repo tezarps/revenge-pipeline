@@ -1,15 +1,21 @@
 {
   "story_id": 32,
   "premise": "For 20 years I worked double nursing shifts and poured my late husband’s $190,000 insurance payout into my son-in-law’s dental practice, with a handshake deal that I’d own 25%. Once revenues hit $2 million, he and my daughter forged a stock transfer to erase my stake and had their lawyer send me a cease-and-desist for ‘disparaging the brand.’ I gathered internal billing records, filed a whistleblower complaint over systematic Medicaid overbilling, then sued for constructive fraud. The practice was forced to buy me out for $320,000 in penalties and lost its largest contract — I used the money to open a walk-in dental clinic in the same strip mall that now absorbs half their uninsured patients.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "10,377 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-19T16:03:04.430356+00:00"
+  "updated_at": "2026-07-19T16:03:06.579386+00:00"
 }
