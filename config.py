@@ -59,12 +59,14 @@ KOKORO_CACHE = Path(os.environ.get("KOKORO_CACHE", Path.home() / ".cache" / "rev
 # repo) before also cranking upload cadence, or the free 2,000 min/month
 # ceiling blows past quickly.
 # Measured Kokoro af_bella @ speed 1.0: ~242 wpm average (17000w -> 58min,
-# 21000w -> 99min observed). Scaled down for the RealDadRevenge-cadence
-# experiment to target 50-60min instead of 58-99min (see
+# 21000w -> 99min observed). Scaled down again 2026-07-17 (user decision,
+# matching a competitor channel's ~25min avg length + ~8 uploads/day
+# cadence, see agents/upload_agent.py PUBLISH_SLOTS_ET) from the earlier
+# 50-60min RealDadRevenge-experiment target. See
 # project_golden_child_thumbnail_baseline.md for the pre-experiment values
-# to revert to: 17000/21000).
-SCRIPT_MIN_WORDS = 12000
-SCRIPT_MAX_WORDS = 14500
+# to revert to: 17000/21000.
+SCRIPT_MIN_WORDS = 5500
+SCRIPT_MAX_WORDS = 6500
 
 FFMPEG_BIN = os.environ.get("FFMPEG_BIN", "ffmpeg")
 FFPROBE_BIN = os.environ.get("FFPROBE_BIN", "ffprobe")

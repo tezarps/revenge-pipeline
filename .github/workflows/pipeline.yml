@@ -1,26 +1,30 @@
 name: Revenge Pipeline
 
 on:
-  # Resumed 2026-07-15: driving footage + character assets replaced with
-  # user-supplied ones, thumbnail/subtitle fixes locked in.
+  # Bumped to 8x/day 2026-07-17 (user decision: matched a competitor
+  # channel's real cadence, ~57 uploads/week per vidIQ, and cut script
+  # length to ~25min avg to match - see config.py SCRIPT_MIN_WORDS and
+  # upload_agent.py PUBLISH_SLOTS_ET, now evenly spaced every 3h ET).
   #
-  # Triggers are each ~8h BEFORE the publish slot they feed (not evenly
-  # spaced), since the 3 publish slots themselves aren't evenly spaced
-  # (00:00/06:30/19:00 WIB, see upload_agent.py PUBLISH_SLOTS_ET) - an
-  # earlier evenly-spaced 06/14/22 UTC schedule put some triggers only
-  # 1.5-3h before their nearest slot, too tight against the render job's
-  # up-to-6h runtime (see timeout-minutes below). 8h buffer comfortably
-  # covers that. Even if a render still runs long, upload_agent schedules
-  # into the NEXT open slot rather than publishing late/incomplete, so a
-  # tight buffer degrades to a shifted slot, never a broken publish - this
-  # is just to keep that shifting rare.
-  #   04:00 UTC (11:00 WIB) -> feeds the 19:00 WIB slot (~8h buffer)
-  #   09:00 UTC (16:00 WIB) -> feeds the 00:00 WIB slot (~8h buffer)
-  #   15:00 UTC (22:00 WIB) -> feeds the 06:30 WIB slot (~8.5h buffer)
+  # At this density, triggers are evenly spaced every 3h too (not
+  # hand-tuned per slot like the earlier 3-slot/day schedule), each ~3h
+  # before its ET slot. That's a tighter buffer than the old ~8h (typical
+  # renders run ~1.5-2.5h per prior GH Actions runs, so 3h usually holds,
+  # but the job's up-to-6h ceiling can still blow past it under a slow
+  # render). Same self-healing safety net as before: upload_agent puts a
+  # late-finishing video into the NEXT open slot rather than publishing
+  # late/incomplete, so a blown buffer degrades to a shifted slot, not a
+  # broken publish - just watch for slot drift becoming frequent, which
+  # would mean 3h isn't holding up in practice.
   schedule:
+    - cron: "0 1 * * *"
     - cron: "0 4 * * *"
-    - cron: "0 9 * * *"
-    - cron: "0 15 * * *"
+    - cron: "0 7 * * *"
+    - cron: "0 10 * * *"
+    - cron: "0 13 * * *"
+    - cron: "0 16 * * *"
+    - cron: "0 19 * * *"
+    - cron: "0 22 * * *"
   workflow_dispatch:
     inputs:
       dry_run:

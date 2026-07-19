@@ -1,6 +1,8 @@
 .env
 youtube_client_secret.json
 youtube_token.pickle
+youtube_analytics_token.pickle
+.DS_Store
 output/audio/
 output/video/
 __pycache__/

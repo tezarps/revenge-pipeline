@@ -33,21 +33,20 @@ from config import TOKEN_FILE, YOUTUBE_CLIENT_SECRET
 
 SCOPES = ["https://www.googleapis.com/auth/youtube"]
 
-# 3 slots/day (2026-07-14, user decision: RealDadRevenge-cadence experiment,
-# "aku ingin boost konten kita juga sehari 3 video"). Was a single 10:30 ET
-# slot after an earlier accidental-3x-in-one-day bug (see git history); this
-# time it's deliberate and paired with 3 cron triggers/day in pipeline.yml,
-# each run fills the next slot in order via _next_publish_time's day-walk
-# below. Revert to [(10, 30)] if the experiment doesn't pan out (see
+# 8 slots/day (2026-07-17, user decision: matched a competitor channel's
+# cadence, ~57 uploads/week / 8 per day, after comparing real vidIQ stats
+# for that channel against ours). Was 3 slots/day (RealDadRevenge-cadence
+# experiment) before that; revert to [(8, 0), (13, 0), (19, 30)] or
+# [(10, 30)] if this doesn't pan out (see
 # project_golden_child_thumbnail_baseline.md).
 #
-# Times picked so each of the 3 slots hits a different market's evening
-# prime instead of clustering all 3 in US daytime (all times ET):
-#   08:00 ET -> 22:00 AEST (Australia prime), 13:00 BST (UK lunch)
-#   13:00 ET -> 18:00 BST (UK prime), US lunch break
-#   19:30 ET -> 19:30 ET (US/Canada prime, the biggest RPM market),
-#               09:30 AEST (Australia morning)
-PUBLISH_SLOTS_ET = [(8, 0), (13, 0), (19, 30)]
+# Evenly spaced every 3h across the day (ET) rather than clustered, so
+# every major market's waking hours get covered multiple times instead of
+# just 3 hand-picked prime windows - with this many slots/day, even spacing
+# beats hand-tuning a handful of markets. Paired with 8 cron triggers/day
+# in pipeline.yml, each ~3h before its slot (see that file for why 3h is
+# the realistic buffer at this slot density, not the ~8h used at 3 slots/day).
+PUBLISH_SLOTS_ET = [(0, 0), (3, 0), (6, 0), (9, 0), (12, 0), (15, 0), (18, 0), (21, 0)]
 PUBLISH_WEEKDAYS = {0, 1, 2, 3, 4, 5, 6}
 
 
