@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Son Forged My Signature, Sold My Home, And Lied To Everyone. So I Now Get 40%"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-19T07:17:06.830176+00:00"
+  "updated_at": "2026-07-19T07:20:00.508027+00:00"
 }
