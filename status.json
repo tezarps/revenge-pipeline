@@ -1,8 +1,15 @@
 {
   "story_id": 34,
   "premise": "When my mother’s Alzheimer’s worsened, my sister convinced the family to make her sole power of attorney by painting me as grief-stricken and incompetent. She then secretly deeded Mom’s $280,000 condo to herself, dumped our mother in a bare-bones Medicaid nursing home two states away, and told everyone I had stolen the estate. For three years I worked under a false identity as a companion in that very facility, gathering a paper trail of her Medicaid fraud and undue influence, then sued for elder exploitation. The court voided the deed, awarded me the condo, and hit her with a $150,000 reimbursement judgment — now Mom lives in a top-tier memory care unit I fund with my sister’s seized assets, and my sister is permanently banned from visiting after she tried to sneak in disguised as a volunteer.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-19T22:55:16.361377+00:00"
+  "updated_at": "2026-07-19T22:55:17.937729+00:00"
 }
