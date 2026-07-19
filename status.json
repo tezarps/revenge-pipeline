@@ -1,7 +1,7 @@
 {
   "story_id": 33,
   "premise": "I worked 30 years as my brother’s bookkeeper in his construction company, routinely deferring my own salary to keep the business afloat on his promise I’d be a 50% partner when he retired. The day I turned 60, he terminated me, claimed I’d always been just an hourly employee, and gloated that he’d already accepted a $2.4 million buyout from a private-equity firm. I discovered he’d never paid my Social Security taxes for over a decade, tipped off the IRS, and triggered enough back-taxes and fraud penalties to kill the sale. Then I bought the company’s distressed debt from the bank for $40,000, restructured the firm under my sole ownership, and now he’s my subcontractor — required to hand me weekly progress reports in the office where he once fired me.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-19T20:35:42.416898+00:00"
+  "updated_at": "2026-07-19T20:35:44.364804+00:00"
 }
