@@ -1,40 +1,8 @@
 {
-  "story_id": 31,
-  "premise": "I drained my $40,000 retirement fund to care for my sister during her final year of ovarian cancer, and her will left her $390,000 lake house equally to me and her husband. My brother-in-law forged my signature on a partition sale, pocketed the entire $390,000 in cash, and told my niece I’d abandoned the family. I hired a forensic title examiner, proved the forgery, and won a $340,000 civil judgment — when he couldn’t pay, I accepted the deed to his deceased parents’ century farm in settlement. I now operate a free summer camp for grieving children there, and charge his family full price to set foot on their ancestral land.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "13,830 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "He Forged My Signature, Stole Her House, Claimed I Abandoned Them. So I Accepted"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "76.3 min, 1895MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=FJLWPnWdMYk"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-19T12:00:06.755214+00:00",
-  "video_id": "FJLWPnWdMYk"
+  "story_id": 32,
+  "premise": "For 20 years I worked double nursing shifts and poured my late husband’s $190,000 insurance payout into my son-in-law’s dental practice, with a handshake deal that I’d own 25%. Once revenues hit $2 million, he and my daughter forged a stock transfer to erase my stake and had their lawyer send me a cease-and-desist for ‘disparaging the brand.’ I gathered internal billing records, filed a whistleblower complaint over systematic Medicaid overbilling, then sued for constructive fraud. The practice was forced to buy me out for $320,000 in penalties and lost its largest contract — I used the money to open a walk-in dental clinic in the same strip mall that now absorbs half their uninsured patients.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-19T15:47:52.964935+00:00"
 }
