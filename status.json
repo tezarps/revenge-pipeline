@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Brother Fired Me At 60 After I Deferred Salary For 30 Years. So I Became His "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-19T20:35:44.364804+00:00"
+  "updated_at": "2026-07-19T20:38:06.923691+00:00"
 }
