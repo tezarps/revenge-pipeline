@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister Took Mom's Condo, Dumped Her In A Medicaid Home. So I Became Her Careg"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-19T23:09:59.918374+00:00"
+  "updated_at": "2026-07-19T23:12:05.542740+00:00"
 }
