@@ -1,7 +1,7 @@
 {
   "story_id": 31,
   "premise": "I drained my $40,000 retirement fund to care for my sister during her final year of ovarian cancer, and her will left her $390,000 lake house equally to me and her husband. My brother-in-law forged my signature on a partition sale, pocketed the entire $390,000 in cash, and told my niece I’d abandoned the family. I hired a forensic title examiner, proved the forgery, and won a $340,000 civil judgment — when he couldn’t pay, I accepted the deed to his deceased parents’ century farm in settlement. I now operate a free summer camp for grieving children there, and charge his family full price to set foot on their ancestral land.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "He Forged My Signature, Stole Her House, Claimed I Abandoned Them. So I Accepted"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-19T11:15:51.041087+00:00"
+  "updated_at": "2026-07-19T11:15:52.199824+00:00"
 }
