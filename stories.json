@@ -193,6 +193,33 @@
       "status": "done",
       "video_id": "HSfl6RTMbbk",
       "publish_at": "2026-07-19T17:00:00.000000Z"
+    },
+    {
+      "id": 30,
+      "premise": "I cleaned offices at night for 15 years to repay $85,000 in parent PLUS loans for my son’s medical degree, trusting his promise I’d live with him once he finished his residency. The week he became a cardiologist, he and his wife forged my signature on a loan-consolidation document, filed a restraining order claiming mental instability, and sold the house I’d helped fund — telling the family I’d embezzled his tuition. At 55, I became a paralegal, proved the forgery, sued for fraud, and now garnish 40% of his attending-physician salary every month; I’ve already recouped $210,000 and mail him a holiday card from my paid-off cottage each year.",
+      "status": "done",
+      "video_id": "sqEqI9leC_4",
+      "publish_at": "2026-07-19T23:30:00.000000Z"
+    },
+    {
+      "id": 31,
+      "premise": "I drained my $40,000 retirement fund to care for my sister during her final year of ovarian cancer, and her will left her $390,000 lake house equally to me and her husband. My brother-in-law forged my signature on a partition sale, pocketed the entire $390,000 in cash, and told my niece I’d abandoned the family. I hired a forensic title examiner, proved the forgery, and won a $340,000 civil judgment — when he couldn’t pay, I accepted the deed to his deceased parents’ century farm in settlement. I now operate a free summer camp for grieving children there, and charge his family full price to set foot on their ancestral land.",
+      "status": "pending"
+    },
+    {
+      "id": 32,
+      "premise": "For 20 years I worked double nursing shifts and poured my late husband’s $190,000 insurance payout into my son-in-law’s dental practice, with a handshake deal that I’d own 25%. Once revenues hit $2 million, he and my daughter forged a stock transfer to erase my stake and had their lawyer send me a cease-and-desist for ‘disparaging the brand.’ I gathered internal billing records, filed a whistleblower complaint over systematic Medicaid overbilling, then sued for constructive fraud. The practice was forced to buy me out for $320,000 in penalties and lost its largest contract — I used the money to open a walk-in dental clinic in the same strip mall that now absorbs half their uninsured patients.",
+      "status": "pending"
+    },
+    {
+      "id": 33,
+      "premise": "I worked 30 years as my brother’s bookkeeper in his construction company, routinely deferring my own salary to keep the business afloat on his promise I’d be a 50% partner when he retired. The day I turned 60, he terminated me, claimed I’d always been just an hourly employee, and gloated that he’d already accepted a $2.4 million buyout from a private-equity firm. I discovered he’d never paid my Social Security taxes for over a decade, tipped off the IRS, and triggered enough back-taxes and fraud penalties to kill the sale. Then I bought the company’s distressed debt from the bank for $40,000, restructured the firm under my sole ownership, and now he’s my subcontractor — required to hand me weekly progress reports in the office where he once fired me.",
+      "status": "pending"
+    },
+    {
+      "id": 34,
+      "premise": "When my mother’s Alzheimer’s worsened, my sister convinced the family to make her sole power of attorney by painting me as grief-stricken and incompetent. She then secretly deeded Mom’s $280,000 condo to herself, dumped our mother in a bare-bones Medicaid nursing home two states away, and told everyone I had stolen the estate. For three years I worked under a false identity as a companion in that very facility, gathering a paper trail of her Medicaid fraud and undue influence, then sued for elder exploitation. The court voided the deed, awarded me the condo, and hit her with a $150,000 reimbursement judgment — now Mom lives in a top-tier memory care unit I fund with my sister’s seized assets, and my sister is permanently banned from visiting after she tried to sneak in disguised as a volunteer.",
+      "status": "pending"
     }
   ]
 }
