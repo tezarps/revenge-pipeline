@@ -1,40 +1,8 @@
 {
-  "story_id": 29,
-  "premise": "For three decades I lived on rice and beans so I could pay my mother's mortgage, totaling $120,000 in payments, while my siblings called me a martyr; when she died, we learned she'd been swayed by a televangelist and quietly deeded me nothing, leaving the $400,000 house entirely to his church. I rallied the neighbors, proved she'd been unduly influenced while suffering from cognitive decline, sued the church for exploitation, won back the house, then donated a small front parlor to a rival women's shelter — renaming it 'True Sanctuary' — and now I live rent-free in the rest of the home, having shipped the pastor a box of my memoir titled 'The Unclaimed Daughter.'",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "13,081 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Mom Left Her $400K House To A Church, My Family Mocked Me. So I Watched Them "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "72.3 min, 1832MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=HSfl6RTMbbk"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-18T17:27:00.783152+00:00",
-  "video_id": "HSfl6RTMbbk"
+  "story_id": 30,
+  "premise": "I cleaned offices at night for 15 years to repay $85,000 in parent PLUS loans for my son’s medical degree, trusting his promise I’d live with him once he finished his residency. The week he became a cardiologist, he and his wife forged my signature on a loan-consolidation document, filed a restraining order claiming mental instability, and sold the house I’d helped fund — telling the family I’d embezzled his tuition. At 55, I became a paralegal, proved the forgery, sued for fraud, and now garnish 40% of his attending-physician salary every month; I’ve already recouped $210,000 and mail him a holiday card from my paid-off cottage each year.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-19T06:30:51.714107+00:00"
 }
