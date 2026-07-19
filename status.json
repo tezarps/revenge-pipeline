@@ -1,40 +1,8 @@
 {
-  "story_id": 30,
-  "premise": "I cleaned offices at night for 15 years to repay $85,000 in parent PLUS loans for my son’s medical degree, trusting his promise I’d live with him once he finished his residency. The week he became a cardiologist, he and his wife forged my signature on a loan-consolidation document, filed a restraining order claiming mental instability, and sold the house I’d helped fund — telling the family I’d embezzled his tuition. At 55, I became a paralegal, proved the forgery, sued for fraud, and now garnish 40% of his attending-physician salary every month; I’ve already recouped $210,000 and mail him a holiday card from my paid-off cottage each year.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "14,069 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son Forged My Signature, Sold My Home, And Lied To Everyone. So I Now Get 40%"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "72.0 min, 1847MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=sqEqI9leC_4"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-19T08:03:41.926524+00:00",
-  "video_id": "sqEqI9leC_4"
+  "story_id": 31,
+  "premise": "I drained my $40,000 retirement fund to care for my sister during her final year of ovarian cancer, and her will left her $390,000 lake house equally to me and her husband. My brother-in-law forged my signature on a partition sale, pocketed the entire $390,000 in cash, and told my niece I’d abandoned the family. I hired a forensic title examiner, proved the forgery, and won a $340,000 civil judgment — when he couldn’t pay, I accepted the deed to his deceased parents’ century farm in settlement. I now operate a free summer camp for grieving children there, and charge his family full price to set foot on their ancestral land.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-19T10:29:35.710036+00:00"
 }
