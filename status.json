@@ -1,40 +1,8 @@
 {
-  "story_id": 33,
-  "premise": "I worked 30 years as my brother’s bookkeeper in his construction company, routinely deferring my own salary to keep the business afloat on his promise I’d be a 50% partner when he retired. The day I turned 60, he terminated me, claimed I’d always been just an hourly employee, and gloated that he’d already accepted a $2.4 million buyout from a private-equity firm. I discovered he’d never paid my Social Security taxes for over a decade, tipped off the IRS, and triggered enough back-taxes and fraud penalties to kill the sale. Then I bought the company’s distressed debt from the bank for $40,000, restructured the firm under my sole ownership, and now he’s my subcontractor — required to hand me weekly progress reports in the office where he once fired me.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,798 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Brother Fired Me At 60 After I Deferred Salary For 30 Years. So I Became His "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "39.0 min, 1002MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=eh9q8dDXeQ4"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-19T21:01:32.405887+00:00",
-  "video_id": "eh9q8dDXeQ4"
+  "story_id": 34,
+  "premise": "When my mother’s Alzheimer’s worsened, my sister convinced the family to make her sole power of attorney by painting me as grief-stricken and incompetent. She then secretly deeded Mom’s $280,000 condo to herself, dumped our mother in a bare-bones Medicaid nursing home two states away, and told everyone I had stolen the estate. For three years I worked under a false identity as a companion in that very facility, gathering a paper trail of her Medicaid fraud and undue influence, then sued for elder exploitation. The court voided the deed, awarded me the condo, and hit her with a $150,000 reimbursement judgment — now Mom lives in a top-tier memory care unit I fund with my sister’s seized assets, and my sister is permanently banned from visiting after she tried to sneak in disguised as a volunteer.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-19T22:55:16.361377+00:00"
 }
