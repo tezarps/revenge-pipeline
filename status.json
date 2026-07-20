@@ -1,7 +1,7 @@
 {
   "story_id": 38,
   "premise": "At 62 I’d bought a Florida condo outright with $160,000 from decades as a home health aide, and my stepson, a real estate agent, offered to manage a reverse mortgage for upgrades — he forged a power of attorney, drained the equity, sold the condo for $220,000, and told everyone I’d gambled it away. I traced the notary fraud, got his license revoked, and when the court ordered restitution, he had to auction his late mother’s diamond jewelry, where I bought the entire collection for $28,000, resold it for $130,000, and bought a better condo two doors down from the one he sold.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "Stepson Stole My Condo And Called Me A Gambler. So I Watched Him Auction His Mom"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T12:41:17.605952+00:00"
+  "updated_at": "2026-07-20T12:41:19.296206+00:00"
 }
