@@ -1,40 +1,8 @@
 {
-  "story_id": 34,
-  "premise": "When my mother’s Alzheimer’s worsened, my sister convinced the family to make her sole power of attorney by painting me as grief-stricken and incompetent. She then secretly deeded Mom’s $280,000 condo to herself, dumped our mother in a bare-bones Medicaid nursing home two states away, and told everyone I had stolen the estate. For three years I worked under a false identity as a companion in that very facility, gathering a paper trail of her Medicaid fraud and undue influence, then sued for elder exploitation. The court voided the deed, awarded me the condo, and hit her with a $150,000 reimbursement judgment — now Mom lives in a top-tier memory care unit I fund with my sister’s seized assets, and my sister is permanently banned from visiting after she tried to sneak in disguised as a volunteer.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,546 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Took Mom's Condo, Dumped Her In A Medicaid Home. So I Became Her Careg"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "29.7 min, 767MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=QF7oYOoFDOc"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-19T23:26:24.329986+00:00",
-  "video_id": "QF7oYOoFDOc"
+  "story_id": 35,
+  "premise": "My husband’s death was supposed to leave me and his sister equal halves of his $290,000 vintage-car collection and a paid-off lake cabin, but she forged my signature on a transfer, sold the cars for cash and the cabin for $215,000, then told the police I was the thief. I taught myself title fraud examination, proved the notary stamp was a fake, reversed both sales, won a $410,000 civil judgment, bought her house at auction, and turned it into a classic-car museum with her name on a permanent “donor” plaque.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-20T04:38:31.021994+00:00"
 }
