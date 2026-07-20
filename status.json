@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My MIL Stole Our $1.8M Win, Bought A Condo, Called It A Loan. So I Bought The On"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T18:30:10.772489+00:00"
+  "updated_at": "2026-07-20T18:32:59.881397+00:00"
 }
