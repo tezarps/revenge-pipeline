@@ -1,40 +1,8 @@
 {
-  "story_id": 41,
-  "premise": "I spent two decades collecting our grandmother’s handwritten recipes into a cookbook, trusting my TV-chef brother to help publish it, but he filed copyright in his own name, landed a $380,000 deal, and opened a chain of ‘secret family recipe’ restaurants while branding me a liar. After years of litigation I reclaimed the copyright, won every royalty plus a judgment that forced him to sell the flagship location—I bought it at auction, renamed it ‘The True Matriarch,’ and now serve each dish with a card bearing our grandmother’s story and the court docket number of his fraud.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,818 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Brother Stole My Grandmother's Recipes And Got $380K. So I Bought His Restaur"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "37.9 min, 974MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=54NTdpAIQQY"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-20T21:16:35.653026+00:00",
-  "video_id": "54NTdpAIQQY"
+  "story_id": 42,
+  "premise": "When my husband died, his $290,000 Bordeaux wine collection was supposed to pass to me, but the adult stepdaughter I’d raised since she was ten produced a fake notarized gift letter, cleared the cellar, and sold every bottle at auction for cash. I proved the notary stamp was fabricated, won a $310,000 civil fraud judgment, and when she refused to pay I garnished her six-figure trust fund from her maternal grandmother until the debt was satisfied—then donated the final $20,000 to an anti-forgery education program in her name.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-20T23:03:06.345665+00:00"
 }
