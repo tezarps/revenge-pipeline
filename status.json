@@ -1,40 +1,8 @@
 {
-  "story_id": 36,
-  "premise": "I poured my entire $210,000 401(k) into my daughter’s struggling hardware store for a 40% stake, and when a big-box competitor closed nearby, the business exploded to $1.2 million — so she and her husband forged a stock certificate showing I owned only 5% and forced me out with a $12,000 check. I proved the fraudulent conveyance, discovered they’d secretly stocked a second location, and in settlement I took possession of that fully-inventoried store and now undercut their prices by 15%, driving their flagship into Chapter 11.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,888 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Daughter Stole My 40% Stake And Forced Me Out With A $12K Check. So I Took He"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "31.1 min, 817MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=rIILb-uFlWU"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-20T07:22:04.112893+00:00",
-  "video_id": "rIILb-uFlWU"
+  "story_id": 37,
+  "premise": "My attorney brother convinced me to let him 'handle' our parents’ $450,000 life insurance after they died in a crash, then he forged my signature on the release, cashed the check, quietly paid off the family farm’s $300,000 mortgage, took sole title, and evicted me. I later became a licensed insurance investigator, uncovered the forgery, sued, got a $500,000 judgment plus the farm, and now the farmhouse is leased to an organic co-op that pays me a steady share—while he’s permanently disbarred.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-20T10:11:29.657326+00:00"
 }
