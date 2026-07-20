@@ -203,9 +203,20 @@ def generate_metadata(story, script):
 Story premise: {story['premise']}
 Opening of script: {script[:1200]}
 
+Also write a "pinned_comment": one question, in the channel's voice (first
+person, as the narrator), asking viewers what THEY would do if this exact
+situation happened to them, or inviting them to share it if something
+similar already has. Reference a specific concrete detail from THIS
+story's premise (the betrayal, the amount, the relationship) so it reads
+as written for this video, not a generic template. 1-2 sentences, end by
+inviting them to share their story in the comments. This gets auto-posted
+as a comment on the video (2026-07-20 feature, user request: "tanya
+tanggapan apa yang akan mereka lakukan jika drama itu terjadi pada
+mereka").
+
 Never use an em dash (the "—" character) anywhere in any field; use a comma, period, or "and"/"but" instead.
 
-Return ONLY JSON: {{"title": "...", "description": "2-3 sentence description ending with 3 relevant hashtags", "tags": ["10-14 tags"], "thumb_text": "6-10 word emotional punchline for the fallback thumbnail, ALL CAPS", "thumb_lines": [{{"style": "setup", "text": "..."}}, {{"style": "twist", "text": "..."}}, {{"style": "context", "text": "..."}}, {{"style": "climax1", "text": "..."}}, {{"style": "climax2", "text": "..."}}]}}""",
+Return ONLY JSON: {{"title": "...", "description": "2-3 sentence description ending with 3 relevant hashtags", "tags": ["10-14 tags"], "thumb_text": "6-10 word emotional punchline for the fallback thumbnail, ALL CAPS", "pinned_comment": "...", "thumb_lines": [{{"style": "setup", "text": "..."}}, {{"style": "twist", "text": "..."}}, {{"style": "context", "text": "..."}}, {{"style": "climax1", "text": "..."}}, {{"style": "climax2", "text": "..."}}]}}""",
         r"\{.*\}",
     )
     return json.loads(raw_json)

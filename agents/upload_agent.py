@@ -152,5 +152,22 @@ def upload_video(video_path, thumb_path, metadata):
     except Exception as e:
         print(f"    Warning: thumbnail set failed: {e}")
 
+    # Auto-posted top comment (2026-07-20, user request), story-specific
+    # question inviting viewers to share what they'd do / their own similar
+    # experience. NOTE: the YouTube Data API has no endpoint to pin a
+    # comment (confirmed 2026-07-20, this is a known gap in the public API,
+    # not something we're missing) - pinning still has to be done manually
+    # in Studio, per user decision this run posts the comment only, no
+    # reminder/notification for the manual pin step.
+    pinned_comment = metadata.get("pinned_comment")
+    if pinned_comment:
+        try:
+            yt.commentThreads().insert(
+                part="snippet",
+                body={"snippet": {"videoId": video_id, "topLevelComment": {"snippet": {"textOriginal": pinned_comment}}}},
+            ).execute()
+        except Exception as e:
+            print(f"    Warning: pinned_comment post failed: {e}")
+
     print(f"    Scheduled for {publish_at} UTC")
     return video_id, publish_at
