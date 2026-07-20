@@ -1,15 +1,21 @@
 {
   "story_id": 37,
   "premise": "My attorney brother convinced me to let him 'handle' our parents’ $450,000 life insurance after they died in a crash, then he forged my signature on the release, cashed the check, quietly paid off the family farm’s $300,000 mortgage, took sole title, and evicted me. I later became a licensed insurance investigator, uncovered the forgery, sued, got a $500,000 judgment plus the farm, and now the farmhouse is leased to an organic co-op that pays me a steady share—while he’s permanently disbarred.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,713 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T10:17:44.043220+00:00"
+  "updated_at": "2026-07-20T10:17:46.141159+00:00"
 }
