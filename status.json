@@ -1,40 +1,8 @@
 {
-  "story_id": 35,
-  "premise": "My husband’s death was supposed to leave me and his sister equal halves of his $290,000 vintage-car collection and a paid-off lake cabin, but she forged my signature on a transfer, sold the cars for cash and the cabin for $215,000, then told the police I was the thief. I taught myself title fraud examination, proved the notary stamp was a fake, reversed both sales, won a $410,000 civil judgment, bought her house at auction, and turned it into a classic-car museum with her name on a permanent “donor” plaque.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,992 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "His Sister Forged My Signature, Sold His Estate, And Framed Me. So I Bought Her "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "33.9 min, 900MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=XVYFIdtKFBA"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-20T05:24:22.979314+00:00",
-  "video_id": "XVYFIdtKFBA"
+  "story_id": 36,
+  "premise": "I poured my entire $210,000 401(k) into my daughter’s struggling hardware store for a 40% stake, and when a big-box competitor closed nearby, the business exploded to $1.2 million — so she and her husband forged a stock certificate showing I owned only 5% and forced me out with a $12,000 check. I proved the fraudulent conveyance, discovered they’d secretly stocked a second location, and in settlement I took possession of that fully-inventoried store and now undercut their prices by 15%, driving their flagship into Chapter 11.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-20T06:44:44.281270+00:00"
 }
