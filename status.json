@@ -1,7 +1,7 @@
 {
   "story_id": 39,
   "premise": "I spent my $45,000 pension and twenty years writing a memoir of my late husband’s heroism, trusting my son-in-law’s small publishing house to handle it — he forged a copyright assignment, sold the film rights for $320,000 to a streamer, and released a ghostwritten version calling me a fabricator. I proved the forgery, reverted the rights, self-published the true story with a blistering foreword about his fraud, and when it sold 200,000 copies and earned $1.2 million, I bought his company’s debt and now own the imprint, with his name permanently banned.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Son-In-Law Stole My Memoir, Called Me A Fabricator. So I Bought His Publishin"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T15:22:27.402072+00:00"
+  "updated_at": "2026-07-20T15:22:28.963863+00:00"
 }
