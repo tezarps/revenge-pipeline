@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Brother Forged My Name, Stole Our Parents' $450K, And Evicted Me. So I Let Th"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T10:33:19.080045+00:00"
+  "updated_at": "2026-07-20T10:35:44.990327+00:00"
 }
