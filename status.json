@@ -1,8 +1,15 @@
 {
   "story_id": 42,
   "premise": "When my husband died, his $290,000 Bordeaux wine collection was supposed to pass to me, but the adult stepdaughter I’d raised since she was ten produced a fake notarized gift letter, cleared the cellar, and sold every bottle at auction for cash. I proved the notary stamp was fabricated, won a $310,000 civil fraud judgment, and when she refused to pay I garnished her six-figure trust fund from her maternal grandmother until the debt was satisfied—then donated the final $20,000 to an anti-forgery education program in her name.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-20T23:03:06.345665+00:00"
+  "updated_at": "2026-07-20T23:03:08.099958+00:00"
 }
