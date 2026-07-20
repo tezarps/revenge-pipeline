@@ -1,7 +1,7 @@
 {
   "story_id": 35,
   "premise": "My husband’s death was supposed to leave me and his sister equal halves of his $290,000 vintage-car collection and a paid-off lake cabin, but she forged my signature on a transfer, sold the cars for cash and the cabin for $215,000, then told the police I was the thief. I taught myself title fraud examination, proved the notary stamp was a fake, reversed both sales, won a $410,000 civil judgment, bought her house at auction, and turned it into a classic-car museum with her name on a permanent “donor” plaque.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "His Sister Forged My Signature, Sold His Estate, And Framed Me. So I Bought Her "
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T05:03:18.500232+00:00"
+  "updated_at": "2026-07-20T05:03:19.824753+00:00"
 }
