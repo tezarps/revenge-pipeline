@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Son-In-Law Stole My Memoir, Called Me A Fabricator. So I Bought His Publishin"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T15:21:27.240031+00:00"
+  "updated_at": "2026-07-20T15:22:27.402072+00:00"
 }
