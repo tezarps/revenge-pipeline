@@ -1,7 +1,7 @@
 {
   "story_id": 36,
   "premise": "I poured my entire $210,000 401(k) into my daughter’s struggling hardware store for a 40% stake, and when a big-box competitor closed nearby, the business exploded to $1.2 million — so she and her husband forged a stock certificate showing I owned only 5% and forced me out with a $12,000 check. I proved the fraudulent conveyance, discovered they’d secretly stocked a second location, and in settlement I took possession of that fully-inventoried store and now undercut their prices by 15%, driving their flagship into Chapter 11.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T07:02:06.282330+00:00"
+  "updated_at": "2026-07-20T07:02:08.016239+00:00"
 }
