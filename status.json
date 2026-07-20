@@ -1,7 +1,7 @@
 {
   "story_id": 41,
   "premise": "I spent two decades collecting our grandmother’s handwritten recipes into a cookbook, trusting my TV-chef brother to help publish it, but he filed copyright in his own name, landed a $380,000 deal, and opened a chain of ‘secret family recipe’ restaurants while branding me a liar. After years of litigation I reclaimed the copyright, won every royalty plus a judgment that forced him to sell the flagship location—I bought it at auction, renamed it ‘The True Matriarch,’ and now serve each dish with a card bearing our grandmother’s story and the court docket number of his fraud.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "37.9 min, 974MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T21:16:04.176875+00:00"
+  "updated_at": "2026-07-20T21:16:05.842040+00:00"
 }
