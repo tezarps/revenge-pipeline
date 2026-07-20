@@ -1,40 +1,8 @@
 {
-  "story_id": 39,
-  "premise": "I spent my $45,000 pension and twenty years writing a memoir of my late husband’s heroism, trusting my son-in-law’s small publishing house to handle it — he forged a copyright assignment, sold the film rights for $320,000 to a streamer, and released a ghostwritten version calling me a fabricator. I proved the forgery, reverted the rights, self-published the true story with a blistering foreword about his fraud, and when it sold 200,000 copies and earned $1.2 million, I bought his company’s debt and now own the imprint, with his name permanently banned.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,530 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son-In-Law Stole My Memoir, Called Me A Fabricator. So I Bought His Publishin"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "31.2 min, 773MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=aIUeGbRp-7o"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-20T15:37:39.694137+00:00",
-  "video_id": "aIUeGbRp-7o"
+  "story_id": 40,
+  "premise": "After my husband died, my mother-in-law and I kept our weekly lottery pool going with funds from his life insurance—I put in $50 every week for five years. When we hit $1.8 million, she cashed the ticket alone, bought a beachfront condo, and claimed I’d just been lending her grocery money; I produced bank statements proving the joint venture, sued for a constructive trust, recovered $920,000, and bought the condo next door to turn it into a grief retreat for widows with a plaque reading ‘Generosity Rewarded, Greed Exposed.’",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-20T18:11:33.172867+00:00"
 }
