@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Brother Stole My Grandmother's Recipes And Got $380K. So I Bought His Restaur"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T20:51:51.419913+00:00"
+  "updated_at": "2026-07-20T20:52:50.148780+00:00"
 }
