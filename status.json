@@ -1,40 +1,8 @@
 {
-  "story_id": 38,
-  "premise": "At 62 I’d bought a Florida condo outright with $160,000 from decades as a home health aide, and my stepson, a real estate agent, offered to manage a reverse mortgage for upgrades — he forged a power of attorney, drained the equity, sold the condo for $220,000, and told everyone I’d gambled it away. I traced the notary fraud, got his license revoked, and when the court ordered restitution, he had to auction his late mother’s diamond jewelry, where I bought the entire collection for $28,000, resold it for $130,000, and bought a better condo two doors down from the one he sold.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "7,662 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "Stepson Stole My Condo And Called Me A Gambler. So I Watched Him Auction His Mom"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "40.2 min, 1032MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=DkGHRqUg1z0"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-20T13:06:03.889209+00:00",
-  "video_id": "DkGHRqUg1z0"
+  "story_id": 39,
+  "premise": "I spent my $45,000 pension and twenty years writing a memoir of my late husband’s heroism, trusting my son-in-law’s small publishing house to handle it — he forged a copyright assignment, sold the film rights for $320,000 to a streamer, and released a ghostwritten version calling me a fabricator. I proved the forgery, reverted the rights, self-published the true story with a blistering foreword about his fraud, and when it sold 200,000 copies and earned $1.2 million, I bought his company’s debt and now own the imprint, with his name permanently banned.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-20T15:07:25.746054+00:00"
 }
