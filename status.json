@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "His Sister Forged My Signature, Sold His Estate, And Framed Me. So I Bought Her "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-20T05:02:00.929003+00:00"
+  "updated_at": "2026-07-20T05:03:18.500232+00:00"
 }
