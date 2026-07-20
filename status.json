@@ -1,8 +1,15 @@
 {
   "story_id": 40,
   "premise": "After my husband died, my mother-in-law and I kept our weekly lottery pool going with funds from his life insurance—I put in $50 every week for five years. When we hit $1.8 million, she cashed the ticket alone, bought a beachfront condo, and claimed I’d just been lending her grocery money; I produced bank statements proving the joint venture, sued for a constructive trust, recovered $920,000, and bought the condo next door to turn it into a grief retreat for widows with a plaque reading ‘Generosity Rewarded, Greed Exposed.’",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-20T18:11:33.172867+00:00"
+  "updated_at": "2026-07-20T18:11:34.762306+00:00"
 }
