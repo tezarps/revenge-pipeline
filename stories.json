@@ -333,6 +333,33 @@
       "status": "done",
       "video_id": "hy82OtJ-cJ4",
       "publish_at": "2026-07-22T19:00:00.000000Z"
+    },
+    {
+      "id": 50,
+      "premise": "I spent $110,000 of my pension to buy a fourplex for my son and his wife, trusting them to manage the property and send me the rental income for my retirement, but they forged a gift deed, sold the building for $320,000, and bought a waterfront condo in cash. I proved the forgery, won a $350,000 fraud judgment, and when they couldn’t pay, I seized and auctioned the condo, bought it myself, and now rent it back to them at full market rate while I live in the penthouse — every month their rent check reminds them whose name is on the deed.",
+      "status": "done",
+      "video_id": "UMJ9QN1B9G0",
+      "publish_at": "2026-07-22T22:00:00.000000Z"
+    },
+    {
+      "id": 51,
+      "premise": "After my husband died, I kept our family storage business running alongside my sister-in-law, sinking my $60,000 retirement savings into an expansion she promised would make us equal partners; instead, she forged a stock transfer claiming I’d sold my half for $10,000 and locked me out of the $500,000 company. I found the original share certificates in a dusty file, sued for fraud, and was awarded sole ownership of the entire business — I renamed it and now fund college scholarships for first-generation women, while a security guard is paid specifically to escort my sister-in-law off the property if she ever sets foot near the gate.",
+      "status": "pending"
+    },
+    {
+      "id": 52,
+      "premise": "I took in my nephew at eight when my sister died, and at 52 I used $50,000 of my nursing pension to put him through culinary school and launch a food truck with a handshake 50/50 deal; once the truck became a citywide sensation, he secretly trademarked the name and fired me, claiming I was just a volunteer. I sued for breach of partnership, won full ownership of the original truck and the trademark, and now park my new food truck across the street every day serving a ‘Traitor’s Wrap’ special — his copycat business folded within six months, and I bought his last fryer at the liquidation sale for $200.",
+      "status": "pending"
+    },
+    {
+      "id": 53,
+      "premise": "When my widowed mother remarried, I moved in at 55 and poured $70,000 of my savings into a down-to-the-studs renovation after her new husband promised I’d inherit her half of the $390,000 house; the day after her funeral he produced a backdated forged will leaving everything to his new girlfriend and evicted me. I hired a forensic handwriting expert, proved the will was a fabrication, and a judge awarded me the entire home — I now run it as a rent-free transitional shelter for women fleeing domestic abuse, with a brass plaque on the front door that reads ‘Never Trust a Backdated Signature.’",
+      "status": "pending"
+    },
+    {
+      "id": 54,
+      "premise": "I sold my paid-off condo and used the $90,000 to buy land and build a tiny-house eco-retreat for my daughter and son-in-law, taking a secured promissory note and a written promise I could live in the guest cabin; they secretly sold the whole property for $410,000, pocketed the cash, and vanished to Costa Rica. I foreclosed on the note, reclaimed the land at the same sale price because the sale was voided, and now run a luxury glamping site called ‘Second Chance Acres’ — I garnish their stateside bank accounts monthly for the restitution, and every new booking triggers an automatic email receipt sent directly to their inbox.",
+      "status": "pending"
     }
   ]
 }
