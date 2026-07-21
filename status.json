@@ -1,40 +1,8 @@
 {
-  "story_id": 43,
-  "premise": "I poured my entire $175,000 widow’s pension into a florist shop for my son and daughter-in-law with a handshake promise of 40% ownership, but within a year they secretly sold the most valuable inventory, drained the business account, and filed for divorce—she vanished with the cash into a luxury condo while I was left holding an empty LLC. I traced the funds, sued for conversion, won a $210,000 judgment, and garnished her new real-estate agent commissions until I recouped every cent plus interest, then sent her employer the court transcripts, causing her to lose her license for ethical violations.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,603 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son And DIL Stole My $175K Pension, Drained My Shop. So I Let The State Take "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "32.1 min, 851MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=bnO8-ZhQmu8"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-21T04:58:06.484264+00:00",
-  "video_id": "bnO8-ZhQmu8"
+  "story_id": 44,
+  "premise": "After my husband’s sudden death, his $250,000 life insurance payout was meant to fund the lifetime care of our developmentally disabled adult son, but my sister-in-law—who had volunteered as his aide—forged my husband’s signature on a beneficiary change form and deposited the full amount into her own account. When an insurance statement tipped me off, I sued for fraud, obtained a $275,000 judgment with interest, got her convicted of elder exploitation, and now control the funds in a court-supervised special-needs trust for my son while her home-health aide license was permanently revoked.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-21T06:27:39.689949+00:00"
 }
