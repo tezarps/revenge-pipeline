@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Brother Forged The Will, Took The Cottage, Called Me A Tenant. So I Rent It T"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T17:44:11.634493+00:00"
+  "updated_at": "2026-07-21T17:45:13.527360+00:00"
 }
