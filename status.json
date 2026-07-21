@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Son Stole My Home And Dumped Me In A Facility. So I Accepted His RV And Now I"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T12:00:55.624500+00:00"
+  "updated_at": "2026-07-21T12:03:28.153723+00:00"
 }
