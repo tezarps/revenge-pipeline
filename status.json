@@ -1,7 +1,7 @@
 {
   "story_id": 49,
   "premise": "I emptied my $60,000 pension fund to help my daughter‑in‑law launch an upscale dog‑boarding franchise, believing her promise of a 50/50 split; once it turned into a $700,000‑a‑year business, she forged a partnership agreement showing I’d forfeited my share for a one‑time gift of $5,000. I exposed the forgery, sued to seize the franchise’s intellectual property, and now operate a rival 'Breach of Trust Boarding' across the street — every customer gets a brochure detailing her fraud, and I’ve poached 80% of her clients.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "37.2 min, 957MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T21:10:23.295328+00:00"
+  "updated_at": "2026-07-21T21:10:24.941346+00:00"
 }
