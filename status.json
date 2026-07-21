@@ -1,7 +1,7 @@
 {
   "story_id": 44,
   "premise": "After my husband’s sudden death, his $250,000 life insurance payout was meant to fund the lifetime care of our developmentally disabled adult son, but my sister-in-law—who had volunteered as his aide—forged my husband’s signature on a beneficiary change form and deposited the full amount into her own account. When an insurance statement tipped me off, I sued for fraud, obtained a $275,000 judgment with interest, got her convicted of elder exploitation, and now control the funds in a court-supervised special-needs trust for my son while her home-health aide license was permanently revoked.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Sister-in-Law Stole My Son's $250K Care Fund. So I Stripped Her License."
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T06:54:10.097137+00:00"
+  "updated_at": "2026-07-21T06:54:11.718603+00:00"
 }
