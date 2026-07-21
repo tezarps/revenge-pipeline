@@ -1,40 +1,8 @@
 {
-  "story_id": 44,
-  "premise": "After my husband’s sudden death, his $250,000 life insurance payout was meant to fund the lifetime care of our developmentally disabled adult son, but my sister-in-law—who had volunteered as his aide—forged my husband’s signature on a beneficiary change form and deposited the full amount into her own account. When an insurance statement tipped me off, I sued for fraud, obtained a $275,000 judgment with interest, got her convicted of elder exploitation, and now control the funds in a court-supervised special-needs trust for my son while her home-health aide license was permanently revoked.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,525 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister-in-Law Stole My Son's $250K Care Fund. So I Stripped Her License."
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "35.3 min, 927MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=ngYZT5OM7lk"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-21T07:12:04.416808+00:00",
-  "video_id": "ngYZT5OM7lk"
+  "story_id": 45,
+  "premise": "After my husband’s death, his sister convinced me to let her 'streamline' our $300,000 rental portfolio, then forged my signature on quitclaim deeds, sold five properties for $420,000, and moved to a gated community, leaving me to face the capital‑gains bill. I trained as a forensic documents examiner, proved the notary stamps were faked, overturned the sales, and now my new property‑management LLC owns those very homes, with a lobby plaque naming my sister‑in‑law 'Honorary Tenant' after the judgment forced her to pay me every cent of back rent.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-21T09:29:18.076045+00:00"
 }
