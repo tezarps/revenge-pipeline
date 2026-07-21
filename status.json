@@ -1,7 +1,7 @@
 {
   "story_id": 47,
   "premise": "I co‑signed a $190,000 business loan for my niece’s artisanal bakery, trusting the 40% stake she’d put in writing, but on opening day she handed me a one‑page contract naming me a 'silent investor' with zero equity and forced me out. I learned commercial lending fraud, discovered she’d falsified her revenue projections to the bank, reported her, got the loan recalled, then bought the bakery’s equipment and lease at the bank’s distress sale for $11,000 and reopened as a pie shop with a 'Wall of Broken Promises' featuring her original handwritten promise note.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Niece Disowned Me After I Co-Signed Her Bakery Loan. So I Watched Her Lose It"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T15:20:40.750769+00:00"
+  "updated_at": "2026-07-21T15:20:42.191235+00:00"
 }
