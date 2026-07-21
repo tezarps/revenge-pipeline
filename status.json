@@ -1,40 +1,8 @@
 {
-  "story_id": 42,
-  "premise": "When my husband died, his $290,000 Bordeaux wine collection was supposed to pass to me, but the adult stepdaughter I’d raised since she was ten produced a fake notarized gift letter, cleared the cellar, and sold every bottle at auction for cash. I proved the notary stamp was fabricated, won a $310,000 civil fraud judgment, and when she refused to pay I garnished her six-figure trust fund from her maternal grandmother until the debt was satisfied—then donated the final $20,000 to an anti-forgery education program in her name.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,831 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Stepdaughter Faked A Gift Letter, Emptied Our $290K Wine Cellar. So I Drained"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "31.0 min, 800MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=Dg1tYSghlH8"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-20T23:46:59.957396+00:00",
-  "video_id": "Dg1tYSghlH8"
+  "story_id": 43,
+  "premise": "I poured my entire $175,000 widow’s pension into a florist shop for my son and daughter-in-law with a handshake promise of 40% ownership, but within a year they secretly sold the most valuable inventory, drained the business account, and filed for divorce—she vanished with the cash into a luxury condo while I was left holding an empty LLC. I traced the funds, sued for conversion, won a $210,000 judgment, and garnished her new real-estate agent commissions until I recouped every cent plus interest, then sent her employer the court transcripts, causing her to lose her license for ethical violations.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-21T04:16:58.441598+00:00"
 }
