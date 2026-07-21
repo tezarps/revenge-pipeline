@@ -1,40 +1,8 @@
 {
-  "story_id": 47,
-  "premise": "I co‑signed a $190,000 business loan for my niece’s artisanal bakery, trusting the 40% stake she’d put in writing, but on opening day she handed me a one‑page contract naming me a 'silent investor' with zero equity and forced me out. I learned commercial lending fraud, discovered she’d falsified her revenue projections to the bank, reported her, got the loan recalled, then bought the bakery’s equipment and lease at the bank’s distress sale for $11,000 and reopened as a pie shop with a 'Wall of Broken Promises' featuring her original handwritten promise note.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,573 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Niece Disowned Me After I Co-Signed Her Bakery Loan. So I Watched Her Lose It"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "36.6 min, 910MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=vRStg9nAdSA"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-21T15:39:24.870532+00:00",
-  "video_id": "vRStg9nAdSA"
+  "story_id": 48,
+  "premise": "For 30 years I paid the mortgage and upkeep on my mother’s $280,000 beach cottage while my brother lived rent‑free in the city; after she passed, he produced a will — witnessed by his golf buddies — leaving the cottage to him alone and claimed I’d been 'renting' it all along. I found a cache of my mother’s letters begging me to fix this, proved the will was a forgery through a handwriting expert, won the cottage back, and now list it on a vacation‑rental site I co‑founded, where he pays me $300 a night to rent the very cottage he tried to steal.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-21T17:27:14.282871+00:00"
 }
