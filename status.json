@@ -1,40 +1,8 @@
 {
-  "story_id": 49,
-  "premise": "I emptied my $60,000 pension fund to help my daughter‑in‑law launch an upscale dog‑boarding franchise, believing her promise of a 50/50 split; once it turned into a $700,000‑a‑year business, she forged a partnership agreement showing I’d forfeited my share for a one‑time gift of $5,000. I exposed the forgery, sued to seize the franchise’s intellectual property, and now operate a rival 'Breach of Trust Boarding' across the street — every customer gets a brochure detailing her fraud, and I’ve poached 80% of her clients.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,605 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Daughter-in-Law Stole My $60K Pension. So I Opened A Rival Dog Boarding."
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "37.2 min, 957MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=hy82OtJ-cJ4"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-21T21:13:05.529221+00:00",
-  "video_id": "hy82OtJ-cJ4"
+  "story_id": 50,
+  "premise": "I spent $110,000 of my pension to buy a fourplex for my son and his wife, trusting them to manage the property and send me the rental income for my retirement, but they forged a gift deed, sold the building for $320,000, and bought a waterfront condo in cash. I proved the forgery, won a $350,000 fraud judgment, and when they couldn’t pay, I seized and auctioned the condo, bought it myself, and now rent it back to them at full market rate while I live in the penthouse — every month their rent check reminds them whose name is on the deed.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-21T23:00:58.088310+00:00"
 }
