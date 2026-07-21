@@ -1,8 +1,15 @@
 {
   "story_id": 44,
   "premise": "After my husband’s sudden death, his $250,000 life insurance payout was meant to fund the lifetime care of our developmentally disabled adult son, but my sister-in-law—who had volunteered as his aide—forged my husband’s signature on a beneficiary change form and deposited the full amount into her own account. When an insurance statement tipped me off, I sued for fraud, obtained a $275,000 judgment with interest, got her convicted of elder exploitation, and now control the funds in a court-supervised special-needs trust for my son while her home-health aide license was permanently revoked.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-21T06:27:39.689949+00:00"
+  "updated_at": "2026-07-21T06:27:41.245562+00:00"
 }
