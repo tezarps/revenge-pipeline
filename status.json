@@ -1,15 +1,21 @@
 {
   "story_id": 48,
   "premise": "For 30 years I paid the mortgage and upkeep on my mother’s $280,000 beach cottage while my brother lived rent‑free in the city; after she passed, he produced a will — witnessed by his golf buddies — leaving the cottage to him alone and claimed I’d been 'renting' it all along. I found a cache of my mother’s letters begging me to fix this, proved the will was a forgery through a handwriting expert, won the cottage back, and now list it on a vacation‑rental site I co‑founded, where he pays me $300 a night to rent the very cottage he tried to steal.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,801 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T17:34:44.909144+00:00"
+  "updated_at": "2026-07-21T17:34:47.231583+00:00"
 }
