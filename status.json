@@ -1,7 +1,7 @@
 {
   "story_id": 45,
   "premise": "After my husband’s death, his sister convinced me to let her 'streamline' our $300,000 rental portfolio, then forged my signature on quitclaim deeds, sold five properties for $420,000, and moved to a gated community, leaving me to face the capital‑gains bill. I trained as a forensic documents examiner, proved the notary stamps were faked, overturned the sales, and now my new property‑management LLC owns those very homes, with a lobby plaque naming my sister‑in‑law 'Honorary Tenant' after the judgment forced her to pay me every cent of back rent.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "30.9 min, 784MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T10:14:05.673464+00:00"
+  "updated_at": "2026-07-21T10:14:06.933179+00:00"
 }
