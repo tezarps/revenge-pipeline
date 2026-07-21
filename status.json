@@ -1,7 +1,7 @@
 {
   "story_id": 43,
   "premise": "I poured my entire $175,000 widow’s pension into a florist shop for my son and daughter-in-law with a handshake promise of 40% ownership, but within a year they secretly sold the most valuable inventory, drained the business account, and filed for divorce—she vanished with the cash into a luxury condo while I was left holding an empty LLC. I traced the funds, sued for conversion, won a $210,000 judgment, and garnished her new real-estate agent commissions until I recouped every cent plus interest, then sent her employer the court transcripts, causing her to lose her license for ethical violations.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Son And DIL Stole My $175K Pension, Drained My Shop. So I Let The State Take "
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T04:41:22.899207+00:00"
+  "updated_at": "2026-07-21T04:41:24.215299+00:00"
 }
