@@ -1,7 +1,7 @@
 {
   "story_id": 50,
   "premise": "I spent $110,000 of my pension to buy a fourplex for my son and his wife, trusting them to manage the property and send me the rental income for my retirement, but they forged a gift deed, sold the building for $320,000, and bought a waterfront condo in cash. I proved the forgery, won a $350,000 fraud judgment, and when they couldn’t pay, I seized and auctioned the condo, bought it myself, and now rent it back to them at full market rate while I live in the penthouse — every month their rent check reminds them whose name is on the deed.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Son And His Wife Forged A Deed And Stole My Fourplex. So I Bought Their Water"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T23:20:34.490496+00:00"
+  "updated_at": "2026-07-21T23:20:35.608428+00:00"
 }
