@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "SIL Forged Deeds, Sold My 5 Homes, Stuck Me With Tax Bill. So I Let The Law Reve"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T09:51:44.163602+00:00"
+  "updated_at": "2026-07-21T09:55:23.251708+00:00"
 }
