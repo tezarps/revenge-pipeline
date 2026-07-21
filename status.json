@@ -1,7 +1,7 @@
 {
   "story_id": 46,
   "premise": "When my health declined at 54, my adult son and his wife begged for medical power of attorney, promising to care for me at home; instead they placed me in a cheap state facility, sold my paid‑off $210,000 condo, and used the cash to buy a deluxe RV. I befriended a nurse who helped me document their neglect, petitioned to regain my estate, won a $250,000 elder‑exploitation judgment, and accepted the RV as partial payment — now I live in it full‑time, traveling to national parks and blogging about 'Golden Years Reclaimed,' with their names permanently redacted.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-21T12:00:53.887591+00:00"
+  "updated_at": "2026-07-21T12:00:55.624500+00:00"
 }
