@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Son Pocketed My $85K Retirement, Diluted My Stake, And Ghosted Me. So I Waite"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T17:46:43.571563+00:00"
+  "updated_at": "2026-07-22T17:47:45.949434+00:00"
 }
