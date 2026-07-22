@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Aunt & Uncle Sold Mom's $310K Stamps For RV, Lied It Flooded. So I Made His N"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T23:31:33.799484+00:00"
+  "updated_at": "2026-07-22T23:34:19.596106+00:00"
 }
