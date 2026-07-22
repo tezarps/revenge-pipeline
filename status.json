@@ -1,40 +1,8 @@
 {
-  "story_id": 52,
-  "premise": "I took in my nephew at eight when my sister died, and at 52 I used $50,000 of my nursing pension to put him through culinary school and launch a food truck with a handshake 50/50 deal; once the truck became a citywide sensation, he secretly trademarked the name and fired me, claiming I was just a volunteer. I sued for breach of partnership, won full ownership of the original truck and the trademark, and now park my new food truck across the street every day serving a ‘Traitor’s Wrap’ special — his copycat business folded within six months, and I bought his last fryer at the liquidation sale for $200.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "7,203 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Nephew Stole My Food Truck And Called Me A Volunteer. So I Parked Across The "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "38.0 min, 996MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=d0hCClXEfy8"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-22T07:22:13.458319+00:00",
-  "video_id": "d0hCClXEfy8"
+  "story_id": 53,
+  "premise": "When my widowed mother remarried, I moved in at 55 and poured $70,000 of my savings into a down-to-the-studs renovation after her new husband promised I’d inherit her half of the $390,000 house; the day after her funeral he produced a backdated forged will leaving everything to his new girlfriend and evicted me. I hired a forensic handwriting expert, proved the will was a fabrication, and a judge awarded me the entire home — I now run it as a rent-free transitional shelter for women fleeing domestic abuse, with a brass plaque on the front door that reads ‘Never Trust a Backdated Signature.’",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-22T09:27:14.275705+00:00"
 }
