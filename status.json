@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister-In-Law Forged A Transfer, Locked Me Out, Stole My $500K Business. So I"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T04:44:04.463426+00:00"
+  "updated_at": "2026-07-22T04:47:02.268434+00:00"
 }
