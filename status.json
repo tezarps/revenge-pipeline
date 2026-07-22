@@ -1,15 +1,21 @@
 {
   "story_id": 53,
   "premise": "When my widowed mother remarried, I moved in at 55 and poured $70,000 of my savings into a down-to-the-studs renovation after her new husband promised I’d inherit her half of the $390,000 house; the day after her funeral he produced a backdated forged will leaving everything to his new girlfriend and evicted me. I hired a forensic handwriting expert, proved the will was a fabrication, and a judge awarded me the entire home — I now run it as a rent-free transitional shelter for women fleeing domestic abuse, with a brass plaque on the front door that reads ‘Never Trust a Backdated Signature.’",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "7,618 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T09:33:42.265813+00:00"
+  "updated_at": "2026-07-22T09:33:44.399950+00:00"
 }
