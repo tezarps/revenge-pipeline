@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Nephew Forged My POA, Stole $180K. So I Watched Him Lose Everything."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T20:38:36.569506+00:00"
+  "updated_at": "2026-07-22T20:40:52.878368+00:00"
 }
