@@ -1,40 +1,8 @@
 {
-  "story_id": 56,
-  "premise": "I withdrew the last $85,000 from my 403(b) to fund my grandson’s fitness‑tech startup, shaking hands on a 10% equity stake; once his app hit 500,000 downloads, he issued a new share class that diluted me to zero and blocked my calls. I registered the app’s name as a competing domain, built a clone with the original source code I’d backed up, and when he sued, I countersued for fraud — the settlement awarded me full ownership of the app, I rebranded it ‘Grandma’s Gains,’ now valued at $1.2 million, and he works my customer‑service desk on minimum wage.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,573 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son Pocketed My $85K Retirement, Diluted My Stake, And Ghosted Me. So I Waite"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "34.1 min, 845MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=FGs4Lkbvyvo"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-22T18:11:39.288967+00:00",
-  "video_id": "FGs4Lkbvyvo"
+  "story_id": 57,
+  "premise": "I spent $200,000 of my late husband’s life insurance to put my orphaned nephew through law school and support his young family, believing his promise to be my power of attorney in old age; at 58 he forged a durable POA, drained my $180,000 brokerage account, and bought a sports car. I studied probate litigation, proved the forgery, and sued him for breach of fiduciary duty, winning a $280,000 judgment that forced him to sell his practice — now I own the office condo and lease it back to the firm that hired him as a paralegal, where I’m brought in as an expert witness in every elder‑fraud case against him.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-22T20:16:52.481513+00:00"
 }
