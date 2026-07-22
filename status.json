@@ -1,7 +1,7 @@
 {
   "story_id": 55,
   "premise": "After my husband died, I sold our $340,000 home and moved in with my daughter, using the sale money to pay off her debts on her promise of lifetime care, but six months later she forged a lease and locked me out, claiming I was a tenant. I sued for elder exploitation, proved the oral contract through text messages, and when she couldn’t pay the $410,000 judgment, I took ownership of her six‑bedroom house at auction; now I run it as a shared‑housing community for displaced older women, charging rent and sending her monthly invoices for the property tax she still owes.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "32.8 min, 813MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T15:46:36.588509+00:00"
+  "updated_at": "2026-07-22T15:46:38.175351+00:00"
 }
