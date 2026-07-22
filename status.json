@@ -1,8 +1,15 @@
 {
   "story_id": 57,
   "premise": "I spent $200,000 of my late husband’s life insurance to put my orphaned nephew through law school and support his young family, believing his promise to be my power of attorney in old age; at 58 he forged a durable POA, drained my $180,000 brokerage account, and bought a sports car. I studied probate litigation, proved the forgery, and sued him for breach of fiduciary duty, winning a $280,000 judgment that forced him to sell his practice — now I own the office condo and lease it back to the firm that hired him as a paralegal, where I’m brought in as an expert witness in every elder‑fraud case against him.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-22T20:16:52.481513+00:00"
+  "updated_at": "2026-07-22T20:16:54.721024+00:00"
 }
