@@ -1,7 +1,7 @@
 {
   "story_id": 58,
   "premise": "My mother’s $310,000 rare‑stamp collection was held in trust by my uncle and aunt until I turned 50, but they secretly sold the entire collection to a dealer and spent the cash on a luxury RV, telling me it had been ‘lost in a flood.’ At 54, I found a catalog notation from the auction, traced the stamps to a collector in Zurich, successfully sued for conversion, and repossessed the collection; I then sold individual stamps at a 40% premium to fund a women’s entrepreneurship grant, with each award certificate permanently embossed with my uncle’s name as the unwilling donor.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "36.5 min, 941MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T23:56:23.648067+00:00"
+  "updated_at": "2026-07-22T23:56:24.863114+00:00"
 }
