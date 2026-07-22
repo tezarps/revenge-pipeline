@@ -1,40 +1,8 @@
 {
-  "story_id": 55,
-  "premise": "After my husband died, I sold our $340,000 home and moved in with my daughter, using the sale money to pay off her debts on her promise of lifetime care, but six months later she forged a lease and locked me out, claiming I was a tenant. I sued for elder exploitation, proved the oral contract through text messages, and when she couldn’t pay the $410,000 judgment, I took ownership of her six‑bedroom house at auction; now I run it as a shared‑housing community for displaced older women, charging rent and sending her monthly invoices for the property tax she still owes.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,884 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Daughter Forged Lease, Locked Me Out, And Stole My $340,000. So I Took Her Ho"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "32.8 min, 813MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=lKKbZQMo6GQ"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-22T15:47:55.669704+00:00",
-  "video_id": "lKKbZQMo6GQ"
+  "story_id": 56,
+  "premise": "I withdrew the last $85,000 from my 403(b) to fund my grandson’s fitness‑tech startup, shaking hands on a 10% equity stake; once his app hit 500,000 downloads, he issued a new share class that diluted me to zero and blocked my calls. I registered the app’s name as a competing domain, built a clone with the original source code I’d backed up, and when he sued, I countersued for fraud — the settlement awarded me full ownership of the app, I rebranded it ‘Grandma’s Gains,’ now valued at $1.2 million, and he works my customer‑service desk on minimum wage.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-22T17:26:10.331882+00:00"
 }
