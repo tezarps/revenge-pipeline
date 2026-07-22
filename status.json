@@ -1,40 +1,8 @@
 {
-  "story_id": 54,
-  "premise": "I sold my paid-off condo and used the $90,000 to buy land and build a tiny-house eco-retreat for my daughter and son-in-law, taking a secured promissory note and a written promise I could live in the guest cabin; they secretly sold the whole property for $410,000, pocketed the cash, and vanished to Costa Rica. I foreclosed on the note, reclaimed the land at the same sale price because the sale was voided, and now run a luxury glamping site called ‘Second Chance Acres’ — I garnish their stateside bank accounts monthly for the restitution, and every new booking triggers an automatic email receipt sent directly to their inbox.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,983 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Daughter Sold My Gifted Land For $410K And Fled. So I Foreclosed, Now She Get"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "31.2 min, 799MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=EVHoxZu1-G8"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-22T12:31:24.323447+00:00",
-  "video_id": "EVHoxZu1-G8"
+  "story_id": 55,
+  "premise": "After my husband died, I sold our $340,000 home and moved in with my daughter, using the sale money to pay off her debts on her promise of lifetime care, but six months later she forged a lease and locked me out, claiming I was a tenant. I sued for elder exploitation, proved the oral contract through text messages, and when she couldn’t pay the $410,000 judgment, I took ownership of her six‑bedroom house at auction; now I run it as a shared‑housing community for displaced older women, charging rent and sending her monthly invoices for the property tax she still owes.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-22T15:02:31.283342+00:00"
 }
