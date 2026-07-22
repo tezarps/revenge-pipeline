@@ -1,7 +1,7 @@
 {
   "story_id": 56,
   "premise": "I withdrew the last $85,000 from my 403(b) to fund my grandson’s fitness‑tech startup, shaking hands on a 10% equity stake; once his app hit 500,000 downloads, he issued a new share class that diluted me to zero and blocked my calls. I registered the app’s name as a competing domain, built a clone with the original source code I’d backed up, and when he sued, I countersued for fraud — the settlement awarded me full ownership of the app, I rebranded it ‘Grandma’s Gains,’ now valued at $1.2 million, and he works my customer‑service desk on minimum wage.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "34.1 min, 845MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T18:10:21.883906+00:00"
+  "updated_at": "2026-07-22T18:10:23.430481+00:00"
 }
