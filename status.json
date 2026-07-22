@@ -1,15 +1,21 @@
 {
   "story_id": 54,
   "premise": "I sold my paid-off condo and used the $90,000 to buy land and build a tiny-house eco-retreat for my daughter and son-in-law, taking a secured promissory note and a written promise I could live in the guest cabin; they secretly sold the whole property for $410,000, pocketed the cash, and vanished to Costa Rica. I foreclosed on the note, reclaimed the land at the same sale price because the sale was voided, and now run a luxury glamping site called ‘Second Chance Acres’ — I garnish their stateside bank accounts monthly for the restitution, and every new booking triggers an automatic email receipt sent directly to their inbox.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,983 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T11:54:28.936271+00:00"
+  "updated_at": "2026-07-22T11:54:31.100918+00:00"
 }
