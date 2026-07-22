@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Nephew Stole My Food Truck And Called Me A Volunteer. So I Parked Across The "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T06:55:45.091777+00:00"
+  "updated_at": "2026-07-22T06:58:16.412668+00:00"
 }
