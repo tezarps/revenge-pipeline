@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Stepfather Promised Me Half The House, Then Forged A Will. So I Turned It Int"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-22T09:53:20.185959+00:00"
+  "updated_at": "2026-07-22T09:55:42.167070+00:00"
 }
