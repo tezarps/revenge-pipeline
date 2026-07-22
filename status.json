@@ -1,40 +1,8 @@
 {
-  "story_id": 57,
-  "premise": "I spent $200,000 of my late husband’s life insurance to put my orphaned nephew through law school and support his young family, believing his promise to be my power of attorney in old age; at 58 he forged a durable POA, drained my $180,000 brokerage account, and bought a sports car. I studied probate litigation, proved the forgery, and sued him for breach of fiduciary duty, winning a $280,000 judgment that forced him to sell his practice — now I own the office condo and lease it back to the firm that hired him as a paralegal, where I’m brought in as an expert witness in every elder‑fraud case against him.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,143 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Nephew Forged My POA, Stole $180K. So I Watched Him Lose Everything."
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "34.2 min, 880MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=etuXA4IW87U"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-22T21:02:02.766478+00:00",
-  "video_id": "etuXA4IW87U"
+  "story_id": 58,
+  "premise": "My mother’s $310,000 rare‑stamp collection was held in trust by my uncle and aunt until I turned 50, but they secretly sold the entire collection to a dealer and spent the cash on a luxury RV, telling me it had been ‘lost in a flood.’ At 54, I found a catalog notation from the auction, traced the stamps to a collector in Zurich, successfully sued for conversion, and repossessed the collection; I then sold individual stamps at a 40% premium to fund a women’s entrepreneurship grant, with each award certificate permanently embossed with my uncle’s name as the unwilling donor.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-22T23:06:20.067821+00:00"
 }
