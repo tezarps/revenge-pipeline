@@ -368,6 +368,33 @@
       "status": "done",
       "video_id": "EVHoxZu1-G8",
       "publish_at": "2026-07-23T10:00:00.000000Z"
+    },
+    {
+      "id": 55,
+      "premise": "After my husband died, I sold our $340,000 home and moved in with my daughter, using the sale money to pay off her debts on her promise of lifetime care, but six months later she forged a lease and locked me out, claiming I was a tenant. I sued for elder exploitation, proved the oral contract through text messages, and when she couldn’t pay the $410,000 judgment, I took ownership of her six‑bedroom house at auction; now I run it as a shared‑housing community for displaced older women, charging rent and sending her monthly invoices for the property tax she still owes.",
+      "status": "done",
+      "video_id": "lKKbZQMo6GQ",
+      "publish_at": "2026-07-23T13:00:00.000000Z"
+    },
+    {
+      "id": 56,
+      "premise": "I withdrew the last $85,000 from my 403(b) to fund my grandson’s fitness‑tech startup, shaking hands on a 10% equity stake; once his app hit 500,000 downloads, he issued a new share class that diluted me to zero and blocked my calls. I registered the app’s name as a competing domain, built a clone with the original source code I’d backed up, and when he sued, I countersued for fraud — the settlement awarded me full ownership of the app, I rebranded it ‘Grandma’s Gains,’ now valued at $1.2 million, and he works my customer‑service desk on minimum wage.",
+      "status": "pending"
+    },
+    {
+      "id": 57,
+      "premise": "I spent $200,000 of my late husband’s life insurance to put my orphaned nephew through law school and support his young family, believing his promise to be my power of attorney in old age; at 58 he forged a durable POA, drained my $180,000 brokerage account, and bought a sports car. I studied probate litigation, proved the forgery, and sued him for breach of fiduciary duty, winning a $280,000 judgment that forced him to sell his practice — now I own the office condo and lease it back to the firm that hired him as a paralegal, where I’m brought in as an expert witness in every elder‑fraud case against him.",
+      "status": "pending"
+    },
+    {
+      "id": 58,
+      "premise": "My mother’s $310,000 rare‑stamp collection was held in trust by my uncle and aunt until I turned 50, but they secretly sold the entire collection to a dealer and spent the cash on a luxury RV, telling me it had been ‘lost in a flood.’ At 54, I found a catalog notation from the auction, traced the stamps to a collector in Zurich, successfully sued for conversion, and repossessed the collection; I then sold individual stamps at a 40% premium to fund a women’s entrepreneurship grant, with each award certificate permanently embossed with my uncle’s name as the unwilling donor.",
+      "status": "pending"
+    },
+    {
+      "id": 59,
+      "premise": "I poured my entire $140,000 inheritance from my mother into renovating my father’s run‑down lakeside lodge in exchange for his written promise of 50% ownership; when he remarried, my new stepmother forged a deed gifting the $520,000 property to her son from a previous marriage and evicted me on Christmas Eve. I uncovered the fraudulent deed, sued for quiet title, and when they dissolved their marriage during litigation, I bought my stepmother’s interest for $1 and took sole ownership — I now run the lodge as a women’s writing retreat, with a bonfire pit where I burn copies of their wedding photos every solstice.",
+      "status": "pending"
     }
   ]
 }
