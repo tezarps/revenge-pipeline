@@ -1,8 +1,15 @@
 {
   "story_id": 52,
   "premise": "I took in my nephew at eight when my sister died, and at 52 I used $50,000 of my nursing pension to put him through culinary school and launch a food truck with a handshake 50/50 deal; once the truck became a citywide sensation, he secretly trademarked the name and fired me, claiming I was just a volunteer. I sued for breach of partnership, won full ownership of the original truck and the trademark, and now park my new food truck across the street every day serving a ‘Traitor’s Wrap’ special — his copycat business folded within six months, and I bought his last fryer at the liquidation sale for $200.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-22T06:28:16.612643+00:00"
+  "updated_at": "2026-07-22T06:28:18.742946+00:00"
 }
