@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister-In-Law Faked Terminal Cancer, Stole My $280K Home. So I Sent Her Tax B"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T20:41:42.733799+00:00"
+  "updated_at": "2026-07-23T20:42:41.484540+00:00"
 }
