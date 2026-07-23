@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "error",
+      "detail": "IncompleteRead(1 bytes read)"
     }
   },
-  "run_state": "running",
-  "updated_at": "2026-07-23T09:52:53.875301+00:00"
+  "run_state": "failed",
+  "updated_at": "2026-07-23T09:53:55.557495+00:00"
 }
