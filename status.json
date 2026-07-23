@@ -1,40 +1,8 @@
 {
-  "story_id": 63,
-  "premise": "I worked 25 years as the embalmer and bookkeeper for my son’s funeral home, sinking my $70,000 pension into keeping it afloat during the pandemic on his promise I’d own half; when business rebounded he sold the $1.5‑million company to a chain, forged a release of my equity, and handed me a $5,000 ‘thank‑you’ card — I discovered he’d been double‑selling prepaid funeral plans, triggered a state investigation that yanked his license, and bought the funeral home’s assets at auction for $40,000, turning it into a green‑burial cooperative where he now mows the memorial meadow under my supervision.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,611 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son Stole My $70K, Sold The Funeral Home For $1.5M, Gave Me A $5K Card. So I "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "32.1 min, 797MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=X_Crsi1zeL4"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-23T15:39:38.983717+00:00",
-  "video_id": "X_Crsi1zeL4"
+  "story_id": 64,
+  "premise": "I emptied my $120,000 widow’s inheritance into a rundown horse stable with my stepdaughter, who promised we’d build it into a premier dressage center and split the equity; once the property was valued at $800,000, she forged partnership‑dissolution papers, claimed I’d gifted my share, and tried to sell it to a developer — I proved the forgeries, the court awarded me sole ownership, and I now board therapy ponies and police horses while a livestream camera called ‘Stable Justice’ broadcasts her permanent banishment from the grounds.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-23T17:29:51.372177+00:00"
 }
