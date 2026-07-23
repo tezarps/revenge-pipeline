@@ -1,8 +1,15 @@
 {
   "story_id": 61,
   "premise": "I gave my daughter, a biomedical researcher, my late husband’s rare tissue samples and my decade of caregiver journals, trusting we’d co‑own the diagnostic test she developed; she secretly patented it alone, sold the rights for $2.3 million, and dismissed my work as ‘emotional support’ — I sued for intellectual‑property theft, won a $1.4 million judgment, and now the test is sold through a foundation I control, with her name permanently struck from every kit.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-23T09:25:01.222128+00:00"
+  "updated_at": "2026-07-23T09:25:03.127998+00:00"
 }
