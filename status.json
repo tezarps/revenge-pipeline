@@ -1,40 +1,8 @@
 {
-  "story_id": 64,
-  "premise": "I emptied my $120,000 widow’s inheritance into a rundown horse stable with my stepdaughter, who promised we’d build it into a premier dressage center and split the equity; once the property was valued at $800,000, she forged partnership‑dissolution papers, claimed I’d gifted my share, and tried to sell it to a developer — I proved the forgeries, the court awarded me sole ownership, and I now board therapy ponies and police horses while a livestream camera called ‘Stable Justice’ broadcasts her permanent banishment from the grounds.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "7,779 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Stepdaughter Forged Papers To Steal My $800k Stable. So I Let The Livestream "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "40.0 min, 988MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=xKTGFq_Z9d8"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-23T18:08:49.034496+00:00",
-  "video_id": "xKTGFq_Z9d8"
+  "story_id": 65,
+  "premise": "After my husband died, his sister convinced me to transfer my $280,000 paid-off house into a trust she would manage because she had terminal cancer—then she miraculously recovered, sold the house, and kept the cash. I proved the trust termination was a forgery, won a fraud judgment, reclaimed the property, and now rent it out while she lives in a studio; I send her monthly tax bills to her new address.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-23T20:20:41.657416+00:00"
 }
