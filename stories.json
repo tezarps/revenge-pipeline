@@ -434,6 +434,33 @@
       "status": "done",
       "video_id": "xKTGFq_Z9d8",
       "publish_at": "2026-07-24T10:00:00.000000Z"
+    },
+    {
+      "id": 65,
+      "premise": "After my husband died, his sister convinced me to transfer my $280,000 paid-off house into a trust she would manage because she had terminal cancer—then she miraculously recovered, sold the house, and kept the cash. I proved the trust termination was a forgery, won a fraud judgment, reclaimed the property, and now rent it out while she lives in a studio; I send her monthly tax bills to her new address.",
+      "status": "done",
+      "video_id": "V_TrkksK3E0",
+      "publish_at": "2026-07-24T13:00:00.000000Z"
+    },
+    {
+      "id": 66,
+      "premise": "I sold my $50,000 cherry-red pickup and handed my grandmother’s 100-year-old pie recipe to my daughter launching a food truck, trusting her written 30% profit share, but she franchised without me and sold the brand for $1.2 million, claiming the recipe was a gift. I sued for contract breach, won a $360,000 settlement plus perpetual royalties, and now run a rival truck serving ‘Unkept Promise Pies’ with every receipt printed with the court docket number.",
+      "status": "pending"
+    },
+    {
+      "id": 67,
+      "premise": "My husband’s will left me a $320,000 lake cabin and half his antique gun collection, but my adult stepson forged a codicil claiming I’d abandoned the property, staged a break-in, and got me arrested for theft. I proved the codicil was forged through a forensic linguist, had charges dismissed, won a $400,000 malicious prosecution judgment, and turned the cabin into a women’s retreat with a plaque reading ‘Justice Preserves.’",
+      "status": "pending"
+    },
+    {
+      "id": 68,
+      "premise": "I emptied my $60,000 nursing pension to buy my brother a vacuum-truck business after our mom’s funeral, on his signed promise of 20% ownership and repayment, but he forged a cancellation of the note and told everyone I’d never lent a dime. I found the original promissory note in a safe deposit box, sued, and was awarded full ownership of the business—now I manage the fleet and employ my brother as a dispatcher who must wear a name tag reading ‘Forgery Client.’",
+      "status": "pending"
+    },
+    {
+      "id": 69,
+      "premise": "I raided my $110,000 IRA to pay off my son and daughter-in-law’s mortgage so they wouldn’t lose their home, with a binding contract to build me a basement apartment for life; they instead refinanced, pulled $200,000 in equity, and evicted me. I sued for specific performance and elder abuse, won the house free and clear, and now I live on the upper floor while my son and his wife rent the basement from me, with their eviction notice framed on the wall.",
+      "status": "pending"
     }
   ]
 }
