@@ -1,40 +1,8 @@
 {
-  "story_id": 58,
-  "premise": "My mother’s $310,000 rare‑stamp collection was held in trust by my uncle and aunt until I turned 50, but they secretly sold the entire collection to a dealer and spent the cash on a luxury RV, telling me it had been ‘lost in a flood.’ At 54, I found a catalog notation from the auction, traced the stamps to a collector in Zurich, successfully sued for conversion, and repossessed the collection; I then sold individual stamps at a 40% premium to fund a women’s entrepreneurship grant, with each award certificate permanently embossed with my uncle’s name as the unwilling donor.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,695 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Aunt & Uncle Sold Mom's $310K Stamps For RV, Lied It Flooded. So I Made His N"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "36.5 min, 941MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=yvZ5erneq3c"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-22T23:56:55.050053+00:00",
-  "video_id": "yvZ5erneq3c"
+  "story_id": 59,
+  "premise": "I poured my entire $140,000 inheritance from my mother into renovating my father’s run‑down lakeside lodge in exchange for his written promise of 50% ownership; when he remarried, my new stepmother forged a deed gifting the $520,000 property to her son from a previous marriage and evicted me on Christmas Eve. I uncovered the fraudulent deed, sued for quiet title, and when they dissolved their marriage during litigation, I bought my stepmother’s interest for $1 and took sole ownership — I now run the lodge as a women’s writing retreat, with a bonfire pit where I burn copies of their wedding photos every solstice.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-23T04:16:31.961572+00:00"
 }
