@@ -1,8 +1,15 @@
 {
   "story_id": 60,
   "premise": "After my husband’s death, my stepson forged a codicil to his will, stole the $610,000 my late husband and I had poured into our Christmas-tree farm through a fraudulent sale, and left me homeless at 58; I exposed the notary fraud, voided the sale, and now I run the farm as a holiday empire, hiring him each December as a costume‐elf on minimum wage while his tips go straight to my legal fees.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-23T06:33:37.810939+00:00"
+  "updated_at": "2026-07-23T06:33:39.869443+00:00"
 }
