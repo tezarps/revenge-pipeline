@@ -1,15 +1,21 @@
 {
   "story_id": 65,
   "premise": "After my husband died, his sister convinced me to transfer my $280,000 paid-off house into a trust she would manage because she had terminal cancer—then she miraculously recovered, sold the house, and kept the cash. I proved the trust termination was a forgery, won a fraud judgment, reclaimed the property, and now rent it out while she lives in a studio; I send her monthly tax bills to her new address.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "6,187 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T20:25:35.947198+00:00"
+  "updated_at": "2026-07-23T20:25:37.756435+00:00"
 }
