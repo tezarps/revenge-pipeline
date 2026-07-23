@@ -1,7 +1,7 @@
 {
   "story_id": 62,
   "premise": "I inherited my husband’s pristine $80,000 vintage Chris‑Craft and partnered with his sister to open a restoration shop, using the boat as collateral for a $150,000 loan; she forged a bill of sale, sold my boat for $95,000, and vanished, leaving me with the debt — I traced the vessel through federal records, proved forgery, and when she couldn’t pay the $220,000 judgment, I seized her lakefront cottage and now run sunset cruises from her former dock under a banner that reads ‘The Truth Floats.’",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T12:14:52.693026+00:00"
+  "updated_at": "2026-07-23T12:14:54.581769+00:00"
 }
