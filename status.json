@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Daughter Stole My Pie Recipe, Cut Me Out Of $1.2M. So I Served Pies With The "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T23:19:02.303828+00:00"
+  "updated_at": "2026-07-23T23:19:52.759011+00:00"
 }
