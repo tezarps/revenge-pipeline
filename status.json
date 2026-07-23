@@ -1,15 +1,21 @@
 {
   "story_id": 59,
   "premise": "I poured my entire $140,000 inheritance from my mother into renovating my father’s run‑down lakeside lodge in exchange for his written promise of 50% ownership; when he remarried, my new stepmother forged a deed gifting the $520,000 property to her son from a previous marriage and evicted me on Christmas Eve. I uncovered the fraudulent deed, sued for quiet title, and when they dissolved their marriage during litigation, I bought my stepmother’s interest for $1 and took sole ownership — I now run the lodge as a women’s writing retreat, with a bonfire pit where I burn copies of their wedding photos every solstice.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "7,810 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T04:24:36.281240+00:00"
+  "updated_at": "2026-07-23T04:24:38.395885+00:00"
 }
