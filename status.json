@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Son Stole My $70K, Sold The Funeral Home For $1.5M, Gave Me A $5K Card. So I "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T15:21:45.529408+00:00"
+  "updated_at": "2026-07-23T15:22:37.117228+00:00"
 }
