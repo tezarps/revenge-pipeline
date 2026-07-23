@@ -1,27 +1,8 @@
 {
-  "story_id": 60,
-  "premise": "After my husband’s death, my stepson forged a codicil to his will, stole the $610,000 my late husband and I had poured into our Christmas-tree farm through a fraudulent sale, and left me homeless at 58; I exposed the notary fraud, voided the sale, and now I run the farm as a holiday empire, hiring him each December as a costume‐elf on minimum wage while his tips go straight to my legal fees.",
-  "stage": "thumb",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,721 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "error",
-      "detail": "Expecting ',' delimiter: line 38 column 6 (char 1441)"
-    }
-  },
-  "run_state": "failed",
-  "updated_at": "2026-07-23T07:02:42.423039+00:00"
+  "story_id": 61,
+  "premise": "I gave my daughter, a biomedical researcher, my late husband’s rare tissue samples and my decade of caregiver journals, trusting we’d co‑own the diagnostic test she developed; she secretly patented it alone, sold the rights for $2.3 million, and dismissed my work as ‘emotional support’ — I sued for intellectual‑property theft, won a $1.4 million judgment, and now the test is sold through a foundation I control, with her name permanently struck from every kit.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-23T09:25:01.222128+00:00"
 }
