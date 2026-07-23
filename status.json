@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister-In-Law Sold My Boat, Forged The Bill, Left Me $150K In Debt. So I Watc"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T12:14:54.581769+00:00"
+  "updated_at": "2026-07-23T12:15:57.836876+00:00"
 }
