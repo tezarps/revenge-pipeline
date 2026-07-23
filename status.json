@@ -1,40 +1,8 @@
 {
-  "story_id": 65,
-  "premise": "After my husband died, his sister convinced me to transfer my $280,000 paid-off house into a trust she would manage because she had terminal cancer—then she miraculously recovered, sold the house, and kept the cash. I proved the trust termination was a forgery, won a fraud judgment, reclaimed the property, and now rent it out while she lives in a studio; I send her monthly tax bills to her new address.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,187 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister-In-Law Faked Terminal Cancer, Stole My $280K Home. So I Sent Her Tax B"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "33.8 min, 868MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=V_TrkksK3E0"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-23T21:03:23.533790+00:00",
-  "video_id": "V_TrkksK3E0"
+  "story_id": 66,
+  "premise": "I sold my $50,000 cherry-red pickup and handed my grandmother’s 100-year-old pie recipe to my daughter launching a food truck, trusting her written 30% profit share, but she franchised without me and sold the brand for $1.2 million, claiming the recipe was a gift. I sued for contract breach, won a $360,000 settlement plus perpetual royalties, and now run a rival truck serving ‘Unkept Promise Pies’ with every receipt printed with the court docket number.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-23T22:59:05.972201+00:00"
 }
