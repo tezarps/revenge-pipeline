@@ -1,40 +1,8 @@
 {
-  "story_id": 59,
-  "premise": "I poured my entire $140,000 inheritance from my mother into renovating my father’s run‑down lakeside lodge in exchange for his written promise of 50% ownership; when he remarried, my new stepmother forged a deed gifting the $520,000 property to her son from a previous marriage and evicted me on Christmas Eve. I uncovered the fraudulent deed, sued for quiet title, and when they dissolved their marriage during litigation, I bought my stepmother’s interest for $1 and took sole ownership — I now run the lodge as a women’s writing retreat, with a bonfire pit where I burn copies of their wedding photos every solstice.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "7,810 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Stepmother Stole My Lodge Via Forged Deed, Evicted Me On Christmas. So I Got "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "43.1 min, 1142MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=So8JlXlMmv4"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-23T05:15:23.596657+00:00",
-  "video_id": "So8JlXlMmv4"
+  "story_id": 60,
+  "premise": "After my husband’s death, my stepson forged a codicil to his will, stole the $610,000 my late husband and I had poured into our Christmas-tree farm through a fraudulent sale, and left me homeless at 58; I exposed the notary fraud, voided the sale, and now I run the farm as a holiday empire, hiring him each December as a costume‐elf on minimum wage while his tips go straight to my legal fees.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-23T06:33:37.810939+00:00"
 }
