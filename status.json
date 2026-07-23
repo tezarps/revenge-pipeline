@@ -1,7 +1,7 @@
 {
   "story_id": 63,
   "premise": "I worked 25 years as the embalmer and bookkeeper for my son’s funeral home, sinking my $70,000 pension into keeping it afloat during the pandemic on his promise I’d own half; when business rebounded he sold the $1.5‑million company to a chain, forged a release of my equity, and handed me a $5,000 ‘thank‑you’ card — I discovered he’d been double‑selling prepaid funeral plans, triggered a state investigation that yanked his license, and bought the funeral home’s assets at auction for $40,000, turning it into a green‑burial cooperative where he now mows the memorial meadow under my supervision.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Son Stole My $70K, Sold The Funeral Home For $1.5M, Gave Me A $5K Card. So I "
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T15:22:37.117228+00:00"
+  "updated_at": "2026-07-23T15:22:38.465262+00:00"
 }
