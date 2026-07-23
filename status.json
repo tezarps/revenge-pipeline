@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Stepmother Stole My Lodge Via Forged Deed, Evicted Me On Christmas. So I Got "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T04:45:20.198858+00:00"
+  "updated_at": "2026-07-23T04:48:01.591238+00:00"
 }
