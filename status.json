@@ -1,15 +1,21 @@
 {
   "story_id": 66,
   "premise": "I sold my $50,000 cherry-red pickup and handed my grandmother’s 100-year-old pie recipe to my daughter launching a food truck, trusting her written 30% profit share, but she franchised without me and sold the brand for $1.2 million, claiming the recipe was a gift. I sued for contract breach, won a $360,000 settlement plus perpetual royalties, and now run a rival truck serving ‘Unkept Promise Pies’ with every receipt printed with the court docket number.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "6,005 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-23T23:03:05.690346+00:00"
+  "updated_at": "2026-07-23T23:03:07.233380+00:00"
 }
