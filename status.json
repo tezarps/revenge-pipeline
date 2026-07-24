@@ -1,40 +1,8 @@
 {
-  "story_id": 67,
-  "premise": "My husband’s will left me a $320,000 lake cabin and half his antique gun collection, but my adult stepson forged a codicil claiming I’d abandoned the property, staged a break-in, and got me arrested for theft. I proved the codicil was forged through a forensic linguist, had charges dismissed, won a $400,000 malicious prosecution judgment, and turned the cabin into a women’s retreat with a plaque reading ‘Justice Preserves.’",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,938 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Stepson Claimed I Abandoned The Cabin And Got Me Arrested. So I Watched Him L"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "38.9 min, 1032MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=L7aGVT5JPkg"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-24T05:08:13.699866+00:00",
-  "video_id": "L7aGVT5JPkg"
+  "story_id": 68,
+  "premise": "I emptied my $60,000 nursing pension to buy my brother a vacuum-truck business after our mom’s funeral, on his signed promise of 20% ownership and repayment, but he forged a cancellation of the note and told everyone I’d never lent a dime. I found the original promissory note in a safe deposit box, sued, and was awarded full ownership of the business—now I manage the fleet and employ my brother as a dispatcher who must wear a name tag reading ‘Forgery Client.’",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-24T06:25:04.351410+00:00"
 }
