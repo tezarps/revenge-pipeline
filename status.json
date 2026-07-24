@@ -1,15 +1,21 @@
 {
   "story_id": 69,
   "premise": "I raided my $110,000 IRA to pay off my son and daughter-in-law’s mortgage so they wouldn’t lose their home, with a binding contract to build me a basement apartment for life; they instead refinanced, pulled $200,000 in equity, and evicted me. I sued for specific performance and elder abuse, won the house free and clear, and now I live on the upper floor while my son and his wife rent the basement from me, with their eviction notice framed on the wall.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,977 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-24T09:29:40.309319+00:00"
+  "updated_at": "2026-07-24T09:29:41.804360+00:00"
 }
