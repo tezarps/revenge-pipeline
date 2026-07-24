@@ -1,40 +1,8 @@
 {
-  "story_id": 69,
-  "premise": "I raided my $110,000 IRA to pay off my son and daughter-in-law’s mortgage so they wouldn’t lose their home, with a binding contract to build me a basement apartment for life; they instead refinanced, pulled $200,000 in equity, and evicted me. I sued for specific performance and elder abuse, won the house free and clear, and now I live on the upper floor while my son and his wife rent the basement from me, with their eviction notice framed on the wall.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,977 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son And His Wife Took My $110K IRA, Then Evicted Me. So I Framed His Eviction"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "32.8 min, 832MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=e57x0ij_8I8"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-07-24T10:07:42.220633+00:00",
-  "video_id": "e57x0ij_8I8"
+  "story_id": 70,
+  "premise": "When I was 57, my daughter forged my signature on a reverse mortgage and drained $190,000 in equity from my paid-off home, leaving me with a foreclosure notice while she bought a condo out of state; I proved the identity theft, sued for fraud, recovered the deed plus $220,000 in damages, and now she’s my live-in caregiver on court order, paying back every cent with interest at the same bank where she got the loan.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-24T11:40:17.118574+00:00"
 }
