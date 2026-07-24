@@ -1,15 +1,8 @@
 {
-  "story_id": 68,
-  "premise": "I emptied my $60,000 nursing pension to buy my brother a vacuum-truck business after our mom’s funeral, on his signed promise of 20% ownership and repayment, but he forged a cancellation of the note and told everyone I’d never lent a dime. I found the original promissory note in a safe deposit box, sued, and was awarded full ownership of the business—now I manage the fleet and employ my brother as a dispatcher who must wear a name tag reading ‘Forgery Client.’",
-  "stage": "script",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "error",
-      "detail": "'choices'"
-    }
-  },
-  "run_state": "failed",
-  "updated_at": "2026-07-24T06:40:12.204875+00:00"
+  "story_id": 69,
+  "premise": "I raided my $110,000 IRA to pay off my son and daughter-in-law’s mortgage so they wouldn’t lose their home, with a binding contract to build me a basement apartment for life; they instead refinanced, pulled $200,000 in equity, and evicted me. I sued for specific performance and elder abuse, won the house free and clear, and now I live on the upper floor while my son and his wife rent the basement from me, with their eviction notice framed on the wall.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-07-24T09:22:38.741912+00:00"
 }
