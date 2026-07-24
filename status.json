@@ -1,7 +1,7 @@
 {
   "story_id": 70,
   "premise": "When I was 57, my daughter forged my signature on a reverse mortgage and drained $190,000 in equity from my paid-off home, leaving me with a foreclosure notice while she bought a condo out of state; I proved the identity theft, sued for fraud, recovered the deed plus $220,000 in damages, and now she’s my live-in caregiver on court order, paying back every cent with interest at the same bank where she got the loan.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Daughter Stole $190K, Forged My Signature, And Left Me Homeless. So I Made He"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-07-24T12:04:18.402208+00:00"
+  "updated_at": "2026-07-24T12:04:19.492448+00:00"
 }
