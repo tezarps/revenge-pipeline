@@ -1,8 +1,15 @@
 {
   "story_id": 68,
   "premise": "I emptied my $60,000 nursing pension to buy my brother a vacuum-truck business after our mom’s funeral, on his signed promise of 20% ownership and repayment, but he forged a cancellation of the note and told everyone I’d never lent a dime. I found the original promissory note in a safe deposit box, sued, and was awarded full ownership of the business—now I manage the fleet and employ my brother as a dispatcher who must wear a name tag reading ‘Forgery Client.’",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-07-24T06:25:04.351410+00:00"
+  "updated_at": "2026-07-24T06:25:06.207119+00:00"
 }
