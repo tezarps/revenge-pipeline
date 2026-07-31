@@ -22,17 +22,29 @@ def _call_deepseek_json(prompt, pattern, start_tokens=6000, attempts=3):
     though the exact same prompt shape had passed a smoke test earlier).
     Retries with an escalating token budget instead of a fixed one, and
     raises with the raw response visible in the log if all attempts fail,
-    rather than silently returning an empty result."""
+    rather than silently returning an empty result.
+
+    Returns the PARSED object (not the raw matched string): a regex match on
+    `{.*}`/`[.*]` only proves brackets were found, not that the content
+    between them is valid JSON, so the actual json.loads() has to happen
+    inside the retry loop too (root-caused 2026-07-31, run 30649121930:
+    generate_metadata failed outright on a single malformed-JSON response -
+    "Expecting ',' delimiter" - even though this function's whole purpose is
+    retrying exactly that kind of flaky generation)."""
     tokens = start_tokens
     last_raw = ""
+    last_error = "no JSON-shaped content found in response"
     for attempt in range(1, attempts + 1):
         last_raw = call_deepseek(prompt, max_tokens=tokens)
         m = re.search(pattern, last_raw, re.S)
         if m:
-            return m.group(0)
-        print(f"    DeepSeek JSON parse failed (attempt {attempt}/{attempts}, max_tokens={tokens}, response length={len(last_raw)}), retrying with more tokens...")
+            try:
+                return json.loads(m.group(0))
+            except json.JSONDecodeError as e:
+                last_error = e
+        print(f"    DeepSeek JSON parse failed (attempt {attempt}/{attempts}, max_tokens={tokens}, response length={len(last_raw)}, error={last_error}), retrying with more tokens...")
         tokens = int(tokens * 1.8)
-    raise RuntimeError(f"DeepSeek never returned parseable JSON after {attempts} attempts. Last raw response: {last_raw[:500]!r}")
+    raise RuntimeError(f"DeepSeek never returned parseable JSON after {attempts} attempts ({last_error}). Last raw response: {last_raw[:500]!r}")
 
 # The 6 non-negotiable schema rules, distilled from the 5-video teardown.
 SCHEMA = """You are the head writer for a faceless YouTube channel that narrates original first-person family-betrayal revenge stories (25-45yo US audience). Write ONE complete video script following this exact structure:
@@ -128,8 +140,7 @@ def top_up_queue(n=5):
         prompt = f"""Generate {n} fresh premises for first-person family-betrayal revenge stories (YouTube long-form niche). Each premise: 1-2 sentences, hyper-specific (who betrayed, what was taken incl. a dollar amount or concrete stake, what the comeback is). Narrator is ALWAYS a woman aged 45-60, framed around decades of sacrifice for family (a parent's death triggering an inheritance-fraud/undercover-investigation plot, a lifetime of frugal work exploited by a golden-child relative, etc.), not a young-adult/early-career premise. Vary the betrayer (adult children/stepchildren/siblings/in-laws) and the arena (inheritance, retirement fund, house, medical, small business). Avoid anything similar to these already used:\n{used}\n\nReturn ONLY a JSON array of strings."""
     else:
         prompt = f"""Generate {n} fresh premises for first-person family-betrayal revenge stories (YouTube long-form niche). Each premise: 1-2 sentences, hyper-specific (who betrayed, what was taken incl. a dollar amount or concrete stake, what the comeback is). Narrator is ALWAYS a woman aged 24-45 (channel voice is female). Vary the betrayer (sister/brother/parents/in-laws) and the arena (inheritance, wedding, company, house, medical). Avoid anything similar to these already used:\n{used}\n\nReturn ONLY a JSON array of strings."""
-    raw_json = _call_deepseek_json(prompt, r"\[.*\]")
-    premises = json.loads(raw_json)
+    premises = _call_deepseek_json(prompt, r"\[.*\]")
     next_id = max([s["id"] for s in data["stories"]], default=0) + 1
     for p in premises:
         data["stories"].append({"id": next_id, "premise": p, "status": "pending"})
@@ -194,7 +205,7 @@ Each segment is ALL CAPS, no em dash. Together they should read like an escalati
 
 
 def generate_metadata(story, script):
-    raw_json = _call_deepseek_json(
+    return _call_deepseek_json(
         f"""For this YouTube revenge-story video, write metadata. {TITLE_RULES}
 
 {THUMB_LINES_RULES}
@@ -207,4 +218,3 @@ Never use an em dash (the "—" character) anywhere in any field; use a comma, p
 Return ONLY JSON: {{"title": "...", "description": "2-3 sentence description ending with 3 relevant hashtags", "tags": ["10-14 tags"], "thumb_text": "6-10 word emotional punchline for the fallback thumbnail, ALL CAPS", "thumb_lines": [{{"style": "setup", "text": "..."}}, {{"style": "twist", "text": "..."}}, {{"style": "context", "text": "..."}}, {{"style": "climax1", "text": "..."}}, {{"style": "climax2", "text": "..."}}]}}""",
         r"\{.*\}",
     )
-    return json.loads(raw_json)
