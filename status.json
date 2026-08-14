@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Son Forged A Dissolution, Sold My Stained Glass, And Left Me $4,100. So I Voi"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-14T10:18:31.061056+00:00"
+  "updated_at": "2026-08-14T10:19:42.618292+00:00"
 }
