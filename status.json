@@ -1,40 +1,8 @@
 {
-  "story_id": 199,
-  "premise": "I emptied $104,000 of my widow's inheritance to purchase a collection of antique steamer trunks and open a luggage-restoration atelier with my half-sister, notarizing a 45% stake and a lifetime of free trunk repairs for my grandchildren's college moves, but after a luxury auction house offered $640,000 for the restored Louis Vuitton trunks she forged a dissolution, sold the collection, and mailed me a $3,700 'baggage' check; I retrieved the original agreement hidden in a false-bottomed 1920s steamer trunk, voided the sale, and now run 'Trunk of Deceit Atelier,' where she polishes brass locks in an apron that says 'Unlatched Lies' and every repair tag prints her fraud-docket number.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,629 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Half-Sister Forged A Dissolution And Sold My $640K Trunk Collection. So I Voi"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "30.1 min, 746MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=Sau5yMFJKQg"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-14T06:17:57.135609+00:00",
-  "video_id": "Sau5yMFJKQg"
+  "story_id": 200,
+  "premise": "I spent 29 years as a school custodian and poured my $126,000 pension into a stained-glass restoration studio with my son, notarizing a 50/50 share and a lifetime of free window repairs for my church’s chapel; after a luxury hotel chain offered $590,000 for the restored Tiffany-style panels, he forged a dissolution, sold the collection, and mailed me a $4,100 'came' check. I found the original partnership agreement sealed inside a hollow brass came in the studio’s sample window, voided the sale, and now run 'Pane of Deceit Stained Glass,' where he foils glass edges in a vest that says 'Cracked Trust' and every restoration certificate prints his fraud-docket number.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-14T10:06:24.531063+00:00"
 }
