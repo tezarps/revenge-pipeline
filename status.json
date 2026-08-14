@@ -1,40 +1,8 @@
 {
-  "story_id": 200,
-  "premise": "I spent 29 years as a school custodian and poured my $126,000 pension into a stained-glass restoration studio with my son, notarizing a 50/50 share and a lifetime of free window repairs for my church’s chapel; after a luxury hotel chain offered $590,000 for the restored Tiffany-style panels, he forged a dissolution, sold the collection, and mailed me a $4,100 'came' check. I found the original partnership agreement sealed inside a hollow brass came in the studio’s sample window, voided the sale, and now run 'Pane of Deceit Stained Glass,' where he foils glass edges in a vest that says 'Cracked Trust' and every restoration certificate prints his fraud-docket number.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,580 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son Forged A Dissolution, Sold My Stained Glass, And Left Me $4,100. So I Voi"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "27.4 min, 677MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=hy0qv_KYmGM"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-14T10:36:10.907050+00:00",
-  "video_id": "hy0qv_KYmGM"
+  "story_id": 201,
+  "premise": "I used $143,000 of my late husband’s life insurance after 27 years as a mail carrier to buy a century-old six-unit apartment house with my son-in-law, who signed a 45% stake and a lifetime lease for the ground-floor unit; when a developer offered $910,000 for the property, he forged a deed transfer, sold the building, and left me a $5,200 'vacancy' check. I recovered the original co-ownership agreement from a fireproof lockbox hidden in the basement laundry room, voided the sale, and now run 'Unit of Deceit Rentals,' where he unclogs drains in a coverall that says 'Drained My Trust' and every lease prints his deed-fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-14T15:52:11.093942+00:00"
 }
