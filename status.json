@@ -1,15 +1,21 @@
 {
   "story_id": 201,
   "premise": "I used $143,000 of my late husband’s life insurance after 27 years as a mail carrier to buy a century-old six-unit apartment house with my son-in-law, who signed a 45% stake and a lifetime lease for the ground-floor unit; when a developer offered $910,000 for the property, he forged a deed transfer, sold the building, and left me a $5,200 'vacancy' check. I recovered the original co-ownership agreement from a fireproof lockbox hidden in the basement laundry room, voided the sale, and now run 'Unit of Deceit Rentals,' where he unclogs drains in a coverall that says 'Drained My Trust' and every lease prints his deed-fraud docket.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "4,313 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-14T16:06:32.036655+00:00"
+  "updated_at": "2026-08-14T16:06:34.581198+00:00"
 }
