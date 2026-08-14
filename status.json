@@ -1,15 +1,21 @@
 {
   "story_id": 200,
   "premise": "I spent 29 years as a school custodian and poured my $126,000 pension into a stained-glass restoration studio with my son, notarizing a 50/50 share and a lifetime of free window repairs for my church’s chapel; after a luxury hotel chain offered $590,000 for the restored Tiffany-style panels, he forged a dissolution, sold the collection, and mailed me a $4,100 'came' check. I found the original partnership agreement sealed inside a hollow brass came in the studio’s sample window, voided the sale, and now run 'Pane of Deceit Stained Glass,' where he foils glass edges in a vest that says 'Cracked Trust' and every restoration certificate prints his fraud-docket number.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,580 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-14T10:08:47.745356+00:00"
+  "updated_at": "2026-08-14T10:08:49.738375+00:00"
 }
