@@ -1,15 +1,21 @@
 {
   "story_id": 202,
   "premise": "After my father died, my sister forged a codicil cutting me out of the family bowling alley I’d managed for 24 years while she lived out of state, and she sold the land and equipment for $780,000, mailing me a $4,800 'shoe rental' check; I discovered a voice memo on Dad’s old flip phone in which he told her the real will in the safe deposit box still left me 60% and warned her not to touch it. I contested probate, reclaimed the alley, and now run 'Split of Deceit Lanes,' where she oils lanes in a shirt that says 'Gutter of Lies' and every score sheet prints her probate-fraud docket.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,654 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-15T04:36:08.955315+00:00"
+  "updated_at": "2026-08-15T04:36:11.123017+00:00"
 }
