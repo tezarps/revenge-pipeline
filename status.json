@@ -1,40 +1,8 @@
 {
-  "story_id": 202,
-  "premise": "After my father died, my sister forged a codicil cutting me out of the family bowling alley I’d managed for 24 years while she lived out of state, and she sold the land and equipment for $780,000, mailing me a $4,800 'shoe rental' check; I discovered a voice memo on Dad’s old flip phone in which he told her the real will in the safe deposit box still left me 60% and warned her not to touch it. I contested probate, reclaimed the alley, and now run 'Split of Deceit Lanes,' where she oils lanes in a shirt that says 'Gutter of Lies' and every score sheet prints her probate-fraud docket.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,654 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Forged Dad's Will, Sold My Alley For $780K. So I Made Her Oil Lanes In"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "28.1 min, 725MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=Rskz2tXb25s"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-15T05:10:15.807168+00:00",
-  "video_id": "Rskz2tXb25s"
+  "story_id": 203,
+  "premise": "I drained $139,000 of my nursing pension after 31 years on night shifts to co-found a hearing-aid fitting and repair clinic with my daughter-in-law, who notarized a 50% stake and free device cleanings for my church seniors; after a national audiology chain offered $670,000 for the patient roster and equipment, she forged a dissolution, sold the assets, and handed me a $4,400 'earmold' check. I found the original partnership contract inside the hearing-aid programmer case she’d left in my car, voided the sale, and now run 'Canal of Deceit Hearing,' where she sanitizes earmolds in a smock that says 'Amplified Lies' and every audiogram prints her fraud-docket number.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-15T09:27:32.652365+00:00"
 }
