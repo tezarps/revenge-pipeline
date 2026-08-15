@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Nephew Forged My Signature, Sold The Bikes, And Mailed Me $3,800. So I Voided"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-15T15:36:37.300790+00:00"
+  "updated_at": "2026-08-15T15:39:54.191356+00:00"
 }
