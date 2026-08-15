@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister Forged Dad's Will, Sold My Alley For $780K. So I Made Her Oil Lanes In"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-15T04:49:50.085325+00:00"
+  "updated_at": "2026-08-15T04:52:13.835383+00:00"
 }
