@@ -1,7 +1,7 @@
 {
   "story_id": 204,
   "premise": "I cashed out my $117,000 401(k) after 30 years as a hospital cafeteria worker to buy a vintage-bicycle restoration shop with my nephew, who promised in writing a 45% share and free tune-ups for my grandkids; when a transportation museum offered $620,000 for the restored 1890s penny-farthings and early roadsters, he forged a dissolution, sold the collection, and mailed me a $3,800 'spoke' check. I retrieved our signed agreement from inside the hollow seatpost of a 1937 Schwinn Autocycle we’d restored together, voided the sale, and now run 'Gear of Deceit Cycles,' where he trues wheels in a vest that says 'Spun Out of Trust' and every repair tag prints his fraud-docket number.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "21.7 min, 572MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-15T15:50:35.126396+00:00"
+  "updated_at": "2026-08-15T15:50:36.604822+00:00"
 }
