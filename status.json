@@ -1,40 +1,8 @@
 {
-  "story_id": 203,
-  "premise": "I drained $139,000 of my nursing pension after 31 years on night shifts to co-found a hearing-aid fitting and repair clinic with my daughter-in-law, who notarized a 50% stake and free device cleanings for my church seniors; after a national audiology chain offered $670,000 for the patient roster and equipment, she forged a dissolution, sold the assets, and handed me a $4,400 'earmold' check. I found the original partnership contract inside the hearing-aid programmer case she’d left in my car, voided the sale, and now run 'Canal of Deceit Hearing,' where she sanitizes earmolds in a smock that says 'Amplified Lies' and every audiogram prints her fraud-docket number.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "4,305 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Daughter-In-Law Forged A Dissolution And Left Me $4,400. So I Voided The $670"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "23.0 min, 611MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=qwIrzII4eOM"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-15T10:08:08.535808+00:00",
-  "video_id": "qwIrzII4eOM"
+  "story_id": 204,
+  "premise": "I cashed out my $117,000 401(k) after 30 years as a hospital cafeteria worker to buy a vintage-bicycle restoration shop with my nephew, who promised in writing a 45% share and free tune-ups for my grandkids; when a transportation museum offered $620,000 for the restored 1890s penny-farthings and early roadsters, he forged a dissolution, sold the collection, and mailed me a $3,800 'spoke' check. I retrieved our signed agreement from inside the hollow seatpost of a 1937 Schwinn Autocycle we’d restored together, voided the sale, and now run 'Gear of Deceit Cycles,' where he trues wheels in a vest that says 'Spun Out of Trust' and every repair tag prints his fraud-docket number.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-15T15:19:44.441688+00:00"
 }
