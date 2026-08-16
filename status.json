@@ -1,7 +1,7 @@
 {
   "story_id": 205,
   "premise": "After 31 years as a school custodian, I paid off my $190,000 bungalow, but my adult son—who held power of attorney during my double knee replacement—forged a $164,000 home-equity line of credit and spent it on a food truck; I proved the notary stamp was fake, got the bank to void the lien, seized the truck as restitution, and now run 'Equity of Betrayal Grill,' where he scrubs the fryer in a shirt that says 'Home Equity Hustler' and every receipt prints the forgery docket.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Son Forged A $164K Loan And Left Me Bedridden. So I Watched Him Lose His Food"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-16T05:04:47.042817+00:00"
+  "updated_at": "2026-08-16T05:04:48.639798+00:00"
 }
