@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Son Forged A $164K Loan And Left Me Bedridden. So I Watched Him Lose His Food"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-16T05:02:12.036622+00:00"
+  "updated_at": "2026-08-16T05:04:47.042817+00:00"
 }
