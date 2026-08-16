@@ -1,40 +1,8 @@
 {
-  "story_id": 206,
-  "premise": "I sank $158,000 of my 401(k) from 29 years as a cafeteria manager into a 50% share of a mortuary with my sister-in-law, who promised free pre-need plans for my church seniors, then she forged a shareholder resolution and sold the business to a regional chain for $1.1 million, mailing me a $5,000 'casket' check; I proved the resolution was backdated with email metadata, voided the sale, and now run 'Rigor of Deceit Mortuary,' where she waxes hearses in a smock that says 'Buried My Trust' and every memorial folder prints the fraud docket.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,672 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister-In-Law Forged My Name, Sold Our $1.1M Mortuary, Mailed Me $5K. So I Vo"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "28.1 min, 720MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=JtTZ8VZ_UiY"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-16T10:04:18.295788+00:00",
-  "video_id": "JtTZ8VZ_UiY"
+  "story_id": 207,
+  "premise": "After 27 years as a school bus driver, I used my $127,000 pension to buy a fleet of pressure-washing rigs and a parking-lot striping route with my nephew, notarizing 50/50 and a lifetime of free driveway sealing for my widowed neighbors, but he registered the business under his girlfriend's name, sold the contracts for $560,000, and handed me a $3,800 'soap' check; I found a voicemail where he admitted the whole scam, got a judgment, and now run 'Washout of Deceit Pressure Cleaning,' where he scrubs dumpster pads in a wetsuit that says 'Striped My Pension' and every invoice prints his fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-16T15:20:53.763440+00:00"
 }
