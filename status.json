@@ -1,7 +1,7 @@
 {
   "story_id": 206,
   "premise": "I sank $158,000 of my 401(k) from 29 years as a cafeteria manager into a 50% share of a mortuary with my sister-in-law, who promised free pre-need plans for my church seniors, then she forged a shareholder resolution and sold the business to a regional chain for $1.1 million, mailing me a $5,000 'casket' check; I proved the resolution was backdated with email metadata, voided the sale, and now run 'Rigor of Deceit Mortuary,' where she waxes hearses in a smock that says 'Buried My Trust' and every memorial folder prints the fraud docket.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Sister-In-Law Forged My Name, Sold Our $1.1M Mortuary, Mailed Me $5K. So I Vo"
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-16T09:50:00.984254+00:00"
+  "updated_at": "2026-08-16T09:50:02.613322+00:00"
 }
