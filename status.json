@@ -1,7 +1,7 @@
 {
   "story_id": 209,
   "premise": "Because I spent 24 years as my father's live-in caregiver, his will reserved me a life estate in his lakefront cottage worth $450,000, but my half-sister forged a trustee deed extinguishing my interest and sold the cottage to a developer for $745,000, handing me a $4,600 'moving' check; I found the original recorded life estate and proved the satisfaction filing was fraudulent, voided the sale, and now run 'Reel of Deceit Fishing Retreat' on the property, where she scrubs rowboats in waders that say 'Hooked My Inheritance' and every cabin receipt prints the deed-fraud docket.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-17T10:01:21.007881+00:00"
+  "updated_at": "2026-08-17T10:01:22.998712+00:00"
 }
