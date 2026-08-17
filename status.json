@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Half-Sister Forged A Deed, Sold My Lakefront Cottage, And Left Me $4,600. So "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-17T10:01:22.998712+00:00"
+  "updated_at": "2026-08-17T10:03:03.015920+00:00"
 }
