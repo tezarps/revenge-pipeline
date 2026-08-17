@@ -1,7 +1,7 @@
 {
   "story_id": 210,
   "premise": "At 59, after 27 years as a school custodian, I returned home to care for my dying father, who left me 60% of his 40-acre Christmas tree farm worth $480,000, but my sister forged a deed transferring my share to herself and sold the land to a holiday-lot chain for $690,000, handing me a $4,900 'wreath' check; I found the original will hidden inside a tin sap bucket, voided the sale, and now run 'Balsam of Betrayal Tree Farm,' where she prunes trees in a smock that says 'Sheared My Inheritance' and every tree tag prints her probate-fraud docket.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "28.3 min, 731MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-17T16:06:22.108331+00:00"
+  "updated_at": "2026-08-17T16:06:23.723394+00:00"
 }
