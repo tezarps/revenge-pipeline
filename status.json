@@ -1,15 +1,21 @@
 {
   "story_id": 208,
   "premise": "I cashed out $142,000 from 33 years as a paramedic to start a medical-billing and coding company with my daughter-in-law, who notarized 50/50 and free claim audits for my old ambulance crew, then she forged a digital signature on a dissolution, sold the patient accounts to a national billing group for $860,000, and sent me a $4,900 'EOB' check; I traced the forgery through IP logs and document metadata, voided the sale, and now run 'Code of Deceit Billing,' where she shreds denials in a lab coat that says 'Coded Me Out' and every claim form prints the fraud docket.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,715 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-17T04:51:02.495676+00:00"
+  "updated_at": "2026-08-17T04:51:04.797140+00:00"
 }
