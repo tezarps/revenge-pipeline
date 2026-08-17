@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister Forged The Deed, Sold Dad's Farm For $690K, And Left Me $4,900. So I V"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-17T15:47:27.514156+00:00"
+  "updated_at": "2026-08-17T15:49:18.702468+00:00"
 }
