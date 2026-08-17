@@ -1,40 +1,8 @@
 {
-  "story_id": 207,
-  "premise": "After 27 years as a school bus driver, I used my $127,000 pension to buy a fleet of pressure-washing rigs and a parking-lot striping route with my nephew, notarizing 50/50 and a lifetime of free driveway sealing for my widowed neighbors, but he registered the business under his girlfriend's name, sold the contracts for $560,000, and handed me a $3,800 'soap' check; I found a voicemail where he admitted the whole scam, got a judgment, and now run 'Washout of Deceit Pressure Cleaning,' where he scrubs dumpster pads in a wetsuit that says 'Striped My Pension' and every invoice prints his fraud docket.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,510 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Nephew Stole My $127K Pension Business And Sold It For $560K. So I Watched Hi"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "28.5 min, 709MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=_jqrukaetWo"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-16T16:04:56.197213+00:00",
-  "video_id": "_jqrukaetWo"
+  "story_id": 208,
+  "premise": "I cashed out $142,000 from 33 years as a paramedic to start a medical-billing and coding company with my daughter-in-law, who notarized 50/50 and free claim audits for my old ambulance crew, then she forged a digital signature on a dissolution, sold the patient accounts to a national billing group for $860,000, and sent me a $4,900 'EOB' check; I traced the forgery through IP logs and document metadata, voided the sale, and now run 'Code of Deceit Billing,' where she shreds denials in a lab coat that says 'Coded Me Out' and every claim form prints the fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-17T04:39:51.223852+00:00"
 }
