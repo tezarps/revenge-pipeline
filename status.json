@@ -1,40 +1,8 @@
 {
-  "story_id": 209,
-  "premise": "Because I spent 24 years as my father's live-in caregiver, his will reserved me a life estate in his lakefront cottage worth $450,000, but my half-sister forged a trustee deed extinguishing my interest and sold the cottage to a developer for $745,000, handing me a $4,600 'moving' check; I found the original recorded life estate and proved the satisfaction filing was fraudulent, voided the sale, and now run 'Reel of Deceit Fishing Retreat' on the property, where she scrubs rowboats in waders that say 'Hooked My Inheritance' and every cabin receipt prints the deed-fraud docket.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,695 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Half-Sister Forged A Deed, Sold My Lakefront Cottage, And Left Me $4,600. So "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "30.3 min, 778MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=XBb-mUKbZBA"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-17T10:21:43.397999+00:00",
-  "video_id": "XBb-mUKbZBA"
+  "story_id": 210,
+  "premise": "At 59, after 27 years as a school custodian, I returned home to care for my dying father, who left me 60% of his 40-acre Christmas tree farm worth $480,000, but my sister forged a deed transferring my share to herself and sold the land to a holiday-lot chain for $690,000, handing me a $4,900 'wreath' check; I found the original will hidden inside a tin sap bucket, voided the sale, and now run 'Balsam of Betrayal Tree Farm,' where she prunes trees in a smock that says 'Sheared My Inheritance' and every tree tag prints her probate-fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-17T15:28:18.143282+00:00"
 }
