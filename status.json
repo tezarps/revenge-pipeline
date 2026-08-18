@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Brother Drained $190K From My House During Cancer. So I Watched Him Scrub Gre"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-18T09:55:59.212678+00:00"
+  "updated_at": "2026-08-18T10:01:45.056777+00:00"
 }
