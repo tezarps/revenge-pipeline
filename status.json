@@ -1,40 +1,8 @@
 {
-  "story_id": 211,
-  "premise": "At 58, I cashed out $132,000 of my 30-year mail-carrier pension to co-found a vintage watch-and-clock restoration studio with my former daughter-in-law, notarizing a 50% stake and free watch batteries for my widows' group, but after a luxury auction house offered $710,000 for the restored Patek Philippe parts inventory and client list she forged a dissolution, sold the assets, and mailed me a $4,300 'mainspring' check; I recovered our original agreement from a hollowed wooden watch case, voided the sale, and now run 'Crown of Deceit Horology,' where she polishes crystals in a smock that says 'Wound Me Out' and every repair ticket prints her fraud docket.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,924 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Former Daughter-In-Law Forged Dissolution, Sold My Studio, Sent $4,300. So I "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "30.7 min, 815MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=hc2n1tstmG0"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-18T05:12:46.838814+00:00",
-  "video_id": "hc2n1tstmG0"
+  "story_id": 212,
+  "premise": "At 60, after 28 years as a hospital cafeteria worker, I paid off my $230,000 bungalow, but my brother—acting as power of attorney during my cancer treatment—took out a $190,000 reverse mortgage and drained it into his failing catering hall, leaving me with a foreclosure notice and a $4,700 'meal credit'; I proved the power of attorney had been revoked and the notary stamp was fake, voided the mortgage, seized his commercial kitchen equipment, and now run 'Lien of Betrayal Catering,' where he scrubs grease traps in a jacket that says 'Garnished My Equity' and every invoice prints the fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-18T09:34:28.978864+00:00"
 }
