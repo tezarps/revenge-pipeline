@@ -1,40 +1,8 @@
 {
-  "story_id": 210,
-  "premise": "At 59, after 27 years as a school custodian, I returned home to care for my dying father, who left me 60% of his 40-acre Christmas tree farm worth $480,000, but my sister forged a deed transferring my share to herself and sold the land to a holiday-lot chain for $690,000, handing me a $4,900 'wreath' check; I found the original will hidden inside a tin sap bucket, voided the sale, and now run 'Balsam of Betrayal Tree Farm,' where she prunes trees in a smock that says 'Sheared My Inheritance' and every tree tag prints her probate-fraud docket.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,916 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Forged The Deed, Sold Dad's Farm For $690K, And Left Me $4,900. So I V"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "28.3 min, 731MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=JZLkDa8c-40"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-17T16:07:01.225586+00:00",
-  "video_id": "JZLkDa8c-40"
+  "story_id": 211,
+  "premise": "At 58, I cashed out $132,000 of my 30-year mail-carrier pension to co-found a vintage watch-and-clock restoration studio with my former daughter-in-law, notarizing a 50% stake and free watch batteries for my widows' group, but after a luxury auction house offered $710,000 for the restored Patek Philippe parts inventory and client list she forged a dissolution, sold the assets, and mailed me a $4,300 'mainspring' check; I recovered our original agreement from a hollowed wooden watch case, voided the sale, and now run 'Crown of Deceit Horology,' where she polishes crystals in a smock that says 'Wound Me Out' and every repair ticket prints her fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-18T04:33:59.034729+00:00"
 }
