@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister-In-Law Forged Our $640K Oxygen Deal, Left Me $4,200. So I Watched Her "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-18T16:01:44.324074+00:00"
+  "updated_at": "2026-08-18T16:03:51.891846+00:00"
 }
