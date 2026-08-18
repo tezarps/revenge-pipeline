@@ -1,7 +1,7 @@
 {
   "story_id": 211,
   "premise": "At 58, I cashed out $132,000 of my 30-year mail-carrier pension to co-found a vintage watch-and-clock restoration studio with my former daughter-in-law, notarizing a 50% stake and free watch batteries for my widows' group, but after a luxury auction house offered $710,000 for the restored Patek Philippe parts inventory and client list she forged a dissolution, sold the assets, and mailed me a $4,300 'mainspring' check; I recovered our original agreement from a hollowed wooden watch case, voided the sale, and now run 'Crown of Deceit Horology,' where she polishes crystals in a smock that says 'Wound Me Out' and every repair ticket prints her fraud docket.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "30.7 min, 815MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-18T05:11:22.712907+00:00"
+  "updated_at": "2026-08-18T05:11:24.434690+00:00"
 }
