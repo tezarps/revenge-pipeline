@@ -1,7 +1,7 @@
 {
   "story_id": 213,
   "premise": "At 56, I poured $141,000 of my 31-year ICU-nursing pension into a home-oxygen and CPAP equipment service with my sister-in-law, notarizing 50/50 and free oxygen for my church seniors, but after a regional respiratory chain offered $640,000 for the Medicare contracts and equipment she forged a dissolution, sold the assets, and mailed me a $4,200 'cannula' check; I found our partnership agreement hidden inside a hollow oxygen-concentrator casing, voided the sale, and now run 'Flow of Deceit Oxygen,' where she sterilizes masks in a smock that says 'Cut Off My Air' and every delivery ticket prints her fraud docket.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Sister-In-Law Forged Our $640K Oxygen Deal, Left Me $4,200. So I Watched Her "
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-18T16:03:51.891846+00:00"
+  "updated_at": "2026-08-18T16:03:53.622711+00:00"
 }
