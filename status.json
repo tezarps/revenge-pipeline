@@ -1,15 +1,21 @@
 {
   "story_id": 212,
   "premise": "At 60, after 28 years as a hospital cafeteria worker, I paid off my $230,000 bungalow, but my brother—acting as power of attorney during my cancer treatment—took out a $190,000 reverse mortgage and drained it into his failing catering hall, leaving me with a foreclosure notice and a $4,700 'meal credit'; I proved the power of attorney had been revoked and the notary stamp was fake, voided the mortgage, seized his commercial kitchen equipment, and now run 'Lien of Betrayal Catering,' where he scrubs grease traps in a jacket that says 'Garnished My Equity' and every invoice prints the fraud docket.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "7,474 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-18T09:38:30.236725+00:00"
+  "updated_at": "2026-08-18T09:38:31.980537+00:00"
 }
