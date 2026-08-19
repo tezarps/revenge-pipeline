@@ -1,7 +1,7 @@
 {
   "story_id": 214,
   "premise": "At 59, I spent 29 years as an elementary school custodian and used $126,000 of my pension to open a piano-restoration and tuning studio with my daughter, notarizing a 45% stake and a lifetime of free tunings for my church, but after a music-school chain offered $750,000 for the restored Steinway inventory and contracts she forged a dissolution, sold the collection, and mailed me a $4,300 'damper' check; I discovered the original agreement inside the hollow key block of a 1903 upright, voided the sale, and now run 'Hammer of Deceit Pianos,' where she restrings pianos in a smock that says 'Struck a False Note' and every tuning certificate prints her fraud docket.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Daughter Forged The Dissolution, Sold My Pianos For $750K, Mailed Me $4,300. "
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-19T10:07:09.554256+00:00"
+  "updated_at": "2026-08-19T10:07:11.023654+00:00"
 }
