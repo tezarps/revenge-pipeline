@@ -6,10 +6,10 @@
     "script": {
       "label": "Writing script",
       "icon": "pen",
-      "status": "running",
-      "detail": "Sonnet 5 writing..."
+      "status": "error",
+      "detail": "DeepSeek connection kept failing after 3 attempts: <HTTPError 402: 'Payment Required'>"
     }
   },
-  "run_state": "running",
-  "updated_at": "2026-08-20T09:36:14.327753+00:00"
+  "run_state": "failed",
+  "updated_at": "2026-08-20T09:36:33.362604+00:00"
 }
