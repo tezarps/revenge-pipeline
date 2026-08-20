@@ -1,40 +1,8 @@
 {
-  "story_id": 214,
-  "premise": "At 59, I spent 29 years as an elementary school custodian and used $126,000 of my pension to open a piano-restoration and tuning studio with my daughter, notarizing a 45% stake and a lifetime of free tunings for my church, but after a music-school chain offered $750,000 for the restored Steinway inventory and contracts she forged a dissolution, sold the collection, and mailed me a $4,300 'damper' check; I discovered the original agreement inside the hollow key block of a 1903 upright, voided the sale, and now run 'Hammer of Deceit Pianos,' where she restrings pianos in a smock that says 'Struck a False Note' and every tuning certificate prints her fraud docket.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,335 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Daughter Forged The Dissolution, Sold My Pianos For $750K, Mailed Me $4,300. "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "31.0 min, 797MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=0wfevKoDL90"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-19T10:26:41.859713+00:00",
-  "video_id": "0wfevKoDL90"
+  "story_id": 215,
+  "premise": "At 57, after 31 years as a school custodian, I cashed out $124,000 of my pension to co-found a vintage jukebox and pinball restoration arcade with my stepdaughter, who notarized a 50% stake and a lifetime of free game nights for my grandchildren, but after an amusement chain offered $730,000 for the restored machines and route contracts she forged a dissolution, sold the assets, and mailed me a $4,100 'token' check; I found our partnership agreement hidden inside the hollow backglass of a 1954 Wurlitzer jukebox, voided the sale, and now run 'Arcade of Deceit Restoration,' where she polishes pinball playfields in a vest that says 'Tilted My Trust' and every high-score card prints her fraud-docket number.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-20T04:38:58.028330+00:00"
 }
