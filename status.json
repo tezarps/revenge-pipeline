@@ -1,8 +1,15 @@
 {
   "story_id": 217,
   "premise": "At 55, after 28 years as a hospital cafeteria worker, I poured $123,000 of my pension into a taxidermy and natural-history display studio with my half-brother, who notarized a 50% stake and free specimen mounts for my church's nature center, but after a science museum offered $590,000 for the restored dioramas and specimen archive he forged a dissolution, sold the collection, and handed me a $4,300 'preservative' check; I found our original partnership contract inside the hollow base of a badger mount, voided the sale, and now run 'Stuffed with Deceit Taxidermy,' where he refluffs museum diorama mammals in an apron that says 'Tanned My Trust' and every specimen tag prints his fraud-docket number.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-08-20T15:33:30.359802+00:00"
+  "updated_at": "2026-08-20T15:33:32.181304+00:00"
 }
