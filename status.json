@@ -1,7 +1,7 @@
 {
   "story_id": 215,
   "premise": "At 57, after 31 years as a school custodian, I cashed out $124,000 of my pension to co-found a vintage jukebox and pinball restoration arcade with my stepdaughter, who notarized a 50% stake and a lifetime of free game nights for my grandchildren, but after an amusement chain offered $730,000 for the restored machines and route contracts she forged a dissolution, sold the assets, and mailed me a $4,100 'token' check; I found our partnership agreement hidden inside the hollow backglass of a 1954 Wurlitzer jukebox, voided the sale, and now run 'Arcade of Deceit Restoration,' where she polishes pinball playfields in a vest that says 'Tilted My Trust' and every high-score card prints her fraud-docket number.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-20T05:01:24.185918+00:00"
+  "updated_at": "2026-08-20T05:01:26.018878+00:00"
 }
