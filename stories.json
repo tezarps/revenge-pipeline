@@ -1468,6 +1468,31 @@
       "status": "done",
       "video_id": "0wfevKoDL90",
       "publish_at": "2026-08-19T12:00:00.000000Z"
+    },
+    {
+      "id": 215,
+      "premise": "At 57, after 31 years as a school custodian, I cashed out $124,000 of my pension to co-found a vintage jukebox and pinball restoration arcade with my stepdaughter, who notarized a 50% stake and a lifetime of free game nights for my grandchildren, but after an amusement chain offered $730,000 for the restored machines and route contracts she forged a dissolution, sold the assets, and mailed me a $4,100 'token' check; I found our partnership agreement hidden inside the hollow backglass of a 1954 Wurlitzer jukebox, voided the sale, and now run 'Arcade of Deceit Restoration,' where she polishes pinball playfields in a vest that says 'Tilted My Trust' and every high-score card prints her fraud-docket number.",
+      "status": "failed"
+    },
+    {
+      "id": 216,
+      "premise": "At 59, after 29 years as a mail carrier, I used $136,000 of my pension to co-found a locksmith and home-security business with my brother-in-law, who notarized a 50% share and free rekeying for my senior neighbors, but after a regional security company offered $610,000 for the accounts and equipment he forged a dissolution, sold the assets, and mailed me a $4,200 'tumbler' check; I retrieved our signed agreement from inside the hollow base of a key-cutting machine, voided the sale, and now run 'Key of Deceit Locksmith,' where he greases lock cylinders in a vest that says 'Picked My Pension' and every work order prints his fraud-docket number.",
+      "status": "pending"
+    },
+    {
+      "id": 217,
+      "premise": "At 55, after 28 years as a hospital cafeteria worker, I poured $123,000 of my pension into a taxidermy and natural-history display studio with my half-brother, who notarized a 50% stake and free specimen mounts for my church's nature center, but after a science museum offered $590,000 for the restored dioramas and specimen archive he forged a dissolution, sold the collection, and handed me a $4,300 'preservative' check; I found our original partnership contract inside the hollow base of a badger mount, voided the sale, and now run 'Stuffed with Deceit Taxidermy,' where he refluffs museum diorama mammals in an apron that says 'Tanned My Trust' and every specimen tag prints his fraud-docket number.",
+      "status": "pending"
+    },
+    {
+      "id": 218,
+      "premise": "At 57, after 30 years as a school custodian, I drained $128,000 of my pension to open a kiln and ceramics studio with my daughter, who notarized a 45% stake and free pottery classes for my church seniors, but after a regional craft chain offered $620,000 for the glaze recipes and kiln contracts she forged a dissolution, sold the equipment and inventory, and mailed me a $3,900 'bisque' check; I recovered our partnership agreement from inside the hollow bottom of a raku vase, voided the sale, and now run 'Glaze of Deceit Ceramics,' where she scrapes kilns in a smock that says 'Fired My Trust' and every firing log prints her fraud-docket number.",
+      "status": "pending"
+    },
+    {
+      "id": 219,
+      "premise": "At 58, after 30 years as a school custodian, I cashed out $122,000 of my pension to open a marine upholstery and boat-cover shop with my stepbrother, who notarized a 50% share and free canvas repairs for my church camp's pontoon boats, but after a marina group offered $540,000 for the industrial sewing machines and customer list he forged a dissolution, sold the assets, and mailed me a $4,100 'bobbin' check; I found the signed partnership papers inside a hollow seat cushion of a classic Chris-Craft runabout, voided the sale, and now run 'Seam of Deceit Upholstery,' where he restitches bimini tops in coveralls that say 'Ripped My Pension' and every repair ticket prints his fraud-docket number.",
+      "status": "pending"
     }
   ]
 }
