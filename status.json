@@ -1,15 +1,8 @@
 {
-  "story_id": 216,
-  "premise": "At 59, after 29 years as a mail carrier, I used $136,000 of my pension to co-found a locksmith and home-security business with my brother-in-law, who notarized a 50% share and free rekeying for my senior neighbors, but after a regional security company offered $610,000 for the accounts and equipment he forged a dissolution, sold the assets, and mailed me a $4,200 'tumbler' check; I retrieved our signed agreement from inside the hollow base of a key-cutting machine, voided the sale, and now run 'Key of Deceit Locksmith,' where he greases lock cylinders in a vest that says 'Picked My Pension' and every work order prints his fraud-docket number.",
-  "stage": "script",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "error",
-      "detail": "DeepSeek connection kept failing after 3 attempts: <HTTPError 402: 'Payment Required'>"
-    }
-  },
-  "run_state": "failed",
-  "updated_at": "2026-08-20T09:36:33.362604+00:00"
+  "story_id": 217,
+  "premise": "At 55, after 28 years as a hospital cafeteria worker, I poured $123,000 of my pension into a taxidermy and natural-history display studio with my half-brother, who notarized a 50% stake and free specimen mounts for my church's nature center, but after a science museum offered $590,000 for the restored dioramas and specimen archive he forged a dissolution, sold the collection, and handed me a $4,300 'preservative' check; I found our original partnership contract inside the hollow base of a badger mount, voided the sale, and now run 'Stuffed with Deceit Taxidermy,' where he refluffs museum diorama mammals in an apron that says 'Tanned My Trust' and every specimen tag prints his fraud-docket number.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-20T15:33:30.359802+00:00"
 }
