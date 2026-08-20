@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "error",
+      "detail": "DeepSeek connection kept failing after 3 attempts: <HTTPError 402: 'Payment Required'>"
     }
   },
-  "run_state": "running",
-  "updated_at": "2026-08-20T05:01:26.018878+00:00"
+  "run_state": "failed",
+  "updated_at": "2026-08-20T05:01:44.207823+00:00"
 }
