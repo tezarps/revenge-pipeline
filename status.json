@@ -1,8 +1,15 @@
 {
   "story_id": 216,
   "premise": "At 59, after 29 years as a mail carrier, I used $136,000 of my pension to co-found a locksmith and home-security business with my brother-in-law, who notarized a 50% share and free rekeying for my senior neighbors, but after a regional security company offered $610,000 for the accounts and equipment he forged a dissolution, sold the assets, and mailed me a $4,200 'tumbler' check; I retrieved our signed agreement from inside the hollow base of a key-cutting machine, voided the sale, and now run 'Key of Deceit Locksmith,' where he greases lock cylinders in a vest that says 'Picked My Pension' and every work order prints his fraud-docket number.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-08-20T09:36:11.787143+00:00"
+  "updated_at": "2026-08-20T09:36:14.327753+00:00"
 }
