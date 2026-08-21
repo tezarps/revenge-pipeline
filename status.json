@@ -1,15 +1,8 @@
 {
-  "story_id": 219,
-  "premise": "At 58, after 30 years as a school custodian, I cashed out $122,000 of my pension to open a marine upholstery and boat-cover shop with my stepbrother, who notarized a 50% share and free canvas repairs for my church camp's pontoon boats, but after a marina group offered $540,000 for the industrial sewing machines and customer list he forged a dissolution, sold the assets, and mailed me a $4,100 'bobbin' check; I found the signed partnership papers inside a hollow seat cushion of a classic Chris-Craft runabout, voided the sale, and now run 'Seam of Deceit Upholstery,' where he restitches bimini tops in coveralls that say 'Ripped My Pension' and every repair ticket prints his fraud-docket number.",
-  "stage": "script",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "error",
-      "detail": "DeepSeek connection kept failing after 3 attempts: <HTTPError 402: 'Payment Required'>"
-    }
-  },
-  "run_state": "failed",
-  "updated_at": "2026-08-21T09:37:56.529586+00:00"
+  "story_id": 220,
+  "premise": "At 57, after 28 years as a legal secretary, I cashed out my $139,000 401(k) to open a vintage typewriter restoration and custom typewriter-paper shop with my half-sister, notarizing a 50% stake and free typewriter maintenance for my church’s community newsletter; after a film-studio prop house offered $610,000 for the restored 1920s Corona and Remington machines and client list, she forged a dissolution, sold the inventory, and mailed me a $4,500 'platen' check. I found our original partnership agreement inside the hollow base of a 1920s Royal typewriter, voided the sale, and now run 'Carriage of Deceit Typewriters,' where she polishes key levers in a smock that says 'Shifted My Pension' and every repair ticket prints her fraud-docket number.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-21T15:36:57.763638+00:00"
 }
