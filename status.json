@@ -1,7 +1,7 @@
 {
   "story_id": 220,
   "premise": "At 57, after 28 years as a legal secretary, I cashed out my $139,000 401(k) to open a vintage typewriter restoration and custom typewriter-paper shop with my half-sister, notarizing a 50% stake and free typewriter maintenance for my church’s community newsletter; after a film-studio prop house offered $610,000 for the restored 1920s Corona and Remington machines and client list, she forged a dissolution, sold the inventory, and mailed me a $4,500 'platen' check. I found our original partnership agreement inside the hollow base of a 1920s Royal typewriter, voided the sale, and now run 'Carriage of Deceit Typewriters,' where she polishes key levers in a smock that says 'Shifted My Pension' and every repair ticket prints her fraud-docket number.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "27.5 min, 721MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-21T16:16:33.431946+00:00"
+  "updated_at": "2026-08-21T16:16:34.957280+00:00"
 }
