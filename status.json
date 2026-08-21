@@ -1,8 +1,15 @@
 {
   "story_id": 219,
   "premise": "At 58, after 30 years as a school custodian, I cashed out $122,000 of my pension to open a marine upholstery and boat-cover shop with my stepbrother, who notarized a 50% share and free canvas repairs for my church camp's pontoon boats, but after a marina group offered $540,000 for the industrial sewing machines and customer list he forged a dissolution, sold the assets, and mailed me a $4,100 'bobbin' check; I found the signed partnership papers inside a hollow seat cushion of a classic Chris-Craft runabout, voided the sale, and now run 'Seam of Deceit Upholstery,' where he restitches bimini tops in coveralls that say 'Ripped My Pension' and every repair ticket prints his fraud-docket number.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-08-21T09:37:35.807139+00:00"
+  "updated_at": "2026-08-21T09:37:38.012504+00:00"
 }
