@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister Forged a Codicil, Erased My Inheritance, and Sold Mom's Theater. So I "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-22T15:35:15.827167+00:00"
+  "updated_at": "2026-08-22T15:38:17.833621+00:00"
 }
