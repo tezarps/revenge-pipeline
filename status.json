@@ -1,15 +1,21 @@
 {
   "story_id": 222,
   "premise": "At 58, after 32 years as a hospital physical-therapy aide, I poured $133,000 of my pension into a wheelchair-accessible van rental and stairlift installation company with my son, notarizing a 50% stake and free stairlift installations for my church’s senior ministry; after a regional mobility-equipment chain offered $660,000 for the van contracts and equipment inventory, he forged a dissolution, sold the assets, and mailed me a $4,500 'armrest' check. I discovered our original partnership agreement hidden inside the hollow seat base of a wheelchair-accessible Ford Transit, voided the sale, and now run 'Lift of Deceit Mobility,' where he details vans in coveralls that say 'Rolled Over My Trust' and every rental contract prints his fraud-docket number.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "6,087 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-22T09:36:49.306988+00:00"
+  "updated_at": "2026-08-22T09:36:51.694712+00:00"
 }
