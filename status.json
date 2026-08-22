@@ -1,15 +1,21 @@
 {
   "story_id": 221,
   "premise": "At 58, after 27 years as a public-school crossing guard, I used $131,000 of my pension to co-found a honey and beeswax-candle operation with my brother-in-law, notarizing a 50% share and free beeswax candles for my church’s Christmas services; after a regional grocery chain offered $570,000 for the apiary, hives, and wax-processing equipment, he forged a dissolution, sold the business, and handed me a $4,300 'hive tool' check. I found the original partnership contract inside a hollow wax foundation frame in the extractor room, voided the sale, and now run 'Comb of Deceit Apiary,' where he scrapes propolis in coveralls that say 'Stung My Trust' and every honey label prints his fraud-docket number.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,390 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-22T04:41:00.344718+00:00"
+  "updated_at": "2026-08-22T04:41:02.644564+00:00"
 }
