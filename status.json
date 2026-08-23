@@ -1,15 +1,21 @@
 {
   "story_id": 226,
   "premise": "At 57, after 24 years as my mother's live-in caregiver, I was left 70% of her historic German bakery and cake-decorating business worth $620,000, but my sister forged a codicil cutting me out and sold the property, recipes, and wholesale accounts to a regional café chain for $890,000, mailing me a $4,600 'flour' check; I found Mama's original will inside the hollow wooden rolling pin she used for our Saturday streusel, voided the sale, and now run 'Dough of Deceit Bakery,' where she scrubs proofing baskets in a smock that says 'Iced My Inheritance' and every pastry box prints her probate-fraud docket.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "6,760 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-23T15:25:50.731231+00:00"
+  "updated_at": "2026-08-23T15:25:52.979511+00:00"
 }
