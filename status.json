@@ -1,40 +1,8 @@
 {
-  "story_id": 225,
-  "premise": "At 58, after 30 years as a public-school administrative assistant, I threw my $134,000 pension into a small-batch coffee roastery with my son-in-law, notarizing a 50% stake and a lifetime of free coffee service for my church's grief ministry; after a regional specialty grocery chain offered $640,000 for the roasting contracts and green-coffee inventory, he forged a dissolution, sold the assets, and mailed me a $4,200 'chaff' check. I found our original notarized agreement sealed inside the hollow wooden lid of the green-bean hopper, voided the sale, and now run 'Roast of Deceit Coffee,' where he scrubs the cooling tray in a denim apron that says 'Ground My Trust' and every retail bag prints his fraud-docket number.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,643 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Son-In-Law Forged A Dissolution And Sold My $134K Roastery For $640K. So I Le"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "31.1 min, 798MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=teiUrQgDgY8"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-23T10:20:11.200971+00:00",
-  "video_id": "teiUrQgDgY8"
+  "story_id": 226,
+  "premise": "At 57, after 24 years as my mother's live-in caregiver, I was left 70% of her historic German bakery and cake-decorating business worth $620,000, but my sister forged a codicil cutting me out and sold the property, recipes, and wholesale accounts to a regional café chain for $890,000, mailing me a $4,600 'flour' check; I found Mama's original will inside the hollow wooden rolling pin she used for our Saturday streusel, voided the sale, and now run 'Dough of Deceit Bakery,' where she scrubs proofing baskets in a smock that says 'Iced My Inheritance' and every pastry box prints her probate-fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-23T15:21:38.392124+00:00"
 }
