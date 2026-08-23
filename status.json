@@ -1,40 +1,8 @@
 {
-  "story_id": 223,
-  "premise": "At 59, after 26 years as a home-health aide, I returned to care for my dying mother who left me 70% of her 1940s single-screen movie theater and projection-booth equipment worth $610,000, but my sister forged a codicil cutting me out and sold the property to a multiplex chain for $890,000, mailing me a $4,600 'concession' check. I found Mom’s original will inside a hollow carbon-arc film reel canister, voided the sale, and now run 'Flicker of Deceit Cinema,' where she threads projectors in a smock that says 'Spliced My Inheritance' and every ticket stub prints her probate-fraud docket.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "5,548 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Forged a Codicil, Erased My Inheritance, and Sold Mom's Theater. So I "
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "29.8 min, 740MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=uqlh0F2igX0"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-22T15:58:54.464784+00:00",
-  "video_id": "uqlh0F2igX0"
+  "story_id": 224,
+  "premise": "At 57, after 30 years as a night-shift hospital housekeeper, I paid off my $240,000 ranch house, but my stepdaughter, who moved in as my caregiver after a knee replacement, forged a transfer-on-death deed giving herself the house as “payment” and sold it to a house-flipper for $360,000 while I was in rehab, mailing me a $4,700 'rent' check. I found my original deed in a fireproof lockbox at my church, proved the transfer filing was forged, voided the sale, and now run 'Threshold of Deceit Vacation Rentals' in the reclaimed house, where she scrubs baseboards in a smock that says 'Deeded Me Out' and every guest receipt prints her deed-fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-23T04:35:11.878441+00:00"
 }
