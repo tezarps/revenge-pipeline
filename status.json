@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister Forged A Codicil, Sold Mama's Bakery For $890K, And Left Me $4,600. So"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-23T15:41:55.403578+00:00"
+  "updated_at": "2026-08-23T15:43:09.478378+00:00"
 }
