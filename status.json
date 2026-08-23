@@ -1,7 +1,7 @@
 {
   "story_id": 225,
   "premise": "At 58, after 30 years as a public-school administrative assistant, I threw my $134,000 pension into a small-batch coffee roastery with my son-in-law, notarizing a 50% stake and a lifetime of free coffee service for my church's grief ministry; after a regional specialty grocery chain offered $640,000 for the roasting contracts and green-coffee inventory, he forged a dissolution, sold the assets, and mailed me a $4,200 'chaff' check. I found our original notarized agreement sealed inside the hollow wooden lid of the green-bean hopper, voided the sale, and now run 'Roast of Deceit Coffee,' where he scrubs the cooling tray in a denim apron that says 'Ground My Trust' and every retail bag prints his fraud-docket number.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-23T10:01:44.625924+00:00"
+  "updated_at": "2026-08-23T10:01:46.324982+00:00"
 }
