@@ -1,8 +1,15 @@
 {
   "story_id": 224,
   "premise": "At 57, after 30 years as a night-shift hospital housekeeper, I paid off my $240,000 ranch house, but my stepdaughter, who moved in as my caregiver after a knee replacement, forged a transfer-on-death deed giving herself the house as “payment” and sold it to a house-flipper for $360,000 while I was in rehab, mailing me a $4,700 'rent' check. I found my original deed in a fireproof lockbox at my church, proved the transfer filing was forged, voided the sale, and now run 'Threshold of Deceit Vacation Rentals' in the reclaimed house, where she scrubs baseboards in a smock that says 'Deeded Me Out' and every guest receipt prints her deed-fraud docket.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-08-23T04:35:11.878441+00:00"
+  "updated_at": "2026-08-23T04:35:13.826740+00:00"
 }
