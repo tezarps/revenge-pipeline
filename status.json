@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Daughter Forged A Dissolution, Sold My $680K Studio, Mailed Me $4,400. So I V"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-24T15:59:14.167887+00:00"
+  "updated_at": "2026-08-24T16:02:19.659323+00:00"
 }
