@@ -1,7 +1,7 @@
 {
   "story_id": 228,
   "premise": "At 59, after 29 years as a public-school nurse, I poured $132,000 of my pension into a therapeutic-shoe and custom orthotic clinic with my brother-in-law, notarizing a 50% stake and free fittings for my church's diabetic seniors; after a regional orthotics chain offered $650,000 for the patient accounts, scanning equipment, and shoe inventory, he forged a dissolution, sold the assets, and mailed me a $4,300 'insole' check. I recovered our original partnership agreement from inside the hollow wooden shoe last in the fitting room, voided the sale, and now run 'Sole of Deceit Orthotics,' where he grinds arch supports in a lab coat that says 'Heeled My Pension' and every orthotic box prints his fraud-docket number.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-24T10:09:20.655318+00:00"
+  "updated_at": "2026-08-24T10:09:22.514241+00:00"
 }
