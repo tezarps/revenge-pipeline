@@ -1,7 +1,7 @@
 {
   "story_id": 227,
   "premise": "At 56, after 27 years as a hospital phlebotomist, I cashed out $119,000 of my pension to co-found an artisan goat dairy and aged-cheese operation with my niece, notarizing a 45% stake and a lifetime of free cheese wheels for my church's holiday baskets; after a regional dairy cooperative offered $590,000 for the herd, aging-room equipment, and cheese recipes, she forged a dissolution, sold the operation, and mailed me a $4,100 'whey' check. I found the original notarized agreement inside the hollow wooden follower of a cheese press, voided the sale, and now run 'Curd of Deceit Creamery,' where she scrubs cheese molds in canvas coveralls that say 'Cultured My Trust' and every cheese label prints her fraud-docket number.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-24T05:08:16.173276+00:00"
+  "updated_at": "2026-08-24T05:08:18.465300+00:00"
 }
