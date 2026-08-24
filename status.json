@@ -1,40 +1,8 @@
 {
-  "story_id": 227,
-  "premise": "At 56, after 27 years as a hospital phlebotomist, I cashed out $119,000 of my pension to co-found an artisan goat dairy and aged-cheese operation with my niece, notarizing a 45% stake and a lifetime of free cheese wheels for my church's holiday baskets; after a regional dairy cooperative offered $590,000 for the herd, aging-room equipment, and cheese recipes, she forged a dissolution, sold the operation, and mailed me a $4,100 'whey' check. I found the original notarized agreement inside the hollow wooden follower of a cheese press, voided the sale, and now run 'Curd of Deceit Creamery,' where she scrubs cheese molds in canvas coveralls that say 'Cultured My Trust' and every cheese label prints her fraud-docket number.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,664 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Niece Forged Our Dissolution, Sold My $590K Dairy, Left Me $4,100. So I Voide"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "34.9 min, 928MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=is6oSTzN0UA"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-24T05:33:40.455969+00:00",
-  "video_id": "is6oSTzN0UA"
+  "story_id": 228,
+  "premise": "At 59, after 29 years as a public-school nurse, I poured $132,000 of my pension into a therapeutic-shoe and custom orthotic clinic with my brother-in-law, notarizing a 50% stake and free fittings for my church's diabetic seniors; after a regional orthotics chain offered $650,000 for the patient accounts, scanning equipment, and shoe inventory, he forged a dissolution, sold the assets, and mailed me a $4,300 'insole' check. I recovered our original partnership agreement from inside the hollow wooden shoe last in the fitting room, voided the sale, and now run 'Sole of Deceit Orthotics,' where he grinds arch supports in a lab coat that says 'Heeled My Pension' and every orthotic box prints his fraud-docket number.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-24T09:48:57.355829+00:00"
 }
