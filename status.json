@@ -1,40 +1,8 @@
 {
-  "story_id": 226,
-  "premise": "At 57, after 24 years as my mother's live-in caregiver, I was left 70% of her historic German bakery and cake-decorating business worth $620,000, but my sister forged a codicil cutting me out and sold the property, recipes, and wholesale accounts to a regional café chain for $890,000, mailing me a $4,600 'flour' check; I found Mama's original will inside the hollow wooden rolling pin she used for our Saturday streusel, voided the sale, and now run 'Dough of Deceit Bakery,' where she scrubs proofing baskets in a smock that says 'Iced My Inheritance' and every pastry box prints her probate-fraud docket.",
-  "stage": "upload",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "done",
-      "detail": "6,760 words"
-    },
-    "audio": {
-      "label": "Kokoro narration",
-      "icon": "mic",
-      "status": "done",
-      "detail": ""
-    },
-    "thumb": {
-      "label": "Thumbnail + metadata",
-      "icon": "image",
-      "status": "done",
-      "detail": "My Sister Forged A Codicil, Sold Mama's Bakery For $890K, And Left Me $4,600. So"
-    },
-    "assembly": {
-      "label": "Assembling video",
-      "icon": "film",
-      "status": "done",
-      "detail": "33.8 min, 870MB"
-    },
-    "upload": {
-      "label": "Uploading to YouTube",
-      "icon": "upload",
-      "status": "done",
-      "detail": "youtube.com/watch?v=v1OyrPzK6H0"
-    }
-  },
-  "run_state": "done",
-  "updated_at": "2026-08-23T16:04:04.813174+00:00",
-  "video_id": "v1OyrPzK6H0"
+  "story_id": 227,
+  "premise": "At 56, after 27 years as a hospital phlebotomist, I cashed out $119,000 of my pension to co-found an artisan goat dairy and aged-cheese operation with my niece, notarizing a 45% stake and a lifetime of free cheese wheels for my church's holiday baskets; after a regional dairy cooperative offered $590,000 for the herd, aging-room equipment, and cheese recipes, she forged a dissolution, sold the operation, and mailed me a $4,100 'whey' check. I found the original notarized agreement inside the hollow wooden follower of a cheese press, voided the sale, and now run 'Curd of Deceit Creamery,' where she scrubs cheese molds in canvas coveralls that say 'Cultured My Trust' and every cheese label prints her fraud-docket number.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-24T04:42:26.716521+00:00"
 }
