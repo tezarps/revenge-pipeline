@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Brother-In-Law Forged A Dissolution, Sold My $650K Clinic, Sent $4,300. So I "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-24T10:09:22.514241+00:00"
+  "updated_at": "2026-08-24T10:12:24.892191+00:00"
 }
