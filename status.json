@@ -1,7 +1,7 @@
 {
   "story_id": 232,
   "premise": "At 60, after 31 years as a hospital housekeeper, I paid off my $225,000 bungalow, but my sister-in-law—who moved in as my caregiver after a hip replacement—forged a transfer-on-death deed leaving the house to herself and sold it to a vacation-rental investor for $350,000 while I was in rehab, mailing me a $4,700 'caregiver stipend' check. I proved the deed's notary stamp belonged to a notary who had died two years earlier, voided the sale, and now run 'Threshold of Deceit Respite Care' from the reclaimed bungalow, where she scrubs guest towels in a smock that says 'Deeded Me Out' and every receipt prints her deed-fraud docket.",
-  "stage": "audio",
+  "stage": "thumb",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -14,8 +14,14 @@
       "icon": "mic",
       "status": "done",
       "detail": ""
+    },
+    "thumb": {
+      "label": "Thumbnail + metadata",
+      "icon": "image",
+      "status": "running",
+      "detail": "Writing title/tags + rendering thumbnail..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-25T15:58:12.326856+00:00"
+  "updated_at": "2026-08-25T15:58:14.376539+00:00"
 }
