@@ -1,7 +1,7 @@
 {
   "story_id": 232,
   "premise": "At 60, after 31 years as a hospital housekeeper, I paid off my $225,000 bungalow, but my sister-in-law—who moved in as my caregiver after a hip replacement—forged a transfer-on-death deed leaving the house to herself and sold it to a vacation-rental investor for $350,000 while I was in rehab, mailing me a $4,700 'caregiver stipend' check. I proved the deed's notary stamp belonged to a notary who had died two years earlier, voided the sale, and now run 'Threshold of Deceit Respite Care' from the reclaimed bungalow, where she scrubs guest towels in a smock that says 'Deeded Me Out' and every receipt prints her deed-fraud docket.",
-  "stage": "thumb",
+  "stage": "assembly",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -20,8 +20,14 @@
       "icon": "image",
       "status": "done",
       "detail": "My Sister In Law Forged A Deed And Sold My Paid Off Home For $350K. So I Voided "
+    },
+    "assembly": {
+      "label": "Assembling video",
+      "icon": "film",
+      "status": "running",
+      "detail": "ffmpeg: character + drone + captions + waveform..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-25T16:00:45.825802+00:00"
+  "updated_at": "2026-08-25T16:00:47.261042+00:00"
 }
