@@ -1,15 +1,21 @@
 {
   "story_id": 231,
   "premise": "At 57, after 29 years as a 911 dispatcher, I discovered my adult son had drained my $143,000 457(b) retirement account by forging a hardship-distribution request to buy a fleet of party bikes, leaving me with a $4,300 'corrective refund' notice. I proved the signature was forged by a handwriting analyst, got the plan administrator to reverse the distribution, seized the bikes as restitution, and now run 'Pedal of Deceit Party Bike Tours,' where he greases chains in a shirt that says 'Grifter on Board' and every rental ticket prints his fraud-docket number.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "6,605 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-25T09:45:26.595111+00:00"
+  "updated_at": "2026-08-25T09:45:28.488168+00:00"
 }
