@@ -12,10 +12,10 @@
     "audio": {
       "label": "Kokoro narration",
       "icon": "mic",
-      "status": "running",
-      "detail": "Kokoro af_bella narrating..."
+      "status": "done",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-25T04:54:48.369425+00:00"
+  "updated_at": "2026-08-25T05:09:09.981459+00:00"
 }
