@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister In Law Forged A Deed And Sold My Paid Off Home For $350K. So I Voided "
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-25T15:58:14.376539+00:00"
+  "updated_at": "2026-08-25T16:00:45.825802+00:00"
 }
