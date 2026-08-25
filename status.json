@@ -1,7 +1,7 @@
 {
   "story_id": 230,
   "premise": "At 58, after 26 years as a school cafeteria monitor, I returned to care for my dying father, who left me 60% of his 1950s roller-skating rink and retro arcade worth $590,000, but my half-brother forged a codicil cutting me out and sold the rink to a trampoline-park chain for $840,000, mailing me a $4,500 'skate lace' check. I found Dad's original will sealed inside a hollow rental-skate boot in the lost-and-found bin, voided the sale, and now run 'Skate of Deceit Roller Rink,' where he polishes rental skates in a smock that says 'Skated My Inheritance' and every admission ticket prints his probate-fraud docket.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "28.7 min, 737MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-25T05:29:08.436589+00:00"
+  "updated_at": "2026-08-25T05:29:09.691175+00:00"
 }
