@@ -1,15 +1,21 @@
 {
   "story_id": 234,
   "premise": "At 55, after 27 years as a court reporter, I loaned my stepson $128,000 from my pension to open a custom fountain-pen and archival-ink boutique, with a signed promissory note and 45% profit share, but after a luxury stationery chain offered $580,000 for the ink formulas and inventory, he transferred the business to his girlfriend's LLC and mailed me a $4,100 'nib' check. I found the original promissory note and a hidden email showing the transfer was fraudulent, voided the sale, and now run 'Ink of Deceit Writing Instruments,' where he grinds nibs in a smock that says 'Bled My Pension' and every receipt prints his fraud-docket number.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,571 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-26T09:52:29.016727+00:00"
+  "updated_at": "2026-08-26T09:52:31.003164+00:00"
 }
