@@ -1,7 +1,7 @@
 {
   "story_id": 235,
   "premise": "At 60, after 27 years as a school custodian, I returned to care for my dying mother, who left me 70% of her 1950s seaside carousel and snack pavilion worth $640,000, but my sister-in-law forged a codicil cutting me out and sold the property to a regional amusement chain for $910,000, mailing me a $4,800 cotton-candy check; I found Mom's original will inside the hollow carved-mane horse she always painted, voided the sale, and now run 'Spindle of Deceit Carousel,' where she waxes brass poles in a smock that says 'Painted Over My Inheritance' and every ride ticket prints her probate-fraud docket.",
-  "stage": "assembly",
+  "stage": "upload",
   "stages": {
     "script": {
       "label": "Writing script",
@@ -26,8 +26,14 @@
       "icon": "film",
       "status": "done",
       "detail": "30.9 min, 821MB"
+    },
+    "upload": {
+      "label": "Uploading to YouTube",
+      "icon": "upload",
+      "status": "running",
+      "detail": ""
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-26T17:08:57.906992+00:00"
+  "updated_at": "2026-08-26T17:08:59.640600+00:00"
 }
