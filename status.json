@@ -18,10 +18,10 @@
     "thumb": {
       "label": "Thumbnail + metadata",
       "icon": "image",
-      "status": "running",
-      "detail": "Writing title/tags + rendering thumbnail..."
+      "status": "done",
+      "detail": "My Sister-In-Law Forged A Codicil, Sold Mom's Carousel, Sent Me $4,800. So I Voi"
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-26T16:47:00.721246+00:00"
+  "updated_at": "2026-08-26T16:50:22.484797+00:00"
 }
