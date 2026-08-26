@@ -1,15 +1,21 @@
 {
   "story_id": 233,
   "premise": "At 59, after 30 years as a hospital pharmacy technician, I discovered my daughter-in-law, whom I had trusted to handle Medicare reconciliation for the independent compounding pharmacy I bought with $132,000 of my pension, had submitted $225,000 in fake reimbursement claims under my NPI number and diverted the money to a shell LLC, leaving me with a $4,300 'clawback' notice. I turned over the audited remittance reports to CMS, got the money recovered, seized her shell company's pill-counting machine, and now run 'Compound of Deceit Pharmacy,' where she counts penicillin capsules in a smock that says 'Dispensed My Trust' and every label prints her fraud-docket number.",
-  "stage": "script",
+  "stage": "audio",
   "stages": {
     "script": {
       "label": "Writing script",
       "icon": "pen",
       "status": "done",
       "detail": "5,577 words"
+    },
+    "audio": {
+      "label": "Kokoro narration",
+      "icon": "mic",
+      "status": "running",
+      "detail": "Kokoro af_bella narrating..."
     }
   },
   "run_state": "running",
-  "updated_at": "2026-08-26T04:44:37.450090+00:00"
+  "updated_at": "2026-08-26T04:44:39.151023+00:00"
 }
