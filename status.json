@@ -1,15 +1,8 @@
 {
-  "story_id": 236,
-  "premise": "At 58, after 31 years as a public-school bus dispatcher, I discovered my daughter used my TreasuryDirect password and forged my signature to cash out $139,000 in near-maturity government bonds so she could buy a fleet of inflatable bouncy-house party units; I proved the signature was forged by a broker's handwriting analysis, voided the liquidation, seized the inflatables and delivery trailer, and now run 'Bounce of Deceit Party Rentals,' where she scrubs vinyl castles in a coverall that says 'Bounced My Retirement' and every rental agreement prints her fraud-docket number.",
-  "stage": "script",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "error",
-      "detail": "DeepSeek connection kept failing after 3 attempts: <HTTPError 402: 'Payment Required'>"
-    }
-  },
-  "run_state": "failed",
-  "updated_at": "2026-08-27T15:00:28.278390+00:00"
+  "story_id": 237,
+  "premise": "At 57, after 29 years as a hospital housekeeper, I paid off my $230,000 bungalow, but my stepson, who moved in as my caregiver during a shoulder replacement, forged a trustee deed transferring the house to himself as rent and sold it to a real-estate wholesaler for $345,000, mailing me a $4,600 cleaning-fee check; I proved the electronic filing came from his girlfriend's IP address and voided the sale, then used the judgment to seize his dump-truck and hauling business, and now run 'Haul of Deceit Junk Removal,' where he shovels debris in a smock that says 'Foreclosed My Trust' and every dump ticket prints his deed-fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-27T19:28:14.066358+00:00"
 }
