@@ -1,8 +1,15 @@
 {
   "story_id": 237,
   "premise": "At 57, after 29 years as a hospital housekeeper, I paid off my $230,000 bungalow, but my stepson, who moved in as my caregiver during a shoulder replacement, forged a trustee deed transferring the house to himself as rent and sold it to a real-estate wholesaler for $345,000, mailing me a $4,600 cleaning-fee check; I proved the electronic filing came from his girlfriend's IP address and voided the sale, then used the judgment to seize his dump-truck and hauling business, and now run 'Haul of Deceit Junk Removal,' where he shovels debris in a smock that says 'Foreclosed My Trust' and every dump ticket prints his deed-fraud docket.",
-  "stage": null,
-  "stages": {},
+  "stage": "script",
+  "stages": {
+    "script": {
+      "label": "Writing script",
+      "icon": "pen",
+      "status": "running",
+      "detail": "Sonnet 5 writing..."
+    }
+  },
   "run_state": "running",
-  "updated_at": "2026-08-27T19:28:14.066358+00:00"
+  "updated_at": "2026-08-27T19:28:16.682712+00:00"
 }
