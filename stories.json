@@ -1619,7 +1619,7 @@
     {
       "id": 238,
       "premise": "At 59, after 30 years as a hospital pharmacy technician, I discovered my brother-in-law had been secretly filing $240,000 in fraudulent Medicare reimbursements for my independent hearing-aid clinic using my NPI number and diverting the funds to a shell LLC that held his medical-office cleaning company; I turned over the audited remittance reports to CMS, got the money recouped, seized his cleaning equipment and contracts, and now run 'Mop of Deceit Medical Cleaning,' where he scrubs clinic floors in a smock that says 'Filed Me Out' and every invoice prints his fraud-docket number.",
-      "status": "pending"
+      "status": "failed"
     },
     {
       "id": 239,
