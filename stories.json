@@ -1624,7 +1624,7 @@
     {
       "id": 239,
       "premise": "At 56, after 28 years as a school cafeteria manager, I cashed out $126,000 of my pension to open a fermentation and pickling kitchen with my half-sister, notarizing a 50% stake and free pickles for my church food pantry, but she drained the operating account, forged a dissolution, and sold the brine recipes and canning line to a regional artisanal-foods chain for $580,000, mailing me a $4,100 leak check; I went undercover as a grocery buyer, recorded her admitting she forged my signature, voided the sale, and now run 'Brine of Deceit Pickles,' where she scrubs fermentation crocks in a smock that says 'Soured My Trust' and every jar label prints her fraud docket.",
-      "status": "pending"
+      "status": "failed"
     }
   ]
 }
