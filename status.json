@@ -1,15 +1,8 @@
 {
-  "story_id": 238,
-  "premise": "At 59, after 30 years as a hospital pharmacy technician, I discovered my brother-in-law had been secretly filing $240,000 in fraudulent Medicare reimbursements for my independent hearing-aid clinic using my NPI number and diverting the funds to a shell LLC that held his medical-office cleaning company; I turned over the audited remittance reports to CMS, got the money recouped, seized his cleaning equipment and contracts, and now run 'Mop of Deceit Medical Cleaning,' where he scrubs clinic floors in a smock that says 'Filed Me Out' and every invoice prints his fraud-docket number.",
-  "stage": "script",
-  "stages": {
-    "script": {
-      "label": "Writing script",
-      "icon": "pen",
-      "status": "error",
-      "detail": "DeepSeek connection kept failing after 3 attempts: <HTTPError 402: 'Payment Required'>"
-    }
-  },
-  "run_state": "failed",
-  "updated_at": "2026-08-28T00:16:00.432162+00:00"
+  "story_id": 239,
+  "premise": "At 56, after 28 years as a school cafeteria manager, I cashed out $126,000 of my pension to open a fermentation and pickling kitchen with my half-sister, notarizing a 50% stake and free pickles for my church food pantry, but she drained the operating account, forged a dissolution, and sold the brine recipes and canning line to a regional artisanal-foods chain for $580,000, mailing me a $4,100 leak check; I went undercover as a grocery buyer, recorded her admitting she forged my signature, voided the sale, and now run 'Brine of Deceit Pickles,' where she scrubs fermentation crocks in a smock that says 'Soured My Trust' and every jar label prints her fraud docket.",
+  "stage": null,
+  "stages": {},
+  "run_state": "running",
+  "updated_at": "2026-08-28T15:55:51.072957+00:00"
 }
